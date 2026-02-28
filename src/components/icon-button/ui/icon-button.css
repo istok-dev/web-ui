@@ -1,0 +1,79 @@
+@utility istok-icon-button--s {
+  --istok-icon-button-size: var(--spacing-8);
+  --istok-icon-button-icon-size: var(--spacing-4);
+  --istok-icon-button-square-radius: var(--radius-xl);
+}
+
+@utility istok-icon-button--m {
+  --istok-icon-button-size: var(--spacing-10);
+  --istok-icon-button-icon-size: var(--spacing-5);
+  --istok-icon-button-square-radius: var(--radius-xl);
+}
+
+@utility istok-icon-button--l {
+  --istok-icon-button-size: var(--spacing-12);
+  --istok-icon-button-icon-size: var(--spacing-6);
+  --istok-icon-button-square-radius: var(--radius-2xl);
+}
+
+@utility istok-icon-button--circle {
+  --istok-icon-button-radius: 9999px;
+}
+
+@utility istok-icon-button--square {
+  --istok-icon-button-radius: var(--istok-icon-button-square-radius);
+}
+
+@utility istok-icon-button--primary {
+  --istok-icon-button-bg: var(--color-brand-500);
+  --istok-icon-button-bg-hover: var(--color-brand-700);
+  --istok-icon-button-bg-active: var(--color-brand-700);
+
+  --istok-icon-button-fg: var(--color-brand-50);
+  --istok-icon-button-fg-hover: var(--color-brand-50);
+  --istok-icon-button-fg-active: var(--color-brand-50);
+}
+
+@utility istok-icon-button--secondary {
+  --istok-icon-button-bg: var(--color-brand-100);
+  --istok-icon-button-bg-hover: var(--color-brand-200);
+  --istok-icon-button-bg-active: var(--color-brand-300);
+
+  --istok-icon-button-fg: var(--color-brand-700);
+  --istok-icon-button-fg-hover: var(--color-brand-700);
+  --istok-icon-button-fg-active: var(--color-brand-700);
+}
+
+@utility istok-icon-button--clear {
+  --istok-icon-button-bg: transparent;
+  --istok-icon-button-bg-hover: var(--color-brand-700);
+  --istok-icon-button-bg-active: var(--color-brand-800);
+
+  --istok-icon-button-fg: var(--color-brand-600);
+  --istok-icon-button-fg-hover: var(--color-brand-50);
+  --istok-icon-button-fg-active: var(--color-brand-50);
+}
+
+@utility istok-icon-button--clear-inverse {
+  --istok-icon-button-bg: transparent;
+  --istok-icon-button-bg-hover: var(--color-brand-50);
+  --istok-icon-button-bg-active: var(--color-brand-200);
+
+  --istok-icon-button-fg: var(--color-brand-50);
+  --istok-icon-button-fg-hover: var(--color-brand-700);
+  --istok-icon-button-fg-active: var(--color-brand-700);
+}
+
+@utility istok-icon-button--opacity {
+  --istok-icon-button-bg: color-mix(
+    in srgb,
+    var(--color-brand-100) 24%,
+    transparent
+  );
+  --istok-icon-button-bg-hover: var(--color-brand-50);
+  --istok-icon-button-bg-active: var(--color-brand-200);
+
+  --istok-icon-button-fg: var(--color-brand-50);
+  --istok-icon-button-fg-hover: var(--color-brand-700);
+  --istok-icon-button-fg-active: var(--color-brand-700);
+}

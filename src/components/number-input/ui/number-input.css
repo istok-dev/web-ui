@@ -1,0 +1,167 @@
+.istok-number-input {
+  @apply relative;
+
+  .istok-number-input__group {
+    &:has(.istok-number-input__input--neutral) {
+      @apply bg-neutral-100 border border-transparent;
+    }
+
+    &:has(.istok-number-input__input--solid) {
+      @apply bg-neutral-50 border border-transparent text-neutral-900;
+    }
+
+    &:has(.istok-number-input__input--outline) {
+      @apply border border-neutral-300 bg-white;
+    }
+  }
+
+  .istok-number-input__input-wrap {
+    @apply relative flex flex-1 min-w-0;
+  }
+
+  .istok-number-input__input {
+    @apply w-full outline-none border-none bg-transparent pr-4;
+  }
+
+  .istok-number-input__input--neutral {
+    @apply bg-neutral-100 placeholder-neutral-300 text-neutral-900;
+  }
+
+  .istok-number-input__input--solid {
+    @apply bg-neutral-50 text-neutral-900 placeholder-neutral-300;
+  }
+
+  .istok-number-input__input--outline {
+    @apply placeholder-neutral-300 text-neutral-900;
+  }
+
+  .istok-number-input__suffix {
+    @apply absolute right-0 top-1/2 -translate-y-1/2 z-10 text-neutral-300 pointer-events-none;
+  }
+
+  .istok-number-input__spinners {
+    @apply flex flex-col shrink-0;
+  }
+
+  .istok-number-input__increment,
+  .istok-number-input__decrement {
+    @apply flex items-center justify-center p-0 border-none bg-transparent text-neutral-900 cursor-pointer transition-colors hover:bg-neutral-200/50 hover:text-neutral-700 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .istok-number-input__spinner-icon {
+    @apply w-4 h-4;
+  }
+
+  /* States */
+  &:not(.istok-number-input--invalid) .istok-number-input__group:focus-within {
+    @apply border-brand-400;
+
+    .istok-number-input__spinners {
+      @apply border-l-brand-400;
+    }
+  }
+
+  &.istok-number-input--invalid {
+    .istok-number-input__group {
+      @apply border-red-500;
+    }
+
+    .istok-number-input__spinners {
+      @apply border-l-red-500;
+    }
+  }
+
+  &[data-disabled] .istok-number-input__group {
+    @apply opacity-60 pointer-events-none bg-neutral-100 border-neutral-200;
+  }
+
+  &.istok-number-input--has-suffix .istok-number-input__input {
+    @apply pr-8;
+  }
+
+  /* Sizes */
+  &.istok-number-input--s {
+    .istok-number-input__group {
+      @apply rounded-l-xl rounded-r-m;
+    }
+
+    .istok-number-input__input {
+      @apply h-8 pr-1 pl-2 text-control-s;
+    }
+
+    .istok-number-input__spinners {
+      @apply w-4;
+    }
+
+    .istok-number-input__increment,
+    .istok-number-input__decrement {
+      @apply h-4;
+    }
+
+    .istok-number-input__suffix {
+      @apply px-1;
+    }
+
+    &.istok-number-input--has-suffix .istok-number-input__input {
+      @apply pr-8;
+    }
+  }
+
+  &.istok-number-input--m {
+    .istok-number-input__group {
+      @apply rounded-l-xl rounded-r-l;
+    }
+
+    .istok-number-input__input {
+      @apply h-10 pr-2 pl-3 text-control-m;
+    }
+
+    .istok-number-input__spinners {
+      @apply w-5;
+    }
+
+    .istok-number-input__increment,
+    .istok-number-input__decrement {
+      @apply h-5;
+    }
+
+    .istok-number-input__suffix {
+      @apply px-2;
+    }
+
+    &.istok-number-input--has-suffix .istok-number-input__input {
+      @apply pr-10;
+    }
+  }
+
+  &.istok-number-input--l {
+    .istok-number-input__group {
+      @apply rounded-l-2xl rounded-r-l;
+    }
+
+    .istok-number-input__input {
+      @apply h-12 pr-2 pl-4 text-control-l;
+    }
+
+    .istok-number-input__spinners {
+      @apply w-6;
+    }
+
+    .istok-number-input__increment,
+    .istok-number-input__decrement {
+      @apply h-6;
+    }
+
+    .istok-number-input__suffix {
+      @apply px-2;
+    }
+
+    .istok-number-input__spinner-icon {
+      @apply w-5 h-5;
+    }
+
+    &.istok-number-input--has-suffix .istok-number-input__input {
+      @apply pr-12;
+    }
+  }
+}

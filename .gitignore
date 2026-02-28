@@ -1,0 +1,5 @@
+.env
+.pnpm-store
+
+lib
+node_modules

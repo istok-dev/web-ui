@@ -1,0 +1,62 @@
+@utility istok-tag--s {
+  --istok-tag-height: var(--spacing-6);
+  --istok-tag-gap: var(--spacing-1);
+  --istok-tag-padding-inline: calc(var(--spacing) * 1.5);
+  --istok-tag-padding-block: var(--spacing-1);
+  --istok-tag-radius: var(--radius-xl);
+  --istok-tag-font-size: var(--text-control-s);
+  --istok-tag-line-height: var(--text-control-s--line-height);
+  --istok-tag-icon-size: var(--spacing-4);
+}
+
+@utility istok-tag--m {
+  --istok-tag-height: var(--spacing-7);
+  --istok-tag-gap: var(--spacing-1);
+  --istok-tag-padding-inline: calc(var(--spacing) * 2.5);
+  --istok-tag-padding-block: calc(var(--spacing) * 1.5);
+  --istok-tag-radius: var(--radius-xl);
+  --istok-tag-font-size: var(--text-control-m);
+  --istok-tag-line-height: var(--text-control-m--line-height);
+  --istok-tag-icon-size: var(--spacing-4);
+}
+
+@utility istok-tag--l {
+  --istok-tag-height: var(--spacing-10);
+  --istok-tag-gap: calc(var(--spacing) * 2);
+  --istok-tag-padding-inline: var(--spacing-2);
+  --istok-tag-padding-block: var(--spacing-2);
+  --istok-tag-radius: var(--radius-xl);
+  --istok-tag-font-size: var(--text-control-l);
+  --istok-tag-line-height: var(--text-control-l--line-height);
+  --istok-tag-icon-size: var(--spacing-6);
+}
+
+@utility istok-tag--solid-brand {
+  --istok-tag-bg: var(--color-brand-600);
+  --istok-tag-fg: var(--color-brand-50);
+  --istok-tag-close-fg: var(--color-brand-50);
+}
+
+@utility istok-tag--solid-neutral {
+  --istok-tag-bg: var(--color-neutral-600);
+  --istok-tag-fg: var(--color-neutral-100);
+  --istok-tag-close-fg: var(--color-neutral-100);
+}
+
+@utility istok-tag--solid-black {
+  --istok-tag-bg: var(--color-black, #000);
+  --istok-tag-fg: var(--color-white, #fff);
+  --istok-tag-close-fg: var(--color-white, #fff);
+}
+
+@utility istok-tag--ghost-brand {
+  --istok-tag-bg: var(--color-brand-100);
+  --istok-tag-fg: var(--color-brand-700);
+  --istok-tag-close-fg: var(--color-brand-700);
+}
+
+@utility istok-tag--ghost-neutral {
+  --istok-tag-bg: var(--color-neutral-100);
+  --istok-tag-fg: var(--color-neutral-700);
+  --istok-tag-close-fg: var(--color-neutral-700);
+}

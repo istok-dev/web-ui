@@ -1,0 +1,88 @@
+@utility istok-select--s {
+  --istok-select-trigger-height: var(--spacing-8);
+  --istok-select-trigger-padding-x: var(--spacing-2);
+  --istok-select-trigger-padding-y: var(--spacing-2);
+  --istok-select-trigger-radius: var(--radius-xl);
+  --istok-select-label-font: var(--text-control-xs);
+  --istok-select-value-font: var(--text-control-s);
+  --istok-select-placeholder-font: var(--text-control-s);
+  --istok-select-start-icon-size: var(--spacing-4);
+  --istok-select-chevron-size: var(--spacing-4);
+}
+
+@utility istok-select--m {
+  --istok-select-trigger-height: var(--spacing-10);
+  --istok-select-trigger-padding-x: calc(var(--spacing) * 2.5);
+  --istok-select-trigger-padding-y: calc(var(--spacing) * 2.5);
+  --istok-select-trigger-radius: var(--radius-xl);
+  --istok-select-label-font: var(--text-control-s);
+  --istok-select-value-font: var(--text-control-m);
+  --istok-select-placeholder-font: var(--text-control-m);
+  --istok-select-start-icon-size: var(--spacing-4);
+  --istok-select-chevron-size: var(--spacing-5);
+}
+
+@utility istok-select--l {
+  --istok-select-trigger-height: var(--spacing-12);
+  --istok-select-trigger-padding-x: var(--spacing-3);
+  --istok-select-trigger-padding-y: var(--spacing-3);
+  --istok-select-trigger-radius: var(--radius-2xl);
+  --istok-select-label-font: var(--text-control-m);
+  --istok-select-value-font: var(--text-control-l);
+  --istok-select-placeholder-font: var(--text-control-l);
+  --istok-select-start-icon-size: var(--spacing-5);
+  --istok-select-chevron-size: var(--spacing-6);
+}
+
+@utility istok-select--solid {
+  --istok-select-trigger-bg: var(--color-neutral-100);
+  --istok-select-trigger-bg-hover: var(--color-neutral-100);
+  --istok-select-trigger-border: transparent;
+  --istok-select-trigger-border-focus: var(--color-brand-400);
+  --istok-select-trigger-fg: var(--color-neutral-900);
+  --istok-select-trigger-placeholder: var(--color-neutral-300);
+  --istok-select-trigger-start-icon: var(--color-neutral-300);
+  --istok-select-value-fade-bg: var(--color-neutral-100);
+}
+
+@utility istok-select--outline {
+  --istok-select-trigger-bg: transparent;
+  --istok-select-trigger-bg-hover: var(--color-neutral-50);
+  --istok-select-trigger-border: var(--color-neutral-300);
+  --istok-select-trigger-border-focus: var(--color-brand-400);
+  --istok-select-trigger-fg: var(--color-neutral-900);
+  --istok-select-trigger-placeholder: var(--color-neutral-300);
+  --istok-select-trigger-start-icon: var(--color-neutral-300);
+  --istok-select-value-fade-bg: var(--color-neutral-50);
+}
+
+.istok-select__value::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 48px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--istok-select-value-fade-bg) 50%,
+    var(--istok-select-value-fade-bg) 100%
+  );
+  pointer-events: none;
+}
+
+.istok-select-group-options {
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+  }
+}

@@ -1,0 +1,15 @@
+@import "./button/ui/button.css";
+@import "./avatar/ui/avatar.css";
+@import "./icon-button/ui/icon-button.css";
+@import "./input/ui/input.css";
+@import "./number-input/ui/number-input.css";
+@import "./dropdown/ui/dropdown-item.css";
+@import "./badge/ui/badge.css";
+@import "./breadcrumbs/ui/breadcrumbs.css";
+@import "./radio/ui/radio.css";
+@import "./select/ui/select.css";
+@import "./tabs/ui/tabs.css";
+@import "./tag/ui/tag.css";
+@import "./checkbox/ui/checkbox.css";
+@import "./switch/ui/switch.css";
+@import "./tooltip/ui/tooltip.css";

@@ -1,0 +1,56 @@
+@utility istok-radio--s {
+  --istok-radio-gap: calc(var(--spacing) * 1.5);
+
+  --istok-radio-label-font-size: var(--text-control-s);
+  --istok-radio-label-line-height: var(--text-control-s--line-height);
+
+  --istok-radio-description-font-size: var(--text-body-xs);
+  --istok-radio-description-line-height: var(--text-body-xs--line-height);
+
+  --istok-radio-input-size: var(--spacing-4);
+
+  --istok-radio-input-border: var(--color-neutral-300);
+  --istok-radio-input-border-hover: var(--color-brand-400);
+  --istok-radio-input-bg: var(--color-brand-600);
+  --istok-radio-input-dot: var(--color-neutral-50);
+  --istok-radio-input-border-disabled: var(--color-neutral-400);
+  --istok-radio-input-bg-disabled: var(--color-neutral-400);
+}
+
+@utility istok-radio--m {
+  --istok-radio-gap: calc(var(--spacing) * 1.5);
+
+  --istok-radio-label-font-size: var(--text-control-m);
+  --istok-radio-label-line-height: var(--text-control-m--line-height);
+
+  --istok-radio-description-font-size: var(--text-body-xs);
+  --istok-radio-description-line-height: var(--text-body-xs--line-height);
+
+  --istok-radio-input-size: var(--spacing-5);
+
+  --istok-radio-input-border: var(--color-neutral-300);
+  --istok-radio-input-border-hover: var(--color-brand-400);
+  --istok-radio-input-bg: var(--color-brand-600);
+  --istok-radio-input-dot: var(--color-neutral-50);
+  --istok-radio-input-border-disabled: var(--color-neutral-400);
+  --istok-radio-input-bg-disabled: var(--color-neutral-400);
+}
+
+@utility istok-radio--l {
+  --istok-radio-gap: calc(var(--spacing) * 2);
+
+  --istok-radio-label-font-size: var(--text-control-l);
+  --istok-radio-label-line-height: var(--text-control-l--line-height);
+
+  --istok-radio-description-font-size: var(--text-body-s);
+  --istok-radio-description-line-height: var(--text-body-s--line-height);
+
+  --istok-radio-input-size: var(--spacing-6);
+
+  --istok-radio-input-border: var(--color-neutral-300);
+  --istok-radio-input-border-hover: var(--color-brand-400);
+  --istok-radio-input-bg: var(--color-brand-600);
+  --istok-radio-input-dot: var(--color-neutral-50);
+  --istok-radio-input-border-disabled: var(--color-neutral-400);
+  --istok-radio-input-bg-disabled: var(--color-neutral-400);
+}

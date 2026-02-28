@@ -1,0 +1,19 @@
+@utility istok-breadcrumbs--m {
+  --istok-breadcrumbs-item-padding-y: 6px;
+  --istok-breadcrumbs-item-padding-x: var(--spacing-3);
+  --istok-breadcrumbs-item-font-size: var(--text-control-m);
+  --istok-breadcrumbs-item-line-height: var(--text-control-m--line-height);
+  --istok-breadcrumbs-icon-size: var(--spacing-4);
+  --istok-breadcrumbs-separator-size: var(--spacing-5);
+  --istok-breadcrumbs-separator-font-size: var(--text-control-m);
+}
+
+@utility istok-breadcrumbs--l {
+  --istok-breadcrumbs-item-padding-y: var(--spacing-2);
+  --istok-breadcrumbs-item-padding-x: var(--spacing-4);
+  --istok-breadcrumbs-item-font-size: var(--text-control-l);
+  --istok-breadcrumbs-item-line-height: var(--text-control-l--line-height);
+  --istok-breadcrumbs-icon-size: var(--spacing-5);
+  --istok-breadcrumbs-separator-size: var(--spacing-6);
+  --istok-breadcrumbs-separator-font-size: var(--text-control-l);
+}

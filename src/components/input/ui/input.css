@@ -1,0 +1,91 @@
+@utility istok-input--s {
+  --istok-input-height: var(--spacing-8);
+  --istok-input-radius: var(--radius-xl);
+  --istok-input-font-size: var(--text-control-s);
+  --istok-input-line-height: var(--text-control-s--line-height);
+  --istok-input-padding-y: var(--spacing-2);
+  --istok-input-pl-default: var(--spacing-4);
+  --istok-input-pr-default: var(--spacing-4);
+  --istok-input-pl-with-icon: var(--spacing-8);
+  --istok-input-pr-with-icon: var(--spacing-2);
+  --istok-input-pl-with-adornment: calc(var(--spacing) * 11);
+  --istok-input-pr-with-adornment: calc(var(--spacing) * 11);
+  --istok-input-start-icon-size: var(--spacing-4);
+  --istok-input-start-icon-left: var(--spacing-2);
+}
+
+@utility istok-input--m {
+  --istok-input-height: var(--spacing-10);
+  --istok-input-radius: var(--radius-xl);
+  --istok-input-font-size: var(--text-control-m);
+  --istok-input-line-height: var(--text-control-m--line-height);
+  --istok-input-padding-y: calc(var(--spacing) * 2.5);
+  --istok-input-pl-default: var(--spacing-4);
+  --istok-input-pr-default: var(--spacing-4);
+  --istok-input-pl-with-icon: calc(var(--spacing) * 8.5);
+  --istok-input-pr-with-icon: calc(var(--spacing) * 2.5);
+  --istok-input-pl-with-adornment: calc(var(--spacing) * 11);
+  --istok-input-pr-with-adornment: calc(var(--spacing) * 11);
+  --istok-input-start-icon-size: var(--spacing-4);
+  --istok-input-start-icon-left: calc(var(--spacing) * 2.5);
+}
+
+@utility istok-input--l {
+  --istok-input-height: var(--spacing-12);
+  --istok-input-radius: var(--radius-2xl);
+  --istok-input-font-size: var(--text-control-l);
+  --istok-input-line-height: var(--text-control-l--line-height);
+  --istok-input-padding-y: var(--spacing-3);
+  --istok-input-pl-default: var(--spacing-4);
+  --istok-input-pr-default: var(--spacing-4);
+  --istok-input-pl-with-icon: calc(var(--spacing) * 11);
+  --istok-input-pr-with-icon: var(--spacing-3);
+  --istok-input-pl-with-adornment: calc(var(--spacing) * 11);
+  --istok-input-pr-with-adornment: calc(var(--spacing) * 11);
+  --istok-input-start-icon-size: var(--spacing-5);
+  --istok-input-start-icon-left: var(--spacing-3);
+}
+
+@utility istok-input__input--neutral {
+  --istok-input-bg: var(--color-neutral-100);
+  --istok-input-border-color: transparent;
+  --istok-input-border-width: 0px;
+  --istok-input-border-focus: var(--color-brand-400);
+  --istok-input-fg: var(--color-neutral-900);
+  --istok-input-placeholder: var(--color-neutral-300);
+}
+
+@utility istok-input__input--solid {
+  --istok-input-bg: var(--color-neutral-50);
+  --istok-input-border-color: transparent;
+  --istok-input-border-width: 1px;
+  --istok-input-border-focus: var(--color-brand-400);
+  --istok-input-fg: var(--color-neutral-900);
+  --istok-input-placeholder: var(--color-neutral-300);
+}
+
+@utility istok-input__input--outline {
+  --istok-input-bg: transparent;
+  --istok-input-border-color: var(--color-neutral-300);
+  --istok-input-border-width: 1px;
+  --istok-input-border-focus: var(--color-brand-400);
+  --istok-input-fg: var(--color-neutral-900);
+  --istok-input-placeholder: var(--color-neutral-300);
+}
+
+@utility istok-input__input--opacity {
+  --istok-input-bg: color-mix(
+    in srgb,
+    var(--color-neutral-100) 24%,
+    transparent
+  );
+  --istok-input-border-color: transparent;
+  --istok-input-border-width: 1px;
+  --istok-input-border-focus: var(--color-brand-400);
+  --istok-input-fg: var(--color-neutral-50);
+  --istok-input-placeholder: color-mix(
+    in srgb,
+    var(--color-neutral-100) 24%,
+    transparent
+  );
+}

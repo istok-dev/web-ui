@@ -1,0 +1,82 @@
+@utility istok-badge--s {
+  --istok-badge-height: var(--spacing-6);
+  --istok-badge-gap: var(--spacing-1);
+  --istok-badge-padding-inline: calc(var(--spacing) * 1.5);
+  --istok-badge-padding-block: var(--spacing-1);
+  --istok-badge-font-size: var(--text-control-xs);
+  --istok-badge-line-height: var(--text-control-xs--line-height);
+  --istok-badge-icon-size: var(--spacing-4);
+  --istok-badge-square-radius: var(--radius-l);
+}
+
+@utility istok-badge--m {
+  --istok-badge-height: var(--spacing-7);
+  --istok-badge-gap: var(--spacing-1);
+  --istok-badge-padding-inline: calc(var(--spacing) * 2.5);
+  --istok-badge-padding-block: calc(var(--spacing) * 1.5);
+  --istok-badge-font-size: var(--text-control-s);
+  --istok-badge-line-height: var(--text-control-s--line-height);
+  --istok-badge-icon-size: var(--spacing-4);
+  --istok-badge-square-radius: var(--radius-l);
+}
+
+@utility istok-badge--l {
+  --istok-badge-height: var(--spacing-8);
+  --istok-badge-gap: calc(var(--spacing) * 1.5);
+  --istok-badge-padding-inline: calc(var(--spacing) * 2.5);
+  --istok-badge-padding-block: calc(var(--spacing) * 1.5);
+  --istok-badge-font-size: var(--text-control-m);
+  --istok-badge-line-height: var(--text-control-m--line-height);
+  --istok-badge-icon-size: var(--spacing-5);
+  --istok-badge-square-radius: var(--radius-xl);
+}
+
+@utility istok-badge--rounded {
+  --istok-badge-radius: 9999px;
+}
+
+@utility istok-badge--square {
+  --istok-badge-radius: var(--istok-badge-square-radius);
+}
+
+@utility istok-badge--solid-brand {
+  --istok-badge-bg: var(--color-brand-600);
+  --istok-badge-fg: var(--color-brand-50);
+  --istok-badge-border-width: 0px;
+  --istok-badge-border-color: transparent;
+}
+
+@utility istok-badge--solid-neutral {
+  --istok-badge-bg: var(--color-neutral-600);
+  --istok-badge-fg: var(--color-neutral-100);
+  --istok-badge-border-width: 0px;
+  --istok-badge-border-color: transparent;
+}
+
+@utility istok-badge--ghost-brand {
+  --istok-badge-bg: var(--color-brand-100);
+  --istok-badge-fg: var(--color-brand-700);
+  --istok-badge-border-width: 0px;
+  --istok-badge-border-color: transparent;
+}
+
+@utility istok-badge--ghost-neutral {
+  --istok-badge-bg: var(--color-neutral-100);
+  --istok-badge-fg: var(--color-neutral-700);
+  --istok-badge-border-width: 0px;
+  --istok-badge-border-color: transparent;
+}
+
+@utility istok-badge--opacity-brand {
+  --istok-badge-bg: color-mix(in srgb, var(--color-brand-100) 24%, transparent);
+  --istok-badge-fg: var(--color-brand-50);
+  --istok-badge-border-width: 0px;
+  --istok-badge-border-color: transparent;
+}
+
+@utility istok-badge--outline-brand {
+  --istok-badge-bg: transparent;
+  --istok-badge-fg: var(--color-brand-600);
+  --istok-badge-border-width: 1px;
+  --istok-badge-border-color: var(--color-brand-600);
+}

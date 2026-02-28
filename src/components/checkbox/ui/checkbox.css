@@ -1,0 +1,44 @@
+@utility istok-checkbox--s {
+  --istok-checkbox-gap: calc(var(--spacing) * 1.5);
+
+  --istok-checkbox-label-font-size: var(--text-control-s);
+  --istok-checkbox-label-line-height: var(--text-control-s--line-height);
+
+  --istok-checkbox-description-font-size: var(--text-body-xs);
+  --istok-checkbox-description-line-height: var(--text-body-xs--line-height);
+
+  --istok-checkbox-input-size: var(--spacing-4);
+  --istok-checkbox-input-radius: var(--radius-s);
+
+  --istok-checkbox-icon-size: var(--spacing-4);
+}
+
+@utility istok-checkbox--m {
+  --istok-checkbox-gap: calc(var(--spacing) * 1.5);
+
+  --istok-checkbox-label-font-size: var(--text-control-m);
+  --istok-checkbox-label-line-height: var(--text-control-m--line-height);
+
+  --istok-checkbox-description-font-size: var(--text-body-xs);
+  --istok-checkbox-description-line-height: var(--text-body-xs--line-height);
+
+  --istok-checkbox-input-size: var(--spacing-5);
+  --istok-checkbox-input-radius: var(--radius-m);
+
+  --istok-checkbox-icon-size: var(--spacing-5);
+}
+
+@utility istok-checkbox--l {
+  --istok-checkbox-gap: calc(var(--spacing) * 2);
+
+  --istok-checkbox-label-font-size: var(--text-control-l);
+  --istok-checkbox-label-line-height: var(--text-control-l--line-height);
+
+  --istok-checkbox-description-font-size: var(--text-body-s);
+  --istok-checkbox-description-line-height: var(--text-body-s--line-height);
+
+  --istok-checkbox-input-size: var(--spacing-6);
+  --istok-checkbox-input-radius: var(--radius-l);
+
+  --istok-checkbox-icon-size: var(--spacing-6);
+}
