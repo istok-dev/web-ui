@@ -27,8 +27,18 @@ type Story = StoryObj<typeof Dropdown>;
 export const Default: Story = {
   render: () => (
     <Dropdown className="min-w-[200px] py-2 bg-white rounded-2xl overflow-hidden shadow-lg border border-neutral-200">
-      <Dropdown.Item label="Профиль" startIcon={User} defaultSize="m" onClick={() => {}} />
-      <Dropdown.Item label="Настройки" startIcon={Settings} defaultSize="m" onClick={() => {}} />
+      <Dropdown.Item
+        label="Профиль"
+        startIcon={User}
+        defaultSize="m"
+        onClick={() => {}}
+      />
+      <Dropdown.Item
+        label="Настройки"
+        startIcon={Settings}
+        defaultSize="m"
+        onClick={() => {}}
+      />
       <Dropdown.Item
         label="Выйти"
         startIcon={LogOut}
@@ -57,9 +67,24 @@ export const WithTrigger: Story = {
             onBlur={() => setOpen(false)}
           >
             <Dropdown className="min-w-[200px] py-2 bg-white rounded-2xl overflow-hidden shadow-lg border border-neutral-200">
-              <Dropdown.Item label="Профиль" startIcon={User} defaultSize="m" onClick={() => setOpen(false)} />
-              <Dropdown.Item label="Настройки" startIcon={Settings} defaultSize="m" onClick={() => setOpen(false)} />
-              <Dropdown.Item label="Выйти" startIcon={LogOut} defaultSize="m" onClick={() => setOpen(false)} />
+              <Dropdown.Item
+                label="Профиль"
+                startIcon={User}
+                defaultSize="m"
+                onClick={() => setOpen(false)}
+              />
+              <Dropdown.Item
+                label="Настройки"
+                startIcon={Settings}
+                defaultSize="m"
+                onClick={() => setOpen(false)}
+              />
+              <Dropdown.Item
+                label="Выйти"
+                startIcon={LogOut}
+                defaultSize="m"
+                onClick={() => setOpen(false)}
+              />
             </Dropdown>
           </div>
         )}
@@ -89,9 +114,19 @@ export const ItemSizes: Story = {
 
 export const BrandVariant: Story = {
   render: () => (
-    <Dropdown className="min-w-[200px] py-2 bg-brand-600 rounded-2xl overflow-hidden">
-      <Dropdown.Item label="Пункт меню" variant="brand" defaultSize="m" onClick={() => {}} />
-      <Dropdown.Item label="Ещё пункт" variant="brand" defaultSize="m" onClick={() => {}} />
+    <Dropdown className="min-w-[200px] py-2 bg-primary-600 rounded-2xl overflow-hidden">
+      <Dropdown.Item
+        label="Пункт меню"
+        variant="brand"
+        defaultSize="m"
+        onClick={() => {}}
+      />
+      <Dropdown.Item
+        label="Ещё пункт"
+        variant="brand"
+        defaultSize="m"
+        onClick={() => {}}
+      />
     </Dropdown>
   ),
 };
@@ -99,8 +134,17 @@ export const BrandVariant: Story = {
 export const WithDisabledItem: Story = {
   render: () => (
     <Dropdown className="min-w-[200px] py-2 bg-white rounded-2xl overflow-hidden shadow-lg border border-neutral-200">
-      <Dropdown.Item label="Активный пункт" defaultSize="m" onClick={() => {}} />
-      <Dropdown.Item label="Неактивный пункт" defaultSize="m" disabled onClick={() => {}} />
+      <Dropdown.Item
+        label="Активный пункт"
+        defaultSize="m"
+        onClick={() => {}}
+      />
+      <Dropdown.Item
+        label="Неактивный пункт"
+        defaultSize="m"
+        disabled
+        onClick={() => {}}
+      />
       <Dropdown.Item label="Ещё активный" defaultSize="m" onClick={() => {}} />
     </Dropdown>
   ),

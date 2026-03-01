@@ -1,8 +1,8 @@
 "use client";
 
-import { twMerge } from "tailwind-merge";
 import { DayPicker, DayPickerProps } from "react-day-picker";
-import clsx from "clsx";
+
+import { cn } from "@/utils/cn";
 
 function Calendar({
   className,
@@ -13,7 +13,7 @@ function Calendar({
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
-      className={twMerge(clsx("p-3", className))}
+      className={cn("p-3", className)}
       classNames={{
         months: "flex flex-col gap-2",
         month: "flex flex-col gap-4",
@@ -29,7 +29,7 @@ function Calendar({
         weekday: "text-[#5D5D5D] rounded-md w-9 font-normal text-[0.8rem]",
         week: "flex w-full mt-2",
         day: "relative p-0 text-center text-body-m focus-within:relative focus-within:z-20 [&:has([aria-selected])]:bg-[#F2F0EB] [&:has([aria-selected].day-outside)]:bg-transparent [&:has([aria-selected].day-range-end)]:rounded-r-md",
-        day_button: clsx(
+        day_button: cn(
           "h-9 w-9 p-0 font-normal aria-selected:opacity-100 rounded-md transition-colors",
           "hover:bg-[#F2F0EB] hover:text-[#2c2c2c]",
           "text-[#2c2c2c] cursor-pointer"

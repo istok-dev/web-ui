@@ -10,8 +10,8 @@
   --istok-radio-input-size: var(--spacing-4);
 
   --istok-radio-input-border: var(--color-neutral-300);
-  --istok-radio-input-border-hover: var(--color-brand-400);
-  --istok-radio-input-bg: var(--color-brand-600);
+  --istok-radio-input-border-hover: var(--color-primary-400);
+  --istok-radio-input-bg: var(--color-primary-600);
   --istok-radio-input-dot: var(--color-neutral-50);
   --istok-radio-input-border-disabled: var(--color-neutral-400);
   --istok-radio-input-bg-disabled: var(--color-neutral-400);
@@ -29,8 +29,8 @@
   --istok-radio-input-size: var(--spacing-5);
 
   --istok-radio-input-border: var(--color-neutral-300);
-  --istok-radio-input-border-hover: var(--color-brand-400);
-  --istok-radio-input-bg: var(--color-brand-600);
+  --istok-radio-input-border-hover: var(--color-primary-400);
+  --istok-radio-input-bg: var(--color-primary-600);
   --istok-radio-input-dot: var(--color-neutral-50);
   --istok-radio-input-border-disabled: var(--color-neutral-400);
   --istok-radio-input-bg-disabled: var(--color-neutral-400);
@@ -48,8 +48,8 @@
   --istok-radio-input-size: var(--spacing-6);
 
   --istok-radio-input-border: var(--color-neutral-300);
-  --istok-radio-input-border-hover: var(--color-brand-400);
-  --istok-radio-input-bg: var(--color-brand-600);
+  --istok-radio-input-border-hover: var(--color-primary-400);
+  --istok-radio-input-bg: var(--color-primary-600);
   --istok-radio-input-dot: var(--color-neutral-50);
   --istok-radio-input-border-disabled: var(--color-neutral-400);
   --istok-radio-input-bg-disabled: var(--color-neutral-400);

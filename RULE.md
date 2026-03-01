@@ -86,13 +86,13 @@ className={cn(
 
 ```css
 @utility istok-icon-button--primary {
-  --istok-icon-button-bg: var(--color-brand-500);
-  --istok-icon-button-bg-hover: var(--color-brand-700);
-  --istok-icon-button-bg-active: var(--color-brand-700);
+  --istok-icon-button-bg: var(--color-primary-500);
+  --istok-icon-button-bg-hover: var(--color-primary-700);
+  --istok-icon-button-bg-active: var(--color-primary-700);
 
-  --istok-icon-button-fg: var(--color-brand-50);
-  --istok-icon-button-fg-hover: var(--color-brand-50);
-  --istok-icon-button-fg-active: var(--color-brand-50);
+  --istok-icon-button-fg: var(--color-primary-50);
+  --istok-icon-button-fg-hover: var(--color-primary-50);
+  --istok-icon-button-fg-active: var(--color-primary-50);
 }
 ```
 

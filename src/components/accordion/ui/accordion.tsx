@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Accordion as BaseAccordion } from "@base-ui/react/accordion";
 import { ChevronUp, ChevronDown } from "lucide-react";
 
 import { cn } from "@/utils/cn";
 
-import type { AccordionRootProps, AccordionItemProps, AccordionValue } from "../accordion.types";
+import type {
+  AccordionRootProps,
+  AccordionItemProps,
+  AccordionValue,
+} from "../accordion.types";
 
 function AccordionRoot({
   children,
@@ -14,7 +18,8 @@ function AccordionRoot({
   onValueChange,
   multiple = false,
 }: AccordionRootProps) {
-  const [internalValue, setInternalValue] = useState<AccordionValue>(defaultValue);
+  const [internalValue, setInternalValue] =
+    useState<AccordionValue>(defaultValue);
   const isControlled = controlledValue !== undefined;
   const value = isControlled ? controlledValue : internalValue;
 
@@ -29,7 +34,10 @@ function AccordionRoot({
         className="flex flex-col gap-2"
         {...(isControlled
           ? { value: value as any, onValueChange: handleValueChange as any }
-          : { defaultValue: defaultValue as any, onValueChange: handleValueChange as any })}
+          : {
+              defaultValue: defaultValue as any,
+              onValueChange: handleValueChange as any,
+            })}
         multiple={multiple}
       >
         {children}
@@ -49,10 +57,7 @@ function AccordionItemComponent({
   return (
     <BaseAccordion.Item
       value={itemValue}
-      className={cn(
-        "border border-neutral-200 rounded-2xl p-6",
-        className
-      )}
+      className={cn("border border-neutral-200 rounded-2xl p-6", className)}
     >
       <BaseAccordion.Header>
         <BaseAccordion.Trigger className="group flex items-center justify-between w-full cursor-pointer">
@@ -64,7 +69,7 @@ function AccordionItemComponent({
                 className={cn("text-neutral-950", iconProps?.className)}
               />
             )}
-            <h4 className="text-title-l font-medium text-brand-800">
+            <h4 className="text-title-l font-medium text-primary-800">
               {title}
             </h4>
           </div>

@@ -38,7 +38,7 @@
   --istok-select-trigger-bg: var(--color-neutral-100);
   --istok-select-trigger-bg-hover: var(--color-neutral-100);
   --istok-select-trigger-border: transparent;
-  --istok-select-trigger-border-focus: var(--color-brand-400);
+  --istok-select-trigger-border-focus: var(--color-primary-400);
   --istok-select-trigger-fg: var(--color-neutral-900);
   --istok-select-trigger-placeholder: var(--color-neutral-300);
   --istok-select-trigger-start-icon: var(--color-neutral-300);
@@ -49,7 +49,7 @@
   --istok-select-trigger-bg: transparent;
   --istok-select-trigger-bg-hover: var(--color-neutral-50);
   --istok-select-trigger-border: var(--color-neutral-300);
-  --istok-select-trigger-border-focus: var(--color-brand-400);
+  --istok-select-trigger-border-focus: var(--color-primary-400);
   --istok-select-trigger-fg: var(--color-neutral-900);
   --istok-select-trigger-placeholder: var(--color-neutral-300);
   --istok-select-trigger-start-icon: var(--color-neutral-300);

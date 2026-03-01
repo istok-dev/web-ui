@@ -1,8 +1,15 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { X, CheckCircle2, AlertCircle, Info, AlertTriangle } from "lucide-react";
-import { twMerge } from "tailwind-merge";
+import {
+  X,
+  CheckCircle2,
+  AlertCircle,
+  Info,
+  AlertTriangle,
+} from "lucide-react";
+
+import { cn } from "@/utils/cn";
 
 import { Toast as ToastType } from "../toast.types";
 
@@ -40,7 +47,7 @@ export const Toast: React.FC<ToastProps> = ({ toast, onRemove }) => {
 
   return (
     <div
-      className={twMerge(
+      className={cn(
         "flex items-center gap-3 px-4 py-3 rounded-xl shadow-lg border min-w-[300px] max-w-[500px]",
         variantStyles[toast.variant || "info"]
       )}
@@ -60,4 +67,3 @@ export const Toast: React.FC<ToastProps> = ({ toast, onRemove }) => {
     </div>
   );
 };
-

@@ -8,8 +8,8 @@ import type {
 } from "react-day-picker";
 import { ru } from "react-day-picker/locale";
 import { Popover } from "@base-ui/react/popover";
-import { twMerge } from "tailwind-merge";
-import { clsx } from "clsx";
+
+import { cn } from "@/utils/cn";
 
 import { Calendar } from "../../calendar";
 
@@ -112,17 +112,15 @@ export function DatePicker({
       <Popover.Portal>
         <Popover.Positioner align="start" sideOffset={4}>
           <Popover.Popup
-            className={twMerge(
-              clsx(
-                "z-50 w-auto rounded-xl border border-[#E5E0D8] bg-white p-0 text-[#2c2c2c] shadow-md outline-none",
-                "data-[open]:animate-in data-[closed]:animate-out",
-                "data-[closed]:fade-out-0 data-[open]:fade-in-0",
-                "data-[closed]:zoom-out-95 data-[open]:zoom-in-95",
-                "data-[side=bottom]:slide-in-from-top-2",
-                "data-[side=left]:slide-in-from-right-2",
-                "data-[side=right]:slide-in-from-left-2",
-                "data-[side=top]:slide-in-from-bottom-2"
-              )
+            className={cn(
+              "z-50 w-auto rounded-xl border border-[#E5E0D8] bg-white p-0 text-[#2c2c2c] shadow-md outline-none",
+              "data-[open]:animate-in data-[closed]:animate-out",
+              "data-[closed]:fade-out-0 data-[open]:fade-in-0",
+              "data-[closed]:zoom-out-95 data-[open]:zoom-in-95",
+              "data-[side=bottom]:slide-in-from-top-2",
+              "data-[side=left]:slide-in-from-right-2",
+              "data-[side=right]:slide-in-from-left-2",
+              "data-[side=top]:slide-in-from-bottom-2"
             )}
           >
             {renderCalendar()}

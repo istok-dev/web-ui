@@ -10,6 +10,7 @@ const twMerge = extendTailwindMerge<
   | "input-size"
   | "button-size"
   | "button-variant"
+  | "button-color"
   | "checkbox-size"
   | "badge-size"
   | "badge-variant"
@@ -74,16 +75,29 @@ const twMerge = extendTailwindMerge<
         "istok-input__input--opacity",
       ],
       "input-size": ["istok-input--s", "istok-input--m", "istok-input--l"],
-      "button-size": ["istok-button--s", "istok-button--m", "istok-button--l"],
+      "button-size": [
+        "istok-button--sm",
+        "istok-button--md",
+        "istok-button--lg",
+        "istok-button--xl",
+      ],
+      "button-color": [
+        "istok-button--color-primary",
+        "istok-button--color-neutral",
+        "istok-button--color-negative",
+        "istok-button--color-warning",
+        "istok-button--color-info",
+        "istok-button--color-success",
+        "istok-button--color-accent",
+      ],
       "button-variant": [
         "istok-button--primary",
         "istok-button--secondary",
-        "istok-button--neutral",
         "istok-button--clear",
         "istok-button--clear-inverse",
         "istok-button--opacity",
         "istok-button--outline",
-        "istok-button--negative",
+        "istok-button--text",
       ],
       "checkbox-size": [
         "istok-checkbox--s",

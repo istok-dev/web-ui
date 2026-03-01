@@ -39,7 +39,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
     itemClassName,
     "istok-breadcrumbs__item--active",
     "cursor-pointer",
-    "hover:bg-brand-200 hover:text-brand-700"
+    "hover:bg-primary-200 hover:text-primary-700"
   );
 
   const separatorClassName = cn(

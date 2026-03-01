@@ -71,11 +71,13 @@ export const CheckboxItem: CheckboxItemFC = ({
             "border border-neutral-300 bg-transparent",
             "size-[var(--istok-checkbox-input-size)] rounded-[var(--istok-checkbox-input-radius)]",
             !disabled && [
-              checkboxChecked && !isIndeterminate && "border-none bg-brand-600",
+              checkboxChecked &&
+                !isIndeterminate &&
+                "border-none bg-primary-600",
               !checkboxChecked &&
                 !isIndeterminate &&
-                "border-neutral-300 group-hover:border-brand-600",
-              isIndeterminate && "border-brand-600 bg-brand-600",
+                "border-neutral-300 group-hover:border-primary-600",
+              isIndeterminate && "border-primary-600 bg-primary-600",
               "cursor-pointer",
             ],
             disabled && [

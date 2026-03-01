@@ -77,13 +77,13 @@ export const Variants: Story = {
       <IconButton
         icon={Plus}
         variant="clear-inverse"
-        className="bg-brand-600"
+        className="bg-primary-600"
         aria-label="Clear inverse"
       />
       <IconButton
         icon={Plus}
         variant="opacity"
-        className="bg-brand-600"
+        className="bg-primary-600"
         aria-label="Opacity"
       />
     </div>

@@ -25,55 +25,55 @@
 }
 
 @utility istok-icon-button--primary {
-  --istok-icon-button-bg: var(--color-brand-500);
-  --istok-icon-button-bg-hover: var(--color-brand-700);
-  --istok-icon-button-bg-active: var(--color-brand-700);
+  --istok-icon-button-bg: var(--color-primary-500);
+  --istok-icon-button-bg-hover: var(--color-primary-700);
+  --istok-icon-button-bg-active: var(--color-primary-700);
 
-  --istok-icon-button-fg: var(--color-brand-50);
-  --istok-icon-button-fg-hover: var(--color-brand-50);
-  --istok-icon-button-fg-active: var(--color-brand-50);
+  --istok-icon-button-fg: var(--color-primary-50);
+  --istok-icon-button-fg-hover: var(--color-primary-50);
+  --istok-icon-button-fg-active: var(--color-primary-50);
 }
 
 @utility istok-icon-button--secondary {
-  --istok-icon-button-bg: var(--color-brand-100);
-  --istok-icon-button-bg-hover: var(--color-brand-200);
-  --istok-icon-button-bg-active: var(--color-brand-300);
+  --istok-icon-button-bg: var(--color-primary-100);
+  --istok-icon-button-bg-hover: var(--color-primary-200);
+  --istok-icon-button-bg-active: var(--color-primary-300);
 
-  --istok-icon-button-fg: var(--color-brand-700);
-  --istok-icon-button-fg-hover: var(--color-brand-700);
-  --istok-icon-button-fg-active: var(--color-brand-700);
+  --istok-icon-button-fg: var(--color-primary-700);
+  --istok-icon-button-fg-hover: var(--color-primary-700);
+  --istok-icon-button-fg-active: var(--color-primary-700);
 }
 
 @utility istok-icon-button--clear {
   --istok-icon-button-bg: transparent;
-  --istok-icon-button-bg-hover: var(--color-brand-700);
-  --istok-icon-button-bg-active: var(--color-brand-800);
+  --istok-icon-button-bg-hover: var(--color-primary-700);
+  --istok-icon-button-bg-active: var(--color-primary-800);
 
-  --istok-icon-button-fg: var(--color-brand-600);
-  --istok-icon-button-fg-hover: var(--color-brand-50);
-  --istok-icon-button-fg-active: var(--color-brand-50);
+  --istok-icon-button-fg: var(--color-primary-600);
+  --istok-icon-button-fg-hover: var(--color-primary-50);
+  --istok-icon-button-fg-active: var(--color-primary-50);
 }
 
 @utility istok-icon-button--clear-inverse {
   --istok-icon-button-bg: transparent;
-  --istok-icon-button-bg-hover: var(--color-brand-50);
-  --istok-icon-button-bg-active: var(--color-brand-200);
+  --istok-icon-button-bg-hover: var(--color-primary-50);
+  --istok-icon-button-bg-active: var(--color-primary-200);
 
-  --istok-icon-button-fg: var(--color-brand-50);
-  --istok-icon-button-fg-hover: var(--color-brand-700);
-  --istok-icon-button-fg-active: var(--color-brand-700);
+  --istok-icon-button-fg: var(--color-primary-50);
+  --istok-icon-button-fg-hover: var(--color-primary-700);
+  --istok-icon-button-fg-active: var(--color-primary-700);
 }
 
 @utility istok-icon-button--opacity {
   --istok-icon-button-bg: color-mix(
     in srgb,
-    var(--color-brand-100) 24%,
+    var(--color-primary-100) 24%,
     transparent
   );
-  --istok-icon-button-bg-hover: var(--color-brand-50);
-  --istok-icon-button-bg-active: var(--color-brand-200);
+  --istok-icon-button-bg-hover: var(--color-primary-50);
+  --istok-icon-button-bg-active: var(--color-primary-200);
 
-  --istok-icon-button-fg: var(--color-brand-50);
-  --istok-icon-button-fg-hover: var(--color-brand-700);
-  --istok-icon-button-fg-active: var(--color-brand-700);
+  --istok-icon-button-fg: var(--color-primary-50);
+  --istok-icon-button-fg-hover: var(--color-primary-700);
+  --istok-icon-button-fg-active: var(--color-primary-700);
 }

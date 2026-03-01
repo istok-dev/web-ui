@@ -1,21 +1,35 @@
 import { LucideIcon } from "lucide-react";
+import { ButtonProps as BaseButtonProps } from "@base-ui/react/button";
 
 export type ButtonVariant =
   | "primary"
   | "secondary"
   | "clear"
+  | "text"
   | "opacity"
   | "clear-inverse"
-  | "neutral"
-  | "outline"
-  | "negative";
-export type ButtonSize = "s" | "m" | "l";
+  | "outline";
 
-export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
+export type ButtonColor =
+  | "primary"
+  | "neutral"
+  | "negative"
+  | "warning"
+  | "info"
+  | "success"
+  | "accent";
+
+export type ButtonSize = "sm" | "md" | "lg" | "xl";
+
+export interface ButtonProps
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
   children?: React.ReactNode;
   startIcon?: LucideIcon;
   iconSize?: number;
   variant?: ButtonVariant;
+  color?: ButtonColor;
   loading?: boolean;
-  defaultSize?: ButtonSize;
+  size?: ButtonSize;
+  rounded?: boolean;
+  render?: BaseButtonProps["render"];
 }

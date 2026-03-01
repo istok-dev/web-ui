@@ -2,7 +2,7 @@
   @apply relative inline-flex cursor-pointer items-center;
 
   .istok-switch__input:focus-visible + .istok-switch__track {
-    @apply outline outline-2 outline-offset-2 outline-brand-400;
+    @apply outline outline-2 outline-offset-2 outline-primary-400;
   }
 
   &.istok-switch--disabled {
@@ -19,12 +19,12 @@
 
   &:hover {
     .istok-switch__track {
-      @apply bg-brand-400;
+      @apply bg-primary-400;
     }
   }
 
   &.istok-switch--checked .istok-switch__track {
-    @apply bg-brand-600;
+    @apply bg-primary-600;
   }
 
   &.istok-switch--disabled {

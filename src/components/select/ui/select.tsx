@@ -483,7 +483,7 @@ export const Select: React.FC<SelectProps> = ({
                     <button
                       type="button"
                       onClick={handleClear}
-                      className="text-control-m text-brand-700 hover:text-neutral-900 transition-colors cursor-pointer"
+                      className="text-control-m text-primary-700 hover:text-neutral-900 transition-colors cursor-pointer"
                     >
                       {clearLabel}
                     </button>
@@ -504,7 +504,7 @@ export const Select: React.FC<SelectProps> = ({
                               onClick={() =>
                                 multiple && handleGroupToggle(group)
                               }
-                              className="flex-1 p-2.5 flex items-center gap-1.5 text-left hover:bg-brand-300 transition-colors cursor-pointer"
+                              className="flex-1 p-2.5 flex items-center gap-1.5 text-left hover:bg-primary-300 transition-colors cursor-pointer"
                             >
                               {multiple && (
                                 <Checkbox defaultSize="s">
@@ -545,7 +545,7 @@ export const Select: React.FC<SelectProps> = ({
                                     value={option.value}
                                     disabled={option.disabled}
                                     className={cn(
-                                      "istok-select-item p-1.5 flex items-center gap-2 cursor-pointer hover:bg-brand-300 transition-colors data-[highlighted]:bg-neutral-50",
+                                      "istok-select-item p-1.5 flex items-center gap-2 cursor-pointer hover:bg-primary-300 transition-colors data-[highlighted]:bg-neutral-50",
                                       option.disabled &&
                                         "opacity-50 cursor-not-allowed"
                                     )}
@@ -576,7 +576,7 @@ export const Select: React.FC<SelectProps> = ({
                           value={option.value}
                           disabled={option.disabled}
                           className={cn(
-                            "istok-select-item p-2.5 flex items-center gap-1.5 cursor-pointer hover:bg-brand-50 transition-colors data-[highlighted]:bg-neutral-50",
+                            "istok-select-item p-2.5 flex items-center gap-1.5 cursor-pointer hover:bg-primary-50 transition-colors data-[highlighted]:bg-neutral-50",
                             option.disabled && "opacity-50 cursor-not-allowed"
                           )}
                         >

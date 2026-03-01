@@ -28,7 +28,7 @@ const shapeClassesMap: Record<AvatarShape, string> = {
 const baseClasses =
   "istok-avatar object-cover flex items-center justify-center font-medium " +
   "size-[var(--istok-avatar-size)] rounded-[var(--istok-avatar-radius)] " +
-  "bg-brand-200 text-brand-800 " +
+  "bg-primary-200 text-primary-800 " +
   "text-(length:--istok-avatar-font-size) leading-[var(--istok-avatar-line-height)]";
 
 export const Avatar: React.FC<AvatarProps> = ({

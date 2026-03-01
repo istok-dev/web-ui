@@ -50,7 +50,7 @@
   --istok-input-bg: var(--color-neutral-100);
   --istok-input-border-color: transparent;
   --istok-input-border-width: 0px;
-  --istok-input-border-focus: var(--color-brand-400);
+  --istok-input-border-focus: var(--color-primary-400);
   --istok-input-fg: var(--color-neutral-900);
   --istok-input-placeholder: var(--color-neutral-300);
 }
@@ -59,7 +59,7 @@
   --istok-input-bg: var(--color-neutral-50);
   --istok-input-border-color: transparent;
   --istok-input-border-width: 1px;
-  --istok-input-border-focus: var(--color-brand-400);
+  --istok-input-border-focus: var(--color-primary-400);
   --istok-input-fg: var(--color-neutral-900);
   --istok-input-placeholder: var(--color-neutral-300);
 }
@@ -68,7 +68,7 @@
   --istok-input-bg: transparent;
   --istok-input-border-color: var(--color-neutral-300);
   --istok-input-border-width: 1px;
-  --istok-input-border-focus: var(--color-brand-400);
+  --istok-input-border-focus: var(--color-primary-400);
   --istok-input-fg: var(--color-neutral-900);
   --istok-input-placeholder: var(--color-neutral-300);
 }
@@ -81,7 +81,7 @@
   );
   --istok-input-border-color: transparent;
   --istok-input-border-width: 1px;
-  --istok-input-border-focus: var(--color-brand-400);
+  --istok-input-border-focus: var(--color-primary-400);
   --istok-input-fg: var(--color-neutral-50);
   --istok-input-placeholder: color-mix(
     in srgb,

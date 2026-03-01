@@ -54,10 +54,10 @@
 
   /* States */
   &:not(.istok-number-input--invalid) .istok-number-input__group:focus-within {
-    @apply border-brand-400;
+    @apply border-primary-400;
 
     .istok-number-input__spinners {
-      @apply border-l-brand-400;
+      @apply border-l-primary-400;
     }
   }
 
