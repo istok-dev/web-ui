@@ -1,14 +1,26 @@
 import React from "react";
 import { Loader2 } from "lucide-react";
+import { Button as BaseButton } from "@base-ui/react/button";
 
 import { cn } from "@/utils/cn";
 
 import {
+  IconButtonColor,
   IconButtonProps,
   IconButtonShape,
   IconButtonSize,
   IconButtonVariant,
 } from "../icon-button.types";
+
+const colorClassesMap: Record<IconButtonColor, string> = {
+  primary: "istok-icon-button--color-primary",
+  neutral: "istok-icon-button--color-neutral",
+  negative: "istok-icon-button--color-negative",
+  warning: "istok-icon-button--color-warning",
+  info: "istok-icon-button--color-info",
+  success: "istok-icon-button--color-success",
+  accent: "istok-icon-button--color-accent",
+};
 
 const variantClassesMap: Record<IconButtonVariant, string> = {
   primary: "istok-icon-button--primary",
@@ -19,9 +31,9 @@ const variantClassesMap: Record<IconButtonVariant, string> = {
 };
 
 const sizeClassesMap: Record<IconButtonSize, string> = {
-  s: "istok-icon-button--s",
-  m: "istok-icon-button--m",
-  l: "istok-icon-button--l",
+  sm: "istok-icon-button--sm",
+  md: "istok-icon-button--md",
+  lg: "istok-icon-button--lg",
 };
 
 const shapeClassesMap: Record<IconButtonShape, string> = {
@@ -33,11 +45,12 @@ export const IconButton: React.FC<IconButtonProps> = ({
   icon: Icon,
   shape = "circle",
   variant = "primary",
+  color = "primary",
   className,
   disabled = false,
   loading = false,
   iconProps,
-  defaultSize = "m",
+  size = "md",
   classes,
   type = "button",
   ...rest
@@ -46,7 +59,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
   const isDisabled = disabled || loading;
 
   return (
-    <button
+    <BaseButton
       {...rest}
       type={type}
       disabled={isDisabled}
@@ -63,7 +76,8 @@ export const IconButton: React.FC<IconButtonProps> = ({
         {
           "opacity-12 cursor-not-allowed": isDisabled,
         },
-        sizeClassesMap[defaultSize],
+        sizeClassesMap[size],
+        colorClassesMap[color],
         shapeClassesMap[shape],
         variantClassesMap[variant],
         className,
@@ -91,6 +105,6 @@ export const IconButton: React.FC<IconButtonProps> = ({
           {...iconPropsRest}
         />
       )}
-    </button>
+    </BaseButton>
   );
 };

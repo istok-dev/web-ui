@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Plus, Settings, Trash2 } from "lucide-react";
+import { ExternalLink, Plus, Settings, Trash2 } from "lucide-react";
 
 import { IconButton } from "./ui/icon-button";
 import type {
+  IconButtonColor,
   IconButtonVariant,
   IconButtonSize,
   IconButtonShape,
@@ -34,14 +35,27 @@ const meta: Meta<typeof IconButton> = {
       ] as IconButtonVariant[],
       description: "Визуальный вариант",
     },
+    color: {
+      control: "select",
+      options: [
+        "primary",
+        "neutral",
+        "negative",
+        "warning",
+        "info",
+        "success",
+        "accent",
+      ] as IconButtonColor[],
+      description: "Цветовая палитра",
+    },
     shape: {
       control: "select",
       options: ["circle", "square"] as IconButtonShape[],
       description: "Форма кнопки",
     },
-    defaultSize: {
+    size: {
       control: "select",
-      options: ["s", "m", "l"] as IconButtonSize[],
+      options: ["sm", "md", "lg"] as IconButtonSize[],
       description: "Размер",
     },
     disabled: {
@@ -64,7 +78,7 @@ export const Default: Story = {
     icon: Plus,
     variant: "primary",
     shape: "circle",
-    defaultSize: "m",
+    size: "md",
   },
 };
 
@@ -90,6 +104,71 @@ export const Variants: Story = {
   ),
 };
 
+const iconButtonColors: IconButtonColor[] = [
+  "primary",
+  "neutral",
+  "negative",
+  "warning",
+  "info",
+  "success",
+  "accent",
+];
+
+export const Colors: Story = {
+  render: () => (
+    <div className="flex flex-col gap-8">
+      <section>
+        <h3 className="mb-3 text-sm font-medium text-[var(--color-neutral-600)]">
+          variant="primary"
+        </h3>
+        <div className="flex flex-wrap gap-4">
+          {iconButtonColors.map((color) => (
+            <IconButton
+              key={color}
+              icon={Plus}
+              variant="primary"
+              color={color}
+              aria-label={color}
+            />
+          ))}
+        </div>
+      </section>
+      <section>
+        <h3 className="mb-3 text-sm font-medium text-[var(--color-neutral-600)]">
+          variant="secondary"
+        </h3>
+        <div className="flex flex-wrap gap-4">
+          {iconButtonColors.map((color) => (
+            <IconButton
+              key={color}
+              icon={Plus}
+              variant="secondary"
+              color={color}
+              aria-label={color}
+            />
+          ))}
+        </div>
+      </section>
+      <section>
+        <h3 className="mb-3 text-sm font-medium text-[var(--color-neutral-600)]">
+          variant="clear"
+        </h3>
+        <div className="flex flex-wrap gap-4">
+          {iconButtonColors.map((color) => (
+            <IconButton
+              key={color}
+              icon={Plus}
+              variant="clear"
+              color={color}
+              aria-label={color}
+            />
+          ))}
+        </div>
+      </section>
+    </div>
+  ),
+};
+
 export const Shapes: Story = {
   render: () => (
     <div className="flex flex-wrap items-center gap-4">
@@ -102,9 +181,9 @@ export const Shapes: Story = {
 export const Sizes: Story = {
   render: () => (
     <div className="flex flex-wrap items-center gap-4">
-      <IconButton icon={Trash2} defaultSize="s" aria-label="Small" />
-      <IconButton icon={Trash2} defaultSize="m" aria-label="Medium" />
-      <IconButton icon={Trash2} defaultSize="l" aria-label="Large" />
+      <IconButton icon={Trash2} size="sm" aria-label="Small" />
+      <IconButton icon={Trash2} size="md" aria-label="Medium" />
+      <IconButton icon={Trash2} size="lg" aria-label="Large" />
     </div>
   ),
 };
@@ -123,4 +202,43 @@ export const Disabled: Story = {
     disabled: true,
     "aria-label": "Disabled",
   },
+};
+
+export const CustomRender: Story = {
+  render: () => (
+    <div className="flex flex-wrap items-center gap-4">
+      <p className="w-full text-sm text-[var(--color-neutral-600)]">
+        Рендер как ссылка через <code>render</code> (Base UI):
+      </p>
+      <IconButton
+        icon={ExternalLink}
+        variant="primary"
+        aria-label="Открыть в новой вкладке"
+        render={(props) => (
+          <a
+            {...props}
+            href="https://example.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          />
+        )}
+      />
+      <IconButton
+        icon={ExternalLink}
+        variant="clear"
+        color="primary"
+        aria-label="Ссылка clear"
+        render={(props) => (
+          <a
+            {...props}
+            href="#custom-render"
+            onClick={(e) => {
+              e.preventDefault();
+              alert("Кастомный обработчик (ссылка)");
+            }}
+          />
+        )}
+      />
+    </div>
+  ),
 };
