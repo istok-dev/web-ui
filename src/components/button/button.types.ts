@@ -21,15 +21,17 @@ export type ButtonColor =
 
 export type ButtonSize = "sm" | "md" | "lg" | "xl";
 
+export type Classes = "root" | "icon";
+
 export interface ButtonProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
   children?: React.ReactNode;
   startIcon?: LucideIcon;
-  iconSize?: number;
   variant?: ButtonVariant;
   color?: ButtonColor;
   loading?: boolean;
   size?: ButtonSize;
   rounded?: boolean;
   render?: BaseButtonProps["render"];
+  classes?: Record<Classes, string>;
 }

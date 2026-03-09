@@ -182,7 +182,6 @@ export const WithIcon: Story = {
   args: {
     children: "Добавить",
     startIcon: Plus,
-    iconSize: 18,
   },
 };
 

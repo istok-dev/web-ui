@@ -63,7 +63,11 @@ export const Sizes: Story = {
 export const WithIcons: Story = {
   args: {
     items: [
-      { label: "Папка", href: "/folder", icon: <FolderOpen className="size-4" /> },
+      {
+        label: "Папка",
+        href: "/folder",
+        icon: <FolderOpen className="size-4" />,
+      },
       { label: "Документ", icon: <FileText className="size-4" /> },
     ],
     defaultSize: "m",
@@ -96,15 +100,21 @@ export const MaxItems: Story = {
   render: () => (
     <div className="flex flex-col gap-6">
       <div>
-        <p className="text-body-s text-neutral-500 mb-2">maxItems=2 (Home — … — последний)</p>
+        <p className="text-body-s text-neutral-500 mb-2">
+          maxItems=2 (Home — … — последний)
+        </p>
         <Breadcrumbs items={longPathItems} defaultSize="m" maxItems={2} />
       </div>
       <div>
-        <p className="text-body-s text-neutral-500 mb-2">maxItems=3 (Home — … — два последних)</p>
+        <p className="text-body-s text-neutral-500 mb-2">
+          maxItems=3 (Home — … — два последних)
+        </p>
         <Breadcrumbs items={longPathItems} defaultSize="m" maxItems={3} />
       </div>
       <div>
-        <p className="text-body-s text-neutral-500 mb-2">maxItems=4 (Home — … — три последних)</p>
+        <p className="text-body-s text-neutral-500 mb-2">
+          maxItems=4 (Home — … — три последних)
+        </p>
         <Breadcrumbs items={longPathItems} defaultSize="m" maxItems={4} />
       </div>
     </div>

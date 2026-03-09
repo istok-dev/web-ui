@@ -4,6 +4,12 @@ export interface BreadcrumbItem {
   icon?: React.ReactNode;
 }
 
+export interface BreadcrumbsMobileLink {
+  label: string;
+  href: string;
+  ariaLabel?: string;
+}
+
 export type BreadcrumbsSize = "l" | "m";
 
 export interface BreadcrumbsProps {
@@ -17,4 +23,5 @@ export interface BreadcrumbsProps {
     children?: React.ReactNode;
     "aria-label"?: string;
   }>;
+  mobileLink?: BreadcrumbsMobileLink;
 }

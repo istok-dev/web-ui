@@ -252,3 +252,12 @@
 [data-theme="dark"] *::-webkit-scrollbar-thumb:hover {
   background: var(--color-neutral-500);
 }
+
+@utility scrollbar-hidden {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}

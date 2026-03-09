@@ -41,7 +41,6 @@ const variantClassesMap: Record<ButtonVariant, string> = {
 export const Button: React.FC<ButtonProps> = ({
   children,
   startIcon: StartIcon,
-  iconSize = 16,
   className,
   variant = "primary",
   color = "primary",
@@ -50,6 +49,8 @@ export const Button: React.FC<ButtonProps> = ({
   size = "md",
   rounded = false,
   type = "button",
+  render,
+  classes,
   ...rest
 }) => {
   const isDisabled = disabled || loading;
@@ -57,6 +58,8 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <BaseButton
       {...rest}
+      render={render}
+      nativeButton={render === undefined}
       disabled={isDisabled}
       type={type}
       className={cn(
@@ -81,13 +84,28 @@ export const Button: React.FC<ButtonProps> = ({
         sizeClassesMap[size],
         colorClassesMap[color],
         variantClassesMap[variant],
+        classes?.root,
         className
       )}
     >
       {loading ? (
-        <Loader2 size={iconSize} className="animate-spin" />
+        <Loader2
+          className={cn(
+            "istok-button__icon animate-spin",
+            "size-[var(--istok-button-icon-size)]",
+            classes?.icon
+          )}
+        />
       ) : (
-        StartIcon && <StartIcon size={iconSize} />
+        StartIcon && (
+          <StartIcon
+            className={cn(
+              "istok-button__icon",
+              "size-[var(--istok-button-icon-size)]",
+              classes?.icon
+            )}
+          />
+        )
       )}
       {children}
     </BaseButton>

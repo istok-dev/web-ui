@@ -6,6 +6,7 @@
   --istok-button-gap: calc(var(--spacing) * 1.5);
   --istok-button-font-size: var(--text-control-s);
   --istok-button-line-height: var(--text-control-s--line-height);
+  --istok-button-icon-size: var(--spacing-3);
 }
 
 @utility istok-button--md {
@@ -16,6 +17,7 @@
   --istok-button-gap: calc(var(--spacing) * 1.5);
   --istok-button-font-size: var(--text-control-m);
   --istok-button-line-height: var(--text-control-m--line-height);
+  --istok-button-icon-size: var(--spacing-4);
 }
 
 @utility istok-button--lg {
@@ -26,6 +28,7 @@
   --istok-button-gap: calc(var(--spacing) * 2);
   --istok-button-font-size: var(--text-control-l);
   --istok-button-line-height: var(--text-control-l--line-height);
+  --istok-button-icon-size: var(--spacing-4);
 }
 
 @utility istok-button--xl {
@@ -36,6 +39,7 @@
   --istok-button-gap: calc(var(--spacing) * 2.5);
   --istok-button-font-size: var(--text-control-xl);
   --istok-button-line-height: var(--text-control-xl--line-height);
+  --istok-button-icon-size: var(--spacing-5);
 }
 
 @utility istok-button--color-primary {

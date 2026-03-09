@@ -46,7 +46,7 @@ export const Badge: React.FC<BadgeProps> = ({
         "h-[var(--istok-badge-height)] gap-[var(--istok-badge-gap)]",
         "px-[var(--istok-badge-padding-inline)] py-[var(--istok-badge-padding-block)]",
         "rounded-[var(--istok-badge-radius)]",
-        "text-[length:--istok-badge-font-size] leading-[var(--istok-badge-line-height)]",
+        "text-(length:--istok-badge-font-size) leading-[var(--istok-badge-line-height)]",
         "bg-[var(--istok-badge-bg)] text-[var(--istok-badge-fg)]",
         "border-1 border-[var(--istok-badge-border-color)]",
         sizeClassesMap[defaultSize],

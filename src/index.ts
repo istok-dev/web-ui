@@ -20,3 +20,4 @@ export * from "./components/tooltip";
 export * from "./components/toast";
 export * from "./components/date-picker";
 export * from "./components/calendar";
+export * from "./components/field";

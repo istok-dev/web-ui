@@ -40,6 +40,7 @@ export const Input: React.FC<InputProps> = ({
       className={cn(
         "istok-input relative",
         sizeClassesMap[defaultSize],
+        variantClassesMap[variant],
         className
       )}
     >
@@ -80,7 +81,6 @@ export const Input: React.FC<InputProps> = ({
           "[border-width:var(--istok-input-border-width)] border-[var(--istok-input-border-color)]",
           "focus:[border-width:1px] focus:border-[var(--istok-input-border-focus)]",
           "placeholder:text-[var(--istok-input-placeholder)]",
-          variantClassesMap[variant],
           inputClassName
         )}
       />
