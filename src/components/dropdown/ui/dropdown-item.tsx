@@ -1,19 +1,19 @@
-import { cn } from "@/utils/cn";
+import { cn } from '@/utils/cn';
 
 import {
   DropdownItemFC,
   DropdownItemSize,
   DropdownItemVariant,
-} from "../dropdown.type";
+} from '../dropdown.type';
 
 const sizeClassesMap: Record<DropdownItemSize, string> = {
-  s: "istok-dropdown-item--s",
-  m: "istok-dropdown-item--m",
-  l: "istok-dropdown-item--l",
+  s: 'istok-dropdown-item--s',
+  m: 'istok-dropdown-item--m',
+  l: 'istok-dropdown-item--l',
 };
 
 const variantClassesMap: Record<DropdownItemVariant, string> = {
-  brand: "istok-dropdown-item--brand",
+  brand: 'istok-dropdown-item--brand',
 };
 
 export const DropdownItem: DropdownItemFC = ({
@@ -25,8 +25,8 @@ export const DropdownItem: DropdownItemFC = ({
   onClick,
   className,
   disabled = false,
-  defaultSize = "m",
-  variant = "brand",
+  defaultSize = 'm',
+  variant = 'brand',
   classes,
   ...props
 }) => {
@@ -37,39 +37,57 @@ export const DropdownItem: DropdownItemFC = ({
       onClick={onClick}
       disabled={disabled}
       className={cn(
-        "istok-dropdown-item w-full flex items-center text-left transition-colors",
-        "h-[var(--istok-dropdown-item-height)] px-[var(--istok-dropdown-item-px)] py-[var(--istok-dropdown-item-py)] gap-[var(--istok-dropdown-item-gap)]",
-        "bg-[var(--istok-dropdown-item-bg)] text-[var(--istok-dropdown-item-fg)]",
+        `
+          istok-dropdown-item flex w-full items-center text-left
+          transition-colors
+        `,
+        `
+          h-(--istok-dropdown-item-height) gap-(--istok-dropdown-item-gap)
+          px-(--istok-dropdown-item-px) py-(--istok-dropdown-item-py)
+        `,
+        `bg-(--istok-dropdown-item-bg) text-(--istok-dropdown-item-fg)`,
         !disabled && [
-          "cursor-pointer",
-          "hover:bg-[var(--istok-dropdown-item-bg-hover)] hover:text-[var(--istok-dropdown-item-fg-hover)]",
-          "active:bg-[var(--istok-dropdown-item-bg-active)] active:text-[var(--istok-dropdown-item-fg-active)]",
+          'cursor-pointer',
+          `
+            hover:bg-(--istok-dropdown-item-bg-hover)
+            hover:text-(--istok-dropdown-item-fg-hover)
+          `,
+          `
+            active:bg-(--istok-dropdown-item-bg-active)
+            active:text-(--istok-dropdown-item-fg-active)
+          `,
         ],
-        { "opacity-50 cursor-not-allowed": disabled },
+        { 'cursor-not-allowed opacity-50': disabled },
         sizeClassesMap[defaultSize],
         variantClassesMap[variant],
-        className
+        className,
       )}
     >
       {StartIcon && (
-        <div className="flex-shrink-0">
+        <div className="shrink-0">
           <StartIcon
             {...startIconProps}
             className={cn(
-              "istok-dropdown-item__start-icon",
-              "size-[var(--istok-dropdown-item-icon-size)] text-[var(--istok-dropdown-item-start-icon)]",
-              startIconProps?.className
+              'istok-dropdown-item__start-icon',
+              `
+                size-(--istok-dropdown-item-icon-size)
+                text-(--istok-dropdown-item-start-icon)
+              `,
+              startIconProps?.className,
             )}
           />
         </div>
       )}
 
-      <div className="flex-1 flex flex-col items-start min-w-0">
+      <div className="flex min-w-0 flex-1 flex-col items-start">
         <span
           className={cn(
-            "istok-dropdown-item__label truncate w-full",
-            "text-[length:var(--istok-dropdown-item-label-font)] leading-[var(--istok-dropdown-item-label-line-height)]",
-            classes?.label
+            'istok-dropdown-item__label w-full truncate',
+            `
+              text-(length:--istok-dropdown-item-label-font)
+              leading-(--istok-dropdown-item-label-line-height)
+            `,
+            classes?.label,
           )}
         >
           {label}
@@ -77,13 +95,16 @@ export const DropdownItem: DropdownItemFC = ({
       </div>
 
       {EndIcon && (
-        <div className="flex-shrink-0">
+        <div className="shrink-0">
           <EndIcon
             {...endIconProps}
             className={cn(
-              "istok-dropdown-item-end-icon",
-              "size-[var(--istok-dropdown-item-icon-size)] text-[var(--istok-dropdown-item-end-icon)]",
-              endIconProps?.className
+              'istok-dropdown-item-end-icon',
+              `
+                size-(--istok-dropdown-item-icon-size)
+                text-(--istok-dropdown-item-end-icon)
+              `,
+              endIconProps?.className,
             )}
           />
         </div>

@@ -1,0 +1,7 @@
+@utility istok-alert-dialog--positive {
+  --istok-alert-dialog-icon-color: var(--color-positive-600);
+}
+
+@utility istok-alert-dialog--negative {
+  --istok-alert-dialog-icon-color: var(--color-negative-600);
+}

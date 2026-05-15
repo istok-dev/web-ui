@@ -1,8 +1,8 @@
-import React from "react";
-import { Loader2 } from "lucide-react";
-import { Button as BaseButton } from "@base-ui/react/button";
+import { Button as BaseButton } from '@base-ui/react/button';
+import { Loader2 } from 'lucide-react';
+import React from 'react';
 
-import { cn } from "@/utils/cn";
+import { cn } from '@/utils/cn';
 
 import {
   IconButtonColor,
@@ -10,49 +10,50 @@ import {
   IconButtonShape,
   IconButtonSize,
   IconButtonVariant,
-} from "../icon-button.types";
+} from '../icon-button.types';
 
 const colorClassesMap: Record<IconButtonColor, string> = {
-  primary: "istok-icon-button--color-primary",
-  neutral: "istok-icon-button--color-neutral",
-  negative: "istok-icon-button--color-negative",
-  warning: "istok-icon-button--color-warning",
-  info: "istok-icon-button--color-info",
-  success: "istok-icon-button--color-success",
-  accent: "istok-icon-button--color-accent",
+  primary: 'istok-icon-button--color-primary',
+  neutral: 'istok-icon-button--color-neutral',
+  negative: 'istok-icon-button--color-negative',
+  warning: 'istok-icon-button--color-warning',
+  info: 'istok-icon-button--color-info',
+  success: 'istok-icon-button--color-success',
+  accent: 'istok-icon-button--color-accent',
 };
 
 const variantClassesMap: Record<IconButtonVariant, string> = {
-  primary: "istok-icon-button--primary",
-  secondary: "istok-icon-button--secondary",
-  clear: "istok-icon-button--clear",
-  "clear-inverse": "istok-icon-button--clear-inverse",
-  opacity: "istok-icon-button--opacity",
+  'primary': 'istok-icon-button--primary',
+  'secondary': 'istok-icon-button--secondary',
+  'clear': 'istok-icon-button--clear',
+  'clear-inverse': 'istok-icon-button--clear-inverse',
+  'opacity': 'istok-icon-button--opacity',
 };
 
 const sizeClassesMap: Record<IconButtonSize, string> = {
-  sm: "istok-icon-button--sm",
-  md: "istok-icon-button--md",
-  lg: "istok-icon-button--lg",
+  sm: 'istok-icon-button--sm',
+  md: 'istok-icon-button--md',
+  lg: 'istok-icon-button--lg',
 };
 
 const shapeClassesMap: Record<IconButtonShape, string> = {
-  square: "istok-icon-button--square",
-  circle: "istok-icon-button--circle",
+  square: 'istok-icon-button--square',
+  circle: 'istok-icon-button--circle',
 };
 
 export const IconButton: React.FC<IconButtonProps> = ({
   icon: Icon,
-  shape = "circle",
-  variant = "primary",
-  color = "primary",
+  shape = 'circle',
+  variant = 'primary',
+  color = 'primary',
   className,
   disabled = false,
   loading = false,
   iconProps,
-  size = "md",
+  size = 'md',
   classes,
-  type = "button",
+  type = 'button',
+  render,
   ...rest
 }) => {
   const { className: iconClassName, ...iconPropsRest } = iconProps || {};
@@ -61,50 +62,60 @@ export const IconButton: React.FC<IconButtonProps> = ({
   return (
     <BaseButton
       {...rest}
+      render={render}
+      nativeButton={render === undefined}
       type={type}
       disabled={isDisabled}
       className={cn(
-        "istok-icon-button",
-        "transition-colors flex items-center justify-center",
-        "size-[var(--istok-icon-button-size)] rounded-[var(--istok-icon-button-radius)]",
-        "bg-[var(--istok-icon-button-bg)] text-[var(--istok-icon-button-fg)]",
+        'istok-icon-button',
+        'flex items-center justify-center transition-colors',
+        `size-(--istok-icon-button-size) rounded-(--istok-icon-button-radius)`,
+        'bg-(--istok-icon-button-bg) text-(--istok-icon-button-fg)',
         !isDisabled && [
-          "cursor-pointer",
-          "hover:bg-[var(--istok-icon-button-bg-hover)] hover:text-[var(--istok-icon-button-fg-hover)]",
-          "active:bg-[var(--istok-icon-button-bg-active)] active:text-[var(--istok-icon-button-fg-active)]",
+          'cursor-pointer',
+          `
+            hover:bg-(--istok-icon-button-bg-hover)
+            hover:text-(--istok-icon-button-fg-hover)
+          `,
+          `
+            active:bg-(--istok-icon-button-bg-active)
+            active:text-(--istok-icon-button-fg-active)
+          `,
         ],
         {
-          "opacity-12 cursor-not-allowed": isDisabled,
+          'cursor-not-allowed opacity-12': isDisabled,
         },
         sizeClassesMap[size],
         colorClassesMap[color],
         shapeClassesMap[shape],
         variantClassesMap[variant],
         className,
-        classes?.root
+        classes?.root,
       )}
     >
-      {loading ? (
-        <Loader2
-          className={cn(
-            "istok-icon-button__icon animate-spin",
-            "size-[var(--istok-icon-button-icon-size)]",
-            classes?.icon,
-            iconClassName
-          )}
-          {...iconPropsRest}
-        />
-      ) : (
-        <Icon
-          className={cn(
-            "istok-icon-button__icon",
-            "size-[var(--istok-icon-button-icon-size)]",
-            classes?.icon,
-            iconClassName
-          )}
-          {...iconPropsRest}
-        />
-      )}
+      {loading
+        ? (
+          <Loader2
+            className={cn(
+              'istok-icon-button__icon animate-spin',
+              'size-(--istok-icon-button-icon-size)',
+              classes?.icon,
+              iconClassName,
+            )}
+            {...iconPropsRest}
+          />
+        )
+        : (
+          <Icon
+            className={cn(
+              'istok-icon-button__icon',
+              'size-(--istok-icon-button-icon-size)',
+              classes?.icon,
+              iconClassName,
+            )}
+            {...iconPropsRest}
+          />
+        )}
     </BaseButton>
   );
 };

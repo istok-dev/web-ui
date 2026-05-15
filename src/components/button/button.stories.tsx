@@ -1,63 +1,63 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Plus } from "lucide-react";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Plus } from 'lucide-react';
 
-import { Button } from "./ui/button";
-import type { ButtonVariant, ButtonSize, ButtonColor } from "./button.types";
+import type { ButtonVariant, ButtonSize, ButtonColor } from './button.types';
+import { Button } from './ui/button';
 
 const meta: Meta<typeof Button> = {
-  title: "Components/Button",
+  title: 'Components/Button',
   component: Button,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     variant: {
-      control: "select",
+      control: 'select',
       options: [
-        "primary",
-        "secondary",
-        "clear",
-        "text",
-        "clear-inverse",
-        "opacity",
-        "outline",
+        'primary',
+        'secondary',
+        'clear',
+        'text',
+        'clear-inverse',
+        'opacity',
+        'outline',
       ] as ButtonVariant[],
-      description: "Визуальный вариант кнопки",
+      description: 'Визуальный вариант кнопки',
     },
     color: {
-      control: "select",
+      control: 'select',
       options: [
-        "primary",
-        "neutral",
-        "negative",
-        "warning",
-        "info",
-        "success",
-        "accent",
+        'primary',
+        'neutral',
+        'negative',
+        'warning',
+        'info',
+        'success',
+        'accent',
       ] as ButtonColor[],
-      description: "Цветовая палитра кнопки",
+      description: 'Цветовая палитра кнопки',
     },
     size: {
-      control: "select",
-      options: ["sm", "md", "lg", "xl"] as ButtonSize[],
-      description: "Размер кнопки",
+      control: 'select',
+      options: ['sm', 'md', 'lg', 'xl'] as ButtonSize[],
+      description: 'Размер кнопки',
     },
     disabled: {
-      control: "boolean",
-      description: "Неактивное состояние",
+      control: 'boolean',
+      description: 'Неактивное состояние',
     },
     loading: {
-      control: "boolean",
-      description: "Состояние загрузки",
+      control: 'boolean',
+      description: 'Состояние загрузки',
     },
     rounded: {
-      control: "boolean",
-      description: "Полностью скруглённая кнопка (pill)",
+      control: 'boolean',
+      description: 'Полностью скруглённая кнопка (pill)',
     },
     children: {
-      control: "text",
-      description: "Текст кнопки",
+      control: 'text',
+      description: 'Текст кнопки',
     },
   },
 };
@@ -68,9 +68,9 @@ type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
   args: {
-    children: "Кнопка",
-    variant: "primary",
-    size: "md",
+    children: 'Кнопка',
+    variant: 'primary',
+    size: 'md',
   },
 };
 
@@ -89,24 +89,24 @@ export const Variants: Story = {
 };
 
 const buttonColors: ButtonColor[] = [
-  "primary",
-  "neutral",
-  "negative",
-  "warning",
-  "info",
-  "success",
-  "accent",
+  'primary',
+  'neutral',
+  'negative',
+  'warning',
+  'info',
+  'success',
+  'accent',
 ];
 
 export const Colors: Story = {
   render: () => (
     <div className="flex flex-col gap-8">
       <section>
-        <h3 className="mb-3 text-sm font-medium text-[var(--color-neutral-600)]">
+        <h3 className="mb-3 text-body-sm font-medium text-neutral-600">
           variant="primary"
         </h3>
         <div className="flex flex-wrap gap-4">
-          {buttonColors.map((color) => (
+          {buttonColors.map(color => (
             <Button key={color} variant="primary" color={color}>
               {color}
             </Button>
@@ -114,11 +114,11 @@ export const Colors: Story = {
         </div>
       </section>
       <section>
-        <h3 className="mb-3 text-sm font-medium text-[var(--color-neutral-600)]">
+        <h3 className="mb-3 text-body-sm font-medium text-neutral-600">
           variant="secondary"
         </h3>
         <div className="flex flex-wrap gap-4">
-          {buttonColors.map((color) => (
+          {buttonColors.map(color => (
             <Button key={color} variant="secondary" color={color}>
               {color}
             </Button>
@@ -126,11 +126,11 @@ export const Colors: Story = {
         </div>
       </section>
       <section>
-        <h3 className="mb-3 text-sm font-medium text-[var(--color-neutral-600)]">
+        <h3 className="mb-3 text-body-sm font-medium text-neutral-600">
           variant="outline"
         </h3>
         <div className="flex flex-wrap gap-4">
-          {buttonColors.map((color) => (
+          {buttonColors.map(color => (
             <Button key={color} variant="outline" color={color}>
               {color}
             </Button>
@@ -138,11 +138,11 @@ export const Colors: Story = {
         </div>
       </section>
       <section>
-        <h3 className="mb-3 text-sm font-medium text-[var(--color-neutral-600)]">
+        <h3 className="mb-3 text-body-sm font-medium text-neutral-600">
           variant="clear"
         </h3>
         <div className="flex flex-wrap gap-4">
-          {buttonColors.map((color) => (
+          {buttonColors.map(color => (
             <Button key={color} variant="clear" color={color}>
               {color}
             </Button>
@@ -180,21 +180,21 @@ export const Rounded: Story = {
 
 export const WithIcon: Story = {
   args: {
-    children: "Добавить",
+    children: 'Добавить',
     startIcon: Plus,
   },
 };
 
 export const Loading: Story = {
   args: {
-    children: "Загрузка...",
+    children: 'Загрузка...',
     loading: true,
   },
 };
 
 export const Disabled: Story = {
   args: {
-    children: "Недоступно",
+    children: 'Недоступно',
     disabled: true,
   },
 };

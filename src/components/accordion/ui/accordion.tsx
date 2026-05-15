@@ -1,14 +1,14 @@
-import { useState } from "react";
-import { Accordion as BaseAccordion } from "@base-ui/react/accordion";
-import { ChevronUp, ChevronDown } from "lucide-react";
+import { Accordion as BaseAccordion } from '@base-ui/react/accordion';
+import { ChevronUp, ChevronDown } from 'lucide-react';
+import { useState, type ComponentProps } from 'react';
 
-import { cn } from "@/utils/cn";
+import { cn } from '@/utils/cn';
 
 import type {
   AccordionRootProps,
   AccordionItemProps,
   AccordionValue,
-} from "../accordion.types";
+} from '../accordion.types';
 
 function AccordionRoot({
   children,
@@ -18,8 +18,8 @@ function AccordionRoot({
   onValueChange,
   multiple = false,
 }: AccordionRootProps) {
-  const [internalValue, setInternalValue] =
-    useState<AccordionValue>(defaultValue);
+  const [internalValue, setInternalValue]
+    = useState<AccordionValue>(defaultValue);
   const isControlled = controlledValue !== undefined;
   const value = isControlled ? controlledValue : internalValue;
 
@@ -33,11 +33,14 @@ function AccordionRoot({
       <BaseAccordion.Root
         className="flex flex-col gap-2"
         {...(isControlled
-          ? { value: value as any, onValueChange: handleValueChange as any }
+          ? {
+            value,
+            onValueChange: handleValueChange,
+          }
           : {
-              defaultValue: defaultValue as any,
-              onValueChange: handleValueChange as any,
-            })}
+            defaultValue,
+            onValueChange: handleValueChange,
+          }) as Partial<ComponentProps<typeof BaseAccordion.Root>>}
         multiple={multiple}
       >
         {children}
@@ -57,34 +60,43 @@ function AccordionItemComponent({
   return (
     <BaseAccordion.Item
       value={itemValue}
-      className={cn("border border-neutral-200 rounded-2xl p-6", className)}
+      className={cn('rounded-2xl border border-neutral-200 p-6', className)}
     >
       <BaseAccordion.Header>
-        <BaseAccordion.Trigger className="group flex items-center justify-between w-full cursor-pointer">
+        <BaseAccordion.Trigger className="
+          group flex w-full cursor-pointer items-center justify-between
+        "
+        >
           <div className="flex items-center gap-3">
             {Icon && (
               <Icon
                 size={24}
                 {...iconProps}
-                className={cn("text-neutral-950", iconProps?.className)}
+                className={cn('text-neutral-950', iconProps?.className)}
               />
             )}
-            <h4 className="text-title-l font-medium text-primary-800">
+            <h4 className="text-title-lg font-medium text-primary-800">
               {title}
             </h4>
           </div>
           <ChevronDown
             size={24}
-            className="text-neutral-900 group-data-[state=open]:hidden"
+            className="
+              text-neutral-900
+              group-data-[state=open]:hidden
+            "
           />
           <ChevronUp
             size={24}
-            className="text-neutral-900 hidden group-data-[state=open]:block"
+            className="
+              hidden text-neutral-900
+              group-data-[state=open]:block
+            "
           />
         </BaseAccordion.Trigger>
       </BaseAccordion.Header>
       <BaseAccordion.Panel>
-        <div className="text-body-l text-neutral-800 leading-relaxed mt-4">
+        <div className="mt-4 text-body-lg leading-relaxed text-neutral-800">
           {children}
         </div>
       </BaseAccordion.Panel>

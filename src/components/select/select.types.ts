@@ -1,23 +1,25 @@
-import { LucideIcon, LucideProps } from "lucide-react";
+import { LucideIcon, LucideProps } from 'lucide-react';
 
-export type SelectSize = "s" | "m" | "l";
+export type SelectSize = 's' | 'm' | 'l';
 
-export interface SelectOption {
+export type SelectOption = {
   label: string;
   value: string;
   disabled?: boolean;
-}
+};
 
-export interface SelectGroup {
+export type SelectGroup = {
   label: string;
   options: SelectOption[];
-}
+};
 
 export type SelectOptions = SelectOption[] | SelectGroup[];
 
-export type SelectVariant = "solid" | "outline";
+export type SelectVariant = 'solid' | 'outline';
 
-export interface SelectProps {
+export type Classes = 'positioner' | 'popup' | 'trigger';
+
+export type SelectProps = {
   label?: string;
   placeholder?: string;
   options: SelectOptions;
@@ -27,17 +29,16 @@ export interface SelectProps {
   multiple?: boolean;
   searchable?: boolean;
   searchPlaceholder?: string;
-  onSearch?: (query: string) => SelectOption[] | Promise<SelectOption[]>;
+  onSearch?: (query: string) => void | Promise<void>;
   selectAllLabel?: string;
   clearLabel?: string;
   showSelectAll?: boolean;
   showClear?: boolean;
   disabled?: boolean;
   className?: string;
-  triggerClassName?: string;
-  popupClassName?: string;
   size?: SelectSize;
   startIcon?: LucideIcon;
   startIconProps?: LucideProps;
   variant?: SelectVariant;
-}
+  classes?: Partial<Record<Classes, string>>;
+};

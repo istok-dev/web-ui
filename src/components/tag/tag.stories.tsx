@@ -1,40 +1,40 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Info, X } from "lucide-react";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Info } from 'lucide-react';
 
-import { Tag } from "./index";
-import type { TagSize, TagVariant } from "./tag.types";
+import { Tag } from './index';
+import type { TagSize, TagVariant } from './tag.types';
 
 const meta: Meta<typeof Tag> = {
-  title: "Components/Tag",
+  title: 'Components/Tag',
   component: Tag,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     children: {
-      control: "text",
-      description: "Контент тега",
+      control: 'text',
+      description: 'Контент тега',
     },
     defaultSize: {
-      control: "select",
-      options: ["s", "m", "l"] as TagSize[],
-      description: "Размер тега",
+      control: 'select',
+      options: ['s', 'm', 'l'] as TagSize[],
+      description: 'Размер тега',
     },
     variant: {
-      control: "select",
+      control: 'select',
       options: [
-        "solid-brand",
-        "solid-neutral",
-        "solid-black",
-        "ghost-brand",
-        "ghost-neutral",
+        'solid-brand',
+        'solid-neutral',
+        'solid-black',
+        'ghost-brand',
+        'ghost-neutral',
       ] as TagVariant[],
-      description: "Вариант оформления",
+      description: 'Вариант оформления',
     },
     onClose: {
-      action: "onClose",
-      description: "Колбэк при нажатии на кнопку удаления",
+      action: 'onClose',
+      description: 'Колбэк при нажатии на кнопку удаления',
     },
   },
 };
@@ -45,9 +45,9 @@ type Story = StoryObj<typeof Tag>;
 
 export const Default: Story = {
   args: {
-    children: "Тег",
-    defaultSize: "m",
-    variant: "solid-brand",
+    children: 'Тег',
+    defaultSize: 'm',
+    variant: 'solid-brand',
   },
 };
 
@@ -75,14 +75,14 @@ export const Sizes: Story = {
 
 export const WithIcon: Story = {
   args: {
-    children: "С иконкой",
+    children: 'С иконкой',
     startIcon: Info,
   },
 };
 
 export const Closable: Story = {
   args: {
-    children: "Удаляемый тег",
+    children: 'Удаляемый тег',
     onClose: () => {},
   },
 };

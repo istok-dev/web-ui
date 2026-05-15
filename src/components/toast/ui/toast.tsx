@@ -1,28 +1,28 @@
-"use client";
+'use client';
 
-import React, { useEffect } from "react";
 import {
   X,
   CheckCircle2,
   AlertCircle,
   Info,
   AlertTriangle,
-} from "lucide-react";
+} from 'lucide-react';
+import React, { useEffect } from 'react';
 
-import { cn } from "@/utils/cn";
+import { cn } from '@/utils/cn';
 
-import { Toast as ToastType } from "../toast.types";
+import { Toast as ToastType } from '../toast.types';
 
-interface ToastProps {
+type ToastProps = {
   toast: ToastType;
   onRemove: (id: string) => void;
-}
+};
 
 const variantStyles = {
-  success: "bg-emerald-500 text-white border-emerald-600",
-  error: "bg-red-500 text-white border-red-600",
-  info: "bg-blue-500 text-white border-blue-600",
-  warning: "bg-gold-500 text-olive-900 border-gold-600",
+  success: 'bg-positive-500 text-neutral-50 border-positive-600',
+  error: 'bg-negative-500 text-neutral-50 border-negative-600',
+  info: 'bg-info-500 text-neutral-50 border-info-600',
+  warning: 'bg-warning-500 text-neutral-50 border-warning-600',
 };
 
 const variantIcons = {
@@ -33,7 +33,8 @@ const variantIcons = {
 };
 
 export const Toast: React.FC<ToastProps> = ({ toast, onRemove }) => {
-  const Icon = variantIcons[toast.variant || "info"];
+  const variant = toast.variant ?? 'info';
+  const Icon = variantIcons[variant];
 
   useEffect(() => {
     if (toast.duration !== 0) {
@@ -48,18 +49,24 @@ export const Toast: React.FC<ToastProps> = ({ toast, onRemove }) => {
   return (
     <div
       className={cn(
-        "flex items-center gap-3 px-4 py-3 rounded-xl shadow-lg border min-w-[300px] max-w-[500px]",
-        variantStyles[toast.variant || "info"]
+        `
+          flex max-w-125 min-w-75 items-center gap-3 rounded-xl border px-4 py-3
+          shadow-lg
+        `,
+        variantStyles[variant],
       )}
       style={{
-        animation: "slideIn 0.3s ease-out",
+        animation: 'slideIn 0.3s ease-out',
       }}
     >
       <Icon size={20} className="shrink-0" />
-      <p className="flex-1 text-sm font-medium">{toast.message}</p>
+      <p className="flex-1 text-body-sm font-medium">{toast.message}</p>
       <button
         onClick={() => onRemove(toast.id)}
-        className="shrink-0 hover:opacity-80 transition-opacity"
+        className="
+          shrink-0 transition-opacity
+          hover:opacity-80
+        "
         aria-label="Закрыть"
       >
         <X size={18} />

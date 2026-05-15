@@ -1,10 +1,10 @@
-import { ModalBodyFC } from "../modal.types";
+import { ModalBodyFC, ModalBodyProps } from '../modal.types';
 
-export const ModalBody: ModalBodyFC = (props) => {
+export const ModalBody: ModalBodyFC = (props: ModalBodyProps) => {
   const { children } = props;
 
   return (
-    <div className="flex-1 overflow-y-auto custom-scrollbar bg-neutral-50">
+    <div className="flex-1 scrollbar overflow-y-auto bg-neutral-50">
       {children}
     </div>
   );

@@ -16,8 +16,8 @@
   --istok-dropdown-item-px: var(--spacing-4);
   --istok-dropdown-item-py: var(--spacing-2);
   --istok-dropdown-item-gap: calc(var(--spacing) * 1.5);
-  --istok-dropdown-item-label-font: var(--text-control-s);
-  --istok-dropdown-item-label-line-height: var(--text-control-s--line-height);
+  --istok-dropdown-item-label-font: var(--text-control-sm);
+  --istok-dropdown-item-label-line-height: var(--text-control-sm--line-height);
   --istok-dropdown-item-icon-size: var(--spacing-4);
 }
 
@@ -26,8 +26,8 @@
   --istok-dropdown-item-px: var(--spacing-5);
   --istok-dropdown-item-py: calc(var(--spacing) * 2.5);
   --istok-dropdown-item-gap: calc(var(--spacing) * 1.5);
-  --istok-dropdown-item-label-font: var(--text-control-m);
-  --istok-dropdown-item-label-line-height: var(--text-control-m--line-height);
+  --istok-dropdown-item-label-font: var(--text-control-md);
+  --istok-dropdown-item-label-line-height: var(--text-control-md--line-height);
   --istok-dropdown-item-icon-size: var(--spacing-4);
 }
 
@@ -36,7 +36,7 @@
   --istok-dropdown-item-px: var(--spacing-6);
   --istok-dropdown-item-py: var(--spacing-3);
   --istok-dropdown-item-gap: var(--spacing-2);
-  --istok-dropdown-item-label-font: var(--text-control-l);
-  --istok-dropdown-item-label-line-height: var(--text-control-l--line-height);
+  --istok-dropdown-item-label-font: var(--text-control-lg);
+  --istok-dropdown-item-label-line-height: var(--text-control-lg--line-height);
   --istok-dropdown-item-icon-size: var(--spacing-5);
 }

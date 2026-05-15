@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren } from 'react';
 
 export type ModalProps = PropsWithChildren<
   React.HTMLAttributes<HTMLDivElement> & {

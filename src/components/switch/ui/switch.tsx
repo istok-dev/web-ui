@@ -1,46 +1,47 @@
-"use client";
+'use client';
 
-import React from "react";
-import clsx from "clsx";
+import { useState, FC, ChangeEvent } from 'react';
 
-import { SwitchProps, SwitchSize } from "../switch.types";
+import { cn } from '@/utils/cn';
+
+import { SwitchProps, SwitchSize } from '../switch.types';
 
 const sizeClassesMap: Record<SwitchSize, string> = {
-  s: "istok-switch--s",
-  m: "istok-switch--m",
-  l: "istok-switch--l",
+  sm: 'istok-switch--sm',
+  md: 'istok-switch--md',
+  lg: 'istok-switch--lg',
 };
 
-export const Switch: React.FC<SwitchProps> = ({
+export const Switch: FC<SwitchProps> = ({
   checked,
   defaultChecked,
   onChange,
   disabled = false,
-  size = "m",
+  size = 'md',
   className,
   ...inputProps
 }) => {
   const isControlled = checked !== undefined;
-  const [internalChecked, setInternalChecked] = React.useState(
-    defaultChecked ?? false
+  const [internalChecked, setInternalChecked] = useState(
+    defaultChecked ?? false,
   );
   const isChecked = isControlled ? checked : internalChecked;
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (!isControlled) setInternalChecked(e.target.checked);
     onChange?.(e.target.checked);
   };
 
   return (
     <label
-      className={clsx(
-        "istok-switch",
+      className={cn(
+        'istok-switch',
         sizeClassesMap[size],
         {
-          "istok-switch--checked": isChecked,
-          "istok-switch--disabled": disabled,
+          'istok-switch--checked': isChecked,
+          'istok-switch--disabled': disabled,
         },
-        className
+        className,
       )}
     >
       <input

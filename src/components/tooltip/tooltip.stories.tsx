@@ -1,42 +1,43 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import React from "react";
-import { Button } from "../button/ui/button";
-import { Tooltip } from "./index";
-import type { TooltipPlacement } from "./tooltip.types";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useState } from 'react';
+
+import { Tooltip } from './index';
+import type { TooltipPlacement } from './tooltip.types';
+import { Button } from '../button/ui/button';
 
 const meta: Meta<typeof Tooltip> = {
-  title: "Components/Tooltip",
+  title: 'Components/Tooltip',
   component: Tooltip,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     placement: {
-      control: "select",
+      control: 'select',
       options: [
-        "top",
-        "top-start",
-        "top-end",
-        "bottom",
-        "bottom-start",
-        "bottom-end",
-        "left",
-        "right",
+        'top',
+        'top-start',
+        'top-end',
+        'bottom',
+        'bottom-start',
+        'bottom-end',
+        'left',
+        'right',
       ] as TooltipPlacement[],
-      description: "Позиция tooltip относительно триггера",
+      description: 'Позиция tooltip относительно триггера',
     },
     showArrow: {
-      control: "boolean",
-      description: "Показывать ли стрелку",
+      control: 'boolean',
+      description: 'Показывать ли стрелку',
     },
     offset: {
-      control: "number",
-      description: "Отступ от триггера в пикселях",
+      control: 'number',
+      description: 'Отступ от триггера в пикселях',
     },
     disabled: {
-      control: "boolean",
-      description: "Отключить tooltip",
+      control: 'boolean',
+      description: 'Отключить tooltip',
     },
   },
 };
@@ -46,7 +47,7 @@ export default meta;
 type Story = StoryObj<typeof Tooltip>;
 
 export const Default: Story = {
-  render: (args) => (
+  render: args => (
     <div className="p-20">
       <Tooltip {...args}>
         <Button>Наведите на меня</Button>
@@ -54,16 +55,16 @@ export const Default: Story = {
     </div>
   ),
   args: {
-    title: "Title",
-    description: "Vorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    placement: "top",
+    title: 'Title',
+    description: 'Vorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    placement: 'top',
     showArrow: true,
     offset: 8,
   },
 };
 
 export const WithTitleOnly: Story = {
-  render: (args) => (
+  render: args => (
     <div className="p-20">
       <Tooltip {...args}>
         <Button>Только заголовок</Button>
@@ -71,14 +72,14 @@ export const WithTitleOnly: Story = {
     </div>
   ),
   args: {
-    title: "Title",
-    placement: "top",
+    title: 'Title',
+    placement: 'top',
     showArrow: true,
   },
 };
 
 export const WithDescriptionOnly: Story = {
-  render: (args) => (
+  render: args => (
     <div className="p-20">
       <Tooltip {...args}>
         <Button>Только описание</Button>
@@ -87,14 +88,14 @@ export const WithDescriptionOnly: Story = {
   ),
   args: {
     title: undefined,
-    description: "Vorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    placement: "top",
+    description: 'Vorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    placement: 'top',
     showArrow: true,
   },
 };
 
 export const WithoutArrow: Story = {
-  render: (args) => (
+  render: args => (
     <div className="p-20">
       <Tooltip {...args}>
         <Button>Без стрелки</Button>
@@ -102,9 +103,9 @@ export const WithoutArrow: Story = {
     </div>
   ),
   args: {
-    title: "Title",
-    description: "Vorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    placement: "top",
+    title: 'Title',
+    description: 'Vorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    placement: 'top',
     showArrow: false,
   },
 };
@@ -112,20 +113,20 @@ export const WithoutArrow: Story = {
 export const Placements: Story = {
   render: () => {
     const placements: TooltipPlacement[] = [
-      "top",
-      "top-start",
-      "top-end",
-      "bottom",
-      "bottom-start",
-      "bottom-end",
-      "left",
-      "right",
+      'top',
+      'top-start',
+      'top-end',
+      'bottom',
+      'bottom-start',
+      'bottom-end',
+      'left',
+      'right',
     ];
 
     return (
-      <div className="p-40 flex flex-col gap-8 items-center">
+      <div className="flex flex-col items-center gap-8 p-40">
         <div className="grid grid-cols-4 gap-8">
-          {placements.map((placement) => (
+          {placements.map(placement => (
             <Tooltip
               key={placement}
               title="Title"
@@ -145,20 +146,20 @@ export const Placements: Story = {
 export const AllPlacementsGrid: Story = {
   render: () => {
     const placements: TooltipPlacement[] = [
-      "top",
-      "top-start",
-      "top-end",
-      "bottom",
-      "bottom-start",
-      "bottom-end",
-      "left",
-      "right",
+      'top',
+      'top-start',
+      'top-end',
+      'bottom',
+      'bottom-start',
+      'bottom-end',
+      'left',
+      'right',
     ];
 
     return (
       <div className="p-40">
-        <div className="grid grid-cols-4 gap-16 justify-items-center">
-          {placements.map((placement) => (
+        <div className="grid grid-cols-4 justify-items-center gap-16">
+          {placements.map(placement => (
             <Tooltip
               key={placement}
               title="Title"
@@ -176,7 +177,7 @@ export const AllPlacementsGrid: Story = {
 };
 
 export const Disabled: Story = {
-  render: (args) => (
+  render: args => (
     <div className="p-20">
       <Tooltip {...args}>
         <Button>Отключенный tooltip</Button>
@@ -184,19 +185,19 @@ export const Disabled: Story = {
     </div>
   ),
   args: {
-    title: "Title",
-    description: "Vorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    placement: "top",
+    title: 'Title',
+    description: 'Vorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    placement: 'top',
     disabled: true,
   },
 };
 
 export const Controlled: Story = {
   render: () => {
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
 
     return (
-      <div className="p-20 flex flex-col gap-4 items-center">
+      <div className="flex flex-col items-center gap-4 p-20">
         <Tooltip
           title="Title"
           description="Vorem ipsum dolor sit amet, consectetur adipiscing elit."
@@ -210,8 +211,10 @@ export const Controlled: Story = {
           <Button onClick={() => setOpen(true)}>Открыть</Button>
           <Button onClick={() => setOpen(false)}>Закрыть</Button>
         </div>
-        <p className="text-sm text-gray-600">
-          Tooltip {open ? "открыт" : "закрыт"}
+        <p className="text-body-sm text-neutral-600">
+          Tooltip
+          {' '}
+          {open ? 'открыт' : 'закрыт'}
         </p>
       </div>
     );
@@ -220,7 +223,7 @@ export const Controlled: Story = {
 
 export const WithDifferentContent: Story = {
   render: () => (
-    <div className="p-20 flex flex-col gap-8 items-center">
+    <div className="flex flex-col items-center gap-8 p-20">
       <Tooltip
         title="Короткий текст"
         description="Короткое описание"
@@ -231,7 +234,10 @@ export const WithDifferentContent: Story = {
 
       <Tooltip
         title="Длинный заголовок tooltip"
-        description="Очень длинное описание tooltip, которое может занимать несколько строк и содержать много информации для пользователя."
+        description={
+          'Очень длинное описание tooltip, которое может занимать несколько строк '
+          + 'и содержать много информации для пользователя.'
+        }
         placement="top"
       >
         <Button>Длинный текст</Button>
@@ -250,7 +256,7 @@ export const WithDifferentContent: Story = {
 
 export const WithCustomOffset: Story = {
   render: () => (
-    <div className="p-20 flex flex-col gap-8 items-center">
+    <div className="flex flex-col items-center gap-8 p-20">
       <Tooltip
         title="Title"
         description="Отступ 4px"
@@ -283,7 +289,7 @@ export const WithCustomOffset: Story = {
 
 export const ComplexExample: Story = {
   render: () => (
-    <div className="p-20 flex flex-col gap-6 items-center">
+    <div className="flex flex-col items-center gap-6 p-20">
       <div className="flex gap-4">
         <Tooltip
           title="Информация"

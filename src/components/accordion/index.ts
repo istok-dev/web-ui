@@ -1,6 +1,6 @@
-export { Accordion } from "./ui/accordion";
+export { Accordion } from './ui/accordion';
 export type {
   AccordionRootProps,
   AccordionItemProps,
   AccordionValue,
-} from "./accordion.types";
+} from './accordion.types';

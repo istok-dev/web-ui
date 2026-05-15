@@ -4,8 +4,8 @@
   --istok-tag-padding-inline: calc(var(--spacing) * 1.5);
   --istok-tag-padding-block: var(--spacing-1);
   --istok-tag-radius: var(--radius-xl);
-  --istok-tag-font-size: var(--text-control-s);
-  --istok-tag-line-height: var(--text-control-s--line-height);
+  --istok-tag-font-size: var(--text-control-sm);
+  --istok-tag-line-height: var(--text-control-sm--line-height);
   --istok-tag-icon-size: var(--spacing-4);
 }
 
@@ -15,8 +15,8 @@
   --istok-tag-padding-inline: calc(var(--spacing) * 2.5);
   --istok-tag-padding-block: calc(var(--spacing) * 1.5);
   --istok-tag-radius: var(--radius-xl);
-  --istok-tag-font-size: var(--text-control-m);
-  --istok-tag-line-height: var(--text-control-m--line-height);
+  --istok-tag-font-size: var(--text-control-md);
+  --istok-tag-line-height: var(--text-control-md--line-height);
   --istok-tag-icon-size: var(--spacing-4);
 }
 
@@ -26,8 +26,8 @@
   --istok-tag-padding-inline: var(--spacing-2);
   --istok-tag-padding-block: var(--spacing-2);
   --istok-tag-radius: var(--radius-xl);
-  --istok-tag-font-size: var(--text-control-l);
-  --istok-tag-line-height: var(--text-control-l--line-height);
+  --istok-tag-font-size: var(--text-control-lg);
+  --istok-tag-line-height: var(--text-control-lg--line-height);
   --istok-tag-icon-size: var(--spacing-6);
 }
 

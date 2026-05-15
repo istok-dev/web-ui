@@ -1,65 +1,66 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import React, { useState } from "react";
-import { Search, User, Mail, Lock, Eye, EyeOff } from "lucide-react";
-import { Input } from "./index";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Search, User, Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import React, { useState } from 'react';
+
+import { Input } from './index';
 
 const meta: Meta<typeof Input> = {
-  title: "Components/Input",
+  title: 'Components/Input',
   component: Input,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     value: {
-      control: "text",
-      description: "Значение инпута",
+      control: 'text',
+      description: 'Значение инпута',
     },
     onChange: {
       control: false,
-      description: "Колбэк при изменении значения",
+      description: 'Колбэк при изменении значения',
     },
     placeholder: {
-      control: "text",
-      description: "Плейсхолдер",
+      control: 'text',
+      description: 'Плейсхолдер',
     },
     defaultSize: {
-      control: "select",
-      options: ["s", "m", "l"],
-      description: "Размер инпута",
+      control: 'select',
+      options: ['s', 'm', 'l'],
+      description: 'Размер инпута',
     },
     variant: {
-      control: "select",
-      options: ["neutral", "solid", "outline", "opacity"],
-      description: "Вариант стиля инпута",
+      control: 'select',
+      options: ['neutral', 'solid', 'outline', 'opacity'],
+      description: 'Вариант стиля инпута',
     },
     startIcon: {
       control: false,
-      description: "Иконка слева",
+      description: 'Иконка слева',
     },
     startAdornment: {
       control: false,
-      description: "Элемент слева",
+      description: 'Элемент слева',
     },
     endAdornment: {
       control: false,
-      description: "Элемент справа",
+      description: 'Элемент справа',
     },
     disabled: {
-      control: "boolean",
-      description: "Заблокированное состояние",
+      control: 'boolean',
+      description: 'Заблокированное состояние',
     },
     className: {
-      control: "text",
-      description: "Дополнительные классы для контейнера",
+      control: 'text',
+      description: 'Дополнительные классы для контейнера',
     },
     inputClassName: {
-      control: "text",
-      description: "Дополнительные классы для инпута",
+      control: 'text',
+      description: 'Дополнительные классы для инпута',
     },
     readOnly: {
-      control: "boolean",
-      description: "Доступно только для чтения",
+      control: 'boolean',
+      description: 'Доступно только для чтения',
     },
   },
 };
@@ -70,7 +71,7 @@ type Story = StoryObj<typeof Input>;
 
 export const Default: Story = {
   render: (args) => {
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState('');
 
     return (
       <div className="w-80">
@@ -79,15 +80,15 @@ export const Default: Story = {
     );
   },
   args: {
-    placeholder: "Введите текст",
-    defaultSize: "m",
-    variant: "neutral",
+    placeholder: 'Введите текст',
+    defaultSize: 'm',
+    variant: 'neutral',
   },
 };
 
 export const WithPlaceholder: Story = {
   render: (args) => {
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState('');
 
     return (
       <div className="w-80">
@@ -96,15 +97,15 @@ export const WithPlaceholder: Story = {
     );
   },
   args: {
-    placeholder: "Поиск...",
-    defaultSize: "m",
-    variant: "neutral",
+    placeholder: 'Поиск...',
+    defaultSize: 'm',
+    variant: 'neutral',
   },
 };
 
 export const WithStartIcon: Story = {
   render: (args) => {
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState('');
 
     return (
       <div className="w-80">
@@ -113,16 +114,16 @@ export const WithStartIcon: Story = {
     );
   },
   args: {
-    placeholder: "Поиск...",
+    placeholder: 'Поиск...',
     startIcon: Search,
-    defaultSize: "m",
-    variant: "neutral",
+    defaultSize: 'm',
+    variant: 'neutral',
   },
 };
 
 export const WithStartAdornment: Story = {
   render: (args) => {
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState('');
 
     return (
       <div className="w-80">
@@ -131,16 +132,16 @@ export const WithStartAdornment: Story = {
     );
   },
   args: {
-    placeholder: "Введите имя",
-    startAdornment: <User className="w-4 h-4 text-neutral-400" />,
-    defaultSize: "m",
-    variant: "neutral",
+    placeholder: 'Введите имя',
+    startAdornment: <User className="size-4 text-neutral-400" />,
+    defaultSize: 'm',
+    variant: 'neutral',
   },
 };
 
 export const WithEndAdornment: Story = {
   render: (args) => {
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
     return (
@@ -149,40 +150,45 @@ export const WithEndAdornment: Story = {
           {...args}
           value={value}
           onChange={setValue}
-          type={showPassword ? "text" : "password"}
-          endAdornment={
+          type={showPassword ? 'text' : 'password'}
+          endAdornment={(
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="text-neutral-400 hover:text-neutral-600"
+              className="
+                text-neutral-400
+                hover:text-neutral-600
+              "
             >
-              {showPassword ? (
-                <EyeOff className="w-4 h-4" />
-              ) : (
-                <Eye className="w-4 h-4" />
-              )}
+              {showPassword
+                ? (
+                  <EyeOff className="size-4" />
+                )
+                : (
+                  <Eye className="size-4" />
+                )}
             </button>
-          }
+          )}
         />
       </div>
     );
   },
   args: {
-    placeholder: "Введите пароль",
+    placeholder: 'Введите пароль',
     startIcon: Lock,
-    defaultSize: "m",
-    variant: "neutral",
+    defaultSize: 'm',
+    variant: 'neutral',
   },
 };
 
 export const Sizes: Story = {
   render: () => {
-    const [value1, setValue1] = useState("");
-    const [value2, setValue2] = useState("");
-    const [value3, setValue3] = useState("");
+    const [value1, setValue1] = useState('');
+    const [value2, setValue2] = useState('');
+    const [value3, setValue3] = useState('');
 
     return (
-      <div className="w-80 flex flex-col gap-4">
+      <div className="flex w-80 flex-col gap-4">
         <Input
           value={value1}
           onChange={setValue1}
@@ -208,15 +214,15 @@ export const Sizes: Story = {
 
 export const Variants: Story = {
   render: () => {
-    const [value1, setValue1] = useState("");
-    const [value2, setValue2] = useState("");
-    const [value3, setValue3] = useState("");
-    const [value4, setValue4] = useState("");
+    const [value1, setValue1] = useState('');
+    const [value2, setValue2] = useState('');
+    const [value3, setValue3] = useState('');
+    const [value4, setValue4] = useState('');
 
     return (
-      <div className="w-80 flex flex-col gap-4">
+      <div className="flex w-80 flex-col gap-4">
         <div>
-          <label className="text-sm text-gray-600 mb-1 block">Neutral</label>
+          <label className="mb-1 block text-body-sm text-neutral-600">Neutral</label>
           <Input
             value={value1}
             onChange={setValue1}
@@ -225,7 +231,7 @@ export const Variants: Story = {
           />
         </div>
         <div>
-          <label className="text-sm text-gray-600 mb-1 block">Solid</label>
+          <label className="mb-1 block text-body-sm text-neutral-600">Solid</label>
           <Input
             value={value2}
             onChange={setValue2}
@@ -234,7 +240,7 @@ export const Variants: Story = {
           />
         </div>
         <div>
-          <label className="text-sm text-gray-600 mb-1 block">Outline</label>
+          <label className="mb-1 block text-body-sm text-neutral-600">Outline</label>
           <Input
             value={value3}
             onChange={setValue3}
@@ -243,13 +249,13 @@ export const Variants: Story = {
           />
         </div>
         <div>
-          <label className="text-sm text-gray-600 mb-1 block">Opacity</label>
+          <label className="mb-1 block text-body-sm text-neutral-600">Opacity</label>
           <Input
             value={value4}
             onChange={setValue4}
             placeholder="Opacity вариант"
             variant="opacity"
-            className="bg-gray-800"
+            className="bg-neutral-800"
           />
         </div>
       </div>
@@ -259,10 +265,10 @@ export const Variants: Story = {
 
 export const Disabled: Story = {
   render: (args) => {
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState('');
 
     return (
-      <div className="w-80 flex flex-col gap-4">
+      <div className="flex w-80 flex-col gap-4">
         <Input
           {...args}
           value={value}
@@ -281,14 +287,14 @@ export const Disabled: Story = {
     );
   },
   args: {
-    defaultSize: "m",
-    variant: "neutral",
+    defaultSize: 'm',
+    variant: 'neutral',
   },
 };
 
 export const WithInitialValue: Story = {
   render: (args) => {
-    const [value, setValue] = useState("Начальное значение");
+    const [value, setValue] = useState('Начальное значение');
 
     return (
       <div className="w-80">
@@ -297,23 +303,26 @@ export const WithInitialValue: Story = {
     );
   },
   args: {
-    placeholder: "Введите текст",
-    defaultSize: "m",
-    variant: "neutral",
+    placeholder: 'Введите текст',
+    defaultSize: 'm',
+    variant: 'neutral',
   },
 };
 
 export const ComplexExample: Story = {
   render: () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [search, setSearch] = useState("");
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [search, setSearch] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
     return (
-      <div className="w-80 flex flex-col gap-6">
+      <div className="flex w-80 flex-col gap-6">
         <div>
-          <label className="text-sm font-medium text-gray-700 mb-2 block">
+          <label className="
+            mb-2 block text-body-sm font-medium text-neutral-700
+          "
+          >
             Email
           </label>
           <Input
@@ -327,7 +336,10 @@ export const ComplexExample: Story = {
         </div>
 
         <div>
-          <label className="text-sm font-medium text-gray-700 mb-2 block">
+          <label className="
+            mb-2 block text-body-sm font-medium text-neutral-700
+          "
+          >
             Пароль
           </label>
           <Input
@@ -335,27 +347,35 @@ export const ComplexExample: Story = {
             onChange={setPassword}
             placeholder="Введите пароль"
             startIcon={Lock}
-            type={showPassword ? "text" : "password"}
-            endAdornment={
+            type={showPassword ? 'text' : 'password'}
+            endAdornment={(
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="text-neutral-400 hover:text-neutral-600 transition-colors"
+                className="
+                  text-neutral-400 transition-colors
+                  hover:text-neutral-600
+                "
               >
-                {showPassword ? (
-                  <EyeOff className="w-4 h-4" />
-                ) : (
-                  <Eye className="w-4 h-4" />
-                )}
+                {showPassword
+                  ? (
+                    <EyeOff className="size-4" />
+                  )
+                  : (
+                    <Eye className="size-4" />
+                  )}
               </button>
-            }
+            )}
             defaultSize="m"
             variant="solid"
           />
         </div>
 
         <div>
-          <label className="text-sm font-medium text-gray-700 mb-2 block">
+          <label className="
+            mb-2 block text-body-sm font-medium text-neutral-700
+          "
+          >
             Поиск
           </label>
           <Input
@@ -368,15 +388,27 @@ export const ComplexExample: Story = {
           />
         </div>
 
-        <div className="mt-4 p-4 bg-gray-50 rounded-md">
-          <p className="text-sm font-semibold mb-2">Введенные данные:</p>
-          {email && <p className="text-sm text-gray-600">Email: {email}</p>}
-          {password && (
-            <p className="text-sm text-gray-600">
-              Пароль: {showPassword ? password : "••••••••"}
+        <div className="mt-4 rounded-md bg-neutral-50 p-4">
+          <p className="mb-2 text-body-sm font-semibold">Введенные данные:</p>
+          {email && (
+            <p className="text-body-sm text-neutral-600">
+              Email:
+              {email}
             </p>
           )}
-          {search && <p className="text-sm text-gray-600">Поиск: {search}</p>}
+          {password && (
+            <p className="text-body-sm text-neutral-600">
+              Пароль:
+              {' '}
+              {showPassword ? password : '••••••••'}
+            </p>
+          )}
+          {search && (
+            <p className="text-body-sm text-neutral-600">
+              Поиск:
+              {search}
+            </p>
+          )}
         </div>
       </div>
     );

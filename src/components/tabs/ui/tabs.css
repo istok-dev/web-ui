@@ -1,4 +1,4 @@
-@utility istok-tabs--s {
+@utility istok-tabs--sm {
   --istok-tabs-radius: var(--radius-xl);
 
   --istok-tabs-item-height: var(--spacing-9);
@@ -6,12 +6,12 @@
   --istok-tabs-item-padding-block: var(--spacing-2);
   --istok-tabs-item-gap: calc(var(--spacing) * 1.5);
   --istok-tabs-item-radius: var(--radius-xl);
-  --istok-tabs-item-label-font-size: var(--text-control-s);
-  --istok-tabs-item-label-line-height: var(--text-control-s--line-height);
+  --istok-tabs-item-label-font-size: var(--text-control-sm);
+  --istok-tabs-item-label-line-height: var(--text-control-sm--line-height);
   --istok-tabs-item-icon-size: var(--spacing-4);
 }
 
-@utility istok-tabs--m {
+@utility istok-tabs--md {
   --istok-tabs-radius: var(--radius-xl);
 
   --istok-tabs-item-height: var(--spacing-10);
@@ -19,12 +19,12 @@
   --istok-tabs-item-padding-block: calc(var(--spacing) * 2.5);
   --istok-tabs-item-gap: calc(var(--spacing) * 1.5);
   --istok-tabs-item-radius: var(--radius-xl);
-  --istok-tabs-item-label-font-size: var(--text-control-m);
-  --istok-tabs-item-label-line-height: var(--text-control-m--line-height);
+  --istok-tabs-item-label-font-size: var(--text-control-md);
+  --istok-tabs-item-label-line-height: var(--text-control-md--line-height);
   --istok-tabs-item-icon-size: var(--spacing-4);
 }
 
-@utility istok-tabs--l {
+@utility istok-tabs--lg {
   --istok-tabs-radius: var(--radius-2xl);
 
   --istok-tabs-item-height: var(--spacing-12);
@@ -32,8 +32,8 @@
   --istok-tabs-item-padding-block: var(--spacing-3);
   --istok-tabs-item-gap: calc(var(--spacing) * 1.5);
   --istok-tabs-item-radius: var(--radius-2xl);
-  --istok-tabs-item-label-font-size: var(--text-control-l);
-  --istok-tabs-item-label-line-height: var(--text-control-l--line-height);
+  --istok-tabs-item-label-font-size: var(--text-control-lg);
+  --istok-tabs-item-label-line-height: var(--text-control-lg--line-height);
   --istok-tabs-item-icon-size: var(--spacing-5);
 }
 

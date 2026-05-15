@@ -1,26 +1,27 @@
-"use client";
+'use client';
 
-import React from "react";
-import { NumberField } from "@base-ui/react/number-field";
-import { ChevronUp, ChevronDown } from "lucide-react";
+import { NumberField } from '@base-ui/react/number-field';
+import { ChevronUp, ChevronDown } from 'lucide-react';
+import React from 'react';
+
+import { cn } from '@/utils/cn';
 
 import {
   NumberInputProps,
   NumberInputSize,
   NumberInputVariant,
-} from "../number-input.types";
-import { cn } from "@/utils/cn";
+} from '../number-input.types';
 
 const sizeClassesMap: Record<NumberInputSize, string> = {
-  s: "istok-number-input--s",
-  m: "istok-number-input--m",
-  l: "istok-number-input--l",
+  s: 'istok-number-input--s',
+  m: 'istok-number-input--m',
+  l: 'istok-number-input--l',
 };
 
 const variantClassesMap: Record<NumberInputVariant, string> = {
-  neutral: "istok-number-input__input--neutral",
-  solid: "istok-number-input__input--solid",
-  outline: "istok-number-input__input--outline",
+  neutral: 'istok-number-input__input--neutral',
+  solid: 'istok-number-input__input--solid',
+  outline: 'istok-number-input__input--outline',
 };
 
 export const NumberInput: React.FC<NumberInputProps> = ({
@@ -29,8 +30,8 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   defaultValue,
   suffix,
   className,
-  defaultSize = "m",
-  variant = "neutral",
+  defaultSize = 'm',
+  variant = 'neutral',
   invalid = false,
   disabled,
   readOnly,
@@ -73,34 +74,34 @@ export const NumberInput: React.FC<NumberInputProps> = ({
       inputRef={inputRef}
       onValueCommitted={onValueCommitted}
       className={cn(
-        "istok-number-input",
+        'istok-number-input',
         sizeClassesMap[defaultSize],
         {
-          "istok-number-input--invalid": invalid,
-          "istok-number-input--has-suffix": Boolean(suffix),
+          'istok-number-input--invalid': invalid,
+          'istok-number-input--has-suffix': Boolean(suffix),
         },
-        className
+        className,
       )}
     >
       <NumberField.Group
         className={cn(
-          "istok-number-input__group",
-          "flex w-full outline-none transition-all overflow-hidden",
+          'istok-number-input__group',
+          'flex w-full overflow-hidden transition-all outline-none',
           {
-            "opacity-60 pointer-events-none bg-neutral-100 border-neutral-200":
+            'pointer-events-none border-neutral-200 bg-neutral-100 opacity-60':
               disabled,
           },
-          classes?.group
+          classes?.group,
         )}
       >
         <div className="istok-number-input__input-wrap">
           <NumberField.Input
             placeholder={placeholder}
             className={cn(
-              "istok-number-input__input",
+              'istok-number-input__input',
               variantClassesMap[variant],
-              "istok-number-input__input--no-end-adornment",
-              classes?.input
+              'istok-number-input__input--no-end-adornment',
+              classes?.input,
             )}
           />
           {suffix != null && (

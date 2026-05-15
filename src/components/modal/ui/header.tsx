@@ -1,25 +1,32 @@
-import { X } from "lucide-react";
+import { X } from 'lucide-react';
 
-import { ModalHeaderFC } from "../modal.types";
+import { ModalHeaderFC, ModalHeaderProps } from '../modal.types';
 
-export const ModalHeader: ModalHeaderFC = (props) => {
+export const ModalHeader: ModalHeaderFC = (props: ModalHeaderProps) => {
   const { title, children, onClose } = props;
 
   const renderTitle = () => {
     if (title) {
-      return <h3 className="text-xl font-bold text-white">{title}</h3>;
+      return <h3 className="text-title-lg font-bold text-neutral-50">{title}</h3>;
     }
     return children;
   };
 
   return (
-    <div className="flex items-center justify-between px-6 py-5 border-b border-[#E5E0D8] bg-[#2F3E28]">
+    <div className="
+      flex items-center justify-between border-b border-neutral-200
+      bg-neutral-900 px-6 py-5
+    "
+    >
       <div className="flex items-center gap-4">{renderTitle()}</div>
       <button
         onClick={onClose}
-        className="p-2 hover:bg-[#3A4B32] rounded-full text-[#A3B19A] hover:text-white cursor-pointer"
+        className="
+          cursor-pointer rounded-full p-2 text-neutral-400
+          hover:bg-neutral-800 hover:text-neutral-50
+        "
       >
-        <X className="w-6 h-6" />
+        <X className="size-6" />
       </button>
     </div>
   );

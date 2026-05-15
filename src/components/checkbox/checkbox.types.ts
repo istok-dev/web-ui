@@ -1,17 +1,16 @@
-import { PropsWithChildren, ReactNode } from "react";
+import { PropsWithChildren, ReactNode } from 'react';
 
-export type CheckboxSize = "s" | "m" | "l";
+export type CheckboxSize = 's' | 'm' | 'l';
 
-export type CheckboxItemClasses = "root" | "label" | "description";
+export type CheckboxItemClasses = 'root' | 'label' | 'description';
 
-export interface CheckboxItemProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
+export type CheckboxItemProps = {
   label?: string;
   description?: string;
   indeterminate?: boolean;
   className?: string;
   classes?: Partial<Record<CheckboxItemClasses, string>>;
-}
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export type CheckboxProps = PropsWithChildren<{
   defaultSize?: CheckboxSize;

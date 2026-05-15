@@ -1,8 +1,8 @@
 @utility istok-radio--s {
   --istok-radio-gap: calc(var(--spacing) * 1.5);
 
-  --istok-radio-label-font-size: var(--text-control-s);
-  --istok-radio-label-line-height: var(--text-control-s--line-height);
+  --istok-radio-label-font-size: var(--text-control-sm);
+  --istok-radio-label-line-height: var(--text-control-sm--line-height);
 
   --istok-radio-description-font-size: var(--text-body-xs);
   --istok-radio-description-line-height: var(--text-body-xs--line-height);
@@ -20,8 +20,8 @@
 @utility istok-radio--m {
   --istok-radio-gap: calc(var(--spacing) * 1.5);
 
-  --istok-radio-label-font-size: var(--text-control-m);
-  --istok-radio-label-line-height: var(--text-control-m--line-height);
+  --istok-radio-label-font-size: var(--text-control-md);
+  --istok-radio-label-line-height: var(--text-control-md--line-height);
 
   --istok-radio-description-font-size: var(--text-body-xs);
   --istok-radio-description-line-height: var(--text-body-xs--line-height);
@@ -39,11 +39,11 @@
 @utility istok-radio--l {
   --istok-radio-gap: calc(var(--spacing) * 2);
 
-  --istok-radio-label-font-size: var(--text-control-l);
-  --istok-radio-label-line-height: var(--text-control-l--line-height);
+  --istok-radio-label-font-size: var(--text-control-lg);
+  --istok-radio-label-line-height: var(--text-control-lg--line-height);
 
-  --istok-radio-description-font-size: var(--text-body-s);
-  --istok-radio-description-line-height: var(--text-body-s--line-height);
+  --istok-radio-description-font-size: var(--text-body-sm);
+  --istok-radio-description-line-height: var(--text-body-sm--line-height);
 
   --istok-radio-input-size: var(--spacing-6);
 

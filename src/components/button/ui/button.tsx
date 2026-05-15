@@ -1,54 +1,54 @@
-import React from "react";
-import { Loader2 } from "lucide-react";
-import { Button as BaseButton } from "@base-ui/react/button";
+import { Button as BaseButton } from '@base-ui/react/button';
+import { Loader2 } from 'lucide-react';
+import React from 'react';
 
-import { cn } from "@/utils/cn";
+import { cn } from '@/utils/cn';
 
 import {
   ButtonColor,
   ButtonProps,
   ButtonSize,
   ButtonVariant,
-} from "../button.types";
+} from '../button.types';
 
 const sizeClassesMap: Record<ButtonSize, string> = {
-  sm: "istok-button--sm",
-  md: "istok-button--md",
-  lg: "istok-button--lg",
-  xl: "istok-button--xl",
+  sm: 'istok-button--sm',
+  md: 'istok-button--md',
+  lg: 'istok-button--lg',
+  xl: 'istok-button--xl',
 };
 
 const colorClassesMap: Record<ButtonColor, string> = {
-  primary: "istok-button--color-primary",
-  neutral: "istok-button--color-neutral",
-  negative: "istok-button--color-negative",
-  warning: "istok-button--color-warning",
-  info: "istok-button--color-info",
-  success: "istok-button--color-success",
-  accent: "istok-button--color-accent",
+  primary: 'istok-button--color-primary',
+  neutral: 'istok-button--color-neutral',
+  negative: 'istok-button--color-negative',
+  warning: 'istok-button--color-warning',
+  info: 'istok-button--color-info',
+  success: 'istok-button--color-success',
+  accent: 'istok-button--color-accent',
 };
 
 const variantClassesMap: Record<ButtonVariant, string> = {
-  primary: "istok-button--primary",
-  secondary: "istok-button--secondary",
-  clear: "istok-button--clear",
-  text: "istok-button--text",
-  "clear-inverse": "istok-button--clear-inverse",
-  opacity: "istok-button--opacity",
-  outline: "istok-button--outline",
+  'primary': 'istok-button--primary',
+  'secondary': 'istok-button--secondary',
+  'clear': 'istok-button--clear',
+  'text': 'istok-button--text',
+  'clear-inverse': 'istok-button--clear-inverse',
+  'opacity': 'istok-button--opacity',
+  'outline': 'istok-button--outline',
 };
 
 export const Button: React.FC<ButtonProps> = ({
   children,
   startIcon: StartIcon,
   className,
-  variant = "primary",
-  color = "primary",
+  variant = 'primary',
+  color = 'primary',
   disabled = false,
   loading = false,
-  size = "md",
+  size = 'md',
   rounded = false,
-  type = "button",
+  type = 'button',
   render,
   classes,
   ...rest
@@ -63,50 +63,63 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={isDisabled}
       type={type}
       className={cn(
-        "istok-button",
-        "inline-flex items-center justify-center whitespace-nowrap",
-        "transition-all",
-        "px-[var(--istok-button-padding-inline)] py-[var(--istok-button-padding-block)]",
-        "h-[var(--istok-button-height)] rounded-[var(--istok-button-radius)]",
-        "gap-[var(--istok-button-gap)]",
-        "text-(length:--istok-button-font-size) leading-[var(--istok-button-line-height)]",
-        "bg-[var(--istok-button-bg)] text-[var(--istok-button-fg)]",
-        "border-1 border-[var(--istok-button-border-color)]",
+        'istok-button',
+        'inline-flex items-center justify-center whitespace-nowrap',
+        'transition-all',
+        `px-(--istok-button-padding-inline) py-(--istok-button-padding-block)`,
+        'h-(--istok-button-height) rounded-(--istok-button-radius)',
+        'gap-(--istok-button-gap)',
+        `
+          text-(length:--istok-button-font-size)
+          leading-(--istok-button-line-height)
+        `,
+        'bg-(--istok-button-bg) text-(--istok-button-fg)',
+        'border border-(--istok-button-border-color)',
         !isDisabled && [
-          "cursor-pointer",
-          "hover:bg-[var(--istok-button-bg-hover)] hover:text-[var(--istok-button-fg-hover)] hover:border-[var(--istok-button-border-color-hover)]",
-          "active:bg-[var(--istok-button-bg-active)] active:text-[var(--istok-button-fg-active)] active:border-[var(--istok-button-border-color-active)]",
+          'cursor-pointer',
+          `
+            hover:border-(--istok-button-border-color-hover)
+            hover:bg-(--istok-button-bg-hover)
+            hover:text-(--istok-button-fg-hover)
+          `,
+          `
+            active:border-(--istok-button-border-color-active)
+            active:bg-(--istok-button-bg-active)
+            active:text-(--istok-button-fg-active)
+          `,
         ],
         {
-          "opacity-12 cursor-not-allowed": isDisabled,
-          "rounded-full": rounded,
+          'cursor-not-allowed opacity-12': isDisabled,
+          'rounded-full': rounded,
         },
         sizeClassesMap[size],
         colorClassesMap[color],
         variantClassesMap[variant],
         classes?.root,
-        className
+        className,
       )}
     >
-      {loading ? (
-        <Loader2
-          className={cn(
-            "istok-button__icon animate-spin",
-            "size-[var(--istok-button-icon-size)]",
-            classes?.icon
-          )}
-        />
-      ) : (
-        StartIcon && (
-          <StartIcon
+      {loading
+        ? (
+          <Loader2
             className={cn(
-              "istok-button__icon",
-              "size-[var(--istok-button-icon-size)]",
-              classes?.icon
+              'istok-button__icon animate-spin',
+              'size-(--istok-button-icon-size)',
+              classes?.icon,
             )}
           />
         )
-      )}
+        : (
+          StartIcon && (
+            <StartIcon
+              className={cn(
+                'istok-button__icon',
+                'size-(--istok-button-icon-size)',
+                classes?.icon,
+              )}
+            />
+          )
+        )}
       {children}
     </BaseButton>
   );

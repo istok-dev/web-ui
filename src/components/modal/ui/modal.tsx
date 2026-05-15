@@ -1,12 +1,12 @@
-import { createPortal } from "react-dom";
+import { createPortal } from 'react-dom';
 
-import { cn } from "@/utils/cn";
+import { cn } from '@/utils/cn';
 
-import { ModalFC } from "../modal.types";
-import { ModalBody } from "./body";
-import { ModalHeader } from "./header";
+import { ModalFC, ModalProps } from '../modal.types';
+import { ModalBody } from './body';
+import { ModalHeader } from './header';
 
-export const Modal: ModalFC = (props) => {
+export const Modal: ModalFC = (props: ModalProps) => {
   const { isOpen, onClose, children, className, classes, ...rest } = props;
 
   if (!isOpen) return null;
@@ -15,25 +15,29 @@ export const Modal: ModalFC = (props) => {
     <div
       {...rest}
       className={cn(
-        "fixed inset-0 z-[100] flex items-center justify-center p-4",
+        'fixed inset-0 z-100 flex items-center justify-center p-4',
         className,
-        classes?.root
+        classes?.root,
       )}
       onClick={(e) => {
         e.stopPropagation();
       }}
     >
       <div
-        className={cn("absolute inset-0 bg-neutral-900/80", classes?.backdrop)}
+        className={cn('absolute inset-0 bg-neutral-900/80', classes?.backdrop)}
         onClick={() => {
           onClose();
         }}
-      ></div>
+      >
+      </div>
 
       <div
         className={cn(
-          "relative w-full max-w-5xl bg-neutral-50 rounded-2xl flex flex-col max-h-[90vh] overflow-hidden animate-in fade-in zoom-in duration-200",
-          classes?.content
+          `
+            relative flex max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden
+            rounded-2xl bg-neutral-50
+          `,
+          classes?.content,
         )}
       >
         {children}
@@ -41,7 +45,7 @@ export const Modal: ModalFC = (props) => {
     </div>
   );
 
-  if (typeof window === "undefined") {
+  if (typeof window === 'undefined') {
     return modalContent;
   }
 

@@ -6,7 +6,7 @@
   --istok-badge-font-size: var(--text-control-xs);
   --istok-badge-line-height: var(--text-control-xs--line-height);
   --istok-badge-icon-size: var(--spacing-4);
-  --istok-badge-square-radius: var(--radius-l);
+  --istok-badge-square-radius: var(--radius-lg);
 }
 
 @utility istok-badge--m {
@@ -14,10 +14,10 @@
   --istok-badge-gap: var(--spacing-1);
   --istok-badge-padding-inline: calc(var(--spacing) * 2.5);
   --istok-badge-padding-block: calc(var(--spacing) * 1.5);
-  --istok-badge-font-size: var(--text-control-s);
-  --istok-badge-line-height: var(--text-control-s--line-height);
+  --istok-badge-font-size: var(--text-control-sm);
+  --istok-badge-line-height: var(--text-control-sm--line-height);
   --istok-badge-icon-size: var(--spacing-4);
-  --istok-badge-square-radius: var(--radius-l);
+  --istok-badge-square-radius: var(--radius-lg);
 }
 
 @utility istok-badge--l {
@@ -25,8 +25,8 @@
   --istok-badge-gap: calc(var(--spacing) * 1.5);
   --istok-badge-padding-inline: calc(var(--spacing) * 2.5);
   --istok-badge-padding-block: calc(var(--spacing) * 1.5);
-  --istok-badge-font-size: var(--text-control-m);
-  --istok-badge-line-height: var(--text-control-m--line-height);
+  --istok-badge-font-size: var(--text-control-md);
+  --istok-badge-line-height: var(--text-control-md--line-height);
   --istok-badge-icon-size: var(--spacing-5);
   --istok-badge-square-radius: var(--radius-xl);
 }

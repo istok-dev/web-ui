@@ -1,8 +1,8 @@
-import { LucideIcon } from "lucide-react";
+import { LucideIcon } from 'lucide-react';
 
 export type InputSize = 's' | 'm' | 'l';
 
-export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> {
+export type InputProps = {
   value: string;
   onChange: (value: string) => void;
   startAdornment?: React.ReactNode;
@@ -11,5 +11,5 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   className?: string;
   inputClassName?: string;
   defaultSize?: InputSize;
-  variant?: "neutral" | "solid" | "outline" | "opacity";
-}
+  variant?: 'neutral' | 'solid' | 'outline' | 'opacity';
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>;

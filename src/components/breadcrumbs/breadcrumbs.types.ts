@@ -1,27 +1,27 @@
-export interface BreadcrumbItem {
+export type BreadcrumbItem = {
   label: string;
   href?: string;
   icon?: React.ReactNode;
-}
+};
 
-export interface BreadcrumbsMobileLink {
+export type BreadcrumbsMobileLink = {
   label: string;
   href: string;
   ariaLabel?: string;
-}
+};
 
-export type BreadcrumbsSize = "l" | "m";
+export type BreadcrumbsSize = 'l' | 'm';
 
-export interface BreadcrumbsProps {
+export type BreadcrumbsProps = {
   items: BreadcrumbItem[];
   className?: string;
   defaultSize?: BreadcrumbsSize;
   maxItems?: number;
   Link?: React.ComponentType<{
-    href: string;
-    className?: string;
-    children?: React.ReactNode;
-    "aria-label"?: string;
+    'href': string;
+    'className'?: string;
+    'children'?: React.ReactNode;
+    'aria-label'?: string;
   }>;
   mobileLink?: BreadcrumbsMobileLink;
-}
+};

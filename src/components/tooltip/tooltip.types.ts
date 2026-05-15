@@ -1,16 +1,17 @@
-import { ReactNode } from "react";
+import { TooltipTriggerProps } from '@base-ui/react';
+import { ReactNode } from 'react';
 
-export type TooltipPlacement =
-  | "top"
-  | "top-start"
-  | "top-end"
-  | "bottom"
-  | "bottom-start"
-  | "bottom-end"
-  | "left"
-  | "right";
+export type TooltipPlacement
+  = | 'top'
+    | 'top-start'
+    | 'top-end'
+    | 'bottom'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'left'
+    | 'right';
 
-export interface TooltipProps {
+export type TooltipProps = {
   /**
    * Контент, который будет обернут в tooltip
    */
@@ -51,9 +52,5 @@ export interface TooltipProps {
    * Отключить tooltip
    */
   disabled?: boolean;
-
-  /**
-   * Задержка перед появлением tooltip в миллисекундах
-   */
-  delay?: number;
-}
+  triggerProps?: TooltipTriggerProps;
+};

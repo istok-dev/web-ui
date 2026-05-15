@@ -1,11 +1,11 @@
 @utility istok-breadcrumbs--m {
   --istok-breadcrumbs-item-padding-y: 6px;
   --istok-breadcrumbs-item-padding-x: var(--spacing-3);
-  --istok-breadcrumbs-item-font-size: var(--text-control-m);
-  --istok-breadcrumbs-item-line-height: var(--text-control-m--line-height);
+  --istok-breadcrumbs-item-font-size: var(--text-control-md);
+  --istok-breadcrumbs-item-line-height: var(--text-control-md--line-height);
   --istok-breadcrumbs-icon-size: var(--spacing-4);
   --istok-breadcrumbs-separator-size: var(--spacing-5);
-  --istok-breadcrumbs-separator-font-size: var(--text-control-m);
+  --istok-breadcrumbs-separator-font-size: var(--text-control-md);
 }
 
 @utility istok-breadcrumbs--l {

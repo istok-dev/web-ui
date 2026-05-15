@@ -1,21 +1,21 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import React, { useState } from "react";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import React, { useState } from 'react';
 
-import { Checkbox } from "./index";
-import type { CheckboxSize } from "./checkbox.types";
+import type { CheckboxSize } from './checkbox.types';
+import { Checkbox } from './index';
 
 const meta: Meta<typeof Checkbox> = {
-  title: "Components/Checkbox",
+  title: 'Components/Checkbox',
   component: Checkbox,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     defaultSize: {
-      control: "select",
-      options: ["s", "m", "l"] as CheckboxSize[],
-      description: "Размер чекбокса",
+      control: 'select',
+      options: ['s', 'm', 'l'] as CheckboxSize[],
+      description: 'Размер чекбокса',
     },
   },
 };
@@ -31,29 +31,29 @@ export const Default: Story = {
     const [checked3, setChecked3] = useState(false);
 
     return (
-      <div className="w-[400px]">
+      <div className="w-100">
         <Checkbox {...args}>
           <Checkbox.Item
             label="Опция 1"
             checked={checked1}
-            onChange={(e) => setChecked1(e.target.checked)}
+            onChange={e => setChecked1(e.target.checked)}
           />
           <Checkbox.Item
             label="Опция 2"
             checked={checked2}
-            onChange={(e) => setChecked2(e.target.checked)}
+            onChange={e => setChecked2(e.target.checked)}
           />
           <Checkbox.Item
             label="Опция 3"
             checked={checked3}
-            onChange={(e) => setChecked3(e.target.checked)}
+            onChange={e => setChecked3(e.target.checked)}
           />
         </Checkbox>
       </div>
     );
   },
   args: {
-    defaultSize: "m",
+    defaultSize: 'm',
   },
 };
 
@@ -64,32 +64,32 @@ export const WithDescription: Story = {
     const [checked3, setChecked3] = useState(true);
 
     return (
-      <div className="w-[400px]">
+      <div className="w-100">
         <Checkbox {...args}>
           <Checkbox.Item
             label="Основной заголовок"
             description="Дополнительное описание для этой опции"
             checked={checked1}
-            onChange={(e) => setChecked1(e.target.checked)}
+            onChange={e => setChecked1(e.target.checked)}
           />
           <Checkbox.Item
             label="Второй пункт"
             description="Подробное описание второго пункта"
             checked={checked2}
-            onChange={(e) => setChecked2(e.target.checked)}
+            onChange={e => setChecked2(e.target.checked)}
           />
           <Checkbox.Item
             label="Третий пункт"
             description="Описание третьего пункта с дополнительной информацией"
             checked={checked3}
-            onChange={(e) => setChecked3(e.target.checked)}
+            onChange={e => setChecked3(e.target.checked)}
           />
         </Checkbox>
       </div>
     );
   },
   args: {
-    defaultSize: "m",
+    defaultSize: 'm',
   },
 };
 
@@ -103,49 +103,49 @@ export const Sizes: Story = {
     const [l2, setL2] = useState(true);
 
     return (
-      <div className="flex flex-col gap-8 w-[400px]">
+      <div className="flex w-100 flex-col gap-8">
         <div>
-          <p className="mb-3 text-sm font-medium text-gray-700">Size S</p>
+          <p className="mb-3 text-body-sm font-medium text-neutral-700">Size S</p>
           <Checkbox defaultSize="s">
             <Checkbox.Item
               label="Маленький чекбокс 1"
               checked={s1}
-              onChange={(e) => setS1(e.target.checked)}
+              onChange={e => setS1(e.target.checked)}
             />
             <Checkbox.Item
               label="Маленький чекбокс 2"
               checked={s2}
-              onChange={(e) => setS2(e.target.checked)}
+              onChange={e => setS2(e.target.checked)}
             />
           </Checkbox>
         </div>
         <div>
-          <p className="mb-3 text-sm font-medium text-gray-700">Size M</p>
+          <p className="mb-3 text-body-sm font-medium text-neutral-700">Size M</p>
           <Checkbox defaultSize="m">
             <Checkbox.Item
               label="Средний чекбокс 1"
               checked={m1}
-              onChange={(e) => setM1(e.target.checked)}
+              onChange={e => setM1(e.target.checked)}
             />
             <Checkbox.Item
               label="Средний чекбокс 2"
               checked={m2}
-              onChange={(e) => setM2(e.target.checked)}
+              onChange={e => setM2(e.target.checked)}
             />
           </Checkbox>
         </div>
         <div>
-          <p className="mb-3 text-sm font-medium text-gray-700">Size L</p>
+          <p className="mb-3 text-body-sm font-medium text-neutral-700">Size L</p>
           <Checkbox defaultSize="l">
             <Checkbox.Item
               label="Большой чекбокс 1"
               checked={l1}
-              onChange={(e) => setL1(e.target.checked)}
+              onChange={e => setL1(e.target.checked)}
             />
             <Checkbox.Item
               label="Большой чекбокс 2"
               checked={l2}
-              onChange={(e) => setL2(e.target.checked)}
+              onChange={e => setL2(e.target.checked)}
             />
           </Checkbox>
         </div>
@@ -157,7 +157,7 @@ export const Sizes: Story = {
 export const States: Story = {
   render: () => {
     return (
-      <div className="w-[400px]">
+      <div className="w-100">
         <Checkbox defaultSize="m">
           <Checkbox.Item label="Unchecked" checked={false} readOnly />
           <Checkbox.Item label="Checked" checked={true} readOnly />
@@ -199,7 +199,7 @@ export const AllStatesGrid: Story = {
         <div className="grid grid-cols-3 gap-8">
           {/* Size S */}
           <div>
-            <p className="mb-4 text-sm font-medium text-gray-700">Size S</p>
+            <p className="mb-4 text-body-sm font-medium text-neutral-700">Size S</p>
             <Checkbox defaultSize="s">
               <Checkbox.Item label="Unchecked" checked={false} readOnly />
               <Checkbox.Item label="Checked" checked={true} readOnly />
@@ -226,7 +226,7 @@ export const AllStatesGrid: Story = {
 
           {/* Size M */}
           <div>
-            <p className="mb-4 text-sm font-medium text-gray-700">Size M</p>
+            <p className="mb-4 text-body-sm font-medium text-neutral-700">Size M</p>
             <Checkbox defaultSize="m">
               <Checkbox.Item label="Unchecked" checked={false} readOnly />
               <Checkbox.Item label="Checked" checked={true} readOnly />
@@ -253,7 +253,7 @@ export const AllStatesGrid: Story = {
 
           {/* Size L */}
           <div>
-            <p className="mb-4 text-sm font-medium text-gray-700">Size L</p>
+            <p className="mb-4 text-body-sm font-medium text-neutral-700">Size L</p>
             <Checkbox defaultSize="l">
               <Checkbox.Item label="Unchecked" checked={false} readOnly />
               <Checkbox.Item label="Checked" checked={true} readOnly />
@@ -293,49 +293,45 @@ export const Interactive: Story = {
     });
 
     return (
-      <div className="w-[400px]">
+      <div className="w-100">
         <Checkbox {...args}>
           <Checkbox.Item
             label="Опция 1"
             checked={options.option1}
-            onChange={(e) =>
-              setOptions({ ...options, option1: e.target.checked })
-            }
+            onChange={e =>
+              setOptions({ ...options, option1: e.target.checked })}
           />
           <Checkbox.Item
             label="Опция 2"
             checked={options.option2}
-            onChange={(e) =>
-              setOptions({ ...options, option2: e.target.checked })
-            }
+            onChange={e =>
+              setOptions({ ...options, option2: e.target.checked })}
           />
           <Checkbox.Item
             label="Опция 3"
             checked={options.option3}
-            onChange={(e) =>
-              setOptions({ ...options, option3: e.target.checked })
-            }
+            onChange={e =>
+              setOptions({ ...options, option3: e.target.checked })}
           />
           <Checkbox.Item
             label="Опция 4"
             checked={options.option4}
-            onChange={(e) =>
-              setOptions({ ...options, option4: e.target.checked })
-            }
+            onChange={e =>
+              setOptions({ ...options, option4: e.target.checked })}
           />
         </Checkbox>
       </div>
     );
   },
   args: {
-    defaultSize: "m",
+    defaultSize: 'm',
   },
 };
 
 export const Disabled: Story = {
   render: (args) => {
     return (
-      <div className="w-[400px]">
+      <div className="w-100">
         <Checkbox {...args}>
           <Checkbox.Item label="Disabled Unchecked" disabled checked={false} />
           <Checkbox.Item label="Disabled Checked" disabled checked={true} />
@@ -350,7 +346,7 @@ export const Disabled: Story = {
     );
   },
   args: {
-    defaultSize: "m",
+    defaultSize: 'm',
   },
 };
 
@@ -361,103 +357,100 @@ export const WithoutLabel: Story = {
     const [checked3, setChecked3] = useState(false);
 
     return (
-      <div className="w-[400px]">
+      <div className="w-100">
         <Checkbox {...args}>
           <Checkbox.Item
             checked={checked1}
-            onChange={(e) => setChecked1(e.target.checked)}
+            onChange={e => setChecked1(e.target.checked)}
           />
           <Checkbox.Item
             checked={checked2}
-            onChange={(e) => setChecked2(e.target.checked)}
+            onChange={e => setChecked2(e.target.checked)}
           />
           <Checkbox.Item
             checked={checked3}
-            onChange={(e) => setChecked3(e.target.checked)}
+            onChange={e => setChecked3(e.target.checked)}
           />
         </Checkbox>
       </div>
     );
   },
   args: {
-    defaultSize: "m",
+    defaultSize: 'm',
   },
 };
 
 export const ComplexExample: Story = {
   render: () => {
     const [groups, setGroups] = useState({
-      "group-a": true,
-      "group-b": false,
-      "group-c": true,
-      "group-d": false,
+      'group-a': true,
+      'group-b': false,
+      'group-c': true,
+      'group-d': false,
     });
 
     const [categories, setCategories] = useState({
-      "category-1": false,
-      "category-2": false,
-      "category-3": true,
-      "category-4": false,
-      "category-5": false,
+      'category-1': false,
+      'category-2': false,
+      'category-3': true,
+      'category-4': false,
+      'category-5': false,
     });
 
     const [channels, setChannels] = useState({
-      "channel-1": true,
-      "channel-2": true,
-      "channel-3": false,
+      'channel-1': true,
+      'channel-2': true,
+      'channel-3': false,
     });
 
     return (
-      <div className="flex flex-col gap-8 w-full max-w-4xl">
+      <div className="flex w-full max-w-4xl flex-col gap-8">
         <div>
-          <h3 className="mb-4 text-lg font-semibold text-gray-900">
+          <h3 className="mb-4 text-body-lg font-semibold text-neutral-900">
             Группы
           </h3>
           <Checkbox defaultSize="m">
             {Object.entries(groups).map(([key, value]) => (
               <Checkbox.Item
                 key={key}
-                label={`Группа ${key.split("-")[1].toUpperCase()}`}
+                label={`Группа ${key.split('-')[1].toUpperCase()}`}
                 checked={value}
-                onChange={(e) =>
-                  setGroups({ ...groups, [key]: e.target.checked })
-                }
+                onChange={e =>
+                  setGroups({ ...groups, [key]: e.target.checked })}
               />
             ))}
           </Checkbox>
         </div>
 
         <div>
-          <h3 className="mb-4 text-lg font-semibold text-gray-900">
+          <h3 className="mb-4 text-body-lg font-semibold text-neutral-900">
             Категории
           </h3>
           <Checkbox defaultSize="m">
             {Object.entries(categories).map(([key, value]) => (
               <Checkbox.Item
                 key={key}
-                label={`Категория ${key.replace("category-", "")}`}
+                label={`Категория ${key.replace('category-', '')}`}
                 checked={value}
-                onChange={(e) =>
-                  setCategories({ ...categories, [key]: e.target.checked })
-                }
+                onChange={e =>
+                  setCategories({ ...categories, [key]: e.target.checked })}
               />
             ))}
           </Checkbox>
         </div>
 
         <div>
-          <h3 className="mb-4 text-lg font-semibold text-gray-900">
+          <h3 className="mb-4 text-body-lg font-semibold text-neutral-900">
             Каналы
           </h3>
           <Checkbox defaultSize="m">
             {Object.entries(channels).map(([key, value]) => (
               <Checkbox.Item
                 key={key}
-                label={`Канал ${key.replace("channel-", "")}`}
+                label={`Канал ${key.replace('channel-', '')}`}
                 checked={value}
-                onChange={(e) =>
-                  setChannels({ ...channels, [key]: e.target.checked })
-                }
+                onChange={e =>
+                  setChannels({ ...channels, [key]: e.target.checked })}
               />
             ))}
           </Checkbox>

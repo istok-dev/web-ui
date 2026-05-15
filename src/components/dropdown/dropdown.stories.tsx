@@ -1,21 +1,21 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import React, { useState } from "react";
-import { ChevronDown, LogOut, Settings, User } from "lucide-react";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { ChevronDown, LogOut, Settings, User } from 'lucide-react';
+import React, { useState } from 'react';
 
-import { Dropdown } from "./index";
-import { Button } from "../button";
+import { Dropdown } from './index';
+import { Button } from '../button';
 
 const meta: Meta<typeof Dropdown> = {
-  title: "Components/Dropdown",
+  title: 'Components/Dropdown',
   component: Dropdown,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     className: {
-      control: "text",
-      description: "Дополнительные классы контейнера",
+      control: 'text',
+      description: 'Дополнительные классы контейнера',
     },
   },
 };
@@ -26,7 +26,11 @@ type Story = StoryObj<typeof Dropdown>;
 
 export const Default: Story = {
   render: () => (
-    <Dropdown className="min-w-[200px] py-2 bg-white rounded-2xl overflow-hidden shadow-lg border border-neutral-200">
+    <Dropdown className="
+      min-w-50 overflow-hidden rounded-2xl border border-neutral-200
+      bg-neutral-50 py-2 shadow-lg
+    "
+    >
       <Dropdown.Item
         label="Профиль"
         startIcon={User}
@@ -44,9 +48,12 @@ export const Default: Story = {
         startIcon={LogOut}
         defaultSize="m"
         onClick={() => {}}
-        startIconProps={{ className: "text-red-600" }}
-        classes={{ label: "!text-red-600" }}
-        className="!bg-transparent hover:!bg-red-50"
+        startIconProps={{ className: 'text-negative-600' }}
+        classes={{ label: '!text-negative-600' }}
+        className="
+          bg-transparent!
+          hover:bg-negative-50!
+        "
       />
     </Dropdown>
   ),
@@ -57,16 +64,23 @@ export const WithTrigger: Story = {
     const [open, setOpen] = useState(false);
     return (
       <div className="relative">
-        <Button variant="secondary" onClick={() => setOpen((v) => !v)}>
+        <Button variant="secondary" onClick={() => setOpen(v => !v)}>
           Меню
-          <ChevronDown className={open ? "rotate-180" : ""} />
+          <ChevronDown className={open ? 'rotate-180' : ''} />
         </Button>
         {open && (
           <div
-            className="absolute top-full left-0 mt-2 z-50 animate-in fade-in zoom-in-95 duration-200"
+            className="
+              absolute top-full left-0 z-50 mt-2 opacity-100 transition-opacity
+              duration-200
+            "
             onBlur={() => setOpen(false)}
           >
-            <Dropdown className="min-w-[200px] py-2 bg-white rounded-2xl overflow-hidden shadow-lg border border-neutral-200">
+            <Dropdown className="
+              min-w-50 overflow-hidden rounded-2xl border border-neutral-200
+              bg-neutral-50 py-2 shadow-lg
+            "
+            >
               <Dropdown.Item
                 label="Профиль"
                 startIcon={User}
@@ -96,15 +110,27 @@ export const WithTrigger: Story = {
 export const ItemSizes: Story = {
   render: () => (
     <div className="flex gap-4">
-      <Dropdown className="min-w-[180px] py-2 bg-white rounded-2xl overflow-hidden shadow-lg border border-neutral-200">
+      <Dropdown className="
+        min-w-45 overflow-hidden rounded-2xl border border-neutral-200
+        bg-neutral-50 py-2 shadow-lg
+      "
+      >
         <Dropdown.Item label="Размер S" defaultSize="s" onClick={() => {}} />
         <Dropdown.Item label="Размер S" defaultSize="s" onClick={() => {}} />
       </Dropdown>
-      <Dropdown className="min-w-[200px] py-2 bg-white rounded-2xl overflow-hidden shadow-lg border border-neutral-200">
+      <Dropdown className="
+        min-w-50 overflow-hidden rounded-2xl border border-neutral-200
+        bg-neutral-50 py-2 shadow-lg
+      "
+      >
         <Dropdown.Item label="Размер M" defaultSize="m" onClick={() => {}} />
         <Dropdown.Item label="Размер M" defaultSize="m" onClick={() => {}} />
       </Dropdown>
-      <Dropdown className="min-w-[220px] py-2 bg-white rounded-2xl overflow-hidden shadow-lg border border-neutral-200">
+      <Dropdown className="
+        min-w-55 overflow-hidden rounded-2xl border border-neutral-200
+        bg-neutral-50 py-2 shadow-lg
+      "
+      >
         <Dropdown.Item label="Размер L" defaultSize="l" onClick={() => {}} />
         <Dropdown.Item label="Размер L" defaultSize="l" onClick={() => {}} />
       </Dropdown>
@@ -114,7 +140,10 @@ export const ItemSizes: Story = {
 
 export const BrandVariant: Story = {
   render: () => (
-    <Dropdown className="min-w-[200px] py-2 bg-primary-600 rounded-2xl overflow-hidden">
+    <Dropdown className="
+      min-w-50 overflow-hidden rounded-2xl bg-primary-600 py-2
+    "
+    >
       <Dropdown.Item
         label="Пункт меню"
         variant="brand"
@@ -133,7 +162,11 @@ export const BrandVariant: Story = {
 
 export const WithDisabledItem: Story = {
   render: () => (
-    <Dropdown className="min-w-[200px] py-2 bg-white rounded-2xl overflow-hidden shadow-lg border border-neutral-200">
+    <Dropdown className="
+      min-w-50 overflow-hidden rounded-2xl border border-neutral-200
+      bg-neutral-50 py-2 shadow-lg
+    "
+    >
       <Dropdown.Item
         label="Активный пункт"
         defaultSize="m"

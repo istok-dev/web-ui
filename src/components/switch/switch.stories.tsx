@@ -1,39 +1,40 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import React, { useState } from "react";
-import { Switch } from "./index";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import React, { useState } from 'react';
+
+import { Switch } from './index';
 
 const meta: Meta<typeof Switch> = {
-  title: "Components/Switch",
+  title: 'Components/Switch',
   component: Switch,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     checked: {
-      control: "boolean",
-      description: "Включён (контролируемый режим)",
+      control: 'boolean',
+      description: 'Включён (контролируемый режим)',
     },
     defaultChecked: {
-      control: "boolean",
-      description: "Включён по умолчанию (неконтролируемый режим)",
+      control: 'boolean',
+      description: 'Включён по умолчанию (неконтролируемый режим)',
     },
     onChange: {
-      action: "changed",
-      description: "Колбэк при переключении",
+      action: 'changed',
+      description: 'Колбэк при переключении',
     },
     disabled: {
-      control: "boolean",
-      description: "Заблокирован",
+      control: 'boolean',
+      description: 'Заблокирован',
     },
     size: {
-      control: "select",
-      options: ["s", "m", "l"],
-      description: "Размер",
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
+      description: 'Размер',
     },
     className: {
-      control: "text",
-      description: "Дополнительные классы",
+      control: 'text',
+      description: 'Дополнительные классы',
     },
   },
 };
@@ -54,7 +55,7 @@ export const Default: Story = {
     );
   },
   args: {
-    size: "m",
+    size: 'md',
   },
 };
 
@@ -65,37 +66,37 @@ export const Sizes: Story = {
     const [l, setL] = useState(false);
     return (
       <div className="flex items-center gap-6">
-        <Switch size="s" checked={s} onChange={setS} />
-        <Switch size="m" checked={m} onChange={setM} />
-        <Switch size="l" checked={l} onChange={setL} />
+        <Switch size="sm" checked={s} onChange={setS} />
+        <Switch size="md" checked={m} onChange={setM} />
+        <Switch size="lg" checked={l} onChange={setL} />
       </div>
     );
   },
 };
 
-/* Grid as on the design: rows = s, m, l; columns = Off, Hover (off), On, Disabled off, Disabled on */
+/* Grid as on the design: rows = sm, md, lg; columns = Off, Hover (off), On, Disabled off, Disabled on */
 export const AllStates: Story = {
   render: () => {
     const [checkedL, setCheckedL] = useState(false);
     const [checkedM, setCheckedM] = useState(false);
     const [checkedS, setCheckedS] = useState(false);
     const sizes: Array<{
-      size: "s" | "m" | "l";
+      size: 'sm' | 'md' | 'lg';
       checked: boolean;
       setChecked: (v: boolean) => void;
     }> = [
-      { size: "l", checked: checkedL, setChecked: setCheckedL },
-      { size: "m", checked: checkedM, setChecked: setCheckedM },
-      { size: "s", checked: checkedS, setChecked: setCheckedS },
+      { size: 'lg', checked: checkedL, setChecked: setCheckedL },
+      { size: 'md', checked: checkedM, setChecked: setCheckedM },
+      { size: 'sm', checked: checkedS, setChecked: setCheckedS },
     ];
     return (
       <div className="rounded-xl bg-[#282828] p-6">
         <div className="grid grid-cols-5 place-items-center gap-8">
-          <div className="text-body-s text-neutral-400">Выкл</div>
-          <div className="text-body-s text-neutral-400">Ховер</div>
-          <div className="text-body-s text-neutral-400">Вкл</div>
-          <div className="text-body-s text-neutral-400">Выкл (disabled)</div>
-          <div className="text-body-s text-neutral-400">Вкл (disabled)</div>
+          <div className="text-body-sm text-neutral-400">Выкл</div>
+          <div className="text-body-sm text-neutral-400">Ховер</div>
+          <div className="text-body-sm text-neutral-400">Вкл</div>
+          <div className="text-body-sm text-neutral-400">Выкл (disabled)</div>
+          <div className="text-body-sm text-neutral-400">Вкл (disabled)</div>
           {sizes.map(({ size, checked, setChecked }) => (
             <React.Fragment key={size}>
               <Switch size={size} checked={false} onChange={() => {}} />

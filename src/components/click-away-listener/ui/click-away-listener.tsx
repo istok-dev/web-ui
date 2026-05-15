@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from 'react';
 
-import { ClickAwayListenerProps } from "../click-away-listener.types";
+import { ClickAwayListenerProps } from '../click-away-listener.types';
 
-export const ClickAwayListener: React.FC<ClickAwayListenerProps> = props => {
+export const ClickAwayListener: React.FC<ClickAwayListenerProps> = (props) => {
   const { children, onAwayClick, disabled = false } = props;
 
   const elementRef = useRef<HTMLDivElement>(null);
@@ -20,12 +20,12 @@ export const ClickAwayListener: React.FC<ClickAwayListenerProps> = props => {
       }
     };
 
-    document.addEventListener("mousedown", handleClickAway, true);
-    document.addEventListener("touchstart", handleClickAway, true);
+    document.addEventListener('mousedown', handleClickAway, true);
+    document.addEventListener('touchstart', handleClickAway, true);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickAway, true);
-      document.removeEventListener("touchstart", handleClickAway, true);
+      document.removeEventListener('mousedown', handleClickAway, true);
+      document.removeEventListener('touchstart', handleClickAway, true);
     };
   }, [onAwayClick, disabled]);
 

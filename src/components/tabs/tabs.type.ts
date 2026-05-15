@@ -1,5 +1,5 @@
-import { LucideIcon, LucideProps } from "lucide-react";
-import { PropsWithChildren } from "react";
+import { LucideIcon, LucideProps } from 'lucide-react';
+import { PropsWithChildren } from 'react';
 
 export type TabsFC = {
   <T extends string = string>(props: TabsProps<T>): React.ReactNode;
@@ -14,8 +14,8 @@ export type TabsProps<T extends string> = PropsWithChildren<{
   onValueChange?: (value: T) => void;
 }>;
 
-export type TabItemSize = "s" | "m" | "l";
-export type TabItemVariant = "line" | "ghost" | "solid";
+export type TabItemSize = 'sm' | 'md' | 'lg';
+export type TabItemVariant = 'line' | 'ghost' | 'solid';
 
 export type TabItemProps<T extends string> = React.HTMLAttributes<HTMLButtonElement> & {
   value: T;

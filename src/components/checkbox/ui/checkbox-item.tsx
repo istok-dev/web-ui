@@ -1,10 +1,11 @@
-"use client";
+'use client';
 
-import React, { useRef, useEffect, useState } from "react";
-import { Check, Minus } from "lucide-react";
+import { Check, Minus } from 'lucide-react';
+import React, { useRef, useEffect, useState, useId } from 'react';
 
-import { cn } from "@/utils/cn";
-import { CheckboxItemFC } from "../checkbox.types";
+import { cn } from '@/utils/cn';
+
+import { CheckboxItemFC } from '../checkbox.types';
 
 export const CheckboxItem: CheckboxItemFC = ({
   label,
@@ -14,17 +15,14 @@ export const CheckboxItem: CheckboxItemFC = ({
   disabled = false,
   checked,
   indeterminate = false,
+  id: propsId,
   ...inputProps
 }) => {
+  const generatedId = useId();
+  const inputId = propsId ?? generatedId;
   const inputRef = useRef<HTMLInputElement>(null);
-  const [isChecked, setIsChecked] = useState(checked || false);
-
-  // Sync internal state with controlled prop
-  useEffect(() => {
-    if (checked !== undefined) {
-      setIsChecked(checked);
-    }
-  }, [checked]);
+  const [isChecked, setIsChecked] = useState(false);
+  const isControlled = checked !== undefined;
 
   // Sync indeterminate state with input element
   useEffect(() => {
@@ -35,29 +33,31 @@ export const CheckboxItem: CheckboxItemFC = ({
 
   // Handle input change for uncontrolled mode
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (checked === undefined) {
+    if (!isControlled) {
       setIsChecked(e.target.checked);
     }
     inputProps.onChange?.(e);
   };
 
   // Determine if checkbox is checked (controlled or uncontrolled)
-  const checkboxChecked = checked !== undefined ? checked : isChecked;
+  const checkboxChecked = isControlled ? Boolean(checked) : isChecked;
   const isIndeterminate = indeterminate;
 
   return (
-    <div
+    <label
+      htmlFor={inputId}
       className={cn(
-        "istok-checkbox__item p-1 flex items-start group",
-        "gap-[var(--istok-checkbox-gap)]",
-        disabled && "opacity-50 cursor-not-allowed",
-        !disabled && "cursor-pointer",
-        className
+        'istok-checkbox__item group flex items-start p-1',
+        'gap-(--istok-checkbox-gap)',
+        disabled && 'cursor-not-allowed opacity-50',
+        !disabled && 'cursor-pointer',
+        className,
       )}
     >
       <div className="relative flex items-center justify-center">
         <input
           ref={inputRef}
+          id={inputId}
           type="checkbox"
           checked={checked}
           disabled={disabled}
@@ -67,56 +67,72 @@ export const CheckboxItem: CheckboxItemFC = ({
         />
         <div
           className={cn(
-            "istok-checkbox__input shrink-0 flex items-center justify-center transition-all",
-            "border border-neutral-300 bg-transparent",
-            "size-[var(--istok-checkbox-input-size)] rounded-[var(--istok-checkbox-input-radius)]",
+            `
+              istok-checkbox__input flex shrink-0 items-center justify-center
+              transition-all
+            `,
+            'border border-neutral-300 bg-transparent',
+            `
+              size-(--istok-checkbox-input-size)
+              rounded-(--istok-checkbox-input-radius)
+            `,
             !disabled && [
-              checkboxChecked &&
-                !isIndeterminate &&
-                "border-none bg-primary-600",
-              !checkboxChecked &&
-                !isIndeterminate &&
-                "border-neutral-300 group-hover:border-primary-600",
-              isIndeterminate && "border-primary-600 bg-primary-600",
-              "cursor-pointer",
+              checkboxChecked
+              && !isIndeterminate
+              && 'border-none bg-primary-600',
+              !checkboxChecked
+              && !isIndeterminate
+              && `
+                border-neutral-300
+                group-hover:border-primary-600
+              `,
+              isIndeterminate && 'border-primary-600 bg-primary-600',
+              'cursor-pointer',
             ],
             disabled && [
-              "cursor-not-allowed",
+              'cursor-not-allowed',
               checkboxChecked || isIndeterminate
-                ? "border-neutral-400 bg-transparent"
-                : "border-neutral-300 bg-transparent",
-            ]
+                ? 'border-neutral-400 bg-transparent'
+                : 'border-neutral-300 bg-transparent',
+            ],
           )}
         >
-          {isIndeterminate ? (
-            <Minus
-              className={cn(
-                "istok-checkbox__icon transition-all",
-                "size-[var(--istok-checkbox-icon-size)]",
-                "opacity-100 scale-100",
-                disabled ? "text-[#4F4F4F]" : "text-white"
-              )}
-            />
-          ) : (
-            <Check
-              className={cn(
-                "istok-checkbox__icon transition-all",
-                "size-[var(--istok-checkbox-icon-size)]",
-                checkboxChecked ? "opacity-100 scale-100" : "opacity-0 scale-0",
-                disabled ? "text-[#4F4F4F]" : "text-white"
-              )}
-            />
-          )}
+          {isIndeterminate
+            ? (
+              <Minus
+                className={cn(
+                  'istok-checkbox__icon transition-all',
+                  'size-(--istok-checkbox-icon-size)',
+                  'scale-100 opacity-100',
+                  disabled ? 'text-neutral-400' : 'text-neutral-50',
+                )}
+              />
+            )
+            : (
+              <Check
+                className={cn(
+                  'istok-checkbox__icon transition-all',
+                  'size-(--istok-checkbox-icon-size)',
+                  checkboxChecked
+                    ? 'scale-100 opacity-100'
+                    : `scale-0 opacity-0`,
+                  disabled ? 'text-neutral-400' : 'text-neutral-50',
+                )}
+              />
+            )}
         </div>
       </div>
       {(label || description) && (
-        <div className="flex-1 min-w-0">
+        <div className="min-w-0 flex-1">
           {label && (
             <span
               className={cn(
-                "istok-checkbox__item-label font-medium text-neutral-900 block",
-                "text-(length:--istok-checkbox-label-font-size) leading-[var(--istok-checkbox-label-line-height)]",
-                classes?.label
+                'istok-checkbox__item-label block font-medium text-neutral-900',
+                `
+                  text-(length:--istok-checkbox-label-font-size)
+                  leading-(--istok-checkbox-label-line-height)
+                `,
+                classes?.label,
               )}
             >
               {label}
@@ -125,9 +141,12 @@ export const CheckboxItem: CheckboxItemFC = ({
           {description && (
             <p
               className={cn(
-                "istok-checkbox__item-description text-neutral-500 mt-0.5 block",
-                "text-(length:--istok-checkbox-description-font-size) leading-[var(--istok-checkbox-description-line-height)]",
-                classes?.description
+                'istok-checkbox__item-description mt-0.5 block text-neutral-500',
+                `
+                  text-(length:--istok-checkbox-description-font-size)
+                  leading-(--istok-checkbox-description-line-height)
+                `,
+                classes?.description,
               )}
             >
               {description}
@@ -135,6 +154,6 @@ export const CheckboxItem: CheckboxItemFC = ({
           )}
         </div>
       )}
-    </div>
+    </label>
   );
 };

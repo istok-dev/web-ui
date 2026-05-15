@@ -1,6 +1,6 @@
-export { NumberInput } from "./ui/number-input";
+export { NumberInput } from './ui/number-input';
 export type {
   NumberInputProps,
   NumberInputSize,
   NumberInputVariant,
-} from "./number-input.types";
+} from './number-input.types';

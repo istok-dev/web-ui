@@ -1,45 +1,47 @@
-import { cn } from "@/utils/cn";
+import { cn } from '@/utils/cn';
 
-import { TabItemSize, TabItemVariant, TabsFC, TabsProps } from "../tabs.type";
-import { TabItem } from "./tab-item";
-import { TabsContext } from "./tabs-context";
+import { TabItemSize, TabItemVariant, TabsFC, TabsProps } from '../tabs.type';
+import { TabItem } from './tab-item';
+import { TabsContext, type TabsContextValue } from './tabs-context';
 
 const sizeClassesMap: Record<TabItemSize, string> = {
-  s: "istok-tabs--s",
-  m: "istok-tabs--m",
-  l: "istok-tabs--l",
+  sm: 'istok-tabs--sm',
+  md: 'istok-tabs--md',
+  lg: 'istok-tabs--lg',
 };
 
 const variantClassesMap: Record<TabItemVariant, string> = {
-  line: "istok-tabs--line",
-  ghost: "istok-tabs--ghost",
-  solid: "istok-tabs--solid",
+  line: 'istok-tabs--line',
+  ghost: 'istok-tabs--ghost',
+  solid: 'istok-tabs--solid',
 };
 
 function TabsComponent<T extends string>(props: TabsProps<T>) {
   const {
     children,
     className,
-    size = "m",
-    variant = "line",
+    size = 'md',
+    variant = 'line',
     value,
     onValueChange,
   } = props;
 
   return (
-    <TabsContext.Provider value={{ value, onValueChange }}>
+    <TabsContext
+      value={{ value, onValueChange } as TabsContextValue<string>}
+    >
       <div
         className={cn(
-          "istok-tabs",
-          "flex items-center rounded-[var(--istok-tabs-radius)]",
+          'istok-tabs',
+          'flex items-center rounded-(--istok-tabs-radius)',
           sizeClassesMap[size],
           variantClassesMap[variant],
-          className
+          className,
         )}
       >
         {children}
       </div>
-    </TabsContext.Provider>
+    </TabsContext>
   );
 }
 

@@ -1,39 +1,39 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Info, Settings } from "lucide-react";
-import { useState } from "react";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Info, Settings } from 'lucide-react';
+import { useState } from 'react';
 
-import { Accordion } from "./ui/accordion";
+import { Accordion } from './ui/accordion';
 
 const meta: Meta<typeof Accordion> = {
-  title: "Components/Accordion",
+  title: 'Components/Accordion',
   component: Accordion,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   decorators: [
-    (Story) => (
+    Story => (
       <div className="w-full max-w-md">
         <Story />
       </div>
     ),
   ],
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     defaultValue: {
-      control: "object",
-      description: "Начальные открытые value (строка или массив)",
+      control: 'object',
+      description: 'Начальные открытые value (строка или массив)',
     },
     value: {
       control: false,
-      description: "Контролируемое значение",
+      description: 'Контролируемое значение',
     },
     onValueChange: {
-      action: "onValueChange",
-      description: "Колбэк при смене открытого пункта",
+      action: 'onValueChange',
+      description: 'Колбэк при смене открытого пункта',
     },
     multiple: {
-      control: "boolean",
-      description: "Несколько открытых пунктов",
+      control: 'boolean',
+      description: 'Несколько открытых пунктов',
     },
   },
 };
@@ -99,7 +99,7 @@ export const MultipleItems: Story = {
 
 export const MultipleOpen: Story = {
   render: () => (
-    <Accordion defaultValue={["item1", "item3"]} multiple>
+    <Accordion defaultValue={['item1', 'item3']} multiple>
       <Accordion.Item value="item1" title="Первый">
         Можно открыть несколько пунктов одновременно.
       </Accordion.Item>
@@ -115,12 +115,12 @@ export const MultipleOpen: Story = {
 
 export const Controlled: Story = {
   render: () => {
-    const [value, setValue] = useState<string | undefined>("item1");
+    const [value, setValue] = useState<string | undefined>('item1');
 
     return (
       <Accordion
         value={value}
-        onValueChange={(v) => setValue(v as string | undefined)}
+        onValueChange={v => setValue(v as string | undefined)}
       >
         <Accordion.Item value="item1" title="Контролируемый пункт 1">
           Открытие/закрытие управляется внешним стейтом.

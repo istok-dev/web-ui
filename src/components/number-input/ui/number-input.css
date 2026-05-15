@@ -11,7 +11,7 @@
     }
 
     &:has(.istok-number-input__input--outline) {
-      @apply border border-neutral-300 bg-white;
+      @apply border border-neutral-300 bg-neutral-50;
     }
   }
 
@@ -63,11 +63,11 @@
 
   &.istok-number-input--invalid {
     .istok-number-input__group {
-      @apply border-red-500;
+      @apply border-negative-500;
     }
 
     .istok-number-input__spinners {
-      @apply border-l-red-500;
+      @apply border-l-negative-500;
     }
   }
 
@@ -82,11 +82,11 @@
   /* Sizes */
   &.istok-number-input--s {
     .istok-number-input__group {
-      @apply rounded-l-xl rounded-r-m;
+      @apply rounded-l-xl rounded-r-md;
     }
 
     .istok-number-input__input {
-      @apply h-8 pr-1 pl-2 text-control-s;
+      @apply h-8 pr-1 pl-2 text-control-sm;
     }
 
     .istok-number-input__spinners {
@@ -109,11 +109,11 @@
 
   &.istok-number-input--m {
     .istok-number-input__group {
-      @apply rounded-l-xl rounded-r-l;
+      @apply rounded-l-xl rounded-r-lg;
     }
 
     .istok-number-input__input {
-      @apply h-10 pr-2 pl-3 text-control-m;
+      @apply h-10 pr-2 pl-3 text-control-md;
     }
 
     .istok-number-input__spinners {
@@ -136,11 +136,11 @@
 
   &.istok-number-input--l {
     .istok-number-input__group {
-      @apply rounded-l-2xl rounded-r-l;
+      @apply rounded-l-2xl rounded-r-lg;
     }
 
     .istok-number-input__input {
-      @apply h-12 pr-2 pl-4 text-control-l;
+      @apply h-12 pr-2 pl-4 text-control-lg;
     }
 
     .istok-number-input__spinners {

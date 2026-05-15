@@ -1,37 +1,37 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Avatar } from "./index";
-import type { AvatarShape, AvatarSize } from "./avatar.types";
+import type { AvatarShape, AvatarSize } from './avatar.types';
+import { Avatar } from './index';
 
 const meta: Meta<typeof Avatar> = {
-  title: "Components/Avatar",
+  title: 'Components/Avatar',
   component: Avatar,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     name: {
-      control: "text",
-      description: "Имя для инициалов (без изображения)",
+      control: 'text',
+      description: 'Имя для инициалов (без изображения)',
     },
     src: {
-      control: "text",
-      description: "URL изображения",
+      control: 'text',
+      description: 'URL изображения',
     },
     alt: {
-      control: "text",
-      description: "Альтернативный текст для изображения",
+      control: 'text',
+      description: 'Альтернативный текст для изображения',
     },
     defaultSize: {
-      control: "select",
-      options: ["s", "m", "l"] as AvatarSize[],
-      description: "Размер аватара",
+      control: 'select',
+      options: ['s', 'm', 'l'] as AvatarSize[],
+      description: 'Размер аватара',
     },
     shape: {
-      control: "select",
-      options: ["circle", "square"] as AvatarShape[],
-      description: "Форма аватара",
+      control: 'select',
+      options: ['circle', 'square'] as AvatarShape[],
+      description: 'Форма аватара',
     },
   },
 };
@@ -42,18 +42,18 @@ type Story = StoryObj<typeof Avatar>;
 
 export const Default: Story = {
   args: {
-    name: "Иван Иванов",
-    defaultSize: "m",
-    shape: "circle",
+    name: 'Иван Иванов',
+    defaultSize: 'm',
+    shape: 'circle',
   },
 };
 
 export const WithImage: Story = {
   args: {
-    src: "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix",
-    alt: "Avatar",
-    defaultSize: "m",
-    shape: "circle",
+    src: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Felix',
+    alt: 'Avatar',
+    defaultSize: 'm',
+    shape: 'circle',
   },
 };
 

@@ -1,10 +1,10 @@
-export type NumberInputSize = "s" | "m" | "l";
+export type NumberInputSize = 's' | 'm' | 'l';
 
-export type NumberInputVariant = "neutral" | "solid" | "outline";
+export type NumberInputVariant = 'neutral' | 'solid' | 'outline';
 
-export type Classes = "root" | "group" | "input";
+export type Classes = 'root' | 'group' | 'input';
 
-export interface NumberInputProps {
+export type NumberInputProps = {
   value?: number | null;
   onValueChange?: (value: number | null) => void;
   defaultValue?: number;
@@ -20,7 +20,7 @@ export interface NumberInputProps {
   required?: boolean;
   min?: number;
   max?: number;
-  step?: number | "any";
+  step?: number | 'any';
   smallStep?: number;
   largeStep?: number;
   placeholder?: string;
@@ -33,4 +33,4 @@ export interface NumberInputProps {
   inputRef?: React.Ref<HTMLInputElement>;
   onValueCommitted?: (value: number | null) => void;
   classes?: Record<Classes, string>;
-}
+};

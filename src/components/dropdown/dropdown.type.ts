@@ -1,5 +1,5 @@
-import { LucideIcon, LucideProps } from "lucide-react";
-import { PropsWithChildren } from "react";
+import { LucideIcon, LucideProps } from 'lucide-react';
+import { PropsWithChildren } from 'react';
 
 export type DropdownFC = {
   (props: DropdownProps): React.ReactNode;
@@ -10,9 +10,9 @@ export type DropdownProps = PropsWithChildren<{
   className?: string;
 }>;
 
-export type DropdownItemSize = "s" | "m" | "l";
-export type DropdownItemVariant = "brand";
-export type DropdownItemClasses = "label";
+export type DropdownItemSize = 's' | 'm' | 'l';
+export type DropdownItemVariant = 'brand';
+export type DropdownItemClasses = 'label';
 
 export type DropdownItemProps = React.HTMLAttributes<HTMLButtonElement> & {
   label: string;

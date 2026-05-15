@@ -1,30 +1,29 @@
-import { LucideIcon } from "lucide-react";
-import { ButtonProps as BaseButtonProps } from "@base-ui/react/button";
+import { ButtonProps as BaseButtonProps } from '@base-ui/react/button';
+import { LucideIcon } from 'lucide-react';
 
-export type ButtonVariant =
-  | "primary"
-  | "secondary"
-  | "clear"
-  | "text"
-  | "opacity"
-  | "clear-inverse"
-  | "outline";
+export type ButtonVariant
+  = | 'primary'
+    | 'secondary'
+    | 'clear'
+    | 'text'
+    | 'opacity'
+    | 'clear-inverse'
+    | 'outline';
 
-export type ButtonColor =
-  | "primary"
-  | "neutral"
-  | "negative"
-  | "warning"
-  | "info"
-  | "success"
-  | "accent";
+export type ButtonColor
+  = | 'primary'
+    | 'neutral'
+    | 'negative'
+    | 'warning'
+    | 'info'
+    | 'success'
+    | 'accent';
 
-export type ButtonSize = "sm" | "md" | "lg" | "xl";
+export type ButtonSize = 'sm' | 'md' | 'lg' | 'xl';
 
-export type Classes = "root" | "icon";
+export type Classes = 'root' | 'icon';
 
-export interface ButtonProps
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
+export type ButtonProps = {
   children?: React.ReactNode;
   startIcon?: LucideIcon;
   variant?: ButtonVariant;
@@ -32,6 +31,6 @@ export interface ButtonProps
   loading?: boolean;
   size?: ButtonSize;
   rounded?: boolean;
-  render?: BaseButtonProps["render"];
+  render?: BaseButtonProps['render'];
   classes?: Record<Classes, string>;
-}
+} & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'>;

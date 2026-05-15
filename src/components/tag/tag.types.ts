@@ -1,15 +1,15 @@
-import { MouseEvent } from "react";
-import { LucideIcon, LucideProps } from "lucide-react";
+import { LucideIcon, LucideProps } from 'lucide-react';
+import { MouseEvent } from 'react';
 
-export type TagSize = "s" | "m" | "l";
-export type TagVariant =
-  | "solid-brand"
-  | "solid-neutral"
-  | "solid-black"
-  | "ghost-brand"
-  | "ghost-neutral";
+export type TagSize = 's' | 'm' | 'l';
+export type TagVariant
+  = | 'solid-brand'
+    | 'solid-neutral'
+    | 'solid-black'
+    | 'ghost-brand'
+    | 'ghost-neutral';
 
-export interface TagProps {
+export type TagProps = {
   children: React.ReactNode;
   startIcon?: LucideIcon;
   startIconProps?: LucideProps;
@@ -18,4 +18,4 @@ export interface TagProps {
   className?: string;
   defaultSize?: TagSize;
   variant?: TagVariant;
-}
+};

@@ -1,48 +1,49 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import React, { useState } from "react";
-import { NumberInput } from "./index";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import React, { useState } from 'react';
+
+import { NumberInput } from './index';
 
 const meta: Meta<typeof NumberInput> = {
-  title: "Components/NumberInput",
+  title: 'Components/NumberInput',
   component: NumberInput,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     value: {
-      control: "number",
-      description: "Значение (controlled)",
+      control: 'number',
+      description: 'Значение (controlled)',
     },
     onValueChange: {
       control: false,
-      description: "Колбэк при изменении значения",
+      description: 'Колбэк при изменении значения',
     },
     suffix: {
-      control: "text",
-      description: "Суффикс (например, единица измерения)",
+      control: 'text',
+      description: 'Суффикс (например, единица измерения)',
     },
     defaultSize: {
-      control: "select",
-      options: ["s", "m", "l"],
-      description: "Размер",
+      control: 'select',
+      options: ['s', 'm', 'l'],
+      description: 'Размер',
     },
     variant: {
-      control: "select",
-      options: ["neutral", "solid", "outline"],
-      description: "Вариант стиля",
+      control: 'select',
+      options: ['neutral', 'solid', 'outline'],
+      description: 'Вариант стиля',
     },
     invalid: {
-      control: "boolean",
-      description: "Состояние ошибки",
+      control: 'boolean',
+      description: 'Состояние ошибки',
     },
     disabled: {
-      control: "boolean",
-      description: "Заблокированное состояние",
+      control: 'boolean',
+      description: 'Заблокированное состояние',
     },
-    min: { control: "number" },
-    max: { control: "number" },
-    step: { control: "number" },
+    min: { control: 'number' },
+    max: { control: 'number' },
+    step: { control: 'number' },
   },
 };
 
@@ -61,8 +62,8 @@ export const Default: Story = {
     );
   },
   args: {
-    defaultSize: "m",
-    variant: "neutral",
+    defaultSize: 'm',
+    variant: 'neutral',
   },
 };
 
@@ -82,9 +83,9 @@ export const WithSuffix: Story = {
     );
   },
   args: {
-    defaultSize: "m",
-    variant: "neutral",
-    suffix: "P",
+    defaultSize: 'm',
+    variant: 'neutral',
+    suffix: 'P',
   },
 };
 
@@ -95,7 +96,7 @@ export const Sizes: Story = {
     const [v3, setV3] = useState<number | null>(100);
 
     return (
-      <div className="w-64 flex flex-col gap-4">
+      <div className="flex w-64 flex-col gap-4">
         <NumberInput
           value={v1}
           onValueChange={setV1}
@@ -126,9 +127,9 @@ export const Variants: Story = {
     const [v3, setV3] = useState<number | null>(100);
 
     return (
-      <div className="w-64 flex flex-col gap-4">
+      <div className="flex w-64 flex-col gap-4">
         <div>
-          <label className="text-sm text-neutral-600 mb-1 block">Neutral</label>
+          <label className="mb-1 block text-body-sm text-neutral-600">Neutral</label>
           <NumberInput
             value={v1}
             onValueChange={setV1}
@@ -137,7 +138,7 @@ export const Variants: Story = {
           />
         </div>
         <div>
-          <label className="text-sm text-neutral-600 mb-1 block">Solid</label>
+          <label className="mb-1 block text-body-sm text-neutral-600">Solid</label>
           <NumberInput
             value={v2}
             onValueChange={setV2}
@@ -146,7 +147,7 @@ export const Variants: Story = {
           />
         </div>
         <div>
-          <label className="text-sm text-neutral-600 mb-1 block">Outline</label>
+          <label className="mb-1 block text-body-sm text-neutral-600">Outline</label>
           <NumberInput
             value={v3}
             onValueChange={setV3}
@@ -164,7 +165,7 @@ export const Disabled: Story = {
     const [value, setValue] = useState<number | null>(100);
 
     return (
-      <div className="w-64 flex flex-col gap-4">
+      <div className="flex w-64 flex-col gap-4">
         <NumberInput
           value={value}
           onValueChange={setValue}

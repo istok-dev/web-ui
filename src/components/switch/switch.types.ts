@@ -1,13 +1,12 @@
-export type SwitchSize = "s" | "m" | "l";
+export type SwitchSize = 'sm' | 'md' | 'lg';
 
-export interface SwitchProps
-  extends Omit<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    "onChange" | "size" | "type"
-  > {
+export type SwitchProps = {
   checked?: boolean;
   defaultChecked?: boolean;
   onChange?: (checked: boolean) => void;
   size?: SwitchSize;
   className?: string;
-}
+} & Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+    'onChange' | 'size' | 'type'
+>;

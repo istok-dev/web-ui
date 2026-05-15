@@ -1,4 +1,6 @@
 @theme {
+  --color-*: initial;
+
   --color-primary-50: #eff6ff;
   --color-primary-100: #dbeafe;
   --color-primary-200: #b8e6fe;
@@ -86,9 +88,9 @@
   --radius-*: initial;
   --radius-none: 0;
   --radius-xs: 2px;
-  --radius-s: 4px;
-  --radius-m: 6px;
-  --radius-l: 8px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
   --radius-xl: 12px;
   --radius-2xl: 16px;
   --radius-3xl: 20px;
@@ -118,62 +120,62 @@
   --breakpoint-desktop-fhd: 1920px;
 
   --text-*: initial;
-  --text-display-l: 57px;
-  --text-display-l--line-height: 64px;
-  --text-display-l--letter-spacing: -0.25px;
-  --text-display-m: 45px;
-  --text-display-m--line-height: 52px;
-  --text-display-m--letter-spacing: -0.25px;
-  --text-display-s: 36px;
-  --text-display-s--line-height: 44px;
-  --text-display-s--letter-spacing: -0.25px;
-  --text-headline-l: 32px;
-  --text-headline-l--line-height: 40px;
-  --text-headline-l--letter-spacing: -0.25px;
-  --text-headline-m: 28px;
-  --text-headline-m--line-height: 36px;
-  --text-headline-m--letter-spacing: -0.25px;
-  --text-headline-s: 24px;
-  --text-headline-s--line-height: 32px;
-  --text-headline-s--letter-spacing: -0.25px;
-  --text-title-l: 22px;
-  --text-title-l--line-height: 28px;
-  --text-title-l--letter-spacing: -0.25px;
-  --text-title-m: 16px;
-  --text-title-m--line-height: 24px;
-  --text-title-m--letter-spacing: -0.25px;
-  --text-title-s: 14px;
-  --text-title-s--line-height: 20px;
-  --text-title-s--letter-spacing: -0.25px;
-  --text-control-l: 16px;
-  --text-control-l--line-height: 24px;
-  --text-control-l--letter-spacing: -0.25px;
-  --text-control-m: 14px;
-  --text-control-m--line-height: 20px;
-  --text-control-m--letter-spacing: -0.25px;
-  --text-control-s: 12px;
-  --text-control-s--line-height: 16px;
-  --text-control-s--letter-spacing: -0.15px;
+  --text-display-lg: 57px;
+  --text-display-lg--line-height: 64px;
+  --text-display-lg--letter-spacing: -0.25px;
+  --text-display-md: 45px;
+  --text-display-md--line-height: 52px;
+  --text-display-md--letter-spacing: -0.25px;
+  --text-display-sm: 36px;
+  --text-display-sm--line-height: 44px;
+  --text-display-sm--letter-spacing: -0.25px;
+  --text-headline-lg: 32px;
+  --text-headline-lg--line-height: 40px;
+  --text-headline-lg--letter-spacing: -0.25px;
+  --text-headline-md: 28px;
+  --text-headline-md--line-height: 36px;
+  --text-headline-md--letter-spacing: -0.25px;
+  --text-headline-sm: 24px;
+  --text-headline-sm--line-height: 32px;
+  --text-headline-sm--letter-spacing: -0.25px;
+  --text-title-lg: 22px;
+  --text-title-lg--line-height: 28px;
+  --text-title-lg--letter-spacing: -0.25px;
+  --text-title-md: 16px;
+  --text-title-md--line-height: 24px;
+  --text-title-md--letter-spacing: -0.25px;
+  --text-title-sm: 14px;
+  --text-title-sm--line-height: 20px;
+  --text-title-sm--letter-spacing: -0.25px;
+  --text-control-lg: 16px;
+  --text-control-lg--line-height: 24px;
+  --text-control-lg--letter-spacing: -0.25px;
+  --text-control-md: 14px;
+  --text-control-md--line-height: 20px;
+  --text-control-md--letter-spacing: -0.25px;
+  --text-control-sm: 12px;
+  --text-control-sm--line-height: 16px;
+  --text-control-sm--letter-spacing: -0.15px;
   --text-control-xs: 10px;
   --text-control-xs--line-height: 12px;
   --text-control-xs--letter-spacing: -0.15px;
-  --text-body-l: 16px;
-  --text-body-l--line-height: 24px;
-  --text-body-l--letter-spacing: -0.25px;
-  --text-body-m: 14px;
-  --text-body-m--line-height: 20px;
-  --text-body-m--letter-spacing: -0.25px;
-  --text-body-s: 12px;
-  --text-body-s--line-height: 16px;
-  --text-body-s--letter-spacing: -0.15px;
+  --text-body-lg: 16px;
+  --text-body-lg--line-height: 24px;
+  --text-body-lg--letter-spacing: -0.25px;
+  --text-body-md: 14px;
+  --text-body-md--line-height: 20px;
+  --text-body-md--letter-spacing: -0.25px;
+  --text-body-sm: 12px;
+  --text-body-sm--line-height: 16px;
+  --text-body-sm--letter-spacing: -0.15px;
   --text-body-xs: 10px;
   --text-body-xs--line-height: 12px;
   --text-body-xs--letter-spacing: -0.15px;
 
   --shadow-*: initial;
-  --shadow-s: 0 2px 8px 0 rgba(30, 30, 28, 0.24);
-  --shadow-m: 0 4px 16px 0 rgba(30, 30, 28, 0.24);
-  --shadow-l: 0 6px 24px 0 rgba(30, 30, 28, 0.24);
+  --shadow-sm: 0 2px 8px 0 rgba(30, 30, 28, 0.24);
+  --shadow-md: 0 4px 16px 0 rgba(30, 30, 28, 0.24);
+  --shadow-lg: 0 6px 24px 0 rgba(30, 30, 28, 0.24);
   --shadow-xl: 0 8px 32px 0 rgba(30, 30, 28, 0.24);
 
   --scrollbar-width: thin;
@@ -225,39 +227,30 @@
   --scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);
 }
 
-* {
+@utility scrollbar {
   scrollbar-width: var(--scrollbar-width);
   scrollbar-color: var(--scrollbar-color);
 }
 
 /* WebKit (Chrome, Safari, Edge) */
-*::-webkit-scrollbar {
+.scrollbar::-webkit-scrollbar {
   width: 4px;
   height: 4px;
 }
 
-*::-webkit-scrollbar-track {
+.scrollbar::-webkit-scrollbar-track {
   background: var(--scrollbar-color-track);
 }
 
-*::-webkit-scrollbar-thumb {
+.scrollbar::-webkit-scrollbar-thumb {
   background: var(--scrollbar-color-thumb);
   border-radius: var(--scrollbar-radius);
 }
 
-*::-webkit-scrollbar-thumb:hover {
+.scrollbar::-webkit-scrollbar-thumb:hover {
   background: var(--color-neutral-400);
 }
 
-[data-theme="dark"] *::-webkit-scrollbar-thumb:hover {
+[data-theme="dark"] .scrollbar::-webkit-scrollbar-thumb:hover {
   background: var(--color-neutral-500);
-}
-
-@utility scrollbar-hidden {
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  scrollbar-width: none; /* Firefox */
-}
-
-.scrollbar-hidden::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
 }

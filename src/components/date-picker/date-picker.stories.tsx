@@ -1,46 +1,47 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import React, { useState } from "react";
-import { Calendar } from "lucide-react";
-import { DatePicker } from "./index";
-import type { DatePickerValue } from "./index";
-import { Button } from "../button/ui/button";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Calendar } from 'lucide-react';
+import React, { useState } from 'react';
+
+import { DatePicker } from './index';
+import type { DatePickerValue } from './index';
+import { Button } from '../button/ui/button';
 
 const meta: Meta<typeof DatePicker> = {
-  title: "Components/DatePicker",
+  title: 'Components/DatePicker',
   component: DatePicker,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     value: {
       control: false,
-      description: "Выбранный диапазон дат",
+      description: 'Выбранный диапазон дат',
     },
     onChange: {
       control: false,
-      description: "Колбэк при изменении диапазона",
+      description: 'Колбэк при изменении диапазона',
     },
     defaultRange: {
       control: false,
-      description: "Диапазон по умолчанию",
+      description: 'Диапазон по умолчанию',
     },
     mode: {
-      control: "select",
-      options: ["single", "range"],
-      description: "Режим выбора: 'single' - одна дата, 'range' - диапазон дат",
+      control: 'select',
+      options: ['single', 'range'],
+      description: 'Режим выбора: \'single\' - одна дата, \'range\' - диапазон дат',
     },
     disabled: {
       control: false,
-      description: "Заблокированные даты",
+      description: 'Заблокированные даты',
     },
     open: {
-      control: "boolean",
-      description: "Управление открытием (контролируемый режим)",
+      control: 'boolean',
+      description: 'Управление открытием (контролируемый режим)',
     },
     onOpenChange: {
       control: false,
-      description: "Колбэк при открытии/закрытии",
+      description: 'Колбэк при открытии/закрытии',
     },
   },
 };
@@ -50,13 +51,13 @@ export default meta;
 type Story = StoryObj<typeof DatePicker>;
 
 const formatDateRange = (range: DatePickerValue): string => {
-  if (!range?.from) return "Выберите даты";
+  if (!range?.from) return 'Выберите даты';
   if (!range.to) {
-    return range.from.toLocaleDateString("ru-RU");
+    return range.from.toLocaleDateString('ru-RU');
   }
   return `${range.from.toLocaleDateString(
-    "ru-RU"
-  )} - ${range.to.toLocaleDateString("ru-RU")}`;
+    'ru-RU',
+  )} - ${range.to.toLocaleDateString('ru-RU')}`;
 };
 
 export const Default: Story = {
@@ -75,7 +76,11 @@ export const Default: Story = {
           onChange={setValue}
           defaultRange={defaultRange}
         >
-          <button className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50">
+          <button className="
+            rounded-md border border-neutral-300 px-4 py-2
+            hover:bg-neutral-50
+          "
+          >
             {formatDateRange(value)}
           </button>
         </DatePicker>
@@ -93,10 +98,10 @@ export const Default: Story = {
 
 export const WithInitialValue: Story = {
   render: (args) => {
-    const [value, setValue] = useState<DatePickerValue>({
+    const [value, setValue] = useState<DatePickerValue>(() => ({
       from: new Date(2024, 2, 15),
       to: new Date(2024, 2, 20),
-    });
+    }));
     const defaultRange = {
       from: new Date(2024, 0, 1),
       to: new Date(2024, 0, 7),
@@ -110,7 +115,11 @@ export const WithInitialValue: Story = {
           onChange={setValue}
           defaultRange={defaultRange}
         >
-          <button className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50">
+          <button className="
+            rounded-md border border-neutral-300 px-4 py-2
+            hover:bg-neutral-50
+          "
+          >
             {formatDateRange(value)}
           </button>
         </DatePicker>
@@ -169,7 +178,7 @@ export const Controlled: Story = {
     };
 
     return (
-      <div className="p-20 flex flex-col gap-4 items-center">
+      <div className="flex flex-col items-center gap-4 p-20">
         <DatePicker
           value={value}
           onChange={setValue}
@@ -177,7 +186,11 @@ export const Controlled: Story = {
           open={open}
           onOpenChange={setOpen}
         >
-          <button className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50">
+          <button className="
+            rounded-md border border-neutral-300 px-4 py-2
+            hover:bg-neutral-50
+          "
+          >
             {formatDateRange(value)}
           </button>
         </DatePicker>
@@ -185,12 +198,16 @@ export const Controlled: Story = {
           <Button onClick={() => setOpen(true)}>Открыть</Button>
           <Button onClick={() => setOpen(false)}>Закрыть</Button>
         </div>
-        <p className="text-sm text-gray-600">
-          DatePicker {open ? "открыт" : "закрыт"}
+        <p className="text-body-sm text-neutral-600">
+          DatePicker
+          {' '}
+          {open ? 'открыт' : 'закрыт'}
         </p>
         {value && (
-          <p className="text-sm text-gray-600">
-            Выбрано: {formatDateRange(value)}
+          <p className="text-body-sm text-neutral-600">
+            Выбрано:
+            {' '}
+            {formatDateRange(value)}
           </p>
         )}
       </div>
@@ -222,11 +239,15 @@ export const WithDisabledDates: Story = {
           defaultRange={defaultRange}
           disabled={disabled}
         >
-          <button className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50">
+          <button className="
+            rounded-md border border-neutral-300 px-4 py-2
+            hover:bg-neutral-50
+          "
+          >
             {formatDateRange(value)}
           </button>
         </DatePicker>
-        <p className="mt-4 text-sm text-gray-600">Выходные дни заблокированы</p>
+        <p className="mt-4 text-body-sm text-neutral-600">Выходные дни заблокированы</p>
       </div>
     );
   },
@@ -264,11 +285,15 @@ export const WithDisabledDateRange: Story = {
           defaultRange={defaultRange}
           disabled={disabled}
         >
-          <button className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50">
+          <button className="
+            rounded-md border border-neutral-300 px-4 py-2
+            hover:bg-neutral-50
+          "
+          >
             {formatDateRange(value)}
           </button>
         </DatePicker>
-        <p className="mt-4 text-sm text-gray-600">Прошлые даты заблокированы</p>
+        <p className="mt-4 text-body-sm text-neutral-600">Прошлые даты заблокированы</p>
       </div>
     );
   },
@@ -288,11 +313,15 @@ export const SingleDateSelection: Story = {
     return (
       <div className="p-20">
         <DatePicker {...args} mode="single" value={value} onChange={setValue}>
-          <button className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50">
-            {value ? value.toLocaleDateString("ru-RU") : "Выберите дату"}
+          <button className="
+            rounded-md border border-neutral-300 px-4 py-2
+            hover:bg-neutral-50
+          "
+          >
+            {value ? value.toLocaleDateString('ru-RU') : 'Выберите дату'}
           </button>
         </DatePicker>
-        <p className="mt-4 text-sm text-gray-600">
+        <p className="mt-4 text-body-sm text-neutral-600">
           Режим выбора одной даты (mode="single")
         </p>
       </div>
@@ -310,9 +339,9 @@ export const ComplexExample: Story = {
     };
 
     return (
-      <div className="p-20 flex flex-col gap-8 items-center">
-        <div className="flex flex-col gap-4 items-center">
-          <h3 className="text-lg font-semibold">Выбор периода начала</h3>
+      <div className="flex flex-col items-center gap-8 p-20">
+        <div className="flex flex-col items-center gap-4">
+          <h3 className="text-body-lg font-semibold">Выбор периода начала</h3>
           <DatePicker
             value={value1}
             onChange={setValue1}
@@ -324,8 +353,8 @@ export const ComplexExample: Story = {
           </DatePicker>
         </div>
 
-        <div className="flex flex-col gap-4 items-center">
-          <h3 className="text-lg font-semibold">Выбор периода окончания</h3>
+        <div className="flex flex-col items-center gap-4">
+          <h3 className="text-body-lg font-semibold">Выбор периода окончания</h3>
           <DatePicker
             value={value2}
             onChange={setValue2}
@@ -338,13 +367,19 @@ export const ComplexExample: Story = {
         </div>
 
         {(value1 || value2) && (
-          <div className="mt-4 p-4 bg-gray-100 rounded-md">
-            <p className="text-sm font-semibold mb-2">Выбранные периоды:</p>
+          <div className="mt-4 rounded-md bg-neutral-100 p-4">
+            <p className="mb-2 text-body-sm font-semibold">Выбранные периоды:</p>
             {value1 && (
-              <p className="text-sm">Начало: {formatDateRange(value1)}</p>
+              <p className="text-body-sm">
+                Начало:
+                {formatDateRange(value1)}
+              </p>
             )}
             {value2 && (
-              <p className="text-sm">Окончание: {formatDateRange(value2)}</p>
+              <p className="text-body-sm">
+                Окончание:
+                {formatDateRange(value2)}
+              </p>
             )}
           </div>
         )}

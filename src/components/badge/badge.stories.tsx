@@ -1,43 +1,43 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Info, Tag, X } from "lucide-react";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Info, Tag, X } from 'lucide-react';
 
-import { Badge } from "./index";
-import { Tooltip } from "../tooltip";
-import type { BadgeSize, BadgeVariant, BadgeShape } from "./badge.types";
+import { Badge } from './index';
+import { Tooltip } from '../tooltip';
+import type { BadgeSize, BadgeVariant, BadgeShape } from './badge.types';
 
 const meta: Meta<typeof Badge> = {
-  title: "Components/Badge",
+  title: 'Components/Badge',
   component: Badge,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     label: {
-      control: "text",
-      description: "Текст бейджа",
+      control: 'text',
+      description: 'Текст бейджа',
     },
     defaultSize: {
-      control: "select",
-      options: ["s", "m", "l"] as BadgeSize[],
-      description: "Размер бейджа",
+      control: 'select',
+      options: ['s', 'm', 'l'] as BadgeSize[],
+      description: 'Размер бейджа',
     },
     variant: {
-      control: "select",
+      control: 'select',
       options: [
-        "solid-brand",
-        "solid-neutral",
-        "ghost-brand",
-        "ghost-neutral",
-        "opacity-brand",
-        "outline-brand",
+        'solid-brand',
+        'solid-neutral',
+        'ghost-brand',
+        'ghost-neutral',
+        'opacity-brand',
+        'outline-brand',
       ] as BadgeVariant[],
-      description: "Вариант оформления",
+      description: 'Вариант оформления',
     },
     shape: {
-      control: "select",
-      options: ["square", "rounded"] as BadgeShape[],
-      description: "Форма бейджа",
+      control: 'select',
+      options: ['square', 'rounded'] as BadgeShape[],
+      description: 'Форма бейджа',
     },
   },
 };
@@ -48,10 +48,10 @@ type Story = StoryObj<typeof Badge>;
 
 export const Default: Story = {
   args: {
-    label: "Бейдж",
-    defaultSize: "m",
-    variant: "solid-brand",
-    shape: "square",
+    label: 'Бейдж',
+    defaultSize: 'm',
+    variant: 'solid-brand',
+    shape: 'square',
   },
 };
 
@@ -89,10 +89,10 @@ export const Shapes: Story = {
 
 export const WithIcon: Story = {
   args: {
-    label: "С иконкой",
+    label: 'С иконкой',
     startIcon: Tag,
-    defaultSize: "m",
-    variant: "solid-brand",
+    defaultSize: 'm',
+    variant: 'solid-brand',
   },
 };
 
@@ -108,10 +108,10 @@ export const WithIconAllVariants: Story = {
 
 export const WithEndAdornment: Story = {
   args: {
-    label: "С элементом справа",
+    label: 'С элементом справа',
     endAdornment: <X size={14} />,
-    defaultSize: "m",
-    variant: "solid-brand",
+    defaultSize: 'm',
+    variant: 'solid-brand',
   },
 };
 
@@ -130,7 +130,7 @@ export const WithEndAdornmentExamples: Story = {
       />
       <Badge
         label="Новое"
-        endAdornment={<span className="ml-1 text-xs">!</span>}
+        endAdornment={<span className="ml-1 text-control-xs">!</span>}
         variant="outline-brand"
       />
     </div>
@@ -149,7 +149,7 @@ export const WithStartIconAndEndAdornment: Story = {
       <Badge
         label="Категория"
         startIcon={Tag}
-        endAdornment={<span className="ml-1 text-xs">×</span>}
+        endAdornment={<span className="ml-1 text-control-xs">×</span>}
         variant="ghost-brand"
       />
     </div>
@@ -161,7 +161,7 @@ export const WithEndAdornmentTooltip: Story = {
     <div className="flex flex-wrap items-center gap-3">
       <Badge
         label="Подсказка"
-        endAdornment={
+        endAdornment={(
           <Tooltip
             description="Дополнительная информация о бейдже"
             placement="top"
@@ -171,18 +171,18 @@ export const WithEndAdornmentTooltip: Story = {
               <Info size={14} />
             </span>
           </Tooltip>
-        }
+        )}
         variant="solid-brand"
       />
       <Badge
         label="Закрыть"
-        endAdornment={
+        endAdornment={(
           <Tooltip description="Удалить этот тег" placement="top">
             <span className="inline-flex cursor-pointer">
               <X size={14} />
             </span>
           </Tooltip>
-        }
+        )}
         variant="ghost-brand"
       />
     </div>
