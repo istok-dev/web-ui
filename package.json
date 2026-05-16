@@ -1,6 +1,6 @@
 {
   "name": "@istok-dev/web-ui",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "UI-библиотека компонентов Istok",
   "type": "module",
   "main": "lib/index.js",
@@ -94,7 +94,7 @@
     "lib"
   ],
   "scripts": {
-    "build": "npx tsc && tsc-alias -p tsconfig.json && node scripts/copy-css.cjs",
+    "build": "tsup && node scripts/copy-css.cjs",
     "prepublishOnly": "pnpm run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
@@ -129,7 +129,7 @@
     "eslint": "10.4.0",
     "storybook": "10.4.0",
     "tailwindcss": "4.3.0",
-    "tsc-alias": "1.8.17",
+    "tsup": "^8.5.1",
     "typescript": "6.0.3",
     "vite-tsconfig-paths": "6.1.1"
   },
