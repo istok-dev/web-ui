@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import type { FC } from 'react';
 
-import { ClickAwayListenerProps } from '../click-away-listener.types';
+import type { ClickAwayListenerProps } from '../click-away-listener.types';
 
-export const ClickAwayListener: React.FC<ClickAwayListenerProps> = (props) => {
+export const ClickAwayListener: FC<ClickAwayListenerProps> = (props) => {
   const { children, onAwayClick, disabled = false } = props;
 
   const elementRef = useRef<HTMLDivElement>(null);

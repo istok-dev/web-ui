@@ -1,11 +1,12 @@
 'use client';
 
 import { Tooltip as BaseTooltip } from '@base-ui/react/tooltip';
-import React, { isValidElement } from 'react';
+import { isValidElement } from 'react';
+import type { FC } from 'react';
 
 import { cn } from '@/utils/cn';
 
-import { TooltipProps, TooltipPlacement } from '../tooltip.types';
+import type { TooltipProps, TooltipPlacement } from '../tooltip.types';
 
 const placementMap: Record<
   TooltipPlacement,
@@ -26,7 +27,7 @@ const placementMap: Record<
 
 const DEFAULT_DELAY = 50;
 
-export const Tooltip: React.FC<TooltipProps> = ({
+export const Tooltip: FC<TooltipProps> = ({
   children,
   title,
   description,

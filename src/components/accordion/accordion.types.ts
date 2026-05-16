@@ -1,5 +1,5 @@
-import { LucideIcon, LucideProps } from 'lucide-react';
-import { ReactNode } from 'react';
+import type { LucideIcon, LucideProps } from 'lucide-react';
+import type { ReactNode } from 'react';
 
 export type AccordionValue = string | string[] | undefined;
 

@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 
-import { AlertDialogProps } from '../alert-dialog.types';
+import type { AlertDialogProps } from '../alert-dialog.types';
 import { AlertDialog } from '../ui/alert-dialog';
 
 export const useConfirmDialog = () => {

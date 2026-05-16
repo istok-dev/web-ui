@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ChevronDown, LogOut, Settings, User } from 'lucide-react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { Dropdown } from './index';
 import { Button } from '../button';

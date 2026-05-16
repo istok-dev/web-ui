@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import React, { useState } from 'react';
+import { Fragment, useState } from 'react';
 
 import { Switch } from './index';
 
@@ -98,7 +98,7 @@ export const AllStates: Story = {
           <div className="text-body-sm text-neutral-400">Выкл (disabled)</div>
           <div className="text-body-sm text-neutral-400">Вкл (disabled)</div>
           {sizes.map(({ size, checked, setChecked }) => (
-            <React.Fragment key={size}>
+            <Fragment key={size}>
               <Switch size={size} checked={false} onChange={() => {}} />
               <Switch
                 size={size}
@@ -109,7 +109,7 @@ export const AllStates: Story = {
               <Switch size={size} checked={checked} onChange={setChecked} />
               <Switch size={size} checked={false} disabled />
               <Switch size={size} checked disabled />
-            </React.Fragment>
+            </Fragment>
           ))}
         </div>
       </div>

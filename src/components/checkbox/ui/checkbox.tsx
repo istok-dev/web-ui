@@ -4,7 +4,7 @@ import { createContext } from 'react';
 
 import { cn } from '@/utils/cn';
 
-import { CheckboxFC, CheckboxSize } from '../checkbox.types';
+import type { CheckboxFC, CheckboxSize } from '../checkbox.types';
 import { CheckboxItem } from './checkbox-item';
 
 const sizeClassesMap: Record<CheckboxSize, string> = {

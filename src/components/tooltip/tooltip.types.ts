@@ -1,5 +1,5 @@
-import { TooltipTriggerProps } from '@base-ui/react';
-import { ReactNode } from 'react';
+import type { TooltipTriggerProps } from '@base-ui/react';
+import type { ReactNode } from 'react';
 
 export type TooltipPlacement
   = | 'top'

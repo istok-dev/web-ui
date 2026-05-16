@@ -2,15 +2,11 @@
 
 import { NumberField } from '@base-ui/react/number-field';
 import { ChevronUp, ChevronDown } from 'lucide-react';
-import React from 'react';
+import type { FC } from 'react';
 
 import { cn } from '@/utils/cn';
 
-import {
-  NumberInputProps,
-  NumberInputSize,
-  NumberInputVariant,
-} from '../number-input.types';
+import type { NumberInputProps, NumberInputSize, NumberInputVariant } from '../number-input.types';
 
 const sizeClassesMap: Record<NumberInputSize, string> = {
   s: 'istok-number-input--s',
@@ -24,7 +20,7 @@ const variantClassesMap: Record<NumberInputVariant, string> = {
   outline: 'istok-number-input__input--outline',
 };
 
-export const NumberInput: React.FC<NumberInputProps> = ({
+export const NumberInput: FC<NumberInputProps> = ({
   value,
   onValueChange,
   defaultValue,

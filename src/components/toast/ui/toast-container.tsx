@@ -1,11 +1,11 @@
 'use client';
 
-import React from 'react';
+import type { FC } from 'react';
 
-import { Toast } from './toast';
+import { Toast as ToastView } from './toast';
 import { useToast } from '../use-toast';
 
-export const ToastContainer: React.FC = () => {
+export const ToastContainer: FC = () => {
   const { toasts, removeToast } = useToast();
 
   if (toasts.length === 0) return null;
@@ -17,7 +17,7 @@ export const ToastContainer: React.FC = () => {
     >
       {toasts.map(toast => (
         <div key={toast.id} className="pointer-events-auto">
-          <Toast toast={toast} onRemove={removeToast} />
+          <ToastView toast={toast} onRemove={removeToast} />
         </div>
       ))}
     </div>

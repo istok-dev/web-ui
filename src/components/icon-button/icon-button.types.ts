@@ -1,5 +1,5 @@
-import { ButtonProps as BaseButtonProps } from '@base-ui/react/button';
-import { LucideIcon, LucideProps } from 'lucide-react';
+import type { ButtonProps as BaseButtonProps } from '@base-ui/react/button';
+import type { LucideIcon, LucideProps } from 'lucide-react';
 
 export type IconButtonShape = 'circle' | 'square';
 export type IconButtonVariant

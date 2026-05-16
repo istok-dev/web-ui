@@ -1,7 +1,9 @@
 'use client';
 
-import { Popover, PopoverTriggerProps } from '@base-ui/react/popover';
-import { isValidElement, PropsWithChildren, useState } from 'react';
+import { Popover } from '@base-ui/react/popover';
+import type { PopoverTriggerProps } from '@base-ui/react/popover';
+import { isValidElement, useState } from 'react';
+import type { PropsWithChildren } from 'react';
 import type {
   DateRange as PickerDateRange,
   DayPickerProps,

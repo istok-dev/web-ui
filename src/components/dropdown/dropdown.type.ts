@@ -1,5 +1,5 @@
-import { LucideIcon, LucideProps } from 'lucide-react';
-import { PropsWithChildren } from 'react';
+import type { LucideIcon, LucideProps } from 'lucide-react';
+import type { PropsWithChildren } from 'react';
 
 export type DropdownFC = {
   (props: DropdownProps): React.ReactNode;

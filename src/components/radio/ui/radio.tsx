@@ -1,6 +1,6 @@
 import { cn } from '@/utils/cn';
 
-import { RadioFC, RadioProps, RadioSize } from '../radio.types';
+import type { RadioFC, RadioProps, RadioSize } from '../radio.types';
 import { RadioItem } from './radio-item';
 
 const sizeClassesMap: Record<RadioSize, string> = {

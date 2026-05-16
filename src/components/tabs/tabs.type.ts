@@ -1,5 +1,5 @@
-import { LucideIcon, LucideProps } from 'lucide-react';
-import { PropsWithChildren } from 'react';
+import type { LucideIcon, LucideProps } from 'lucide-react';
+import type { PropsWithChildren } from 'react';
 
 export type TabsFC = {
   <T extends string = string>(props: TabsProps<T>): React.ReactNode;

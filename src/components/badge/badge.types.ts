@@ -1,5 +1,5 @@
-import { LucideIcon, LucideProps } from 'lucide-react';
-import { ReactNode } from 'react';
+import type { LucideIcon, LucideProps } from 'lucide-react';
+import type { ReactNode } from 'react';
 
 export type BadgeSize = 's' | 'm' | 'l';
 export type BadgeVariant

@@ -1,9 +1,9 @@
 import { X } from 'lucide-react';
-import React from 'react';
+import type { FC } from 'react';
 
 import { cn } from '@/utils/cn';
 
-import { TagProps, TagSize, TagVariant } from '../tag.types';
+import type { TagProps, TagSize, TagVariant } from '../tag.types';
 
 const sizeClassesMap: Record<TagSize, string> = {
   s: 'istok-tag--s',
@@ -19,7 +19,7 @@ const variantClassesMap: Record<TagVariant, string> = {
   'ghost-neutral': 'istok-tag--ghost-neutral',
 };
 
-export const Tag: React.FC<TagProps> = ({
+export const Tag: FC<TagProps> = ({
   children,
   startIcon: StartIcon,
   startIconProps,

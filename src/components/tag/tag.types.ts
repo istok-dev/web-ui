@@ -1,5 +1,5 @@
-import { LucideIcon, LucideProps } from 'lucide-react';
-import { MouseEvent } from 'react';
+import type { LucideIcon, LucideProps } from 'lucide-react';
+import type { MouseEvent } from 'react';
 
 export type TagSize = 's' | 'm' | 'l';
 export type TagVariant

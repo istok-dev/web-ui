@@ -1,5 +1,5 @@
-import { LucideIcon } from 'lucide-react';
-import { PropsWithChildren } from 'react';
+import type { LucideIcon } from 'lucide-react';
+import type { PropsWithChildren } from 'react';
 
 export type AlertDialogVariant = 'positive' | 'negative';
 export type AlertDialogAlign = 'left' | 'center';

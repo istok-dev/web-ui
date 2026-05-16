@@ -36,6 +36,9 @@ importers:
       '@istok-dev/eslint-react':
         specifier: 0.0.3
         version: 0.0.3(@eslint-react/eslint-plugin@5.7.6(eslint@10.4.0(jiti@2.6.1))(typescript@6.0.3))(@stylistic/eslint-plugin@5.10.0(eslint@10.4.0(jiti@2.6.1)))(eslint-import-resolver-typescript@4.4.4(eslint-plugin-import-x@4.16.2(@typescript-eslint/utils@8.59.3(eslint@10.4.0(jiti@2.6.1))(typescript@6.0.3))(eslint@10.4.0(jiti@2.6.1)))(eslint@10.4.0(jiti@2.6.1)))(eslint-plugin-better-tailwindcss@4.5.0(eslint@10.4.0(jiti@2.6.1))(tailwindcss@4.3.0)(typescript@6.0.3))(eslint-plugin-import-x@4.16.2(@typescript-eslint/utils@8.59.3(eslint@10.4.0(jiti@2.6.1))(typescript@6.0.3))(eslint@10.4.0(jiti@2.6.1)))(eslint-plugin-react-hooks@7.1.1(eslint@10.4.0(jiti@2.6.1)))(eslint@10.4.0(jiti@2.6.1))(typescript-eslint@8.59.3(eslint@10.4.0(jiti@2.6.1))(typescript@6.0.3))
+      '@istok-dev/tsconfig':
+        specifier: 0.0.1
+        version: 0.0.1(typescript@6.0.3)
       '@storybook/react-vite':
         specifier: 10.4.0
         version: 10.4.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(esbuild@0.27.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(rollup@4.57.1)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.1)(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(typescript@6.0.3)(vite@6.4.1(jiti@2.6.1)(lightningcss@1.32.0))
@@ -637,6 +640,12 @@ packages:
       eslint: ^10.3.0
       eslint-plugin-better-tailwindcss: ^4.5.0
       eslint-plugin-react-hooks: ^7.1.1
+
+  '@istok-dev/tsconfig@0.0.1':
+    resolution: {integrity: sha512-y2hBAw2Y89umwDyKWidEEzbzJMitY3+Wp2Afhi0YbBfNa83Xp938u6ZVKfyOSGgjT/J01n6NCcel1fUehhwJLw==, tarball: https://npm.pkg.github.com/download/@istok-dev/tsconfig/0.0.1/be4a64a9e89b3cec98aa092c2ef33ae3adb7fb9f}
+    engines: {node: '>=24'}
+    peerDependencies:
+      typescript: ^6.0.0
 
   '@joshwooding/vite-plugin-react-docgen-typescript@0.7.0':
     resolution: {integrity: sha512-qvsTEwEFefhdirGOPnu9Wp6ChfIwy2dBCRuETU3uE+4cC+PFoxMSiiEhxk4lOluA34eARHA0OxqsEUYDqRMgeQ==}
@@ -3198,6 +3207,10 @@ snapshots:
       - eslint-import-resolver-typescript
       - eslint-plugin-import-x
       - typescript-eslint
+
+  '@istok-dev/tsconfig@0.0.1(typescript@6.0.3)':
+    dependencies:
+      typescript: 6.0.3
 
   '@joshwooding/vite-plugin-react-docgen-typescript@0.7.0(typescript@6.0.3)(vite@6.4.1(jiti@2.6.1)(lightningcss@1.32.0))':
     dependencies:

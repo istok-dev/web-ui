@@ -1,13 +1,13 @@
 'use client';
 /* eslint-disable @eslint-react/no-array-index-key -- static skeleton placeholder lines */
 
-import React from 'react';
+import type { FC } from 'react';
 
 import { cn } from '@/utils/cn';
 
-import { SkeletonProps } from '../skeleton.types';
+import type { SkeletonProps } from '../skeleton.types';
 
-export const Skeleton: React.FC<SkeletonProps> = ({
+export const Skeleton: FC<SkeletonProps> = ({
   className,
   width,
   height,

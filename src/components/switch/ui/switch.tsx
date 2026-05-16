@@ -1,10 +1,11 @@
 'use client';
 
-import { useState, FC, ChangeEvent } from 'react';
+import { useState } from 'react';
+import type { FC, ChangeEvent } from 'react';
 
 import { cn } from '@/utils/cn';
 
-import { SwitchProps, SwitchSize } from '../switch.types';
+import type { SwitchProps, SwitchSize } from '../switch.types';
 
 const sizeClassesMap: Record<SwitchSize, string> = {
   sm: 'istok-switch--sm',

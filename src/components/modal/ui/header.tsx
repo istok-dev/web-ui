@@ -1,6 +1,6 @@
 import { X } from 'lucide-react';
 
-import { ModalHeaderFC, ModalHeaderProps } from '../modal.types';
+import type { ModalHeaderFC, ModalHeaderProps } from '../modal.types';
 
 export const ModalHeader: ModalHeaderFC = (props: ModalHeaderProps) => {
   const { title, children, onClose } = props;

@@ -5,7 +5,7 @@ import { useRef, useState } from 'react';
 
 import { cn } from '@/utils/cn';
 
-import { RadioItemFC } from '../radio.types';
+import type { RadioItemFC } from '../radio.types';
 
 export const RadioItem: RadioItemFC = ({
   label,

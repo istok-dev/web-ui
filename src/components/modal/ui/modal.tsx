@@ -2,7 +2,7 @@ import { createPortal } from 'react-dom';
 
 import { cn } from '@/utils/cn';
 
-import { ModalFC, ModalProps } from '../modal.types';
+import type { ModalFC, ModalProps } from '../modal.types';
 import { ModalBody } from './body';
 import { ModalHeader } from './header';
 

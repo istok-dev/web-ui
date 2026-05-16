@@ -1,11 +1,12 @@
 'use client';
 
 import { Check, Minus } from 'lucide-react';
-import React, { useRef, useEffect, useState, useId } from 'react';
+import { useRef, useEffect, useState, useId } from 'react';
+import type { ChangeEvent } from 'react';
 
 import { cn } from '@/utils/cn';
 
-import { CheckboxItemFC } from '../checkbox.types';
+import type { CheckboxItemFC } from '../checkbox.types';
 
 export const CheckboxItem: CheckboxItemFC = ({
   label,
@@ -32,7 +33,7 @@ export const CheckboxItem: CheckboxItemFC = ({
   }, [indeterminate]);
 
   // Handle input change for uncontrolled mode
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (!isControlled) {
       setIsChecked(e.target.checked);
     }

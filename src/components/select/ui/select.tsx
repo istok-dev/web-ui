@@ -2,26 +2,15 @@
 
 import { Combobox } from '@base-ui/react/combobox';
 import { ChevronDown, Search, X } from 'lucide-react';
-import React, {
-  useMemo,
-  useState,
-  useCallback,
-  useEffect,
-  useRef,
-} from 'react';
+import { useMemo, useState, useCallback, useEffect, useRef } from 'react';
+import type { FC } from 'react';
 
 import { cn } from '@/utils/cn';
 
 import { Checkbox } from '../../checkbox';
 import { Input } from '../../input';
 import { Tag } from '../../tag';
-import {
-  SelectProps,
-  SelectOption,
-  SelectGroup,
-  SelectSize,
-  SelectVariant,
-} from '../select.types';
+import type { SelectProps, SelectOption, SelectGroup, SelectSize, SelectVariant } from '../select.types';
 
 const sizeClassesMap: Record<SelectSize, string> = {
   s: 'istok-select--s',
@@ -54,7 +43,8 @@ const flattenOptions = (
 const isGrouped = (
   options: SelectOption[] | SelectGroup[],
 ): options is SelectGroup[] => {
-  return options.length > 0 && 'options' in options[0];
+  const first = options[0];
+  return options.length > 0 && first !== undefined && 'options' in first;
 };
 
 type ComboboxItems = string[] | { value: string; items: string[] }[];
@@ -62,7 +52,7 @@ type ComboboxItems = string[] | { value: string; items: string[] }[];
 const TAGS_OVERFLOW_HEIGHT = 51;
 const TAGS_OVERFLOW_HEIGHT_CLASS = 'max-h-[51px]';
 
-export const Select: React.FC<SelectProps> = ({
+export const Select: FC<SelectProps> = ({
   label,
   placeholder = 'Выберите...',
   options,

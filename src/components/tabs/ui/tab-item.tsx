@@ -1,6 +1,6 @@
 import { cn } from '@/utils/cn';
 
-import { TabItemFC, TabItemProps } from '../tabs.type';
+import type { TabItemFC, TabItemProps } from '../tabs.type';
 import { useTabsContext } from './tabs-context';
 
 function TabItemComponent<T extends string>({

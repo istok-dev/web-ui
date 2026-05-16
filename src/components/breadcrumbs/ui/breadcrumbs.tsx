@@ -1,16 +1,17 @@
 import { House } from 'lucide-react';
-import React from 'react';
+import { Fragment } from 'react';
+import type { FC } from 'react';
 
 import { cn } from '@/utils/cn';
 
-import { BreadcrumbsProps, BreadcrumbsSize } from '../breadcrumbs.types';
+import type { BreadcrumbsProps, BreadcrumbsSize } from '../breadcrumbs.types';
 
 const sizeClassesMap: Record<BreadcrumbsSize, string> = {
   l: 'istok-breadcrumbs--l',
   m: 'istok-breadcrumbs--m',
 };
 
-export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
+export const Breadcrumbs: FC<BreadcrumbsProps> = ({
   items,
   className,
   defaultSize = 'm',
@@ -89,7 +90,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
       )}
 
       {visibleItems.map((item, index) => (
-        <React.Fragment
+        <Fragment
           key={
             showEllipsis ? items.length - visibleItems.length + index : index
           }
@@ -128,7 +129,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
           {index < visibleItems.length - 1 && (
             <div className={separatorClassName}>/</div>
           )}
-        </React.Fragment>
+        </Fragment>
       ))}
     </div>
   );

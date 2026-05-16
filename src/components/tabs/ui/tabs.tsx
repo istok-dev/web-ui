@@ -1,6 +1,6 @@
 import { cn } from '@/utils/cn';
 
-import { TabItemSize, TabItemVariant, TabsFC, TabsProps } from '../tabs.type';
+import type { TabItemSize, TabItemVariant, TabsFC, TabsProps } from '../tabs.type';
 import { TabItem } from './tab-item';
 import { TabsContext, type TabsContextValue } from './tabs-context';
 

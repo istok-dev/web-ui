@@ -1,10 +1,6 @@
 import { cn } from '@/utils/cn';
 
-import {
-  DropdownItemFC,
-  DropdownItemSize,
-  DropdownItemVariant,
-} from '../dropdown.type';
+import type { DropdownItemFC, DropdownItemSize, DropdownItemVariant } from '../dropdown.type';
 
 const sizeClassesMap: Record<DropdownItemSize, string> = {
   s: 'istok-dropdown-item--s',

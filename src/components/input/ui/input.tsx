@@ -1,10 +1,10 @@
 'use client';
 
-import React from 'react';
+import type { FC } from 'react';
 
 import { cn } from '@/utils/cn';
 
-import { InputProps, InputSize } from '../input.types';
+import type { InputProps, InputSize } from '../input.types';
 
 const sizeClassesMap: Record<InputSize, string> = {
   s: 'istok-input--s',
@@ -22,7 +22,7 @@ const variantClassesMap: Record<
   opacity: 'istok-input__input--opacity',
 };
 
-export const Input: React.FC<InputProps> = ({
+export const Input: FC<InputProps> = ({
   value,
   onChange,
   startAdornment,

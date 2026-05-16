@@ -1,15 +1,10 @@
 import { Button as BaseButton } from '@base-ui/react/button';
 import { Loader2 } from 'lucide-react';
-import React from 'react';
+import type { FC } from 'react';
 
 import { cn } from '@/utils/cn';
 
-import {
-  ButtonColor,
-  ButtonProps,
-  ButtonSize,
-  ButtonVariant,
-} from '../button.types';
+import type { ButtonColor, ButtonProps, ButtonSize, ButtonVariant } from '../button.types';
 
 const sizeClassesMap: Record<ButtonSize, string> = {
   sm: 'istok-button--sm',
@@ -38,7 +33,7 @@ const variantClassesMap: Record<ButtonVariant, string> = {
   'outline': 'istok-button--outline',
 };
 
-export const Button: React.FC<ButtonProps> = ({
+export const Button: FC<ButtonProps> = ({
   children,
   startIcon: StartIcon,
   className,

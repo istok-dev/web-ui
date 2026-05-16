@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 
 export type ClickAwayListenerProps = PropsWithChildren<{
   onAwayClick: (event: MouseEvent | TouchEvent) => void;

@@ -1,10 +1,10 @@
 import { Button as BaseButton } from '@base-ui/react/button';
 import { Loader2 } from 'lucide-react';
-import React from 'react';
+import type { FC } from 'react';
 
 import { cn } from '@/utils/cn';
 
-import {
+import type {
   IconButtonColor,
   IconButtonProps,
   IconButtonShape,
@@ -41,7 +41,7 @@ const shapeClassesMap: Record<IconButtonShape, string> = {
   circle: 'istok-icon-button--circle',
 };
 
-export const IconButton: React.FC<IconButtonProps> = ({
+export const IconButton: FC<IconButtonProps> = ({
   icon: Icon,
   shape = 'circle',
   variant = 'primary',

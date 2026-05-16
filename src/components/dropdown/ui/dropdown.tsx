@@ -1,6 +1,6 @@
 import { cn } from '@/utils/cn';
 
-import { DropdownFC } from '../dropdown.type';
+import type { DropdownFC } from '../dropdown.type';
 import { DropdownItem } from './dropdown-item';
 
 export const Dropdown: DropdownFC = (props) => {

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Filter } from 'lucide-react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { Select } from './index';
 import type { SelectOption, SelectGroup } from './select.types';
@@ -342,10 +342,9 @@ export const DisabledItems: Story = {
 
 export const WithSelectedValues: Story = {
   render: (args) => {
-    const [value, setValue] = useState<SelectOption[]>([
-      simpleOptions[0],
-      simpleOptions[1],
-    ]);
+    const [value, setValue] = useState<SelectOption[]>(() =>
+      simpleOptions.slice(0, 2),
+    );
     return (
       <div className="w-100">
         <Select
@@ -371,9 +370,9 @@ export const WithSelectedValues: Story = {
 
 export const ComplexExample: Story = {
   render: () => {
-    const [reportingGroups, setReportingGroups] = useState<SelectOption[]>([
-      simpleOptions[0],
-    ]);
+    const [reportingGroups, setReportingGroups] = useState<SelectOption[]>(() =>
+      simpleOptions.slice(0, 1),
+    );
     const [categories, setCategories] = useState<SelectOption[]>([]);
     const [marketplaces, setMarketplaces] = useState<SelectOption[]>([]);
     const [partners, setPartners] = useState<SelectOption[]>([]);
@@ -408,7 +407,7 @@ export const ComplexExample: Story = {
           <Select
             label="Маркетплейсы"
             placeholder="Выберите маркетплейсы"
-            options={groupedOptions[0].options}
+            options={groupedOptions.at(0)?.options ?? []}
             value={marketplaces}
             onChange={setMarketplaces}
             multiple={true}

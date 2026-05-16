@@ -1,4 +1,4 @@
-import { ModalBodyFC, ModalBodyProps } from '../modal.types';
+import type { ModalBodyFC, ModalBodyProps } from '../modal.types';
 
 export const ModalBody: ModalBodyFC = (props: ModalBodyProps) => {
   const { children } = props;

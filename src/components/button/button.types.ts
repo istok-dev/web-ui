@@ -1,5 +1,5 @@
-import { ButtonProps as BaseButtonProps } from '@base-ui/react/button';
-import { LucideIcon } from 'lucide-react';
+import type { ButtonProps as BaseButtonProps } from '@base-ui/react/button';
+import type { LucideIcon } from 'lucide-react';
 
 export type ButtonVariant
   = | 'primary'

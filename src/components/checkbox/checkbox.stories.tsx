@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import type { CheckboxSize } from './checkbox.types';
 import { Checkbox } from './index';
@@ -413,7 +413,7 @@ export const ComplexExample: Story = {
             {Object.entries(groups).map(([key, value]) => (
               <Checkbox.Item
                 key={key}
-                label={`Группа ${key.split('-')[1].toUpperCase()}`}
+                label={`Группа ${key.split('-')[1]?.toUpperCase() ?? key}`}
                 checked={value}
                 onChange={e =>
                   setGroups({ ...groups, [key]: e.target.checked })}

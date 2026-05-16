@@ -1,17 +1,20 @@
-import React from 'react';
+import type { FC } from 'react';
 
 import { cn } from '@/utils/cn';
 
-import { AvatarProps, AvatarSize, AvatarShape } from '../avatar.types';
+import type { AvatarProps, AvatarSize, AvatarShape } from '../avatar.types';
 
 const getInitials = (name?: string): string => {
   if (!name) return '?';
 
   const parts = name.trim().split(/\s+/);
   if (parts.length >= 2) {
-    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    const first = parts[0]?.[0];
+    const last = parts[parts.length - 1]?.[0];
+    if (first && last) return (first + last).toUpperCase();
   }
-  return name[0].toUpperCase();
+  const char = name[0];
+  return char ? char.toUpperCase() : '?';
 };
 
 const sizeClassesMap: Record<AvatarSize, string> = {
@@ -31,7 +34,7 @@ const baseClasses
     + 'bg-primary-200 text-primary-800 '
     + 'text-(length:--istok-avatar-font-size) leading-[var(--istok-avatar-line-height)]';
 
-export const Avatar: React.FC<AvatarProps> = ({
+export const Avatar: FC<AvatarProps> = ({
   src,
   alt,
   name,

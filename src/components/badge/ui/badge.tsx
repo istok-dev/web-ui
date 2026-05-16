@@ -1,13 +1,8 @@
-import React from 'react';
+import type { FC } from 'react';
 
 import { cn } from '@/utils/cn';
 
-import {
-  BadgeProps,
-  BadgeShape,
-  BadgeSize,
-  BadgeVariant,
-} from '../badge.types';
+import type { BadgeProps, BadgeShape, BadgeSize, BadgeVariant } from '../badge.types';
 
 const sizeClassesMap: Record<BadgeSize, string> = {
   s: 'istok-badge--s',
@@ -29,7 +24,7 @@ const shapeClassesMap: Record<BadgeShape, string> = {
   rounded: 'istok-badge--rounded',
 };
 
-export const Badge: React.FC<BadgeProps> = ({
+export const Badge: FC<BadgeProps> = ({
   label,
   startIcon: StartIcon,
   startIconProps,

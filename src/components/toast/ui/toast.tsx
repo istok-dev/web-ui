@@ -1,17 +1,12 @@
 'use client';
 
-import {
-  X,
-  CheckCircle2,
-  AlertCircle,
-  Info,
-  AlertTriangle,
-} from 'lucide-react';
-import React, { useEffect } from 'react';
+import { X, CheckCircle2, AlertCircle, Info, AlertTriangle } from 'lucide-react';
+import { useEffect } from 'react';
+import type { FC } from 'react';
 
 import { cn } from '@/utils/cn';
 
-import { Toast as ToastType } from '../toast.types';
+import type { Toast as ToastType } from '../toast.types';
 
 type ToastProps = {
   toast: ToastType;
@@ -32,7 +27,7 @@ const variantIcons = {
   warning: AlertTriangle,
 };
 
-export const Toast: React.FC<ToastProps> = ({ toast, onRemove }) => {
+export const Toast: FC<ToastProps> = ({ toast, onRemove }) => {
   const variant = toast.variant ?? 'info';
   const Icon = variantIcons[variant];
 
