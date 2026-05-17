@@ -33,6 +33,7 @@ export const Input: FC<InputProps> = ({
   defaultSize = 'm',
   variant = 'neutral',
   startIcon: StartIcon,
+  type = 'text',
   ...inputProps
 }) => {
   return (
@@ -68,7 +69,7 @@ export const Input: FC<InputProps> = ({
       )}
       <input
         {...inputProps}
-        type="text"
+        type={type}
         value={value}
         onChange={e => onChange(e.target.value)}
         placeholder={placeholder}
