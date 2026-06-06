@@ -1,5 +1,6 @@
-import type { ButtonProps as BaseButtonProps } from '@base-ui/react/button';
+import { Button as BaseButton } from '@base-ui/react/button';
 import type { LucideIcon } from 'lucide-react';
+import type { ComponentPropsWithRef } from 'react';
 
 export type ButtonVariant
   = | 'primary'
@@ -31,6 +32,6 @@ export type ButtonProps = {
   loading?: boolean;
   size?: ButtonSize;
   rounded?: boolean;
-  render?: BaseButtonProps['render'];
   classes?: Record<Classes, string>;
-} & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'>;
+} & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children' | 'ref'>
+& Pick<ComponentPropsWithRef<typeof BaseButton>, 'ref' | 'nativeButton' | 'render'>;

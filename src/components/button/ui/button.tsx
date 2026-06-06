@@ -46,6 +46,8 @@ export const Button: FC<ButtonProps> = ({
   type = 'button',
   render,
   classes,
+  nativeButton,
+  ref,
   ...rest
 }) => {
   const isDisabled = disabled || loading;
@@ -53,8 +55,9 @@ export const Button: FC<ButtonProps> = ({
   return (
     <BaseButton
       {...rest}
+      ref={ref}
       render={render}
-      nativeButton={render === undefined}
+      nativeButton={nativeButton ?? render === undefined}
       disabled={isDisabled}
       type={type}
       className={cn(
