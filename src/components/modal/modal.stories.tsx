@@ -36,7 +36,7 @@ export const Default: Story = {
         <Modal open={open} onOpenChange={setOpen}>
           <Modal.Header title="Заголовок" />
           <Modal.Body>
-            <div className="p-6 text-control-md text-neutral-800">
+            <div className="text-control-md text-neutral-800">
               Содержимое модального окна. Нажмите на затемнённую область или кнопку
               закрытия, чтобы закрыть окно.
             </div>
@@ -94,7 +94,7 @@ export const WithCustomHeader: Story = {
             </div>
           </Modal.Header>
           <Modal.Body>
-            <div className="p-6 text-control-md text-neutral-800">
+            <div className="text-control-md text-neutral-800">
               Заголовок собран из трёх уровней: капшен, тайтл и описание.
             </div>
           </Modal.Body>
@@ -116,7 +116,7 @@ export const WithFooter: Story = {
         <Modal open={open} onOpenChange={setOpen}>
           <Modal.Header title="Подтверждение" />
           <Modal.Body>
-            <div className="p-6 text-control-md text-neutral-800">
+            <div className="text-control-md text-neutral-800">
               Вы уверены, что хотите сохранить изменения?
             </div>
           </Modal.Body>
@@ -161,7 +161,7 @@ export const WithScrollableContent: Story = {
           <Modal.Header title="Длинное содержимое" />
           <Modal.Body>
             <div className="
-              flex flex-col gap-4 p-6 text-control-md text-neutral-800
+              flex flex-col gap-4 text-control-md text-neutral-800
             "
             >
               {Array.from({ length: 20 }, (_, index) => (
