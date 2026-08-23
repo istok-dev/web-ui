@@ -1,4 +1,4 @@
-@utility istok-badge--s {
+@utility istok-badge--sm {
   --istok-badge-height: var(--spacing-6);
   --istok-badge-gap: var(--spacing-1);
   --istok-badge-padding-inline: calc(var(--spacing) * 1.5);
@@ -9,8 +9,8 @@
   --istok-badge-square-radius: var(--radius-lg);
 }
 
-@utility istok-badge--m {
-  --istok-badge-height: var(--spacing-7);
+@utility istok-badge--md {
+  --istok-badge-height: calc(var(--spacing) * 7);
   --istok-badge-gap: var(--spacing-1);
   --istok-badge-padding-inline: calc(var(--spacing) * 2.5);
   --istok-badge-padding-block: calc(var(--spacing) * 1.5);
@@ -20,7 +20,7 @@
   --istok-badge-square-radius: var(--radius-lg);
 }
 
-@utility istok-badge--l {
+@utility istok-badge--lg {
   --istok-badge-height: var(--spacing-8);
   --istok-badge-gap: calc(var(--spacing) * 1.5);
   --istok-badge-padding-inline: calc(var(--spacing) * 2.5);
@@ -39,48 +39,85 @@
   --istok-badge-radius: var(--istok-badge-square-radius);
 }
 
-@utility istok-badge--solid-brand {
-  --istok-badge-bg: var(--color-primary-600);
-  --istok-badge-fg: var(--color-primary-50);
-  --istok-badge-border-width: 0px;
+@utility istok-badge--circle {
+  --istok-badge-padding-inline: 0;
+  --istok-badge-padding-block: 0;
+  --istok-badge-radius: 9999px;
+}
+
+@utility istok-badge--color-primary {
+  --istok-badge-color-50: var(--color-primary-50);
+  --istok-badge-color-100: var(--color-primary-100);
+  --istok-badge-color-600: var(--color-primary-600);
+  --istok-badge-color-700: var(--color-primary-700);
+}
+
+@utility istok-badge--color-neutral {
+  --istok-badge-color-50: var(--color-neutral-50);
+  --istok-badge-color-100: var(--color-neutral-100);
+  --istok-badge-color-600: var(--color-neutral-600);
+  --istok-badge-color-700: var(--color-neutral-700);
+}
+
+@utility istok-badge--color-negative {
+  --istok-badge-color-50: var(--color-negative-50);
+  --istok-badge-color-100: var(--color-negative-100);
+  --istok-badge-color-600: var(--color-negative-600);
+  --istok-badge-color-700: var(--color-negative-700);
+}
+
+@utility istok-badge--color-warning {
+  --istok-badge-color-50: var(--color-warning-50);
+  --istok-badge-color-100: var(--color-warning-100);
+  --istok-badge-color-600: var(--color-warning-600);
+  --istok-badge-color-700: var(--color-warning-700);
+}
+
+@utility istok-badge--color-info {
+  --istok-badge-color-50: var(--color-info-50);
+  --istok-badge-color-100: var(--color-info-100);
+  --istok-badge-color-600: var(--color-info-600);
+  --istok-badge-color-700: var(--color-info-700);
+}
+
+@utility istok-badge--color-success {
+  --istok-badge-color-50: var(--color-positive-50);
+  --istok-badge-color-100: var(--color-positive-100);
+  --istok-badge-color-600: var(--color-positive-600);
+  --istok-badge-color-700: var(--color-positive-700);
+}
+
+@utility istok-badge--color-accent {
+  --istok-badge-color-50: var(--color-accent-50);
+  --istok-badge-color-100: var(--color-accent-100);
+  --istok-badge-color-600: var(--color-accent-600);
+  --istok-badge-color-700: var(--color-accent-700);
+}
+
+@utility istok-badge--solid {
+  --istok-badge-bg: var(--istok-badge-color-600);
+  --istok-badge-fg: var(--istok-badge-color-50);
   --istok-badge-border-color: transparent;
 }
 
-@utility istok-badge--solid-neutral {
-  --istok-badge-bg: var(--color-neutral-600);
-  --istok-badge-fg: var(--color-neutral-100);
-  --istok-badge-border-width: 0px;
+@utility istok-badge--ghost {
+  --istok-badge-bg: var(--istok-badge-color-100);
+  --istok-badge-fg: var(--istok-badge-color-700);
   --istok-badge-border-color: transparent;
 }
 
-@utility istok-badge--ghost-brand {
-  --istok-badge-bg: var(--color-primary-100);
-  --istok-badge-fg: var(--color-primary-700);
-  --istok-badge-border-width: 0px;
-  --istok-badge-border-color: transparent;
-}
-
-@utility istok-badge--ghost-neutral {
-  --istok-badge-bg: var(--color-neutral-100);
-  --istok-badge-fg: var(--color-neutral-700);
-  --istok-badge-border-width: 0px;
-  --istok-badge-border-color: transparent;
-}
-
-@utility istok-badge--opacity-brand {
+@utility istok-badge--opacity {
   --istok-badge-bg: color-mix(
     in srgb,
-    var(--color-primary-100) 24%,
+    var(--istok-badge-color-100) 24%,
     transparent
   );
-  --istok-badge-fg: var(--color-primary-50);
-  --istok-badge-border-width: 0px;
+  --istok-badge-fg: var(--istok-badge-color-50);
   --istok-badge-border-color: transparent;
 }
 
-@utility istok-badge--outline-brand {
+@utility istok-badge--outline {
   --istok-badge-bg: transparent;
-  --istok-badge-fg: var(--color-primary-600);
-  --istok-badge-border-width: 1px;
-  --istok-badge-border-color: var(--color-primary-600);
+  --istok-badge-fg: var(--istok-badge-color-600);
+  --istok-badge-border-color: var(--istok-badge-color-600);
 }

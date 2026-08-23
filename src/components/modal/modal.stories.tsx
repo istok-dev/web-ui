@@ -3,7 +3,16 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 
 import { Button } from '../button';
+import { Select } from '../select';
 import { Modal } from './index';
+import type { SelectOption } from '../select/select.types';
+
+const selectOptions: SelectOption[] = [
+  { label: 'MIXIT BODY', value: 'mixit-body' },
+  { label: 'MIXIT LAB', value: 'mixit-lab' },
+  { label: 'MIXIT CARE', value: 'mixit-care' },
+  { label: 'MIXIT HOME', value: 'mixit-home' },
+];
 
 const meta: Meta<typeof Modal> = {
   title: 'Components/Modal',
@@ -195,6 +204,65 @@ export const WithScrollableContent: Story = {
               onClick={() => setOpen(false)}
             >
               Готово
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
+    );
+  },
+};
+
+export const WithSelect: Story = {
+  render: function WithSelectStory() {
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState<SelectOption[]>([]);
+
+    return (
+      <>
+        <Button variant="primary" onClick={() => setOpen(true)}>
+          Открыть с селектом
+        </Button>
+        <Modal open={open} onOpenChange={setOpen}>
+          <Modal.Header title="Выбор группы" />
+          <Modal.Body>
+            <div className="flex flex-col gap-4">
+              <p className="text-control-md text-neutral-800">
+                Выберите группу отчётности для настройки фильтра.
+              </p>
+              <Select
+                label="Группы отчётности"
+                placeholder="Выберите..."
+                options={selectOptions}
+                value={value}
+                onChange={setValue}
+                multiple
+                searchable
+                showSelectAll
+                showClear
+                size="m"
+              />
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <BaseDialog.Close
+              render={closeProps => (
+                <Button
+                  {...closeProps}
+                  variant="secondary"
+                  color="neutral"
+                  size="md"
+                >
+                  Отмена
+                </Button>
+              )}
+            />
+            <Button
+              variant="primary"
+              color="primary"
+              size="md"
+              onClick={() => setOpen(false)}
+            >
+              Применить
             </Button>
           </Modal.Footer>
         </Modal>

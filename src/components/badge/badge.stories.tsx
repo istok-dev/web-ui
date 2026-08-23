@@ -1,9 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Info, Tag, X } from 'lucide-react';
 
-import { Badge } from './index';
 import { Tooltip } from '../tooltip';
-import type { BadgeSize, BadgeVariant, BadgeShape } from './badge.types';
+import {
+  BADGE_COLORS,
+  BADGE_SHAPES,
+  BADGE_SIZES,
+  BADGE_VARIANTS,
+} from './badge.types';
+import { Badge } from './index';
 
 const meta: Meta<typeof Badge> = {
   title: 'Components/Badge',
@@ -17,27 +22,29 @@ const meta: Meta<typeof Badge> = {
       control: 'text',
       description: 'Текст бейджа',
     },
-    defaultSize: {
+    size: {
       control: 'select',
-      options: ['s', 'm', 'l'] as BadgeSize[],
+      options: BADGE_SIZES,
       description: 'Размер бейджа',
     },
     variant: {
       control: 'select',
-      options: [
-        'solid-brand',
-        'solid-neutral',
-        'ghost-brand',
-        'ghost-neutral',
-        'opacity-brand',
-        'outline-brand',
-      ] as BadgeVariant[],
+      options: BADGE_VARIANTS,
       description: 'Вариант оформления',
+    },
+    color: {
+      control: 'select',
+      options: BADGE_COLORS,
+      description: 'Цвет бейджа',
     },
     shape: {
       control: 'select',
-      options: ['square', 'rounded'] as BadgeShape[],
+      options: BADGE_SHAPES,
       description: 'Форма бейджа',
+    },
+    circle: {
+      control: 'boolean',
+      description: 'Круглый бейдж без паддингов (ширина = высота)',
     },
   },
 };
@@ -49,8 +56,9 @@ type Story = StoryObj<typeof Badge>;
 export const Default: Story = {
   args: {
     label: 'Бейдж',
-    defaultSize: 'm',
-    variant: 'solid-brand',
+    size: 'md',
+    variant: 'solid',
+    color: 'primary',
     shape: 'square',
   },
 };
@@ -58,22 +66,28 @@ export const Default: Story = {
 export const Sizes: Story = {
   render: () => (
     <div className="flex flex-wrap items-center gap-3">
-      <Badge label="Маленький" defaultSize="s" />
-      <Badge label="Средний" defaultSize="m" />
-      <Badge label="Большой" defaultSize="l" />
+      <Badge label="Маленький" size="sm" />
+      <Badge label="Средний" size="md" />
+      <Badge label="Большой" size="lg" />
     </div>
   ),
 };
 
 export const Variants: Story = {
   render: () => (
-    <div className="flex flex-wrap items-center gap-3">
-      <Badge label="solid-brand" variant="solid-brand" />
-      <Badge label="solid-neutral" variant="solid-neutral" />
-      <Badge label="ghost-brand" variant="ghost-brand" />
-      <Badge label="ghost-neutral" variant="ghost-neutral" />
-      <Badge label="opacity-brand" variant="opacity-brand" />
-      <Badge label="outline-brand" variant="outline-brand" />
+    <div className="flex flex-col gap-4">
+      {BADGE_VARIANTS.map(variant => (
+        <div key={variant} className="flex flex-wrap items-center gap-3">
+          {BADGE_COLORS.map(color => (
+            <Badge
+              key={color}
+              label={`${variant}-${color}`}
+              variant={variant}
+              color={color}
+            />
+          ))}
+        </div>
+      ))}
     </div>
   ),
 };
@@ -91,17 +105,27 @@ export const WithIcon: Story = {
   args: {
     label: 'С иконкой',
     startIcon: Tag,
-    defaultSize: 'm',
-    variant: 'solid-brand',
+    size: 'md',
+    variant: 'solid',
+    color: 'primary',
   },
+};
+
+export const IconAndNumber: Story = {
+  render: () => (
+    <div className="flex flex-wrap items-center gap-3">
+      <Badge label="" startIcon={Tag} circle />
+      <Badge label="12" circle />
+    </div>
+  ),
 };
 
 export const WithIconAllVariants: Story = {
   render: () => (
     <div className="flex flex-wrap items-center gap-3">
-      <Badge label="Категория" startIcon={Tag} variant="solid-brand" />
-      <Badge label="Метка" startIcon={Tag} variant="ghost-brand" />
-      <Badge label="Тег" startIcon={Tag} variant="outline-brand" />
+      <Badge label="Категория" startIcon={Tag} variant="solid" />
+      <Badge label="Метка" startIcon={Tag} variant="ghost" />
+      <Badge label="Тег" startIcon={Tag} variant="outline" />
     </div>
   ),
 };
@@ -110,8 +134,9 @@ export const WithEndAdornment: Story = {
   args: {
     label: 'С элементом справа',
     endAdornment: <X size={14} />,
-    defaultSize: 'm',
-    variant: 'solid-brand',
+    size: 'md',
+    variant: 'solid',
+    color: 'primary',
   },
 };
 
@@ -121,17 +146,17 @@ export const WithEndAdornmentExamples: Story = {
       <Badge
         label="Закрыть"
         endAdornment={<X size={14} />}
-        variant="solid-brand"
+        variant="solid"
       />
       <Badge
         label="5"
         endAdornment={<span className="ml-1">шт</span>}
-        variant="ghost-brand"
+        variant="ghost"
       />
       <Badge
         label="Новое"
         endAdornment={<span className="ml-1 text-control-xs">!</span>}
-        variant="outline-brand"
+        variant="outline"
       />
     </div>
   ),
@@ -144,13 +169,13 @@ export const WithStartIconAndEndAdornment: Story = {
         label="Тег"
         startIcon={Tag}
         endAdornment={<X size={14} />}
-        variant="solid-brand"
+        variant="solid"
       />
       <Badge
         label="Категория"
         startIcon={Tag}
         endAdornment={<span className="ml-1 text-control-xs">×</span>}
-        variant="ghost-brand"
+        variant="ghost"
       />
     </div>
   ),
@@ -172,7 +197,7 @@ export const WithEndAdornmentTooltip: Story = {
             </span>
           </Tooltip>
         )}
-        variant="solid-brand"
+        variant="solid"
       />
       <Badge
         label="Закрыть"
@@ -183,8 +208,14 @@ export const WithEndAdornmentTooltip: Story = {
             </span>
           </Tooltip>
         )}
-        variant="ghost-brand"
+        variant="ghost"
       />
     </div>
+  ),
+};
+
+export const WithRender: Story = {
+  render: () => (
+    <Badge label="Ссылка" render={<a href="#badge" />} />
   ),
 };

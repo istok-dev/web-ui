@@ -1,21 +1,31 @@
+import type { useRender } from '@base-ui/react/use-render';
 import type { LucideIcon, LucideProps } from 'lucide-react';
-import type { MouseEvent } from 'react';
+import type { MouseEvent, ReactNode } from 'react';
 
-export type TagSize = 's' | 'm' | 'l';
-export type TagVariant
-  = | 'solid-brand'
-    | 'solid-neutral'
-    | 'solid-black'
-    | 'ghost-brand'
-    | 'ghost-neutral';
+export const TAG_SIZES = ['sm', 'md', 'lg'] as const;
+export const TAG_VARIANTS = ['solid', 'ghost', 'outline'] as const;
+export const TAG_COLORS = ['primary', 'neutral', 'negative', 'warning', 'info', 'success', 'accent'] as const;
 
-export type TagProps = {
-  children: React.ReactNode;
+export type Classes = 'root' | 'startIcon' | 'endIcon' | 'content';
+
+export type TagSize = (typeof TAG_SIZES)[number];
+export type TagVariant = (typeof TAG_VARIANTS)[number];
+export type TagColor = (typeof TAG_COLORS)[number];
+
+export type TagState = {
+  size: TagSize;
+  variant: TagVariant;
+  color: TagColor;
+};
+
+export type TagProps = Omit<useRender.ComponentProps<'div', TagState>, 'children'> & {
+  children: ReactNode;
   startIcon?: LucideIcon;
   startIconProps?: LucideProps;
-  onClose?: (e: MouseEvent<HTMLButtonElement>) => void;
-  closeIconProps?: LucideProps;
-  className?: string;
-  defaultSize?: TagSize;
+  endIconProps?: LucideProps;
+  size?: TagSize;
   variant?: TagVariant;
+  color?: TagColor;
+  classes?: Partial<Record<Classes, string>>;
+  onRemove?: (e: MouseEvent<HTMLButtonElement>) => void;
 };

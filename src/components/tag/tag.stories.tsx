@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Info } from 'lucide-react';
 
 import { Tag } from './index';
-import type { TagSize, TagVariant } from './tag.types';
+import { TAG_COLORS, TAG_SIZES, TAG_VARIANTS } from './tag.types';
 
 const meta: Meta<typeof Tag> = {
   title: 'Components/Tag',
@@ -16,24 +16,23 @@ const meta: Meta<typeof Tag> = {
       control: 'text',
       description: 'Контент тега',
     },
-    defaultSize: {
+    size: {
       control: 'select',
-      options: ['s', 'm', 'l'] as TagSize[],
+      options: TAG_SIZES,
       description: 'Размер тега',
     },
     variant: {
       control: 'select',
-      options: [
-        'solid-brand',
-        'solid-neutral',
-        'solid-black',
-        'ghost-brand',
-        'ghost-neutral',
-      ] as TagVariant[],
+      options: TAG_VARIANTS,
       description: 'Вариант оформления',
     },
-    onClose: {
-      action: 'onClose',
+    color: {
+      control: 'select',
+      options: TAG_COLORS,
+      description: 'Цвет тега',
+    },
+    onRemove: {
+      action: 'onRemove',
       description: 'Колбэк при нажатии на кнопку удаления',
     },
   },
@@ -46,19 +45,26 @@ type Story = StoryObj<typeof Tag>;
 export const Default: Story = {
   args: {
     children: 'Тег',
-    defaultSize: 'm',
-    variant: 'solid-brand',
+    size: 'md',
+    variant: 'solid',
+    color: 'primary',
   },
 };
 
 export const Variants: Story = {
   render: () => (
-    <div className="flex flex-wrap items-center gap-3">
-      <Tag variant="solid-brand">solid-brand</Tag>
-      <Tag variant="solid-neutral">solid-neutral</Tag>
-      <Tag variant="solid-black">solid-black</Tag>
-      <Tag variant="ghost-brand">ghost-brand</Tag>
-      <Tag variant="ghost-neutral">ghost-neutral</Tag>
+    <div className="flex flex-col gap-4">
+      {TAG_VARIANTS.map(variant => (
+        <div key={variant} className="flex flex-wrap items-center gap-3">
+          {TAG_COLORS.map(color => (
+            <Tag key={color} variant={variant} color={color}>
+              {variant}
+              -
+              {color}
+            </Tag>
+          ))}
+        </div>
+      ))}
     </div>
   ),
 };
@@ -66,31 +72,34 @@ export const Variants: Story = {
 export const Sizes: Story = {
   render: () => (
     <div className="flex flex-wrap items-center gap-3">
-      <Tag defaultSize="s">Маленький</Tag>
-      <Tag defaultSize="m">Средний</Tag>
-      <Tag defaultSize="l">Большой</Tag>
+      <Tag size="sm">Маленький</Tag>
+      <Tag size="md">Средний</Tag>
+      <Tag size="lg">Большой</Tag>
     </div>
   ),
 };
 
-export const WithIcon: Story = {
-  args: {
-    children: 'С иконкой',
-    startIcon: Info,
-  },
-};
-
-export const Closable: Story = {
+export const Removeable: Story = {
   args: {
     children: 'Удаляемый тег',
-    onClose: () => {},
+    onRemove: () => {
+      alert('Тег удален');
+    },
   },
 };
 
 export const WithIconAndClose: Story = {
   render: () => (
-    <Tag startIcon={Info} onClose={() => {}}>
+    <Tag startIcon={Info} onRemove={() => {}}>
       Иконка и закрытие
+    </Tag>
+  ),
+};
+
+export const WithRender: Story = {
+  render: () => (
+    <Tag render={<a href="#tag" />}>
+      Ссылка
     </Tag>
   ),
 };

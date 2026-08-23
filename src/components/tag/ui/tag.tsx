@@ -1,85 +1,114 @@
+import { mergeProps } from '@base-ui/react/merge-props';
+import { useRender } from '@base-ui/react/use-render';
 import { X } from 'lucide-react';
 import type { FC } from 'react';
 
 import { cn } from '@/utils/cn';
 
-import type { TagProps, TagSize, TagVariant } from '../tag.types';
+import type { TagColor, TagProps, TagSize, TagState, TagVariant } from '../tag.types';
 
 const sizeClassesMap: Record<TagSize, string> = {
-  s: 'istok-tag--s',
-  m: 'istok-tag--m',
-  l: 'istok-tag--l',
+  sm: 'istok-tag--sm',
+  md: 'istok-tag--md',
+  lg: 'istok-tag--lg',
 };
 
 const variantClassesMap: Record<TagVariant, string> = {
-  'solid-brand': 'istok-tag--solid-brand',
-  'solid-neutral': 'istok-tag--solid-neutral',
-  'solid-black': 'istok-tag--solid-black',
-  'ghost-brand': 'istok-tag--ghost-brand',
-  'ghost-neutral': 'istok-tag--ghost-neutral',
+  solid: 'istok-tag--solid',
+  ghost: 'istok-tag--ghost',
+  outline: 'istok-tag--outline',
+};
+
+const colorClassesMap: Record<TagColor, string> = {
+  primary: 'istok-tag--color-primary',
+  neutral: 'istok-tag--color-neutral',
+  negative: 'istok-tag--color-negative',
+  warning: 'istok-tag--color-warning',
+  info: 'istok-tag--color-info',
+  success: 'istok-tag--color-success',
+  accent: 'istok-tag--color-accent',
 };
 
 export const Tag: FC<TagProps> = ({
   children,
   startIcon: StartIcon,
   startIconProps,
-  onClose,
-  closeIconProps,
+  onRemove,
+  endIconProps,
+  classes,
   className,
-  defaultSize = 'm',
-  variant = 'solid-brand',
+  size = 'md',
+  variant = 'solid',
+  color = 'primary',
+  render,
+  ...otherProps
 }) => {
-  return (
-    <div
-      className={cn(
-        'istok-tag flex items-center',
-        'h-(--istok-tag-height) gap-(--istok-tag-gap)',
-        `px-(--istok-tag-padding-inline) py-(--istok-tag-padding-block)`,
-        'rounded-(--istok-tag-radius)',
-        `text-(length:--istok-tag-font-size) leading-(--istok-tag-line-height)`,
-        'bg-(--istok-tag-bg) text-(--istok-tag-fg)',
-        sizeClassesMap[defaultSize],
-        variantClassesMap[variant],
-        className,
-      )}
-    >
-      {StartIcon && (
-        <StartIcon
-          {...startIconProps}
-          className={cn(
-            'istok-tag__start-icon shrink-0',
-            'size-(--istok-tag-icon-size)',
-            startIconProps?.className,
-          )}
-        />
-      )}
-      <span className="istok-tag__content">{children}</span>
-      {onClose && (
-        <button
-          type="button"
-          onClick={onClose}
-          className={cn(
-            `
-              istok-tag__close-button flex cursor-pointer items-center
-              justify-center
-            `,
-            `
-              text-(--istok-tag-close-fg) transition-opacity
-              hover:opacity-80
-            `,
-            'size-(--istok-tag-icon-size)',
-          )}
-          aria-label="Remove tag"
-        >
-          <X
-            {...closeIconProps}
+  const state: TagState = { size, variant, color };
+
+  const defaultProps: useRender.ElementProps<'div'> = {
+    className: cn(
+      'istok-tag flex items-center',
+      'h-(--istok-tag-height) gap-(--istok-tag-gap)',
+      `px-(--istok-tag-padding-inline) py-(--istok-tag-padding-block)`,
+      'rounded-(--istok-tag-radius)',
+      `text-(length:--istok-tag-font-size) leading-(--istok-tag-line-height)`,
+      'bg-(--istok-tag-bg) text-(--istok-tag-fg)',
+      'border border-(--istok-tag-border-color)',
+      sizeClassesMap[size],
+      colorClassesMap[color],
+      variantClassesMap[variant],
+      classes?.root,
+      className,
+    ),
+    children: (
+      <>
+        {StartIcon && (
+          <StartIcon
+            {...startIconProps}
             className={cn(
-              'istok-tag__close-icon size-(--istok-tag-icon-size)',
-              closeIconProps?.className,
+              'istok-tag__start-icon shrink-0',
+              'size-(--istok-tag-icon-size)',
+              startIconProps?.className,
+              classes?.startIcon,
             )}
           />
-        </button>
-      )}
-    </div>
-  );
+        )}
+        <span className={cn('istok-tag__content', classes?.content)}>{children}</span>
+        {onRemove && (
+          <button
+            type="button"
+            onClick={onRemove}
+            className={cn(
+              `
+                istok-tag__close-button flex cursor-pointer items-center
+                justify-center
+              `,
+              `
+                text-(--istok-tag-close-fg) transition-opacity
+                hover:opacity-80
+              `,
+              'size-(--istok-tag-icon-size)',
+              endIconProps?.className,
+              classes?.endIcon,
+            )}
+            aria-label="Remove tag"
+          >
+            <X
+              {...endIconProps}
+              className={cn(
+                'istok-tag__close-icon size-(--istok-tag-icon-size)',
+              )}
+            />
+          </button>
+        )}
+      </>
+    ),
+  };
+
+  return useRender({
+    defaultTagName: 'div',
+    render,
+    state,
+    props: mergeProps<'div'>(defaultProps, otherProps),
+  });
 };

@@ -1,22 +1,39 @@
+import { mergeProps } from '@base-ui/react/merge-props';
+import { useRender } from '@base-ui/react/use-render';
 import type { FC } from 'react';
 
 import { cn } from '@/utils/cn';
 
-import type { BadgeProps, BadgeShape, BadgeSize, BadgeVariant } from '../badge.types';
+import type {
+  BadgeColor,
+  BadgeProps,
+  BadgeShape,
+  BadgeSize,
+  BadgeState,
+  BadgeVariant,
+} from '../badge.types';
 
 const sizeClassesMap: Record<BadgeSize, string> = {
-  s: 'istok-badge--s',
-  m: 'istok-badge--m',
-  l: 'istok-badge--l',
+  sm: 'istok-badge--sm',
+  md: 'istok-badge--md',
+  lg: 'istok-badge--lg',
 };
 
 const variantClassesMap: Record<BadgeVariant, string> = {
-  'solid-brand': 'istok-badge--solid-brand',
-  'solid-neutral': 'istok-badge--solid-neutral',
-  'ghost-brand': 'istok-badge--ghost-brand',
-  'ghost-neutral': 'istok-badge--ghost-neutral',
-  'opacity-brand': 'istok-badge--opacity-brand',
-  'outline-brand': 'istok-badge--outline-brand',
+  solid: 'istok-badge--solid',
+  ghost: 'istok-badge--ghost',
+  opacity: 'istok-badge--opacity',
+  outline: 'istok-badge--outline',
+};
+
+const colorClassesMap: Record<BadgeColor, string> = {
+  primary: 'istok-badge--color-primary',
+  neutral: 'istok-badge--color-neutral',
+  negative: 'istok-badge--color-negative',
+  warning: 'istok-badge--color-warning',
+  info: 'istok-badge--color-info',
+  success: 'istok-badge--color-success',
+  accent: 'istok-badge--color-accent',
 };
 
 const shapeClassesMap: Record<BadgeShape, string> = {
@@ -30,43 +47,68 @@ export const Badge: FC<BadgeProps> = ({
   startIconProps,
   endAdornment,
   className,
-  defaultSize = 'm',
-  variant = 'solid-brand',
+  size = 'md',
+  variant = 'solid',
+  color = 'primary',
   shape = 'square',
+  circle = false,
+  render,
+  ...otherProps
 }) => {
-  return (
-    <div
-      className={cn(
-        'istok-badge flex items-center',
-        'h-(--istok-badge-height) gap-(--istok-badge-gap)',
-        `px-(--istok-badge-padding-inline) py-(--istok-badge-padding-block)`,
-        'rounded-(--istok-badge-radius)',
-        `
-          text-(length:--istok-badge-font-size)
-          leading-(--istok-badge-line-height)
-        `,
-        'bg-(--istok-badge-bg) text-(--istok-badge-fg)',
-        'border border-(--istok-badge-border-color)',
-        sizeClassesMap[defaultSize],
-        variantClassesMap[variant],
-        shapeClassesMap[shape],
-        className,
-      )}
-    >
-      {StartIcon && (
-        <StartIcon
-          {...startIconProps}
-          className={cn(
-            'istok-badge-start-icon shrink-0',
-            'size-(--istok-badge-icon-size)',
-            startIconProps?.className,
-          )}
-        />
-      )}
-      {label}
-      {endAdornment && (
-        <span className="istok-badge-end-adornment">{endAdornment}</span>
-      )}
-    </div>
-  );
+  const state: BadgeState = { size, variant, color, shape, circle };
+
+  const defaultProps: useRender.ElementProps<'div'> = {
+    className: cn(
+      'istok-badge flex items-center',
+      'h-(--istok-badge-height) gap-(--istok-badge-gap)',
+      `px-(--istok-badge-padding-inline) py-(--istok-badge-padding-block)`,
+      'rounded-(--istok-badge-radius)',
+      `
+        text-(length:--istok-badge-font-size)
+        leading-(--istok-badge-line-height)
+      `,
+      'bg-(--istok-badge-bg) text-(--istok-badge-fg)',
+      'border border-(--istok-badge-border-color)',
+      sizeClassesMap[size],
+      colorClassesMap[color],
+      variantClassesMap[variant],
+      !circle && shapeClassesMap[shape],
+      circle && [
+        'istok-badge--circle w-(--istok-badge-height) justify-center',
+      ],
+      className,
+    ),
+    children: (
+      <>
+        {StartIcon && (
+          <StartIcon
+            {...startIconProps}
+            className={cn(
+              'istok-badge__start-icon shrink-0',
+              'size-(--istok-badge-icon-size)',
+              startIconProps?.className,
+            )}
+          />
+        )}
+        {label}
+        {endAdornment && (
+          <span
+            className={cn(
+              'istok-badge__end-adornment inline-flex shrink-0 items-center',
+              'h-fit leading-none',
+            )}
+          >
+            {endAdornment}
+          </span>
+        )}
+      </>
+    ),
+  };
+
+  return useRender({
+    defaultTagName: 'div',
+    render,
+    state,
+    props: mergeProps<'div'>(defaultProps, otherProps),
+  });
 };

@@ -1,4 +1,4 @@
-@utility istok-tag--s {
+@utility istok-tag--sm {
   --istok-tag-height: var(--spacing-6);
   --istok-tag-gap: var(--spacing-1);
   --istok-tag-padding-inline: calc(var(--spacing) * 1.5);
@@ -9,8 +9,8 @@
   --istok-tag-icon-size: var(--spacing-4);
 }
 
-@utility istok-tag--m {
-  --istok-tag-height: var(--spacing-7);
+@utility istok-tag--md {
+  --istok-tag-height: calc(var(--spacing) * 7);
   --istok-tag-gap: var(--spacing-1);
   --istok-tag-padding-inline: calc(var(--spacing) * 2.5);
   --istok-tag-padding-block: calc(var(--spacing) * 1.5);
@@ -20,7 +20,7 @@
   --istok-tag-icon-size: var(--spacing-4);
 }
 
-@utility istok-tag--l {
+@utility istok-tag--lg {
   --istok-tag-height: var(--spacing-10);
   --istok-tag-gap: calc(var(--spacing) * 2);
   --istok-tag-padding-inline: var(--spacing-2);
@@ -31,32 +31,72 @@
   --istok-tag-icon-size: var(--spacing-6);
 }
 
-@utility istok-tag--solid-brand {
-  --istok-tag-bg: var(--color-primary-600);
-  --istok-tag-fg: var(--color-primary-50);
-  --istok-tag-close-fg: var(--color-primary-50);
+@utility istok-tag--color-primary {
+  --istok-tag-color-50: var(--color-primary-50);
+  --istok-tag-color-100: var(--color-primary-100);
+  --istok-tag-color-600: var(--color-primary-600);
+  --istok-tag-color-700: var(--color-primary-700);
 }
 
-@utility istok-tag--solid-neutral {
-  --istok-tag-bg: var(--color-neutral-600);
-  --istok-tag-fg: var(--color-neutral-100);
-  --istok-tag-close-fg: var(--color-neutral-100);
+@utility istok-tag--color-neutral {
+  --istok-tag-color-50: var(--color-neutral-50);
+  --istok-tag-color-100: var(--color-neutral-100);
+  --istok-tag-color-600: var(--color-neutral-600);
+  --istok-tag-color-700: var(--color-neutral-700);
 }
 
-@utility istok-tag--solid-black {
-  --istok-tag-bg: var(--color-black, #000);
-  --istok-tag-fg: var(--color-white, #fff);
-  --istok-tag-close-fg: var(--color-white, #fff);
+@utility istok-tag--color-negative {
+  --istok-tag-color-50: var(--color-negative-50);
+  --istok-tag-color-100: var(--color-negative-100);
+  --istok-tag-color-600: var(--color-negative-600);
+  --istok-tag-color-700: var(--color-negative-700);
 }
 
-@utility istok-tag--ghost-brand {
-  --istok-tag-bg: var(--color-primary-100);
-  --istok-tag-fg: var(--color-primary-700);
-  --istok-tag-close-fg: var(--color-primary-700);
+@utility istok-tag--color-warning {
+  --istok-tag-color-50: var(--color-warning-50);
+  --istok-tag-color-100: var(--color-warning-100);
+  --istok-tag-color-600: var(--color-warning-600);
+  --istok-tag-color-700: var(--color-warning-700);
 }
 
-@utility istok-tag--ghost-neutral {
-  --istok-tag-bg: var(--color-neutral-100);
-  --istok-tag-fg: var(--color-neutral-700);
-  --istok-tag-close-fg: var(--color-neutral-700);
+@utility istok-tag--color-info {
+  --istok-tag-color-50: var(--color-info-50);
+  --istok-tag-color-100: var(--color-info-100);
+  --istok-tag-color-600: var(--color-info-600);
+  --istok-tag-color-700: var(--color-info-700);
+}
+
+@utility istok-tag--color-success {
+  --istok-tag-color-50: var(--color-positive-50);
+  --istok-tag-color-100: var(--color-positive-100);
+  --istok-tag-color-600: var(--color-positive-600);
+  --istok-tag-color-700: var(--color-positive-700);
+}
+
+@utility istok-tag--color-accent {
+  --istok-tag-color-50: var(--color-accent-50);
+  --istok-tag-color-100: var(--color-accent-100);
+  --istok-tag-color-600: var(--color-accent-600);
+  --istok-tag-color-700: var(--color-accent-700);
+}
+
+@utility istok-tag--solid {
+  --istok-tag-bg: var(--istok-tag-color-600);
+  --istok-tag-fg: var(--istok-tag-color-50);
+  --istok-tag-close-fg: var(--istok-tag-color-50);
+  --istok-tag-border-color: transparent;
+}
+
+@utility istok-tag--ghost {
+  --istok-tag-bg: var(--istok-tag-color-100);
+  --istok-tag-fg: var(--istok-tag-color-700);
+  --istok-tag-close-fg: var(--istok-tag-color-700);
+  --istok-tag-border-color: transparent;
+}
+
+@utility istok-tag--outline {
+  --istok-tag-bg: transparent;
+  --istok-tag-fg: var(--istok-tag-color-600);
+  --istok-tag-close-fg: var(--istok-tag-color-600);
+  --istok-tag-border-color: var(--istok-tag-color-600);
 }

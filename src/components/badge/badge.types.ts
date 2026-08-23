@@ -1,23 +1,34 @@
+import type { useRender } from '@base-ui/react/use-render';
 import type { LucideIcon, LucideProps } from 'lucide-react';
 import type { ReactNode } from 'react';
 
-export type BadgeSize = 's' | 'm' | 'l';
-export type BadgeVariant
-  = | 'solid-brand'
-    | 'solid-neutral'
-    | 'ghost-brand'
-    | 'ghost-neutral'
-    | 'opacity-brand'
-    | 'outline-brand';
-export type BadgeShape = 'square' | 'rounded';
+export const BADGE_SIZES = ['sm', 'md', 'lg'] as const;
+export const BADGE_VARIANTS = ['solid', 'ghost', 'opacity', 'outline'] as const;
+export const BADGE_COLORS = ['primary', 'neutral', 'negative', 'warning', 'info', 'success', 'accent'] as const;
+export const BADGE_SHAPES = ['square', 'rounded'] as const;
 
-export type BadgeProps = {
+export type BadgeSize = (typeof BADGE_SIZES)[number];
+export type BadgeVariant = (typeof BADGE_VARIANTS)[number];
+export type BadgeColor = (typeof BADGE_COLORS)[number];
+export type BadgeShape = (typeof BADGE_SHAPES)[number];
+
+export type BadgeState = {
+  size: BadgeSize;
+  variant: BadgeVariant;
+  color: BadgeColor;
+  shape: BadgeShape;
+  circle: boolean;
+};
+
+export type BadgeProps = Omit<useRender.ComponentProps<'div', BadgeState>, 'children'> & {
   label: string;
   startIcon?: LucideIcon;
   startIconProps?: LucideProps;
   endAdornment?: ReactNode;
-  className?: string;
-  defaultSize?: BadgeSize;
+  size?: BadgeSize;
   variant?: BadgeVariant;
+  color?: BadgeColor;
   shape?: BadgeShape;
+  /** Круглый бейдж без паддингов (иконка или число) */
+  circle?: boolean;
 };

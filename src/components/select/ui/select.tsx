@@ -24,9 +24,9 @@ const variantClassesMap: Record<SelectVariant, string> = {
 };
 
 const tagSizeClassesMap: Record<SelectSize, string> = {
-  s: 'istok-tag--s',
-  m: 'istok-tag--m',
-  l: 'istok-tag--l',
+  s: 'istok-tag--sm',
+  m: 'istok-tag--md',
+  l: 'istok-tag--lg',
 };
 
 const flattenOptions = (
@@ -433,8 +433,9 @@ export const Select: FC<SelectProps> = ({
                                 ? (
                                   <Tag
                                     key={val}
-                                    variant="ghost-brand"
-                                    onClose={(e) => {
+                                    variant="ghost"
+                                    color="primary"
+                                    onRemove={(e) => {
                                       e.stopPropagation();
                                       handleRemoveTag(val);
                                     }}
@@ -481,12 +482,12 @@ export const Select: FC<SelectProps> = ({
             side="bottom"
             align="start"
             sideOffset={4}
-            className={cn(classes?.positioner)}
+            className={cn('z-100', classes?.positioner)}
           >
             <Combobox.Popup
               className={cn(
                 `
-                  istok-select-popup z-50 overflow-hidden rounded-xl border
+                  istok-select-popup overflow-hidden rounded-xl border
                   border-neutral-200 bg-neutral-50 shadow-lg
                 `,
                 `
@@ -600,9 +601,10 @@ export const Select: FC<SelectProps> = ({
                       {value.map(opt => (
                         <Tag
                           key={opt.value}
-                          variant="ghost-brand"
-                          defaultSize="s"
-                          onClose={() => handleRemoveTag(opt.value)}
+                          variant="ghost"
+                          color="primary"
+                          size="sm"
+                          onRemove={() => handleRemoveTag(opt.value)}
                         >
                           {opt.label}
                         </Tag>

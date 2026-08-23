@@ -14,9 +14,11 @@ const twMerge = extendTailwindMerge<
   | 'checkbox-size'
   | 'badge-size'
   | 'badge-variant'
+  | 'badge-color'
   | 'badge-shape'
   | 'tag-size'
   | 'tag-variant'
+  | 'tag-color'
   | 'tabs-size'
   | 'tabs-variant'
   | 'avatar-size'
@@ -106,24 +108,34 @@ const twMerge = extendTailwindMerge<
         'istok-checkbox--md',
         'istok-checkbox--lg',
       ],
-      'badge-size': ['istok-badge--s', 'istok-badge--m', 'istok-badge--l'],
+      'badge-size': ['istok-badge--sm', 'istok-badge--md', 'istok-badge--lg'],
+      'badge-color': [
+        'istok-badge--color-primary',
+        'istok-badge--color-neutral',
+        'istok-badge--color-negative',
+        'istok-badge--color-warning',
+        'istok-badge--color-info',
+        'istok-badge--color-success',
+        'istok-badge--color-accent',
+      ],
       'badge-variant': [
-        'istok-badge--solid-brand',
-        'istok-badge--solid-neutral',
-        'istok-badge--ghost-brand',
-        'istok-badge--ghost-neutral',
-        'istok-badge--opacity-brand',
-        'istok-badge--outline-brand',
+        'istok-badge--solid',
+        'istok-badge--ghost',
+        'istok-badge--opacity',
+        'istok-badge--outline',
       ],
       'badge-shape': ['istok-badge--square', 'istok-badge--rounded'],
       'tag-size': ['istok-tag--sm', 'istok-tag--md', 'istok-tag--lg'],
-      'tag-variant': [
-        'istok-tag--solid-brand',
-        'istok-tag--solid-neutral',
-        'istok-tag--solid-black',
-        'istok-tag--ghost-brand',
-        'istok-tag--ghost-neutral',
+      'tag-color': [
+        'istok-tag--color-primary',
+        'istok-tag--color-neutral',
+        'istok-tag--color-negative',
+        'istok-tag--color-warning',
+        'istok-tag--color-info',
+        'istok-tag--color-success',
+        'istok-tag--color-accent',
       ],
+      'tag-variant': ['istok-tag--solid', 'istok-tag--ghost', 'istok-tag--outline'],
       'tabs-size': ['istok-tabs--sm', 'istok-tabs--md', 'istok-tabs--lg'],
       'tabs-variant': [
         'istok-tabs--line',
