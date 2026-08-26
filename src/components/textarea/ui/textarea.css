@@ -15,7 +15,7 @@
 }
 
 @utility istok-textarea--lg {
-  --istok-textarea-radius: var(--radius-2xl);
+  --istok-textarea-radius: var(--radius-xl);
   --istok-textarea-font-size: var(--text-control-lg);
   --istok-textarea-line-height: 1.5;
   --istok-textarea-padding-y: var(--spacing-3);
@@ -23,28 +23,31 @@
 }
 
 @utility istok-textarea--neutral {
-  --istok-textarea-bg: var(--color-neutral-100);
+  --istok-textarea-bg: var(--surface-muted);
   --istok-textarea-border-color: transparent;
   --istok-textarea-border-width: 0px;
-  --istok-textarea-border-focus: var(--color-primary-400);
-  --istok-textarea-fg: var(--color-neutral-900);
-  --istok-textarea-placeholder: var(--color-neutral-300);
+  --istok-textarea-border-focus: transparent;
+  --istok-textarea-focus-shadow: inset 0 0 0 2px var(--color-accent-600);
+  --istok-textarea-fg: var(--text-strong);
+  --istok-textarea-placeholder: var(--text-muted);
 }
 
 @utility istok-textarea--solid {
-  --istok-textarea-bg: var(--color-neutral-50);
+  --istok-textarea-bg: var(--surface-card);
   --istok-textarea-border-color: transparent;
-  --istok-textarea-border-width: 1px;
-  --istok-textarea-border-focus: var(--color-primary-400);
-  --istok-textarea-fg: var(--color-neutral-900);
-  --istok-textarea-placeholder: var(--color-neutral-300);
+  --istok-textarea-border-width: 0px;
+  --istok-textarea-border-focus: transparent;
+  --istok-textarea-focus-shadow: inset 0 0 0 2px var(--color-accent-600);
+  --istok-textarea-fg: var(--text-strong);
+  --istok-textarea-placeholder: var(--text-muted);
 }
 
 @utility istok-textarea--outline {
-  --istok-textarea-bg: var(--color-neutral-50);
-  --istok-textarea-border-color: var(--color-neutral-300);
-  --istok-textarea-border-width: 1px;
-  --istok-textarea-border-focus: var(--color-primary-400);
-  --istok-textarea-fg: var(--color-neutral-900);
-  --istok-textarea-placeholder: var(--color-neutral-300);
+  --istok-textarea-bg: var(--surface-muted);
+  --istok-textarea-border-color: transparent;
+  --istok-textarea-border-width: 0px;
+  --istok-textarea-border-focus: transparent;
+  --istok-textarea-focus-shadow: inset 0 0 0 2px var(--color-accent-600);
+  --istok-textarea-fg: var(--text-strong);
+  --istok-textarea-placeholder: var(--text-muted);
 }

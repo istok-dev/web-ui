@@ -1,29 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap");
+
 @theme {
   --color-*: initial;
 
-  --color-primary-50: #f4f7fa;
-  --color-primary-100: #e7eff8;
-  --color-primary-200: #d8e7f8;
-  --color-primary-300: #b6d4f7;
-  --color-primary-400: #79b4f6;
-  --color-primary-500: #4799f5;
-  --color-primary-600: #2885ef;
-  --color-primary-700: #0e6dd8;
-  --color-primary-800: #0c55a6;
-  --color-primary-900: #0b417f;
-  --color-primary-950: #082c54;
+  /* PRIMARY: водная шкала */
+  --color-primary-50: #f2f9fe;
+  --color-primary-100: #e3f2fb;
+  --color-primary-200: #cbe6f8;
+  --color-primary-300: #9bd0f0;
+  --color-primary-400: #4fa9dc;
+  --color-primary-500: #1b8fcb;
+  --color-primary-600: #0b7fbf;
+  --color-primary-700: #0a6595;
+  --color-primary-800: #084f75;
+  --color-primary-900: #063b58;
+  --color-primary-950: #042838;
+
+  /* аква — партнёр градиента */
+  --color-aqua-400: #2cc3de;
+  --gradient-water: linear-gradient(135deg, #0b7fbf 0%, #2cc3de 100%);
 
   --color-neutral-50: #ffffff;
-  --color-neutral-100: #f5f4f0;
-  --color-neutral-200: #d7d4ca;
-  --color-neutral-300: #bbb9b0;
-  --color-neutral-400: #9d9b94;
-  --color-neutral-500: #807f78;
-  --color-neutral-600: #676660;
-  --color-neutral-700: #4c4b47;
-  --color-neutral-800: #333330;
-  --color-neutral-900: #1e1e1c;
-  --color-neutral-950: #000000;
+  --color-neutral-100: #f2f3f5;
+  --color-neutral-200: #e7e9ed;
+  --color-neutral-300: #dde1e6;
+  --color-neutral-400: #a2a8b0;
+  --color-neutral-500: #8b929c;
+  --color-neutral-600: #6e7580;
+  --color-neutral-700: #4a5159;
+  --color-neutral-800: #2c333b;
+  --color-neutral-900: #101820;
+  --color-neutral-950: #0a0e12;
 
   --color-negative-50: #fef2f2;
   --color-negative-100: #fbe2e2;
@@ -61,41 +68,43 @@
   --color-warning-900: #6d4002;
   --color-warning-950: #4a2c01;
 
-  --color-info-50: #f0f9ff;
-  --color-info-100: #e1efff;
-  --color-info-200: #c7e0ff;
-  --color-info-300: #a5ccff;
-  --color-info-400: #6eb3ff;
-  --color-info-500: #3d9aff;
-  --color-info-600: #0ea5e9;
-  --color-info-700: #0779ad;
-  --color-info-800: #055a82;
-  --color-info-900: #033d58;
-  --color-info-950: #02263a;
+  /* info = primary (два синих на экране неразличимы) */
+  --color-info-50: #f2f9fe;
+  --color-info-100: #e3f2fb;
+  --color-info-200: #cbe6f8;
+  --color-info-300: #9bd0f0;
+  --color-info-400: #4fa9dc;
+  --color-info-500: #1b8fcb;
+  --color-info-600: #0b7fbf;
+  --color-info-700: #0a6595;
+  --color-info-800: #084f75;
+  --color-info-900: #063b58;
+  --color-info-950: #042838;
 
-  --color-accent-50: #f5f3ff;
-  --color-accent-100: #ede9fe;
-  --color-accent-200: #ddd6fe;
-  --color-accent-300: #c4b5fd;
-  --color-accent-400: #a78bfa;
-  --color-accent-500: #8b5cf6;
-  --color-accent-600: #7c3aed;
-  --color-accent-700: #6d28d9;
-  --color-accent-800: #5b21b6;
-  --color-accent-900: #4c1d95;
-  --color-accent-950: #2e1065;
+  /* ACCENT: коралловый */
+  --color-accent-50: #fff4f0;
+  --color-accent-100: #ffe6de;
+  --color-accent-200: #ffcdbd;
+  --color-accent-300: #ffa88c;
+  --color-accent-400: #ff8560;
+  --color-accent-500: #f96c40;
+  --color-accent-600: #e85526;
+  --color-accent-700: #c4411a;
+  --color-accent-800: #9c3314;
+  --color-accent-900: #742611;
+  --color-accent-950: #4a180b;
 
   --radius-*: initial;
   --radius-none: 0;
   --radius-xs: 2px;
   --radius-sm: 4px;
   --radius-md: 6px;
-  --radius-lg: 8px;
-  --radius-xl: 12px;
-  --radius-2xl: 16px;
-  --radius-3xl: 20px;
-  --radius-4xl: 24px;
-  --radius-full: 9999px;
+  --radius-lg: 14px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-3xl: 24px;
+  --radius-4xl: 28px;
+  --radius-full: calc(infinity * 1px);
 
   --spacing: 4px;
   --spacing-0: 0;
@@ -105,9 +114,13 @@
   --spacing-4: 16px;
   --spacing-5: 20px;
   --spacing-6: 24px;
+  --spacing-7: 28px;
   --spacing-8: 32px;
   --spacing-10: 40px;
+  --spacing-11: 44px;
   --spacing-12: 48px;
+  --spacing-13: 52px;
+  --spacing-14: 56px;
   --spacing-16: 64px;
   --spacing-20: 80px;
   --spacing-24: 96px;
@@ -119,28 +132,30 @@
   --breakpoint-desktop-hd: 1440px;
   --breakpoint-desktop-fhd: 1920px;
 
+  --font-sans: "Golos Text", system-ui, -apple-system, sans-serif;
+
   --text-*: initial;
   --text-display-lg: 57px;
   --text-display-lg--line-height: 64px;
-  --text-display-lg--letter-spacing: -0.25px;
+  --text-display-lg--letter-spacing: -1.4px;
   --text-display-md: 45px;
   --text-display-md--line-height: 52px;
-  --text-display-md--letter-spacing: -0.25px;
+  --text-display-md--letter-spacing: -1.4px;
   --text-display-sm: 36px;
   --text-display-sm--line-height: 44px;
-  --text-display-sm--letter-spacing: -0.25px;
+  --text-display-sm--letter-spacing: -1.4px;
   --text-headline-lg: 32px;
   --text-headline-lg--line-height: 40px;
-  --text-headline-lg--letter-spacing: -0.25px;
+  --text-headline-lg--letter-spacing: -1.4px;
   --text-headline-md: 28px;
   --text-headline-md--line-height: 36px;
-  --text-headline-md--letter-spacing: -0.25px;
+  --text-headline-md--letter-spacing: -1.4px;
   --text-headline-sm: 24px;
   --text-headline-sm--line-height: 32px;
-  --text-headline-sm--letter-spacing: -0.25px;
+  --text-headline-sm--letter-spacing: -1.4px;
   --text-title-lg: 22px;
   --text-title-lg--line-height: 28px;
-  --text-title-lg--letter-spacing: -0.25px;
+  --text-title-lg--letter-spacing: -0.6px;
   --text-title-md: 16px;
   --text-title-md--line-height: 24px;
   --text-title-md--letter-spacing: -0.25px;
@@ -173,58 +188,108 @@
   --text-body-xs--letter-spacing: -0.15px;
 
   --shadow-*: initial;
-  --shadow-sm: 0 2px 8px 0 rgba(30, 30, 28, 0.24);
-  --shadow-md: 0 4px 16px 0 rgba(30, 30, 28, 0.24);
-  --shadow-lg: 0 6px 24px 0 rgba(30, 30, 28, 0.24);
-  --shadow-xl: 0 8px 32px 0 rgba(30, 30, 28, 0.24);
+  --shadow-sm: none;
+  --shadow-md: 0 8px 24px rgba(16, 24, 32, 0.07);
+  --shadow-lg: 0 10px 28px rgba(16, 24, 32, 0.08);
+  --shadow-xl: 0 12px 32px rgba(16, 24, 32, 0.1);
 
   --scrollbar-width: thin;
   --scrollbar-color-thumb: var(--color-neutral-300);
   --scrollbar-color-track: var(--color-neutral-100);
   --scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);
   --scrollbar-radius: var(--radius-full);
+
+  --icon-stroke-width: 1.9;
+}
+
+:root {
+  --surface-page: #f2f3f5;
+  --surface-card: #ffffff;
+  --surface-muted: #f2f3f5;
+  --border-subtle: transparent;
+  --text-strong: #101820;
+  --text-body: #101820;
+  --text-secondary: #6e7580;
+  --text-muted: #8b929c;
 }
 
 [data-theme="dark"] {
-  --color-primary-50: #082c54;
-  --color-primary-100: #0b417f;
-  --color-primary-200: #0c55a6;
-  --color-primary-300: #0e6dd8;
-  --color-primary-400: #2885ef;
-  --color-primary-500: #4799f5;
-  --color-primary-600: #79b4f6;
-  --color-primary-700: #b6d4f7;
-  --color-primary-800: #d8e7f8;
-  --color-primary-900: #e7eff8;
-  --color-primary-950: #f4f7fa;
+  /* PRIMARY: та же вода, сдвинутая вверх по светлоте */
+  --color-primary-50: #06283a;
+  --color-primary-100: #0a3b55;
+  --color-primary-200: #0c4c6e;
+  --color-primary-300: #0f6491;
+  --color-primary-400: #1b84b8;
+  --color-primary-500: #2a9bd3;
+  --color-primary-600: #45b2e6;
+  --color-primary-700: #6cc4ee;
+  --color-primary-800: #99d7f4;
+  --color-primary-900: #c7e9f9;
+  --color-primary-950: #e8f6fd;
 
-  --color-neutral-50: #10110e;
-  --color-neutral-100: #1e1e1c;
-  --color-neutral-200: #333330;
-  --color-neutral-300: #4c4b47;
-  --color-neutral-400: #676660;
-  --color-neutral-500: #807f78;
-  --color-neutral-600: #9d9b94;
-  --color-neutral-700: #bbb9b0;
-  --color-neutral-800: #d7d4ca;
-  --color-neutral-900: #f5f4f0;
+  --color-aqua-400: #5adcef;
+  --gradient-water: linear-gradient(135deg, #0c5c86 0%, #17869b 100%);
+
+  /* ACCENT: коралл теплеет и светлеет */
+  --color-accent-50: #2a0f08;
+  --color-accent-100: #3a160c;
+  --color-accent-200: #5c2413;
+  --color-accent-300: #8a371b;
+  --color-accent-400: #c4541f;
+  --color-accent-500: #e86a32;
+  --color-accent-600: #ff8355;
+  --color-accent-700: #ff9e77;
+  --color-accent-800: #ffbc9c;
+  --color-accent-900: #ffd8c6;
+  --color-accent-950: #ffeee6;
+
+  /* поверхности: три ступени подъёма */
+  --color-neutral-50: #0d1116;
+  --color-neutral-100: #141a21;
+  --color-neutral-200: #1c242d;
+  --color-neutral-300: #27313c;
+  --color-neutral-400: #3a4653;
+  --color-neutral-500: #6c7885;
+  --color-neutral-600: #98a3af;
+  --color-neutral-700: #c2cad3;
+  --color-neutral-800: #dfe4e9;
+  --color-neutral-900: #f2f5f8;
   --color-neutral-950: #ffffff;
 
-  --color-accent-50: #2e1065;
-  --color-accent-100: #4c1d95;
-  --color-accent-200: #5b21b6;
-  --color-accent-300: #6d28d9;
-  --color-accent-400: #7c3aed;
-  --color-accent-500: #8b5cf6;
-  --color-accent-600: #a78bfa;
-  --color-accent-700: #c4b5fd;
-  --color-accent-800: #ddd6fe;
-  --color-accent-900: #ede9fe;
-  --color-accent-950: #f5f3ff;
+  /* info = primary */
+  --color-info-50: #06283a;
+  --color-info-100: #0a3b55;
+  --color-info-200: #0c4c6e;
+  --color-info-300: #0f6491;
+  --color-info-400: #1b84b8;
+  --color-info-500: #2a9bd3;
+  --color-info-600: #45b2e6;
+  --color-info-700: #6cc4ee;
+  --color-info-800: #99d7f4;
+  --color-info-900: #c7e9f9;
+  --color-info-950: #e8f6fd;
 
-  --scrollbar-color-thumb: var(--color-neutral-600);
-  --scrollbar-color-track: var(--color-neutral-200);
+  --surface-page: #0d1116;
+  --surface-card: #141a21;
+  --surface-muted: #1c242d;
+  --border-subtle: transparent;
+  --text-strong: #f2f5f8;
+  --text-body: #e4e9ee;
+  --text-secondary: #98a3af;
+  --text-muted: #6c7885;
+
+  --shadow-sm: none;
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.55);
+  --shadow-xl: 0 16px 40px rgba(0, 0, 0, 0.6);
+
+  --scrollbar-color-thumb: var(--color-neutral-400);
+  --scrollbar-color-track: var(--color-neutral-100);
   --scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);
+}
+
+[data-theme="dark"] .istok-progress {
+  --istok-progress-track: var(--color-neutral-200);
 }
 
 @utility scrollbar {
@@ -232,7 +297,6 @@
   scrollbar-color: var(--scrollbar-color);
 }
 
-/* WebKit (Chrome, Safari, Edge) */
 .scrollbar::-webkit-scrollbar {
   width: 4px;
   height: 4px;
@@ -253,4 +317,8 @@
 
 [data-theme="dark"] .scrollbar::-webkit-scrollbar-thumb:hover {
   background: var(--color-neutral-500);
+}
+
+.lucide {
+  stroke-width: var(--icon-stroke-width);
 }

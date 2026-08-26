@@ -114,8 +114,8 @@ export function DatePicker({
           <Popover.Popup
             className={cn(
               `
-                z-50 w-auto rounded-xl border border-[#E5E0D8] bg-neutral-50 p-0
-                text-[#2c2c2c] shadow-md outline-none
+                z-50 w-auto rounded-4xl border-0 bg-(--surface-card) p-0
+                text-(--text-strong) shadow-md outline-none
               `,
             )}
           >

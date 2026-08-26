@@ -1,11 +1,12 @@
 @utility istok-tag--sm {
-  --istok-tag-height: var(--spacing-6);
+  --istok-tag-height: calc(var(--spacing) * 6.5);
   --istok-tag-gap: var(--spacing-1);
   --istok-tag-padding-inline: calc(var(--spacing) * 1.5);
   --istok-tag-padding-block: var(--spacing-1);
-  --istok-tag-radius: var(--radius-xl);
+  --istok-tag-radius: var(--radius-full);
   --istok-tag-font-size: var(--text-control-sm);
   --istok-tag-line-height: var(--text-control-sm--line-height);
+  --istok-tag-font-weight: 500;
   --istok-tag-icon-size: var(--spacing-4);
 }
 
@@ -14,9 +15,10 @@
   --istok-tag-gap: var(--spacing-1);
   --istok-tag-padding-inline: calc(var(--spacing) * 2.5);
   --istok-tag-padding-block: calc(var(--spacing) * 1.5);
-  --istok-tag-radius: var(--radius-xl);
+  --istok-tag-radius: var(--radius-full);
   --istok-tag-font-size: var(--text-control-md);
   --istok-tag-line-height: var(--text-control-md--line-height);
+  --istok-tag-font-weight: 600;
   --istok-tag-icon-size: var(--spacing-4);
 }
 
@@ -25,9 +27,10 @@
   --istok-tag-gap: calc(var(--spacing) * 2);
   --istok-tag-padding-inline: var(--spacing-2);
   --istok-tag-padding-block: var(--spacing-2);
-  --istok-tag-radius: var(--radius-xl);
+  --istok-tag-radius: var(--radius-full);
   --istok-tag-font-size: var(--text-control-lg);
   --istok-tag-line-height: var(--text-control-lg--line-height);
+  --istok-tag-font-weight: 600;
   --istok-tag-icon-size: var(--spacing-6);
 }
 
@@ -40,9 +43,9 @@
 
 @utility istok-tag--color-neutral {
   --istok-tag-color-50: var(--color-neutral-50);
-  --istok-tag-color-100: var(--color-neutral-100);
+  --istok-tag-color-100: var(--surface-muted);
   --istok-tag-color-600: var(--color-neutral-600);
-  --istok-tag-color-700: var(--color-neutral-700);
+  --istok-tag-color-700: var(--text-secondary);
 }
 
 @utility istok-tag--color-negative {

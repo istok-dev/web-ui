@@ -1,12 +1,12 @@
 @utility istok-badge--sm {
-  --istok-badge-height: var(--spacing-6);
+  --istok-badge-height: calc(var(--spacing) * 6.5);
   --istok-badge-gap: var(--spacing-1);
   --istok-badge-padding-inline: calc(var(--spacing) * 1.5);
   --istok-badge-padding-block: var(--spacing-1);
   --istok-badge-font-size: var(--text-control-xs);
   --istok-badge-line-height: var(--text-control-xs--line-height);
+  --istok-badge-font-weight: 500;
   --istok-badge-icon-size: var(--spacing-4);
-  --istok-badge-square-radius: var(--radius-lg);
 }
 
 @utility istok-badge--md {
@@ -16,8 +16,8 @@
   --istok-badge-padding-block: calc(var(--spacing) * 1.5);
   --istok-badge-font-size: var(--text-control-sm);
   --istok-badge-line-height: var(--text-control-sm--line-height);
+  --istok-badge-font-weight: 600;
   --istok-badge-icon-size: var(--spacing-4);
-  --istok-badge-square-radius: var(--radius-lg);
 }
 
 @utility istok-badge--lg {
@@ -27,16 +27,16 @@
   --istok-badge-padding-block: calc(var(--spacing) * 1.5);
   --istok-badge-font-size: var(--text-control-md);
   --istok-badge-line-height: var(--text-control-md--line-height);
+  --istok-badge-font-weight: 600;
   --istok-badge-icon-size: var(--spacing-5);
-  --istok-badge-square-radius: var(--radius-xl);
 }
 
 @utility istok-badge--rounded {
-  --istok-badge-radius: calc(infinity * 1px);
+  --istok-badge-radius: var(--radius-full);
 }
 
 @utility istok-badge--square {
-  --istok-badge-radius: var(--istok-badge-square-radius);
+  --istok-badge-radius: var(--radius-md);
 }
 
 @utility istok-badge--circle {
@@ -54,9 +54,9 @@
 
 @utility istok-badge--color-neutral {
   --istok-badge-color-50: var(--color-neutral-50);
-  --istok-badge-color-100: var(--color-neutral-100);
+  --istok-badge-color-100: var(--surface-muted);
   --istok-badge-color-600: var(--color-neutral-600);
-  --istok-badge-color-700: var(--color-neutral-700);
+  --istok-badge-color-700: var(--text-secondary);
 }
 
 @utility istok-badge--color-negative {

@@ -101,7 +101,10 @@ export const Input: FC<InputProps> = ({
             [border-width:var(--istok-input-border-width)]
             border-(--istok-input-border-color)
           `,
-          `focus:[border-width:1px] focus:border-(--istok-input-border-focus)`,
+          `
+            focus:border-(--istok-input-border-focus)
+            focus:[box-shadow:var(--istok-input-focus-shadow)]
+          `,
           'placeholder:text-(--istok-input-placeholder)',
           pt?.input?.className,
         )}

@@ -372,11 +372,12 @@ export const Select: FC<SelectProps> = ({
             `,
             `
               focus:border-(--istok-select-trigger-border-focus)
+              focus:[box-shadow:var(--istok-select-trigger-focus-shadow)]
               focus:outline-none
             `,
             'data-[popup-open=true]:[&>.istok-select__chevron]:rotate-180',
             !disabled && 'hover:bg-(--istok-select-trigger-bg-hover)',
-            disabled && 'cursor-not-allowed opacity-50',
+            disabled && 'cursor-not-allowed opacity-100',
             classes?.trigger,
           )}
           render={<div role="button" tabIndex={0} />}

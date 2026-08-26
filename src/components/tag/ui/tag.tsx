@@ -51,7 +51,10 @@ export const Tag: FC<TagProps> = ({
       'h-(--istok-tag-height) gap-(--istok-tag-gap)',
       `px-(--istok-tag-padding-inline) py-(--istok-tag-padding-block)`,
       'rounded-(--istok-tag-radius)',
-      `text-(length:--istok-tag-font-size) leading-(--istok-tag-line-height)`,
+      `
+        text-(length:--istok-tag-font-size) leading-(--istok-tag-line-height)
+        font-[number:var(--istok-tag-font-weight)]
+      `,
       'bg-(--istok-tag-bg) text-(--istok-tag-fg)',
       'border border-(--istok-tag-border-color)',
       sizeClassesMap[size],

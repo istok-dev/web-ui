@@ -1,5 +1,5 @@
 @utility istok-input--sm {
-  --istok-input-height: var(--spacing-8);
+  --istok-input-height: var(--spacing-10);
   --istok-input-radius: var(--radius-xl);
   --istok-input-font-size: var(--text-control-sm);
   --istok-input-line-height: var(--text-control-sm--line-height);
@@ -15,7 +15,7 @@
 }
 
 @utility istok-input--md {
-  --istok-input-height: var(--spacing-10);
+  --istok-input-height: var(--spacing-12);
   --istok-input-radius: var(--radius-xl);
   --istok-input-font-size: var(--text-control-md);
   --istok-input-line-height: var(--text-control-md--line-height);
@@ -31,8 +31,8 @@
 }
 
 @utility istok-input--lg {
-  --istok-input-height: var(--spacing-12);
-  --istok-input-radius: var(--radius-2xl);
+  --istok-input-height: var(--spacing-14);
+  --istok-input-radius: var(--radius-xl);
   --istok-input-font-size: var(--text-control-lg);
   --istok-input-line-height: var(--text-control-lg--line-height);
   --istok-input-padding-y: var(--spacing-3);
@@ -47,30 +47,33 @@
 }
 
 @utility istok-input__input--neutral {
-  --istok-input-bg: var(--color-neutral-100);
+  --istok-input-bg: var(--surface-muted);
   --istok-input-border-color: transparent;
   --istok-input-border-width: 0px;
-  --istok-input-border-focus: var(--color-primary-400);
-  --istok-input-fg: var(--color-neutral-900);
-  --istok-input-placeholder: var(--color-neutral-300);
+  --istok-input-border-focus: transparent;
+  --istok-input-focus-shadow: inset 0 0 0 2px var(--color-accent-600);
+  --istok-input-fg: var(--text-strong);
+  --istok-input-placeholder: var(--text-muted);
 }
 
 @utility istok-input__input--solid {
-  --istok-input-bg: var(--color-neutral-50);
+  --istok-input-bg: var(--surface-card);
   --istok-input-border-color: transparent;
-  --istok-input-border-width: 1px;
-  --istok-input-border-focus: var(--color-primary-400);
-  --istok-input-fg: var(--color-neutral-900);
-  --istok-input-placeholder: var(--color-neutral-300);
+  --istok-input-border-width: 0px;
+  --istok-input-border-focus: transparent;
+  --istok-input-focus-shadow: inset 0 0 0 2px var(--color-accent-600);
+  --istok-input-fg: var(--text-strong);
+  --istok-input-placeholder: var(--text-muted);
 }
 
 @utility istok-input__input--outline {
-  --istok-input-bg: transparent;
-  --istok-input-border-color: var(--color-neutral-300);
-  --istok-input-border-width: 1px;
-  --istok-input-border-focus: var(--color-primary-400);
-  --istok-input-fg: var(--color-neutral-900);
-  --istok-input-placeholder: var(--color-neutral-300);
+  --istok-input-bg: var(--surface-muted);
+  --istok-input-border-color: transparent;
+  --istok-input-border-width: 0px;
+  --istok-input-border-focus: transparent;
+  --istok-input-focus-shadow: inset 0 0 0 2px var(--color-accent-600);
+  --istok-input-fg: var(--text-strong);
+  --istok-input-placeholder: var(--text-muted);
 }
 
 @utility istok-input__input--opacity {
@@ -80,12 +83,13 @@
     transparent
   );
   --istok-input-border-color: transparent;
-  --istok-input-border-width: 1px;
-  --istok-input-border-focus: var(--color-primary-400);
+  --istok-input-border-width: 0px;
+  --istok-input-border-focus: transparent;
+  --istok-input-focus-shadow: inset 0 0 0 2px var(--color-accent-600);
   --istok-input-fg: var(--color-neutral-50);
   --istok-input-placeholder: color-mix(
     in srgb,
-    var(--color-neutral-100) 24%,
+    var(--color-neutral-100) 50%,
     transparent
   );
 }

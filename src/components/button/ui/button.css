@@ -1,33 +1,36 @@
 @utility istok-button--sm {
   --istok-button-padding-inline: var(--spacing-4);
   --istok-button-padding-block: var(--spacing-2);
-  --istok-button-height: var(--spacing-8);
-  --istok-button-radius: var(--radius-xl);
+  --istok-button-height: var(--spacing-10);
+  --istok-button-radius: var(--radius-full);
   --istok-button-gap: calc(var(--spacing) * 1.5);
   --istok-button-font-size: var(--text-control-sm);
   --istok-button-line-height: var(--text-control-sm--line-height);
+  --istok-button-font-weight: 600;
   --istok-button-icon-size: var(--spacing-3);
 }
 
 @utility istok-button--md {
   --istok-button-padding-inline: var(--spacing-5);
   --istok-button-padding-block: calc(var(--spacing) * 2.5);
-  --istok-button-height: var(--spacing-10);
-  --istok-button-radius: var(--radius-xl);
+  --istok-button-height: var(--spacing-12);
+  --istok-button-radius: var(--radius-full);
   --istok-button-gap: calc(var(--spacing) * 1.5);
   --istok-button-font-size: var(--text-control-md);
   --istok-button-line-height: var(--text-control-md--line-height);
+  --istok-button-font-weight: 600;
   --istok-button-icon-size: var(--spacing-4);
 }
 
 @utility istok-button--lg {
   --istok-button-padding-inline: var(--spacing-6);
   --istok-button-padding-block: var(--spacing-3);
-  --istok-button-height: var(--spacing-12);
-  --istok-button-radius: var(--radius-2xl);
+  --istok-button-height: var(--spacing-13);
+  --istok-button-radius: var(--radius-full);
   --istok-button-gap: calc(var(--spacing) * 2);
   --istok-button-font-size: var(--text-control-lg);
   --istok-button-line-height: var(--text-control-lg--line-height);
+  --istok-button-font-weight: 600;
   --istok-button-icon-size: var(--spacing-4);
 }
 
@@ -35,10 +38,11 @@
   --istok-button-padding-inline: var(--spacing-8);
   --istok-button-padding-block: var(--spacing-4);
   --istok-button-height: var(--spacing-14);
-  --istok-button-radius: var(--radius-2xl);
+  --istok-button-radius: var(--radius-full);
   --istok-button-gap: calc(var(--spacing) * 2.5);
-  --istok-button-font-size: var(--text-control-xl);
-  --istok-button-line-height: var(--text-control-xl--line-height);
+  --istok-button-font-size: var(--text-control-lg);
+  --istok-button-line-height: var(--text-control-lg--line-height);
+  --istok-button-font-weight: 600;
   --istok-button-icon-size: var(--spacing-5);
 }
 
@@ -122,7 +126,7 @@
 @utility istok-button--primary {
   --istok-button-bg: var(--istok-button-color-600);
   --istok-button-bg-hover: var(--istok-button-color-700);
-  --istok-button-bg-active: var(--istok-button-color-700);
+  --istok-button-bg-active: var(--istok-button-color-800);
 
   --istok-button-fg: var(--istok-button-color-50);
   --istok-button-fg-hover: var(--istok-button-color-50);
@@ -131,20 +135,28 @@
   --istok-button-border-color: transparent;
   --istok-button-border-color-hover: transparent;
   --istok-button-border-color-active: transparent;
+
+  --istok-button-bg-disabled: var(--color-neutral-300);
+  --istok-button-fg-disabled: var(--color-neutral-400);
+  --istok-button-border-color-disabled: transparent;
 }
 
 @utility istok-button--secondary {
-  --istok-button-bg: var(--istok-button-color-100);
-  --istok-button-bg-hover: var(--istok-button-color-200);
-  --istok-button-bg-active: var(--istok-button-color-300);
+  --istok-button-bg: var(--surface-muted);
+  --istok-button-bg-hover: var(--color-neutral-200);
+  --istok-button-bg-active: var(--color-neutral-300);
 
-  --istok-button-fg: var(--istok-button-color-700);
-  --istok-button-fg-hover: var(--istok-button-color-700);
-  --istok-button-fg-active: var(--istok-button-color-700);
+  --istok-button-fg: var(--text-strong);
+  --istok-button-fg-hover: var(--text-strong);
+  --istok-button-fg-active: var(--text-strong);
 
   --istok-button-border-color: transparent;
   --istok-button-border-color-hover: transparent;
   --istok-button-border-color-active: transparent;
+
+  --istok-button-bg-disabled: var(--color-neutral-300);
+  --istok-button-fg-disabled: var(--color-neutral-400);
+  --istok-button-border-color-disabled: transparent;
 }
 
 @utility istok-button--clear {
@@ -159,6 +171,10 @@
   --istok-button-border-color: transparent;
   --istok-button-border-color-hover: transparent;
   --istok-button-border-color-active: transparent;
+
+  --istok-button-bg-disabled: var(--color-neutral-300);
+  --istok-button-fg-disabled: var(--color-neutral-400);
+  --istok-button-border-color-disabled: transparent;
 }
 
 @utility istok-button--text {
@@ -181,6 +197,10 @@
   --istok-button-border-color: transparent;
   --istok-button-border-color-hover: transparent;
   --istok-button-border-color-active: transparent;
+
+  --istok-button-bg-disabled: transparent;
+  --istok-button-fg-disabled: var(--color-neutral-400);
+  --istok-button-border-color-disabled: transparent;
 }
 
 @utility istok-button--clear-inverse {
@@ -195,6 +215,10 @@
   --istok-button-border-color: transparent;
   --istok-button-border-color-hover: transparent;
   --istok-button-border-color-active: transparent;
+
+  --istok-button-bg-disabled: var(--color-neutral-300);
+  --istok-button-fg-disabled: var(--color-neutral-400);
+  --istok-button-border-color-disabled: transparent;
 }
 
 @utility istok-button--opacity {
@@ -213,6 +237,10 @@
   --istok-button-border-color: transparent;
   --istok-button-border-color-hover: transparent;
   --istok-button-border-color-active: transparent;
+
+  --istok-button-bg-disabled: var(--color-neutral-300);
+  --istok-button-fg-disabled: var(--color-neutral-400);
+  --istok-button-border-color-disabled: transparent;
 }
 
 @utility istok-button--outline {
@@ -227,4 +255,8 @@
   --istok-button-border-color: var(--istok-button-color-600);
   --istok-button-border-color-hover: transparent;
   --istok-button-border-color-active: transparent;
+
+  --istok-button-bg-disabled: var(--color-neutral-300);
+  --istok-button-fg-disabled: var(--color-neutral-400);
+  --istok-button-border-color-disabled: transparent;
 }

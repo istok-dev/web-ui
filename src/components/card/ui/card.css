@@ -1,29 +1,29 @@
 @utility istok-card--padding-sm {
-  --istok-card-padding: var(--spacing-4);
-}
-
-@utility istok-card--padding-md {
   --istok-card-padding: var(--spacing-5);
 }
 
-@utility istok-card--padding-lg {
+@utility istok-card--padding-md {
   --istok-card-padding: var(--spacing-6);
 }
 
+@utility istok-card--padding-lg {
+  --istok-card-padding: var(--spacing-8);
+}
+
 @utility istok-card--radius-xl {
-  --istok-card-radius: var(--radius-xl);
+  --istok-card-radius: var(--radius-3xl);
 }
 
 @utility istok-card--radius-2xl {
-  --istok-card-radius: var(--radius-2xl);
+  --istok-card-radius: var(--radius-4xl);
 }
 
 @utility istok-card--default {
-  --istok-card-bg: var(--color-neutral-50);
-  --istok-card-border: var(--color-neutral-200);
+  --istok-card-bg: var(--surface-card);
+  --istok-card-border: transparent;
 }
 
 @utility istok-card--soft {
-  --istok-card-bg: var(--color-neutral-100);
-  --istok-card-border: var(--color-neutral-200);
+  --istok-card-bg: var(--surface-muted);
+  --istok-card-border: transparent;
 }

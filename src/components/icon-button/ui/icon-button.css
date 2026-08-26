@@ -1,17 +1,17 @@
 @utility istok-icon-button--sm {
-  --istok-icon-button-size: var(--spacing-8);
+  --istok-icon-button-size: var(--spacing-10);
   --istok-icon-button-icon-size: var(--spacing-4);
   --istok-icon-button-square-radius: var(--radius-xl);
 }
 
 @utility istok-icon-button--md {
-  --istok-icon-button-size: var(--spacing-10);
+  --istok-icon-button-size: var(--spacing-11);
   --istok-icon-button-icon-size: var(--spacing-5);
   --istok-icon-button-square-radius: var(--radius-xl);
 }
 
 @utility istok-icon-button--lg {
-  --istok-icon-button-size: var(--spacing-12);
+  --istok-icon-button-size: var(--spacing-13);
   --istok-icon-button-icon-size: var(--spacing-6);
   --istok-icon-button-square-radius: var(--radius-2xl);
 }
@@ -109,9 +109,9 @@
 }
 
 @utility istok-icon-button--primary {
-  --istok-icon-button-bg: var(--istok-icon-button-color-500);
+  --istok-icon-button-bg: var(--istok-icon-button-color-600);
   --istok-icon-button-bg-hover: var(--istok-icon-button-color-700);
-  --istok-icon-button-bg-active: var(--istok-icon-button-color-700);
+  --istok-icon-button-bg-active: var(--istok-icon-button-color-800);
 
   --istok-icon-button-fg: var(--istok-icon-button-color-50);
   --istok-icon-button-fg-hover: var(--istok-icon-button-color-50);
@@ -119,13 +119,13 @@
 }
 
 @utility istok-icon-button--secondary {
-  --istok-icon-button-bg: var(--istok-icon-button-color-100);
-  --istok-icon-button-bg-hover: var(--istok-icon-button-color-200);
-  --istok-icon-button-bg-active: var(--istok-icon-button-color-300);
+  --istok-icon-button-bg: var(--surface-muted);
+  --istok-icon-button-bg-hover: var(--color-neutral-200);
+  --istok-icon-button-bg-active: var(--color-neutral-300);
 
-  --istok-icon-button-fg: var(--istok-icon-button-color-700);
-  --istok-icon-button-fg-hover: var(--istok-icon-button-color-700);
-  --istok-icon-button-fg-active: var(--istok-icon-button-color-700);
+  --istok-icon-button-fg: var(--text-strong);
+  --istok-icon-button-fg-hover: var(--text-strong);
+  --istok-icon-button-fg-active: var(--text-strong);
 }
 
 @utility istok-icon-button--clear {

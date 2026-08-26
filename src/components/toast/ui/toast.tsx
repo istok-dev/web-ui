@@ -45,8 +45,8 @@ export const Toast: FC<ToastProps> = ({ toast, onRemove }) => {
     <div
       className={cn(
         `
-          flex max-w-125 min-w-75 items-center gap-3 rounded-xl border px-4 py-3
-          shadow-lg
+          flex max-w-125 min-w-75 items-center gap-3 rounded-2xl border px-4
+          py-3 shadow-lg
         `,
         variantStyles[variant],
       )}

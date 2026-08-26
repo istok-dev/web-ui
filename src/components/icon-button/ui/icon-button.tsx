@@ -44,8 +44,8 @@ const shapeClassesMap: Record<IconButtonShape, string> = {
 export const IconButton: FC<IconButtonProps> = ({
   icon: Icon,
   shape = 'circle',
-  variant = 'primary',
-  color = 'primary',
+  variant = 'secondary',
+  color = 'neutral',
   className,
   disabled = false,
   loading = false,
@@ -83,7 +83,8 @@ export const IconButton: FC<IconButtonProps> = ({
           `,
         ],
         {
-          'cursor-not-allowed opacity-12': isDisabled,
+          'cursor-not-allowed opacity-100 bg-neutral-300 text-neutral-400':
+            isDisabled,
         },
         sizeClassesMap[size],
         colorClassesMap[color],

@@ -80,9 +80,12 @@ export const Textarea: FC<TextareaProps> = ({
             [border-width:var(--istok-textarea-border-width)]
             border-(--istok-textarea-border-color)
           `,
-          'focus:border-(--istok-textarea-border-focus)',
+          `
+            focus:border-(--istok-textarea-border-focus)
+            focus:[box-shadow:var(--istok-textarea-focus-shadow)]
+          `,
           'placeholder:text-(--istok-textarea-placeholder)',
-          'disabled:cursor-not-allowed disabled:opacity-50',
+          'disabled:cursor-not-allowed disabled:opacity-100',
           resizeClassesMap[resize],
           pt?.textarea?.className,
         )}

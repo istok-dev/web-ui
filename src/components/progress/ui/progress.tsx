@@ -17,7 +17,7 @@ const colorClassesMap: Record<ProgressColor, string> = {
 export const Progress: FC<ProgressProps> = ({
   value,
   label,
-  color = 'accent',
+  color = 'primary',
   className,
   classes,
   ...rootProps
@@ -41,8 +41,8 @@ export const Progress: FC<ProgressProps> = ({
       <div
         className={cn(
           `
-            istok-progress__track h-1.5 min-w-0 flex-1 overflow-hidden
-            rounded-full bg-neutral-200
+            istok-progress__track min-w-0 flex-1 overflow-hidden rounded-full
+            h-(--istok-progress-height) bg-(--istok-progress-track)
           `,
           classes?.track,
         )}

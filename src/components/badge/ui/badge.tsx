@@ -50,7 +50,7 @@ export const Badge: FC<BadgeProps> = ({
   size = 'md',
   variant = 'solid',
   color = 'primary',
-  shape = 'square',
+  shape = 'rounded',
   circle = false,
   render,
   children,
@@ -67,6 +67,7 @@ export const Badge: FC<BadgeProps> = ({
       `
         text-(length:--istok-badge-font-size)
         leading-(--istok-badge-line-height)
+        font-[number:var(--istok-badge-font-weight)]
       `,
       'bg-(--istok-badge-bg) text-(--istok-badge-fg)',
       'border border-(--istok-badge-border-color)',

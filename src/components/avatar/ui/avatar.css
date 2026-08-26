@@ -1,4 +1,3 @@
-/* Размеры: только переменные */
 @utility istok-avatar--sm {
   --istok-avatar-size: var(--spacing-8);
   --istok-avatar-font-size: var(--text-control-sm);
@@ -26,4 +25,13 @@
 
 @utility istok-avatar--square {
   --istok-avatar-radius: var(--istok-avatar-square-radius);
+}
+
+.istok-avatar {
+  --istok-avatar-bg: var(--gradient-water);
+  --istok-avatar-fg: #ffffff;
+  --istok-avatar-font-weight: 600;
+  background: var(--istok-avatar-bg);
+  color: var(--istok-avatar-fg);
+  font-weight: var(--istok-avatar-font-weight);
 }

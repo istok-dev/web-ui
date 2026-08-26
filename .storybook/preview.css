@@ -2,3 +2,20 @@
 
 @import "../src/styles/theme.css";
 @import "../src/components/index.css";
+
+html,
+body {
+  font-family: var(--font-sans);
+  background: var(--surface-page);
+  color: var(--text-body);
+}
+
+.font-bold,
+.text-display-lg,
+.text-display-md,
+.text-display-sm,
+.text-headline-lg,
+.text-headline-md,
+.text-headline-sm {
+  font-weight: 700;
+}

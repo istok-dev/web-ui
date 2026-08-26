@@ -41,7 +41,7 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
     <BaseAlertDialog.Root open={open} onOpenChange={onOpenChange}>
       <BaseAlertDialog.Portal>
         <BaseAlertDialog.Backdrop className="
-          fixed inset-0 z-40 bg-neutral-900/80
+          fixed inset-0 z-40 bg-[rgba(16,24,32,0.6)]
         "
         />
         <BaseAlertDialog.Viewport className="
@@ -50,7 +50,10 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
         >
           <BaseAlertDialog.Popup
             className={cn(
-              `istok-alert-dialog w-full max-w-100 rounded-xl bg-neutral-50 p-4`,
+              `
+                istok-alert-dialog w-full max-w-100 rounded-4xl
+                bg-(--surface-card) p-4
+              `,
               variantClassesMap[variant],
               alignClassesMap[align],
               className,
@@ -79,7 +82,10 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
                 >
                   <BaseAlertDialog.Title
                     className={cn(
-                      'text-title-md font-bold text-neutral-900',
+                      `
+                        text-title-md font-bold tracking-[-0.6px]
+                        text-(--text-strong)
+                      `,
                       align === 'center' && 'text-center',
                     )}
                   >

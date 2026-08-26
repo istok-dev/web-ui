@@ -9,7 +9,10 @@ export const ModalHeader: ModalHeaderFC = (props: ModalHeaderProps) => {
   const renderTitle = () => {
     if (title) {
       return (
-        <BaseDialog.Title className="text-title-lg font-bold text-neutral-950">
+        <BaseDialog.Title className="
+          text-title-lg font-bold tracking-[-0.6px] text-(--text-strong)
+        "
+        >
           {title}
         </BaseDialog.Title>
       );
@@ -19,8 +22,7 @@ export const ModalHeader: ModalHeaderFC = (props: ModalHeaderProps) => {
 
   return (
     <div className="
-      flex items-start justify-between border-b border-neutral-200 bg-neutral-50
-      px-6 py-5
+      flex items-start justify-between bg-(--surface-card) px-6 py-5
     "
     >
       <div className="flex items-center gap-4">{renderTitle()}</div>
