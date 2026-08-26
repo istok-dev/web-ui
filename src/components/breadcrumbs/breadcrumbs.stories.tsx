@@ -12,9 +12,9 @@ const meta: Meta<typeof Breadcrumbs> = {
   },
   tags: ['autodocs'],
   argTypes: {
-    defaultSize: {
+    size: {
       control: 'select',
-      options: ['m', 'l'] as BreadcrumbsSize[],
+      options: ['md', 'lg'] as BreadcrumbsSize[],
       description: 'Размер хлебных крошек',
     },
     items: {
@@ -41,7 +41,7 @@ const defaultItems = [
 export const Default: Story = {
   args: {
     items: defaultItems,
-    defaultSize: 'm',
+    size: 'md',
   },
 };
 
@@ -49,12 +49,12 @@ export const Sizes: Story = {
   render: () => (
     <div className="flex flex-col gap-6">
       <div>
-        <p className="mb-2 text-body-sm text-neutral-500">Size M</p>
-        <Breadcrumbs items={defaultItems} defaultSize="m" />
+        <p className="mb-2 text-body-sm text-neutral-500">Size MD</p>
+        <Breadcrumbs items={defaultItems} size="md" />
       </div>
       <div>
-        <p className="mb-2 text-body-sm text-neutral-500">Size L</p>
-        <Breadcrumbs items={defaultItems} defaultSize="l" />
+        <p className="mb-2 text-body-sm text-neutral-500">Size LG</p>
+        <Breadcrumbs items={defaultItems} size="lg" />
       </div>
     </div>
   ),
@@ -70,14 +70,14 @@ export const WithIcons: Story = {
       },
       { label: 'Документ', icon: <FileText className="size-4" /> },
     ],
-    defaultSize: 'm',
+    size: 'md',
   },
 };
 
 export const SingleItem: Story = {
   args: {
     items: [{ label: 'Главная' }],
-    defaultSize: 'm',
+    size: 'md',
   },
 };
 
@@ -92,7 +92,7 @@ const longPathItems = [
 export const LongPath: Story = {
   args: {
     items: longPathItems,
-    defaultSize: 'm',
+    size: 'md',
   },
 };
 
@@ -103,19 +103,19 @@ export const MaxItems: Story = {
         <p className="mb-2 text-body-sm text-neutral-500">
           maxItems=2 (Home — … — последний)
         </p>
-        <Breadcrumbs items={longPathItems} defaultSize="m" maxItems={2} />
+        <Breadcrumbs items={longPathItems} size="md" maxItems={2} />
       </div>
       <div>
         <p className="mb-2 text-body-sm text-neutral-500">
           maxItems=3 (Home — … — два последних)
         </p>
-        <Breadcrumbs items={longPathItems} defaultSize="m" maxItems={3} />
+        <Breadcrumbs items={longPathItems} size="md" maxItems={3} />
       </div>
       <div>
         <p className="mb-2 text-body-sm text-neutral-500">
           maxItems=4 (Home — … — три последних)
         </p>
-        <Breadcrumbs items={longPathItems} defaultSize="m" maxItems={4} />
+        <Breadcrumbs items={longPathItems} size="md" maxItems={4} />
       </div>
     </div>
   ),

@@ -7,9 +7,9 @@ import { cn } from '@/utils/cn';
 import type { InputProps, InputSize } from '../input.types';
 
 const sizeClassesMap: Record<InputSize, string> = {
-  s: 'istok-input--s',
-  m: 'istok-input--m',
-  l: 'istok-input--l',
+  sm: 'istok-input--sm',
+  md: 'istok-input--md',
+  lg: 'istok-input--lg',
 };
 
 const variantClassesMap: Record<
@@ -28,19 +28,21 @@ export const Input: FC<InputProps> = ({
   startAdornment,
   endAdornment,
   className,
-  inputClassName,
+  pt,
   placeholder,
-  defaultSize = 'm',
+  size = 'md',
   variant = 'neutral',
   startIcon: StartIcon,
   type = 'text',
-  ...inputProps
+  disabled = false,
+  ...rootProps
 }) => {
   return (
     <div
+      {...rootProps}
       className={cn(
         'istok-input relative',
-        sizeClassesMap[defaultSize],
+        sizeClassesMap[size],
         variantClassesMap[variant],
         className,
       )}
@@ -68,11 +70,12 @@ export const Input: FC<InputProps> = ({
         />
       )}
       <input
-        {...inputProps}
+        {...pt?.input}
         type={type}
         value={value}
         onChange={e => onChange(e.target.value)}
         placeholder={placeholder}
+        disabled={disabled || pt?.input?.disabled}
         className={cn(
           'istok-input__input w-full transition-all outline-none',
           `
@@ -100,7 +103,7 @@ export const Input: FC<InputProps> = ({
           `,
           `focus:[border-width:1px] focus:border-(--istok-input-border-focus)`,
           'placeholder:text-(--istok-input-placeholder)',
-          inputClassName,
+          pt?.input?.className,
         )}
       />
       {endAdornment && (

@@ -12,9 +12,9 @@ const meta: Meta<typeof Radio> = {
   },
   tags: ['autodocs'],
   argTypes: {
-    defaultSize: {
+    size: {
       control: 'select',
-      options: ['s', 'm', 'l'] as RadioSize[],
+      options: ['sm', 'md', 'lg'] as RadioSize[],
       description: 'Размер радио-кнопок',
     },
   },
@@ -57,7 +57,7 @@ export const Default: Story = {
     );
   },
   args: {
-    defaultSize: 'm',
+    size: 'md',
   },
 };
 
@@ -97,7 +97,7 @@ export const WithDescription: Story = {
     );
   },
   args: {
-    defaultSize: 'm',
+    size: 'md',
   },
 };
 
@@ -110,18 +110,18 @@ export const Sizes: Story = {
     return (
       <div className="flex w-100 flex-col gap-8">
         <div>
-          <p className="mb-3 text-body-sm font-medium text-neutral-700">Size S</p>
-          <Radio defaultSize="s">
+          <p className="mb-3 text-body-sm font-medium text-neutral-700">Size SM</p>
+          <Radio size="sm">
             <Radio.Item
               label="Маленький 1"
-              name="size-s"
+              name="size-sm"
               value="1"
               checked={s === '1'}
               onChange={() => setS('1')}
             />
             <Radio.Item
               label="Маленький 2"
-              name="size-s"
+              name="size-sm"
               value="2"
               checked={s === '2'}
               onChange={() => setS('2')}
@@ -129,18 +129,18 @@ export const Sizes: Story = {
           </Radio>
         </div>
         <div>
-          <p className="mb-3 text-body-sm font-medium text-neutral-700">Size M</p>
-          <Radio defaultSize="m">
+          <p className="mb-3 text-body-sm font-medium text-neutral-700">Size MD</p>
+          <Radio size="md">
             <Radio.Item
               label="Средний 1"
-              name="size-m"
+              name="size-md"
               value="1"
               checked={m === '1'}
               onChange={() => setM('1')}
             />
             <Radio.Item
               label="Средний 2"
-              name="size-m"
+              name="size-md"
               value="2"
               checked={m === '2'}
               onChange={() => setM('2')}
@@ -148,18 +148,18 @@ export const Sizes: Story = {
           </Radio>
         </div>
         <div>
-          <p className="mb-3 text-body-sm font-medium text-neutral-700">Size L</p>
-          <Radio defaultSize="l">
+          <p className="mb-3 text-body-sm font-medium text-neutral-700">Size LG</p>
+          <Radio size="lg">
             <Radio.Item
               label="Большой 1"
-              name="size-l"
+              name="size-lg"
               value="1"
               checked={l === '1'}
               onChange={() => setL('1')}
             />
             <Radio.Item
               label="Большой 2"
-              name="size-l"
+              name="size-lg"
               value="2"
               checked={l === '2'}
               onChange={() => setL('2')}
@@ -175,7 +175,7 @@ export const States: Story = {
   render: () => {
     return (
       <div className="w-100">
-        <Radio defaultSize="m">
+        <Radio size="md">
           <Radio.Item label="Unchecked" name="states" value="1" checked={false} readOnly />
           <Radio.Item label="Checked" name="states" value="2" checked={true} readOnly />
           <Radio.Item
@@ -212,7 +212,7 @@ export const Disabled: Story = {
     );
   },
   args: {
-    defaultSize: 'm',
+    size: 'md',
   },
 };
 
@@ -245,6 +245,6 @@ export const WithInfoIcon: Story = {
     );
   },
   args: {
-    defaultSize: 'm',
+    size: 'md',
   },
 };

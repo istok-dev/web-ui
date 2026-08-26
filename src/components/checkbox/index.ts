@@ -3,4 +3,5 @@ export type {
   CheckboxProps,
   CheckboxSize,
   CheckboxItemProps,
+  CheckboxItemPassThrough,
 } from './checkbox.types';

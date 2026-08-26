@@ -32,7 +32,7 @@
 }
 
 @utility istok-badge--rounded {
-  --istok-badge-radius: 9999px;
+  --istok-badge-radius: calc(infinity * 1px);
 }
 
 @utility istok-badge--square {
@@ -42,7 +42,7 @@
 @utility istok-badge--circle {
   --istok-badge-padding-inline: 0;
   --istok-badge-padding-block: 0;
-  --istok-badge-radius: 9999px;
+  --istok-badge-radius: calc(infinity * 1px);
 }
 
 @utility istok-badge--color-primary {
@@ -106,7 +106,7 @@
   --istok-badge-border-color: transparent;
 }
 
-@utility istok-badge--opacity {
+@utility istok-badge--inverse {
   --istok-badge-bg: color-mix(
     in srgb,
     var(--istok-badge-color-100) 24%,

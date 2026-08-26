@@ -12,9 +12,9 @@ const meta: Meta<typeof Checkbox> = {
   },
   tags: ['autodocs'],
   argTypes: {
-    defaultSize: {
+    size: {
       control: 'select',
-      options: ['s', 'm', 'l'] as CheckboxSize[],
+      options: ['sm', 'md', 'lg'] as CheckboxSize[],
       description: 'Размер чекбокса',
     },
   },
@@ -53,7 +53,7 @@ export const Default: Story = {
     );
   },
   args: {
-    defaultSize: 'm',
+    size: 'md',
   },
 };
 
@@ -89,7 +89,7 @@ export const WithDescription: Story = {
     );
   },
   args: {
-    defaultSize: 'm',
+    size: 'md',
   },
 };
 
@@ -105,8 +105,8 @@ export const Sizes: Story = {
     return (
       <div className="flex w-100 flex-col gap-8">
         <div>
-          <p className="mb-3 text-body-sm font-medium text-neutral-700">Size S</p>
-          <Checkbox defaultSize="s">
+          <p className="mb-3 text-body-sm font-medium text-neutral-700">Size SM</p>
+          <Checkbox size="sm">
             <Checkbox.Item
               label="Маленький чекбокс 1"
               checked={s1}
@@ -120,8 +120,8 @@ export const Sizes: Story = {
           </Checkbox>
         </div>
         <div>
-          <p className="mb-3 text-body-sm font-medium text-neutral-700">Size M</p>
-          <Checkbox defaultSize="m">
+          <p className="mb-3 text-body-sm font-medium text-neutral-700">Size MD</p>
+          <Checkbox size="md">
             <Checkbox.Item
               label="Средний чекбокс 1"
               checked={m1}
@@ -135,8 +135,8 @@ export const Sizes: Story = {
           </Checkbox>
         </div>
         <div>
-          <p className="mb-3 text-body-sm font-medium text-neutral-700">Size L</p>
-          <Checkbox defaultSize="l">
+          <p className="mb-3 text-body-sm font-medium text-neutral-700">Size LG</p>
+          <Checkbox size="lg">
             <Checkbox.Item
               label="Большой чекбокс 1"
               checked={l1}
@@ -158,7 +158,7 @@ export const States: Story = {
   render: () => {
     return (
       <div className="w-100">
-        <Checkbox defaultSize="m">
+        <Checkbox size="md">
           <Checkbox.Item label="Unchecked" checked={false} readOnly />
           <Checkbox.Item label="Checked" checked={true} readOnly />
           <Checkbox.Item
@@ -197,10 +197,10 @@ export const AllStatesGrid: Story = {
     return (
       <div className="w-full max-w-4xl">
         <div className="grid grid-cols-3 gap-8">
-          {/* Size S */}
+          {/* Size SM */}
           <div>
-            <p className="mb-4 text-body-sm font-medium text-neutral-700">Size S</p>
-            <Checkbox defaultSize="s">
+            <p className="mb-4 text-body-sm font-medium text-neutral-700">Size SM</p>
+            <Checkbox size="sm">
               <Checkbox.Item label="Unchecked" checked={false} readOnly />
               <Checkbox.Item label="Checked" checked={true} readOnly />
               <Checkbox.Item
@@ -224,10 +224,10 @@ export const AllStatesGrid: Story = {
             </Checkbox>
           </div>
 
-          {/* Size M */}
+          {/* Size MD */}
           <div>
-            <p className="mb-4 text-body-sm font-medium text-neutral-700">Size M</p>
-            <Checkbox defaultSize="m">
+            <p className="mb-4 text-body-sm font-medium text-neutral-700">Size MD</p>
+            <Checkbox size="md">
               <Checkbox.Item label="Unchecked" checked={false} readOnly />
               <Checkbox.Item label="Checked" checked={true} readOnly />
               <Checkbox.Item
@@ -251,10 +251,10 @@ export const AllStatesGrid: Story = {
             </Checkbox>
           </div>
 
-          {/* Size L */}
+          {/* Size LG */}
           <div>
-            <p className="mb-4 text-body-sm font-medium text-neutral-700">Size L</p>
-            <Checkbox defaultSize="l">
+            <p className="mb-4 text-body-sm font-medium text-neutral-700">Size LG</p>
+            <Checkbox size="lg">
               <Checkbox.Item label="Unchecked" checked={false} readOnly />
               <Checkbox.Item label="Checked" checked={true} readOnly />
               <Checkbox.Item
@@ -324,7 +324,7 @@ export const Interactive: Story = {
     );
   },
   args: {
-    defaultSize: 'm',
+    size: 'md',
   },
 };
 
@@ -346,7 +346,7 @@ export const Disabled: Story = {
     );
   },
   args: {
-    defaultSize: 'm',
+    size: 'md',
   },
 };
 
@@ -376,7 +376,7 @@ export const WithoutLabel: Story = {
     );
   },
   args: {
-    defaultSize: 'm',
+    size: 'md',
   },
 };
 
@@ -409,7 +409,7 @@ export const ComplexExample: Story = {
           <h3 className="mb-4 text-body-lg font-semibold text-neutral-900">
             Группы
           </h3>
-          <Checkbox defaultSize="m">
+          <Checkbox size="md">
             {Object.entries(groups).map(([key, value]) => (
               <Checkbox.Item
                 key={key}
@@ -426,7 +426,7 @@ export const ComplexExample: Story = {
           <h3 className="mb-4 text-body-lg font-semibold text-neutral-900">
             Категории
           </h3>
-          <Checkbox defaultSize="m">
+          <Checkbox size="md">
             {Object.entries(categories).map(([key, value]) => (
               <Checkbox.Item
                 key={key}
@@ -443,7 +443,7 @@ export const ComplexExample: Story = {
           <h3 className="mb-4 text-body-lg font-semibold text-neutral-900">
             Каналы
           </h3>
-          <Checkbox defaultSize="m">
+          <Checkbox size="md">
             {Object.entries(channels).map(([key, value]) => (
               <Checkbox.Item
                 key={key}

@@ -23,9 +23,9 @@ const meta: Meta<typeof PasswordInput> = {
       control: 'text',
       description: 'Плейсхолдер',
     },
-    defaultSize: {
+    size: {
       control: 'select',
-      options: ['s', 'm', 'l'],
+      options: ['sm', 'md', 'lg'],
       description: 'Размер',
     },
     variant: {
@@ -60,7 +60,7 @@ export const Default: Story = {
   },
   args: {
     placeholder: 'Введите пароль',
-    defaultSize: 'm',
+    size: 'md',
     variant: 'neutral',
   },
 };
@@ -77,19 +77,19 @@ export const Sizes: Story = {
           value={valueS}
           onChange={setValueS}
           placeholder="Размер S"
-          defaultSize="s"
+          size="sm"
         />
         <PasswordInput
           value={valueM}
           onChange={setValueM}
           placeholder="Размер M"
-          defaultSize="m"
+          size="md"
         />
         <PasswordInput
           value={valueL}
           onChange={setValueL}
           placeholder="Размер L"
-          defaultSize="l"
+          size="lg"
         />
       </div>
     );

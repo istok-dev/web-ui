@@ -1,11 +1,11 @@
 export type AvatarShape = 'circle' | 'square';
-export type AvatarSize = 's' | 'm' | 'l';
+export type AvatarSize = 'sm' | 'md' | 'lg';
 
 export type AvatarProps = {
   src?: string;
   alt?: string;
   name?: string;
-  defaultSize?: AvatarSize;
+  size?: AvatarSize;
   className?: string;
   shape?: AvatarShape;
 };

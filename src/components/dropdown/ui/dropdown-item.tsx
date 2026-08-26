@@ -3,9 +3,9 @@ import { cn } from '@/utils/cn';
 import type { DropdownItemFC, DropdownItemSize, DropdownItemVariant } from '../dropdown.type';
 
 const sizeClassesMap: Record<DropdownItemSize, string> = {
-  s: 'istok-dropdown-item--s',
-  m: 'istok-dropdown-item--m',
-  l: 'istok-dropdown-item--l',
+  sm: 'istok-dropdown-item--sm',
+  md: 'istok-dropdown-item--md',
+  lg: 'istok-dropdown-item--lg',
 };
 
 const variantClassesMap: Record<DropdownItemVariant, string> = {
@@ -21,7 +21,7 @@ export const DropdownItem: DropdownItemFC = ({
   onClick,
   className,
   disabled = false,
-  defaultSize = 'm',
+  size = 'md',
   variant = 'brand',
   classes,
   ...props
@@ -54,7 +54,7 @@ export const DropdownItem: DropdownItemFC = ({
           `,
         ],
         { 'cursor-not-allowed opacity-50': disabled },
-        sizeClassesMap[defaultSize],
+        sizeClassesMap[size],
         variantClassesMap[variant],
         className,
       )}

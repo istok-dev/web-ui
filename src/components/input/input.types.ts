@@ -1,6 +1,14 @@
 import type { LucideIcon } from 'lucide-react';
 
-export type InputSize = 's' | 'm' | 'l';
+export const INPUT_SIZES = ['sm', 'md', 'lg'] as const;
+export const INPUT_VARIANTS = ['neutral', 'solid', 'outline', 'opacity'] as const;
+
+export type InputSize = (typeof INPUT_SIZES)[number];
+export type InputVariant = (typeof INPUT_VARIANTS)[number];
+
+export type InputPassThrough = {
+  input?: Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'>;
+};
 
 export type InputProps = {
   value: string;
@@ -9,7 +17,9 @@ export type InputProps = {
   endAdornment?: React.ReactNode;
   startIcon?: LucideIcon;
   className?: string;
-  inputClassName?: string;
-  defaultSize?: InputSize;
-  variant?: 'neutral' | 'solid' | 'outline' | 'opacity';
-} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>;
+  size?: InputSize;
+  variant?: InputVariant;
+  pt?: InputPassThrough;
+}
+& Pick<React.InputHTMLAttributes<HTMLInputElement>, 'placeholder' | 'disabled' | 'type'>
+& Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>;

@@ -13,9 +13,9 @@ import { Tag } from '../../tag';
 import type { SelectProps, SelectOption, SelectGroup, SelectSize, SelectVariant } from '../select.types';
 
 const sizeClassesMap: Record<SelectSize, string> = {
-  s: 'istok-select--s',
-  m: 'istok-select--m',
-  l: 'istok-select--l',
+  sm: 'istok-select--sm',
+  md: 'istok-select--md',
+  lg: 'istok-select--lg',
 };
 
 const variantClassesMap: Record<SelectVariant, string> = {
@@ -24,9 +24,9 @@ const variantClassesMap: Record<SelectVariant, string> = {
 };
 
 const tagSizeClassesMap: Record<SelectSize, string> = {
-  s: 'istok-tag--sm',
-  m: 'istok-tag--md',
-  l: 'istok-tag--lg',
+  sm: 'istok-tag--sm',
+  md: 'istok-tag--md',
+  lg: 'istok-tag--lg',
 };
 
 const flattenOptions = (
@@ -69,7 +69,7 @@ export const Select: FC<SelectProps> = ({
   showClear = true,
   disabled = false,
   className,
-  size = 'm',
+  size = 'md',
   startIcon: StartIcon,
   startIconProps,
   variant = 'solid',
@@ -524,9 +524,14 @@ export const Select: FC<SelectProps> = ({
                           placeholder={searchPlaceholder}
                           startIcon={Search}
                           variant="neutral"
-                          defaultSize="s"
+                          size="sm"
                           className="w-full"
-                          inputClassName={searchQuery ? 'pr-10' : undefined}
+                          pt={{
+                            input: {
+                              autoComplete: 'off',
+                              className: searchQuery ? 'pr-10' : undefined,
+                            },
+                          }}
                           endAdornment={
                             searchQuery
                               ? (
@@ -548,7 +553,6 @@ export const Select: FC<SelectProps> = ({
                               )
                               : undefined
                           }
-                          autoComplete="off"
                         />
                       );
                     }}
@@ -628,7 +632,7 @@ export const Select: FC<SelectProps> = ({
                         hover:text-neutral-900
                       "
                     >
-                      <Checkbox defaultSize="s">
+                      <Checkbox size="sm">
                         <Checkbox.Item
                           checked={allSelected}
                           indeterminate={someSelected}
@@ -673,7 +677,7 @@ export const Select: FC<SelectProps> = ({
                           "
                         >
                           {multiple && (
-                            <Checkbox defaultSize="s">
+                            <Checkbox size="sm">
                               <Checkbox.Item
                                 checked={isGroupSelected(group)}
                                 indeterminate={isGroupPartiallySelected(
@@ -732,7 +736,7 @@ export const Select: FC<SelectProps> = ({
                                 )}
                               >
                                 {multiple && (
-                                  <Checkbox defaultSize="s">
+                                  <Checkbox size="sm">
                                     <Checkbox.Item checked={isSelected} />
                                   </Checkbox>
                                 )}
@@ -767,7 +771,7 @@ export const Select: FC<SelectProps> = ({
                         )}
                       >
                         {multiple && (
-                          <Checkbox defaultSize="s">
+                          <Checkbox size="sm">
                             <Checkbox.Item checked={isSelected} />
                           </Checkbox>
                         )}

@@ -1,4 +1,4 @@
-@utility istok-select--s {
+@utility istok-select--sm {
   --istok-select-trigger-height: var(--spacing-8);
   --istok-select-trigger-padding-x: var(--spacing-2);
   --istok-select-trigger-padding-y: var(--spacing-2);
@@ -10,7 +10,7 @@
   --istok-select-chevron-size: var(--spacing-4);
 }
 
-@utility istok-select--m {
+@utility istok-select--md {
   --istok-select-trigger-height: var(--spacing-10);
   --istok-select-trigger-padding-x: calc(var(--spacing) * 2.5);
   --istok-select-trigger-padding-y: calc(var(--spacing) * 2.5);
@@ -22,7 +22,7 @@
   --istok-select-chevron-size: var(--spacing-5);
 }
 
-@utility istok-select--l {
+@utility istok-select--lg {
   --istok-select-trigger-height: var(--spacing-12);
   --istok-select-trigger-padding-x: var(--spacing-3);
   --istok-select-trigger-padding-y: var(--spacing-3);

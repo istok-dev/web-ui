@@ -239,7 +239,7 @@ export const WithSelect: Story = {
                 searchable
                 showSelectAll
                 showClear
-                size="m"
+                size="md"
               />
             </div>
           </Modal.Body>

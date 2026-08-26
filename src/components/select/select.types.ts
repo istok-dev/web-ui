@@ -1,6 +1,6 @@
 import type { LucideIcon, LucideProps } from 'lucide-react';
 
-export type SelectSize = 's' | 'm' | 'l';
+export type SelectSize = 'sm' | 'md' | 'lg';
 
 export type SelectOption = {
   label: string;

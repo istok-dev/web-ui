@@ -13,3 +13,6 @@
 @import "./checkbox/ui/checkbox.css";
 @import "./switch/ui/switch.css";
 @import "./tooltip/ui/tooltip.css";
+@import "./card/ui/card.css";
+@import "./progress/ui/progress.css";
+@import "./textarea/ui/textarea.css";

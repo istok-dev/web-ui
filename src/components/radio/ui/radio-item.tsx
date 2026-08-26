@@ -16,22 +16,30 @@ export const RadioItem: RadioItemFC = ({
   classes,
   disabled = false,
   checked,
-  ...inputProps
+  defaultChecked,
+  onChange,
+  name,
+  value,
+  readOnly,
+  id,
+  pt,
+  ...rootProps
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(defaultChecked ?? false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (checked === undefined) {
       setIsChecked(e.target.checked);
     }
-    inputProps.onChange?.(e);
+    onChange?.(e);
   };
 
   const radioChecked = checked !== undefined ? Boolean(checked) : isChecked;
 
   return (
     <label
+      {...rootProps}
       className={cn(
         `
           istok-radio__item group flex cursor-pointer items-start
@@ -43,13 +51,18 @@ export const RadioItem: RadioItemFC = ({
     >
       <div className="relative mt-0.5 flex shrink-0 items-center justify-center">
         <input
+          {...pt?.input}
           ref={inputRef}
+          id={id}
           type="radio"
+          name={name}
+          value={value}
           checked={checked}
+          defaultChecked={defaultChecked}
           disabled={disabled}
-          className="sr-only"
+          readOnly={readOnly}
+          className={cn('sr-only', pt?.input?.className)}
           onChange={handleChange}
-          {...inputProps}
         />
         <div
           className={cn(

@@ -23,9 +23,9 @@ const meta: Meta<typeof Avatar> = {
       control: 'text',
       description: 'Альтернативный текст для изображения',
     },
-    defaultSize: {
+    size: {
       control: 'select',
-      options: ['s', 'm', 'l'] as AvatarSize[],
+      options: ['sm', 'md', 'lg'] as AvatarSize[],
       description: 'Размер аватара',
     },
     shape: {
@@ -43,7 +43,7 @@ type Story = StoryObj<typeof Avatar>;
 export const Default: Story = {
   args: {
     name: 'Иван Иванов',
-    defaultSize: 'm',
+    size: 'md',
     shape: 'circle',
   },
 };
@@ -52,7 +52,7 @@ export const WithImage: Story = {
   args: {
     src: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Felix',
     alt: 'Avatar',
-    defaultSize: 'm',
+    size: 'md',
     shape: 'circle',
   },
 };
@@ -60,9 +60,9 @@ export const WithImage: Story = {
 export const Sizes: Story = {
   render: () => (
     <div className="flex items-end gap-4">
-      <Avatar name="Алексей Петров" defaultSize="s" />
-      <Avatar name="Алексей Петров" defaultSize="m" />
-      <Avatar name="Алексей Петров" defaultSize="l" />
+      <Avatar name="Алексей Петров" size="sm" />
+      <Avatar name="Алексей Петров" size="md" />
+      <Avatar name="Алексей Петров" size="lg" />
     </div>
   ),
 };
@@ -70,8 +70,8 @@ export const Sizes: Story = {
 export const Shapes: Story = {
   render: () => (
     <div className="flex items-center gap-4">
-      <Avatar name="Мария Сидорова" defaultSize="m" shape="circle" />
-      <Avatar name="Мария Сидорова" defaultSize="m" shape="square" />
+      <Avatar name="Мария Сидорова" size="md" shape="circle" />
+      <Avatar name="Мария Сидорова" size="md" shape="square" />
     </div>
   ),
 };
@@ -79,9 +79,9 @@ export const Shapes: Story = {
 export const Initials: Story = {
   render: () => (
     <div className="flex flex-wrap items-center gap-3">
-      <Avatar name="Иван Иванов" defaultSize="m" />
-      <Avatar name="Анна" defaultSize="m" />
-      <Avatar defaultSize="m" />
+      <Avatar name="Иван Иванов" size="md" />
+      <Avatar name="Анна" size="md" />
+      <Avatar size="md" />
     </div>
   ),
 };

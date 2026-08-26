@@ -4,19 +4,19 @@ import type { RadioFC, RadioProps, RadioSize } from '../radio.types';
 import { RadioItem } from './radio-item';
 
 const sizeClassesMap: Record<RadioSize, string> = {
-  s: 'istok-radio--s',
-  m: 'istok-radio--m',
-  l: 'istok-radio--l',
+  sm: 'istok-radio--sm',
+  md: 'istok-radio--md',
+  lg: 'istok-radio--lg',
 };
 
 export const Radio: RadioFC = (props: RadioProps) => {
-  const { children, defaultSize = 'm', className } = props;
+  const { children, size = 'md', className } = props;
 
   return (
     <div
       className={cn(
         'istok-radio space-y-2',
-        sizeClassesMap[defaultSize],
+        sizeClassesMap[size],
         className,
       )}
     >

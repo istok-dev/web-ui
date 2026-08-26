@@ -1,4 +1,4 @@
-export type NumberInputSize = 's' | 'm' | 'l';
+export type NumberInputSize = 'sm' | 'md' | 'lg';
 
 export type NumberInputVariant = 'neutral' | 'solid' | 'outline';
 
@@ -11,7 +11,7 @@ export type NumberInputProps = {
   /** Суффикс (например, единица измерения "P", "₽") */
   suffix?: React.ReactNode;
   className?: string;
-  defaultSize?: NumberInputSize;
+  size?: NumberInputSize;
   variant?: NumberInputVariant;
   /** Состояние ошибки (красная обводка) */
   invalid?: boolean;

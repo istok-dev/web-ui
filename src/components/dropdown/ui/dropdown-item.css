@@ -11,7 +11,7 @@
   --istok-dropdown-item-end-icon: var(--color-primary-50);
 }
 
-@utility istok-dropdown-item--s {
+@utility istok-dropdown-item--sm {
   --istok-dropdown-item-height: calc(var(--spacing) * 9);
   --istok-dropdown-item-px: var(--spacing-4);
   --istok-dropdown-item-py: var(--spacing-2);
@@ -21,7 +21,7 @@
   --istok-dropdown-item-icon-size: var(--spacing-4);
 }
 
-@utility istok-dropdown-item--m {
+@utility istok-dropdown-item--md {
   --istok-dropdown-item-height: var(--spacing-10);
   --istok-dropdown-item-px: var(--spacing-5);
   --istok-dropdown-item-py: calc(var(--spacing) * 2.5);
@@ -31,7 +31,7 @@
   --istok-dropdown-item-icon-size: var(--spacing-4);
 }
 
-@utility istok-dropdown-item--l {
+@utility istok-dropdown-item--lg {
   --istok-dropdown-item-height: var(--spacing-12);
   --istok-dropdown-item-px: var(--spacing-6);
   --istok-dropdown-item-py: var(--spacing-3);

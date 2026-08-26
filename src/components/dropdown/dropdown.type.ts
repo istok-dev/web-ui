@@ -10,7 +10,7 @@ export type DropdownProps = PropsWithChildren<{
   className?: string;
 }>;
 
-export type DropdownItemSize = 's' | 'm' | 'l';
+export type DropdownItemSize = 'sm' | 'md' | 'lg';
 export type DropdownItemVariant = 'brand';
 export type DropdownItemClasses = 'label';
 
@@ -24,7 +24,7 @@ export type DropdownItemProps = React.HTMLAttributes<HTMLButtonElement> & {
   onClick?: () => void;
   className?: string;
   disabled?: boolean;
-  defaultSize?: DropdownItemSize;
+  size?: DropdownItemSize;
   classes?: Partial<Record<DropdownItemClasses, string>>;
 };
 

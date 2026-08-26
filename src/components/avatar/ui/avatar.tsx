@@ -18,9 +18,9 @@ const getInitials = (name?: string): string => {
 };
 
 const sizeClassesMap: Record<AvatarSize, string> = {
-  s: 'istok-avatar--s',
-  m: 'istok-avatar--m',
-  l: 'istok-avatar--l',
+  sm: 'istok-avatar--sm',
+  md: 'istok-avatar--md',
+  lg: 'istok-avatar--lg',
 };
 
 const shapeClassesMap: Record<AvatarShape, string> = {
@@ -40,7 +40,7 @@ export const Avatar: FC<AvatarProps> = ({
   name,
   className,
   shape = 'circle',
-  defaultSize = 'm',
+  size = 'md',
 }) => {
   const initials = getInitials(name);
 
@@ -51,7 +51,7 @@ export const Avatar: FC<AvatarProps> = ({
         alt={alt || name || 'Avatar'}
         className={cn(
           baseClasses,
-          sizeClassesMap[defaultSize],
+          sizeClassesMap[size],
           shapeClassesMap[shape],
           className,
         )}
@@ -63,7 +63,7 @@ export const Avatar: FC<AvatarProps> = ({
     <div
       className={cn(
         baseClasses,
-        sizeClassesMap[defaultSize],
+        sizeClassesMap[size],
         shapeClassesMap[shape],
         className,
       )}

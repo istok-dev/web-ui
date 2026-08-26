@@ -80,7 +80,7 @@
   }
 
   /* Sizes */
-  &.istok-number-input--s {
+  &.istok-number-input--sm {
     .istok-number-input__group {
       @apply rounded-l-xl rounded-r-md;
     }
@@ -107,7 +107,7 @@
     }
   }
 
-  &.istok-number-input--m {
+  &.istok-number-input--md {
     .istok-number-input__group {
       @apply rounded-l-xl rounded-r-lg;
     }
@@ -134,7 +134,7 @@
     }
   }
 
-  &.istok-number-input--l {
+  &.istok-number-input--lg {
     .istok-number-input__group {
       @apply rounded-l-2xl rounded-r-lg;
     }

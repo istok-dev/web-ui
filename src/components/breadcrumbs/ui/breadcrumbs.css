@@ -1,4 +1,4 @@
-@utility istok-breadcrumbs--m {
+@utility istok-breadcrumbs--md {
   --istok-breadcrumbs-item-padding-y: 6px;
   --istok-breadcrumbs-item-padding-x: var(--spacing-3);
   --istok-breadcrumbs-item-font-size: var(--text-control-md);
@@ -8,7 +8,7 @@
   --istok-breadcrumbs-separator-font-size: var(--text-control-md);
 }
 
-@utility istok-breadcrumbs--l {
+@utility istok-breadcrumbs--lg {
   --istok-breadcrumbs-item-padding-y: var(--spacing-2);
   --istok-breadcrumbs-item-padding-x: var(--spacing-4);
   --istok-breadcrumbs-item-font-size: var(--text-control-l);

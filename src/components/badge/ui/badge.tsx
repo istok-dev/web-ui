@@ -22,7 +22,7 @@ const sizeClassesMap: Record<BadgeSize, string> = {
 const variantClassesMap: Record<BadgeVariant, string> = {
   solid: 'istok-badge--solid',
   ghost: 'istok-badge--ghost',
-  opacity: 'istok-badge--opacity',
+  inverse: 'istok-badge--inverse',
   outline: 'istok-badge--outline',
 };
 
@@ -53,6 +53,7 @@ export const Badge: FC<BadgeProps> = ({
   shape = 'square',
   circle = false,
   render,
+  children,
   ...otherProps
 }) => {
   const state: BadgeState = { size, variant, color, shape, circle };
@@ -74,7 +75,7 @@ export const Badge: FC<BadgeProps> = ({
       variantClassesMap[variant],
       !circle && shapeClassesMap[shape],
       circle && [
-        'istok-badge--circle w-(--istok-badge-height) justify-center',
+        'w-(--istok-badge-height) justify-center istok-badge--circle',
       ],
       className,
     ),
@@ -90,7 +91,7 @@ export const Badge: FC<BadgeProps> = ({
             )}
           />
         )}
-        {label}
+        {label || children}
         {endAdornment && (
           <span
             className={cn(

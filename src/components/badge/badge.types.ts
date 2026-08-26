@@ -3,7 +3,7 @@ import type { LucideIcon, LucideProps } from 'lucide-react';
 import type { ReactNode } from 'react';
 
 export const BADGE_SIZES = ['sm', 'md', 'lg'] as const;
-export const BADGE_VARIANTS = ['solid', 'ghost', 'opacity', 'outline'] as const;
+export const BADGE_VARIANTS = ['solid', 'ghost', 'inverse', 'outline'] as const;
 export const BADGE_COLORS = ['primary', 'neutral', 'negative', 'warning', 'info', 'success', 'accent'] as const;
 export const BADGE_SHAPES = ['square', 'rounded'] as const;
 
@@ -20,7 +20,7 @@ export type BadgeState = {
   circle: boolean;
 };
 
-export type BadgeProps = Omit<useRender.ComponentProps<'div', BadgeState>, 'children'> & {
+export type BadgeProps = useRender.ComponentProps<'div', BadgeState> & {
   label: string;
   startIcon?: LucideIcon;
   startIconProps?: LucideProps;

@@ -1,4 +1,4 @@
-@utility istok-checkbox--s {
+@utility istok-checkbox--sm {
   --istok-checkbox-gap: calc(var(--spacing) * 1.5);
 
   --istok-checkbox-label-font-size: var(--text-control-sm);
@@ -13,7 +13,7 @@
   --istok-checkbox-icon-size: var(--spacing-4);
 }
 
-@utility istok-checkbox--m {
+@utility istok-checkbox--md {
   --istok-checkbox-gap: calc(var(--spacing) * 1.5);
 
   --istok-checkbox-label-font-size: var(--text-control-md);
@@ -28,7 +28,7 @@
   --istok-checkbox-icon-size: var(--spacing-5);
 }
 
-@utility istok-checkbox--l {
+@utility istok-checkbox--lg {
   --istok-checkbox-gap: calc(var(--spacing) * 2);
 
   --istok-checkbox-label-font-size: var(--text-control-lg);

@@ -8,6 +8,12 @@ const twMerge = extendTailwindMerge<
   | 'icon-button-shape'
   | 'input-variant'
   | 'input-size'
+  | 'card-padding'
+  | 'card-radius'
+  | 'card-variant'
+  | 'progress-color'
+  | 'textarea-variant'
+  | 'textarea-size'
   | 'button-size'
   | 'button-variant'
   | 'button-color'
@@ -79,6 +85,32 @@ const twMerge = extendTailwindMerge<
         'istok-input__input--opacity',
       ],
       'input-size': ['istok-input--sm', 'istok-input--md', 'istok-input--lg'],
+      'card-padding': [
+        'istok-card--padding-sm',
+        'istok-card--padding-md',
+        'istok-card--padding-lg',
+      ],
+      'card-radius': ['istok-card--radius-xl', 'istok-card--radius-2xl'],
+      'card-variant': ['istok-card--default', 'istok-card--soft'],
+      'progress-color': [
+        'istok-progress--color-primary',
+        'istok-progress--color-accent',
+        'istok-progress--color-success',
+        'istok-progress--color-warning',
+        'istok-progress--color-info',
+        'istok-progress--color-negative',
+        'istok-progress--color-neutral',
+      ],
+      'textarea-variant': [
+        'istok-textarea--neutral',
+        'istok-textarea--solid',
+        'istok-textarea--outline',
+      ],
+      'textarea-size': [
+        'istok-textarea--sm',
+        'istok-textarea--md',
+        'istok-textarea--lg',
+      ],
       'button-size': [
         'istok-button--sm',
         'istok-button--md',
@@ -121,7 +153,7 @@ const twMerge = extendTailwindMerge<
       'badge-variant': [
         'istok-badge--solid',
         'istok-badge--ghost',
-        'istok-badge--opacity',
+        'istok-badge--inverse',
         'istok-badge--outline',
       ],
       'badge-shape': ['istok-badge--square', 'istok-badge--rounded'],

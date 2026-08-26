@@ -2,25 +2,21 @@ import { Button as BaseButton } from '@base-ui/react/button';
 import type { LucideIcon } from 'lucide-react';
 import type { ComponentPropsWithRef } from 'react';
 
-export type ButtonVariant
-  = | 'primary'
-    | 'secondary'
-    | 'clear'
-    | 'text'
-    | 'opacity'
-    | 'clear-inverse'
-    | 'outline';
+export const BUTTON_VARIANTS = [
+  'primary',
+  'secondary',
+  'clear',
+  'text',
+  'opacity',
+  'clear-inverse',
+  'outline',
+] as const;
+export const BUTTON_COLORS = ['primary', 'neutral', 'negative', 'warning', 'info', 'success', 'accent'] as const;
+export const BUTTON_SIZES = ['sm', 'md', 'lg', 'xl'] as const;
 
-export type ButtonColor
-  = | 'primary'
-    | 'neutral'
-    | 'negative'
-    | 'warning'
-    | 'info'
-    | 'success'
-    | 'accent';
-
-export type ButtonSize = 'sm' | 'md' | 'lg' | 'xl';
+export type ButtonVariant = (typeof BUTTON_VARIANTS)[number];
+export type ButtonColor = (typeof BUTTON_COLORS)[number];
+export type ButtonSize = (typeof BUTTON_SIZES)[number];
 
 export type Classes = 'root' | 'icon';
 

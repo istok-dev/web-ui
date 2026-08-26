@@ -1,4 +1,4 @@
-@utility istok-radio--s {
+@utility istok-radio--sm {
   --istok-radio-gap: calc(var(--spacing) * 1.5);
 
   --istok-radio-label-font-size: var(--text-control-sm);
@@ -17,7 +17,7 @@
   --istok-radio-input-bg-disabled: var(--color-neutral-400);
 }
 
-@utility istok-radio--m {
+@utility istok-radio--md {
   --istok-radio-gap: calc(var(--spacing) * 1.5);
 
   --istok-radio-label-font-size: var(--text-control-md);
@@ -36,7 +36,7 @@
   --istok-radio-input-bg-disabled: var(--color-neutral-400);
 }
 
-@utility istok-radio--l {
+@utility istok-radio--lg {
   --istok-radio-gap: calc(var(--spacing) * 2);
 
   --istok-radio-label-font-size: var(--text-control-lg);

@@ -1,8 +1,24 @@
-import type { PropsWithChildren, ReactNode } from 'react';
+import type { ChangeEventHandler, PropsWithChildren, ReactNode } from 'react';
 
-export type RadioSize = 's' | 'm' | 'l';
+export type RadioSize = 'sm' | 'md' | 'lg';
 
 export type RadioItemClasses = 'root' | 'label' | 'description';
+
+export type RadioItemPassThrough = {
+  input?: Omit<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    | 'onChange'
+    | 'checked'
+    | 'defaultChecked'
+    | 'disabled'
+    | 'type'
+    | 'size'
+    | 'name'
+    | 'value'
+    | 'readOnly'
+    | 'id'
+  >;
+};
 
 export type RadioItemProps = {
   label: string;
@@ -11,10 +27,19 @@ export type RadioItemProps = {
   onInfoClick?: () => void;
   className?: string;
   classes?: Partial<Record<RadioItemClasses, string>>;
-} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>;
+  checked?: boolean;
+  defaultChecked?: boolean;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+  disabled?: boolean;
+  name?: string;
+  value?: string | number | readonly string[];
+  readOnly?: boolean;
+  id?: string;
+  pt?: RadioItemPassThrough;
+} & Omit<React.LabelHTMLAttributes<HTMLLabelElement>, 'onChange'>;
 
 export type RadioProps = PropsWithChildren<{
-  defaultSize?: RadioSize;
+  size?: RadioSize;
   className?: string;
 }>;
 

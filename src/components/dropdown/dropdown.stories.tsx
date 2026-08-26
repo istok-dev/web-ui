@@ -34,19 +34,19 @@ export const Default: Story = {
       <Dropdown.Item
         label="Профиль"
         startIcon={User}
-        defaultSize="m"
+        size="md"
         onClick={() => {}}
       />
       <Dropdown.Item
         label="Настройки"
         startIcon={Settings}
-        defaultSize="m"
+        size="md"
         onClick={() => {}}
       />
       <Dropdown.Item
         label="Выйти"
         startIcon={LogOut}
-        defaultSize="m"
+        size="md"
         onClick={() => {}}
         startIconProps={{ className: 'text-negative-600' }}
         classes={{ label: '!text-negative-600' }}
@@ -84,19 +84,19 @@ export const WithTrigger: Story = {
               <Dropdown.Item
                 label="Профиль"
                 startIcon={User}
-                defaultSize="m"
+                size="md"
                 onClick={() => setOpen(false)}
               />
               <Dropdown.Item
                 label="Настройки"
                 startIcon={Settings}
-                defaultSize="m"
+                size="md"
                 onClick={() => setOpen(false)}
               />
               <Dropdown.Item
                 label="Выйти"
                 startIcon={LogOut}
-                defaultSize="m"
+                size="md"
                 onClick={() => setOpen(false)}
               />
             </Dropdown>
@@ -115,24 +115,24 @@ export const ItemSizes: Story = {
         bg-neutral-50 py-2 shadow-lg
       "
       >
-        <Dropdown.Item label="Размер S" defaultSize="s" onClick={() => {}} />
-        <Dropdown.Item label="Размер S" defaultSize="s" onClick={() => {}} />
+        <Dropdown.Item label="Размер SM" size="sm" onClick={() => {}} />
+        <Dropdown.Item label="Размер SM" size="sm" onClick={() => {}} />
       </Dropdown>
       <Dropdown className="
         min-w-50 overflow-hidden rounded-2xl border border-neutral-200
         bg-neutral-50 py-2 shadow-lg
       "
       >
-        <Dropdown.Item label="Размер M" defaultSize="m" onClick={() => {}} />
-        <Dropdown.Item label="Размер M" defaultSize="m" onClick={() => {}} />
+        <Dropdown.Item label="Размер MD" size="md" onClick={() => {}} />
+        <Dropdown.Item label="Размер MD" size="md" onClick={() => {}} />
       </Dropdown>
       <Dropdown className="
         min-w-55 overflow-hidden rounded-2xl border border-neutral-200
         bg-neutral-50 py-2 shadow-lg
       "
       >
-        <Dropdown.Item label="Размер L" defaultSize="l" onClick={() => {}} />
-        <Dropdown.Item label="Размер L" defaultSize="l" onClick={() => {}} />
+        <Dropdown.Item label="Размер LG" size="lg" onClick={() => {}} />
+        <Dropdown.Item label="Размер LG" size="lg" onClick={() => {}} />
       </Dropdown>
     </div>
   ),
@@ -147,13 +147,13 @@ export const BrandVariant: Story = {
       <Dropdown.Item
         label="Пункт меню"
         variant="brand"
-        defaultSize="m"
+        size="md"
         onClick={() => {}}
       />
       <Dropdown.Item
         label="Ещё пункт"
         variant="brand"
-        defaultSize="m"
+        size="md"
         onClick={() => {}}
       />
     </Dropdown>
@@ -169,16 +169,16 @@ export const WithDisabledItem: Story = {
     >
       <Dropdown.Item
         label="Активный пункт"
-        defaultSize="m"
+        size="md"
         onClick={() => {}}
       />
       <Dropdown.Item
         label="Неактивный пункт"
-        defaultSize="m"
+        size="md"
         disabled
         onClick={() => {}}
       />
-      <Dropdown.Item label="Ещё активный" defaultSize="m" onClick={() => {}} />
+      <Dropdown.Item label="Ещё активный" size="md" onClick={() => {}} />
     </Dropdown>
   ),
 };

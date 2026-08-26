@@ -7,14 +7,14 @@ import { cn } from '@/utils/cn';
 import type { BreadcrumbsProps, BreadcrumbsSize } from '../breadcrumbs.types';
 
 const sizeClassesMap: Record<BreadcrumbsSize, string> = {
-  l: 'istok-breadcrumbs--l',
-  m: 'istok-breadcrumbs--m',
+  lg: 'istok-breadcrumbs--lg',
+  md: 'istok-breadcrumbs--md',
 };
 
 export const Breadcrumbs: FC<BreadcrumbsProps> = ({
   items,
   className,
-  defaultSize = 'm',
+  size = 'md',
   maxItems,
   Link,
 }) => {
@@ -61,7 +61,7 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
       className={cn(
         'istok-breadcrumbs',
         'flex flex-wrap items-center',
-        sizeClassesMap[defaultSize],
+        sizeClassesMap[size],
         className,
       )}
     >

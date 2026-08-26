@@ -23,9 +23,9 @@ const meta: Meta<typeof NumberInput> = {
       control: 'text',
       description: 'Суффикс (например, единица измерения)',
     },
-    defaultSize: {
+    size: {
       control: 'select',
-      options: ['s', 'm', 'l'],
+      options: ['sm', 'md', 'lg'],
       description: 'Размер',
     },
     variant: {
@@ -62,7 +62,7 @@ export const Default: Story = {
     );
   },
   args: {
-    defaultSize: 'm',
+    size: 'md',
     variant: 'neutral',
   },
 };
@@ -83,7 +83,7 @@ export const WithSuffix: Story = {
     );
   },
   args: {
-    defaultSize: 'm',
+    size: 'md',
     variant: 'neutral',
     suffix: 'P',
   },
@@ -100,19 +100,19 @@ export const Sizes: Story = {
         <NumberInput
           value={v1}
           onValueChange={setV1}
-          defaultSize="s"
+          size="sm"
           suffix="P"
         />
         <NumberInput
           value={v2}
           onValueChange={setV2}
-          defaultSize="m"
+          size="md"
           suffix="P"
         />
         <NumberInput
           value={v3}
           onValueChange={setV3}
-          defaultSize="l"
+          size="lg"
           suffix="P"
         />
       </div>

@@ -15,37 +15,41 @@ export const CheckboxItem: CheckboxItemFC = ({
   classes,
   disabled = false,
   checked,
+  defaultChecked,
+  onChange,
   indeterminate = false,
+  name,
+  value,
+  readOnly,
   id: propsId,
-  ...inputProps
+  pt,
+  ...rootProps
 }) => {
   const generatedId = useId();
   const inputId = propsId ?? generatedId;
   const inputRef = useRef<HTMLInputElement>(null);
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(defaultChecked ?? false);
   const isControlled = checked !== undefined;
 
-  // Sync indeterminate state with input element
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.indeterminate = indeterminate;
     }
   }, [indeterminate]);
 
-  // Handle input change for uncontrolled mode
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (!isControlled) {
       setIsChecked(e.target.checked);
     }
-    inputProps.onChange?.(e);
+    onChange?.(e);
   };
 
-  // Determine if checkbox is checked (controlled or uncontrolled)
   const checkboxChecked = isControlled ? Boolean(checked) : isChecked;
   const isIndeterminate = indeterminate;
 
   return (
     <label
+      {...rootProps}
       htmlFor={inputId}
       className={cn(
         'istok-checkbox__item group flex items-start p-1',
@@ -57,14 +61,18 @@ export const CheckboxItem: CheckboxItemFC = ({
     >
       <div className="relative flex items-center justify-center">
         <input
+          {...pt?.input}
           ref={inputRef}
           id={inputId}
           type="checkbox"
+          name={name}
+          value={value}
           checked={checked}
+          defaultChecked={defaultChecked}
           disabled={disabled}
-          className="sr-only"
+          readOnly={readOnly}
+          className={cn('sr-only', pt?.input?.className)}
           onChange={handleChange}
-          {...inputProps}
         />
         <div
           className={cn(

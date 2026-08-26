@@ -15,7 +15,7 @@ const meta: Meta<typeof Select> = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['s', 'm', 'l'] as const,
+      options: ['sm', 'md', 'lg'] as const,
       description: 'Размер селекта',
     },
     multiple: {
@@ -112,7 +112,7 @@ export const Default: Story = {
     searchable: true,
     showSelectAll: true,
     showClear: true,
-    size: 'm',
+    size: 'md',
   },
 };
 
@@ -138,7 +138,7 @@ export const SingleSelect: Story = {
     searchable: true,
     showSelectAll: false,
     showClear: false,
-    size: 'm',
+    size: 'md',
   },
 };
 
@@ -164,7 +164,7 @@ export const WithGroups: Story = {
     searchable: true,
     showSelectAll: true,
     showClear: true,
-    size: 'm',
+    size: 'md',
   },
 };
 
@@ -176,10 +176,10 @@ export const Sizes: Story = {
     return (
       <div className="flex w-100 flex-col gap-6">
         <div>
-          <p className="mb-2 text-body-sm text-neutral-500">Size S</p>
+          <p className="mb-2 text-body-sm text-neutral-500">Size SM</p>
           <Select
             startIcon={Filter}
-            size="s"
+            size="sm"
             value={s}
             onChange={setS}
             options={simpleOptions}
@@ -187,10 +187,10 @@ export const Sizes: Story = {
           />
         </div>
         <div>
-          <p className="mb-2 text-body-sm text-neutral-500">Size M</p>
+          <p className="mb-2 text-body-sm text-neutral-500">Size MD</p>
           <Select
             startIcon={Filter}
-            size="m"
+            size="md"
             value={m}
             onChange={setM}
             options={simpleOptions}
@@ -198,10 +198,10 @@ export const Sizes: Story = {
           />
         </div>
         <div>
-          <p className="mb-2 text-body-sm text-neutral-500">Size L</p>
+          <p className="mb-2 text-body-sm text-neutral-500">Size LG</p>
           <Select
             startIcon={Filter}
-            size="l"
+            size="lg"
             value={l}
             onChange={setL}
             options={simpleOptions}
@@ -234,7 +234,7 @@ export const WithIcon: Story = {
     startIcon: Filter,
     multiple: true,
     searchable: true,
-    size: 'm',
+    size: 'md',
   },
 };
 
@@ -260,7 +260,7 @@ export const WithoutSearch: Story = {
     searchable: false,
     showSelectAll: true,
     showClear: true,
-    size: 'm',
+    size: 'md',
   },
 };
 
@@ -286,7 +286,7 @@ export const WithoutActions: Story = {
     searchable: true,
     showSelectAll: false,
     showClear: false,
-    size: 'm',
+    size: 'md',
   },
 };
 
@@ -310,7 +310,7 @@ export const Disabled: Story = {
     options: simpleOptions,
     multiple: true,
     disabled: true,
-    size: 'm',
+    size: 'md',
   },
 };
 
@@ -336,7 +336,7 @@ export const DisabledItems: Story = {
     searchable: true,
     showSelectAll: true,
     showClear: true,
-    size: 'm',
+    size: 'md',
   },
 };
 
@@ -364,7 +364,7 @@ export const WithSelectedValues: Story = {
     searchable: true,
     showSelectAll: true,
     showClear: true,
-    size: 'm',
+    size: 'md',
   },
 };
 
@@ -390,7 +390,7 @@ export const ComplexExample: Story = {
             searchable={true}
             showSelectAll={true}
             showClear={true}
-            size="m"
+            size="md"
           />
           <Select
             label="Категории"
@@ -402,7 +402,7 @@ export const ComplexExample: Story = {
             searchable={true}
             showSelectAll={true}
             showClear={true}
-            size="m"
+            size="md"
           />
           <Select
             label="Маркетплейсы"
@@ -414,7 +414,7 @@ export const ComplexExample: Story = {
             searchable={true}
             showSelectAll={true}
             showClear={true}
-            size="m"
+            size="md"
           />
           <Select
             label="Партнеры"
@@ -426,7 +426,7 @@ export const ComplexExample: Story = {
             searchable={true}
             showSelectAll={true}
             showClear={true}
-            size="m"
+            size="md"
           />
         </div>
       </div>
@@ -487,6 +487,6 @@ export const WithAsyncSearch: Story = {
     searchable: true,
     showSelectAll: true,
     showClear: true,
-    size: 'm',
+    size: 'md',
   },
 };

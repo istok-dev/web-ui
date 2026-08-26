@@ -24,9 +24,9 @@ const meta: Meta<typeof Input> = {
       control: 'text',
       description: 'Плейсхолдер',
     },
-    defaultSize: {
+    size: {
       control: 'select',
-      options: ['s', 'm', 'l'],
+      options: ['sm', 'md', 'lg'],
       description: 'Размер инпута',
     },
     variant: {
@@ -54,13 +54,14 @@ const meta: Meta<typeof Input> = {
       control: 'text',
       description: 'Дополнительные классы для контейнера',
     },
-    inputClassName: {
-      control: 'text',
+    pt: {
+      control: 'object',
       description: 'Дополнительные классы для инпута',
-    },
-    readOnly: {
-      control: 'boolean',
-      description: 'Доступно только для чтения',
+      table: {
+        type: {
+          summary: 'InputPassThrough',
+        },
+      },
     },
   },
 };
@@ -81,7 +82,7 @@ export const Default: Story = {
   },
   args: {
     placeholder: 'Введите текст',
-    defaultSize: 'm',
+    size: 'md',
     variant: 'neutral',
   },
 };
@@ -98,7 +99,7 @@ export const WithPlaceholder: Story = {
   },
   args: {
     placeholder: 'Поиск...',
-    defaultSize: 'm',
+    size: 'md',
     variant: 'neutral',
   },
 };
@@ -116,7 +117,7 @@ export const WithStartIcon: Story = {
   args: {
     placeholder: 'Поиск...',
     startIcon: Search,
-    defaultSize: 'm',
+    size: 'md',
     variant: 'neutral',
   },
 };
@@ -134,7 +135,7 @@ export const WithStartAdornment: Story = {
   args: {
     placeholder: 'Введите имя',
     startAdornment: <User className="size-4 text-neutral-400" />,
-    defaultSize: 'm',
+    size: 'md',
     variant: 'neutral',
   },
 };
@@ -176,7 +177,7 @@ export const WithEndAdornment: Story = {
   args: {
     placeholder: 'Введите пароль',
     startIcon: Lock,
-    defaultSize: 'm',
+    size: 'md',
     variant: 'neutral',
   },
 };
@@ -193,19 +194,19 @@ export const Sizes: Story = {
           value={value1}
           onChange={setValue1}
           placeholder="Маленький размер"
-          defaultSize="s"
+          size="sm"
         />
         <Input
           value={value2}
           onChange={setValue2}
           placeholder="Средний размер (по умолчанию)"
-          defaultSize="m"
+          size="md"
         />
         <Input
           value={value3}
           onChange={setValue3}
           placeholder="Большой размер"
-          defaultSize="l"
+          size="lg"
         />
       </div>
     );
@@ -287,7 +288,7 @@ export const Disabled: Story = {
     );
   },
   args: {
-    defaultSize: 'm',
+    size: 'md',
     variant: 'neutral',
   },
 };
@@ -304,7 +305,7 @@ export const WithInitialValue: Story = {
   },
   args: {
     placeholder: 'Введите текст',
-    defaultSize: 'm',
+    size: 'md',
     variant: 'neutral',
   },
 };
@@ -330,7 +331,7 @@ export const ComplexExample: Story = {
             onChange={setEmail}
             placeholder="example@mail.com"
             startIcon={Mail}
-            defaultSize="m"
+            size="md"
             variant="solid"
           />
         </div>
@@ -366,7 +367,7 @@ export const ComplexExample: Story = {
                   )}
               </button>
             )}
-            defaultSize="m"
+            size="md"
             variant="solid"
           />
         </div>
@@ -383,7 +384,7 @@ export const ComplexExample: Story = {
             onChange={setSearch}
             placeholder="Поиск..."
             startIcon={Search}
-            defaultSize="m"
+            size="md"
             variant="outline"
           />
         </div>

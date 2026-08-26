@@ -1,0 +1,27 @@
+@utility istok-progress--color-primary {
+  --istok-progress-fill: var(--color-primary-600);
+}
+
+@utility istok-progress--color-accent {
+  --istok-progress-fill: var(--color-accent-600);
+}
+
+@utility istok-progress--color-success {
+  --istok-progress-fill: var(--color-positive-600);
+}
+
+@utility istok-progress--color-warning {
+  --istok-progress-fill: var(--color-warning-500);
+}
+
+@utility istok-progress--color-info {
+  --istok-progress-fill: var(--color-info-600);
+}
+
+@utility istok-progress--color-negative {
+  --istok-progress-fill: var(--color-negative-600);
+}
+
+@utility istok-progress--color-neutral {
+  --istok-progress-fill: var(--color-neutral-500);
+}

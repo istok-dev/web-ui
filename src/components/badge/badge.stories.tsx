@@ -77,7 +77,16 @@ export const Variants: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
       {BADGE_VARIANTS.map(variant => (
-        <div key={variant} className="flex flex-wrap items-center gap-3">
+        <div
+          key={variant}
+          className={
+            variant === 'inverse'
+              ? `
+                flex flex-wrap items-center gap-3 rounded-lg bg-neutral-800 p-3
+              `
+              : 'flex flex-wrap items-center gap-3'
+          }
+        >
           {BADGE_COLORS.map(color => (
             <Badge
               key={color}

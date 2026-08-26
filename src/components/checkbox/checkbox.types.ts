@@ -1,8 +1,26 @@
-import type { PropsWithChildren, ReactNode } from 'react';
+import type { ChangeEventHandler, PropsWithChildren, ReactNode } from 'react';
 
-export type CheckboxSize = 's' | 'm' | 'l';
+export const CHECKBOX_SIZES = ['sm', 'md', 'lg'] as const;
+
+export type CheckboxSize = (typeof CHECKBOX_SIZES)[number];
 
 export type CheckboxItemClasses = 'root' | 'label' | 'description';
+
+export type CheckboxItemPassThrough = {
+  input?: Omit<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    | 'onChange'
+    | 'checked'
+    | 'defaultChecked'
+    | 'disabled'
+    | 'id'
+    | 'type'
+    | 'size'
+    | 'name'
+    | 'value'
+    | 'readOnly'
+  >;
+};
 
 export type CheckboxItemProps = {
   label?: string;
@@ -10,10 +28,19 @@ export type CheckboxItemProps = {
   indeterminate?: boolean;
   className?: string;
   classes?: Partial<Record<CheckboxItemClasses, string>>;
-} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>;
+  checked?: boolean;
+  defaultChecked?: boolean;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+  disabled?: boolean;
+  name?: string;
+  value?: string | number | readonly string[];
+  readOnly?: boolean;
+  id?: string;
+  pt?: CheckboxItemPassThrough;
+} & Omit<React.LabelHTMLAttributes<HTMLLabelElement>, 'onChange'>;
 
 export type CheckboxProps = PropsWithChildren<{
-  defaultSize?: CheckboxSize;
+  size?: CheckboxSize;
   className?: string;
 }>;
 

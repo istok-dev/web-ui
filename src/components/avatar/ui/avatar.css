@@ -1,19 +1,19 @@
 /* Размеры: только переменные */
-@utility istok-avatar--s {
+@utility istok-avatar--sm {
   --istok-avatar-size: var(--spacing-8);
   --istok-avatar-font-size: var(--text-control-sm);
   --istok-avatar-line-height: var(--text-control-sm--line-height);
   --istok-avatar-square-radius: var(--radius-2xl);
 }
 
-@utility istok-avatar--m {
+@utility istok-avatar--md {
   --istok-avatar-size: var(--spacing-10);
   --istok-avatar-font-size: var(--text-control-md);
   --istok-avatar-line-height: var(--text-control-md--line-height);
   --istok-avatar-square-radius: var(--radius-2xl);
 }
 
-@utility istok-avatar--l {
+@utility istok-avatar--lg {
   --istok-avatar-size: var(--spacing-12);
   --istok-avatar-font-size: var(--text-control-lg);
   --istok-avatar-line-height: var(--text-control-lg--line-height);

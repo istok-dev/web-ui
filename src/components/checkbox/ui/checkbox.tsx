@@ -8,22 +8,22 @@ import type { CheckboxFC, CheckboxSize } from '../checkbox.types';
 import { CheckboxItem } from './checkbox-item';
 
 const sizeClassesMap: Record<CheckboxSize, string> = {
-  s: 'istok-checkbox--s',
-  m: 'istok-checkbox--m',
-  l: 'istok-checkbox--l',
+  sm: 'istok-checkbox--sm',
+  md: 'istok-checkbox--md',
+  lg: 'istok-checkbox--lg',
 };
 
-export const CheckboxContext = createContext<CheckboxSize>('m');
+export const CheckboxContext = createContext<CheckboxSize>('md');
 
 export const Checkbox: CheckboxFC = (props) => {
-  const { children, defaultSize = 'm', className } = props;
+  const { children, size = 'md', className } = props;
 
   return (
-    <CheckboxContext value={defaultSize}>
+    <CheckboxContext value={size}>
       <div
         className={cn(
           'istok-checkbox space-y-2',
-          sizeClassesMap[defaultSize],
+          sizeClassesMap[size],
           className,
         )}
       >

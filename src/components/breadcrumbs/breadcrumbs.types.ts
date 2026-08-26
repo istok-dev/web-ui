@@ -10,12 +10,12 @@ export type BreadcrumbsMobileLink = {
   ariaLabel?: string;
 };
 
-export type BreadcrumbsSize = 'l' | 'm';
+export type BreadcrumbsSize = 'lg' | 'md';
 
 export type BreadcrumbsProps = {
   items: BreadcrumbItem[];
   className?: string;
-  defaultSize?: BreadcrumbsSize;
+  size?: BreadcrumbsSize;
   maxItems?: number;
   Link?: React.ComponentType<{
     'href': string;

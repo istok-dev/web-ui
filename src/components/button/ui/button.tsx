@@ -71,10 +71,11 @@ export const Button: FC<ButtonProps> = ({
           text-(length:--istok-button-font-size)
           leading-(--istok-button-line-height)
         `,
-        'bg-(--istok-button-bg) text-(--istok-button-fg)',
-        'border border-(--istok-button-border-color)',
+        'border',
         !isDisabled && [
           'cursor-pointer',
+          'bg-(--istok-button-bg) text-(--istok-button-fg)',
+          'border-(--istok-button-border-color)',
           `
             hover:border-(--istok-button-border-color-hover)
             hover:bg-(--istok-button-bg-hover)
@@ -86,8 +87,15 @@ export const Button: FC<ButtonProps> = ({
             active:text-(--istok-button-fg-active)
           `,
         ],
+        isDisabled && [
+          'cursor-not-allowed',
+          `
+            border-[color-mix(in_srgb,var(--istok-button-border-color)_40%,transparent)]
+            bg-[color-mix(in_srgb,var(--istok-button-bg)_40%,transparent)]
+            text-[color-mix(in_srgb,var(--istok-button-fg)_80%,transparent)]
+          `,
+        ],
         {
-          'cursor-not-allowed opacity-12': isDisabled,
           'rounded-full': rounded,
         },
         sizeClassesMap[size],

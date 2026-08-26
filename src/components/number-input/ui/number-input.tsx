@@ -9,9 +9,9 @@ import { cn } from '@/utils/cn';
 import type { NumberInputProps, NumberInputSize, NumberInputVariant } from '../number-input.types';
 
 const sizeClassesMap: Record<NumberInputSize, string> = {
-  s: 'istok-number-input--s',
-  m: 'istok-number-input--m',
-  l: 'istok-number-input--l',
+  sm: 'istok-number-input--sm',
+  md: 'istok-number-input--md',
+  lg: 'istok-number-input--lg',
 };
 
 const variantClassesMap: Record<NumberInputVariant, string> = {
@@ -26,7 +26,7 @@ export const NumberInput: FC<NumberInputProps> = ({
   defaultValue,
   suffix,
   className,
-  defaultSize = 'm',
+  size = 'md',
   variant = 'neutral',
   invalid = false,
   disabled,
@@ -71,7 +71,7 @@ export const NumberInput: FC<NumberInputProps> = ({
       onValueCommitted={onValueCommitted}
       className={cn(
         'istok-number-input',
-        sizeClassesMap[defaultSize],
+        sizeClassesMap[size],
         {
           'istok-number-input--invalid': invalid,
           'istok-number-input--has-suffix': Boolean(suffix),

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Fragment, useState } from 'react';
 
+import { Card } from '../card';
 import { Switch } from './index';
 
 const meta: Meta<typeof Switch> = {
@@ -70,6 +71,58 @@ export const Sizes: Story = {
         <Switch size="md" checked={m} onChange={setM} />
         <Switch size="lg" checked={l} onChange={setL} />
       </div>
+    );
+  },
+};
+
+export const Field: Story = {
+  render: () => {
+    const [prices, setPrices] = useState(true);
+    const [pooling, setPooling] = useState(true);
+    const [hide, setHide] = useState(false);
+    return (
+      <Switch.FieldList className="w-120">
+        <Switch.Field
+          label="Показывать цены гостям"
+          description="Иначе гости увидят только название и ссылку"
+          checked={prices}
+          onChange={setPrices}
+        />
+        <Switch.Field
+          label="Разрешить складчину"
+          description="Гости смогут скидываться на дорогие желания"
+          checked={pooling}
+          onChange={setPooling}
+        />
+        <Switch.Field
+          label="Скрывать брони от меня"
+          description="Вы не узнаете, что уже забронировано — сюрприз целиком"
+          checked={hide}
+          onChange={setHide}
+        />
+      </Switch.FieldList>
+    );
+  },
+};
+
+export const FieldInSoftCard: Story = {
+  render: () => {
+    const [checked, setChecked] = useState(false);
+    return (
+      <Card
+        variant="soft"
+        padding="md"
+        radius="xl"
+        className="w-105"
+      >
+        <Switch.Field
+          label="Соредакторы могут приглашать других"
+          description="Иначе добавлять людей можете только вы"
+          checked={checked}
+          onChange={setChecked}
+          className="py-0"
+        />
+      </Card>
     );
   },
 };

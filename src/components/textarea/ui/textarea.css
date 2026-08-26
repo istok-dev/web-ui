@@ -1,0 +1,50 @@
+@utility istok-textarea--sm {
+  --istok-textarea-radius: var(--radius-xl);
+  --istok-textarea-font-size: var(--text-control-sm);
+  --istok-textarea-line-height: var(--text-control-sm--line-height);
+  --istok-textarea-padding-y: var(--spacing-2);
+  --istok-textarea-padding-x: var(--spacing-3);
+}
+
+@utility istok-textarea--md {
+  --istok-textarea-radius: var(--radius-xl);
+  --istok-textarea-font-size: var(--text-control-md);
+  --istok-textarea-line-height: 1.5;
+  --istok-textarea-padding-y: var(--spacing-3);
+  --istok-textarea-padding-x: calc(var(--spacing) * 3.5);
+}
+
+@utility istok-textarea--lg {
+  --istok-textarea-radius: var(--radius-2xl);
+  --istok-textarea-font-size: var(--text-control-lg);
+  --istok-textarea-line-height: 1.5;
+  --istok-textarea-padding-y: var(--spacing-3);
+  --istok-textarea-padding-x: var(--spacing-4);
+}
+
+@utility istok-textarea--neutral {
+  --istok-textarea-bg: var(--color-neutral-100);
+  --istok-textarea-border-color: transparent;
+  --istok-textarea-border-width: 0px;
+  --istok-textarea-border-focus: var(--color-primary-400);
+  --istok-textarea-fg: var(--color-neutral-900);
+  --istok-textarea-placeholder: var(--color-neutral-300);
+}
+
+@utility istok-textarea--solid {
+  --istok-textarea-bg: var(--color-neutral-50);
+  --istok-textarea-border-color: transparent;
+  --istok-textarea-border-width: 1px;
+  --istok-textarea-border-focus: var(--color-primary-400);
+  --istok-textarea-fg: var(--color-neutral-900);
+  --istok-textarea-placeholder: var(--color-neutral-300);
+}
+
+@utility istok-textarea--outline {
+  --istok-textarea-bg: var(--color-neutral-50);
+  --istok-textarea-border-color: var(--color-neutral-300);
+  --istok-textarea-border-width: 1px;
+  --istok-textarea-border-focus: var(--color-primary-400);
+  --istok-textarea-fg: var(--color-neutral-900);
+  --istok-textarea-placeholder: var(--color-neutral-300);
+}
