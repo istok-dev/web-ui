@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ExternalLink, Plus, Settings, Trash2 } from 'lucide-react';
 
-import type {
-  IconButtonColor,
-  IconButtonVariant,
-  IconButtonSize,
-  IconButtonShape,
+import {
+  ICON_BUTTON_COLORS,
+  ICON_BUTTON_VARIANTS,
+  ICON_BUTTON_SHAPES,
+  ICON_BUTTON_SIZES,
 } from './icon-button.types';
 import { IconButton } from './ui/icon-button';
 
@@ -26,36 +26,22 @@ const meta: Meta<typeof IconButton> = {
     },
     variant: {
       control: 'select',
-      options: [
-        'primary',
-        'secondary',
-        'clear',
-        'clear-inverse',
-        'opacity',
-      ] as IconButtonVariant[],
+      options: ICON_BUTTON_VARIANTS,
       description: 'Визуальный вариант',
     },
     color: {
       control: 'select',
-      options: [
-        'primary',
-        'neutral',
-        'negative',
-        'warning',
-        'info',
-        'success',
-        'accent',
-      ] as IconButtonColor[],
+      options: ICON_BUTTON_COLORS,
       description: 'Цветовая палитра',
     },
     shape: {
       control: 'select',
-      options: ['circle', 'square'] as IconButtonShape[],
+      options: ICON_BUTTON_SHAPES,
       description: 'Форма кнопки',
     },
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'] as IconButtonSize[],
+      options: ICON_BUTTON_SIZES,
       description: 'Размер',
     },
     disabled: {
@@ -104,16 +90,6 @@ export const Variants: Story = {
   ),
 };
 
-const iconButtonColors: IconButtonColor[] = [
-  'primary',
-  'neutral',
-  'negative',
-  'warning',
-  'info',
-  'success',
-  'accent',
-];
-
 export const Colors: Story = {
   render: () => (
     <div className="flex flex-col gap-8">
@@ -122,7 +98,7 @@ export const Colors: Story = {
           variant="primary"
         </h3>
         <div className="flex flex-wrap gap-4">
-          {iconButtonColors.map(color => (
+          {ICON_BUTTON_COLORS.map(color => (
             <IconButton
               key={color}
               icon={Plus}
@@ -138,7 +114,7 @@ export const Colors: Story = {
           variant="secondary"
         </h3>
         <div className="flex flex-wrap gap-4">
-          {iconButtonColors.map(color => (
+          {ICON_BUTTON_COLORS.map(color => (
             <IconButton
               key={color}
               icon={Plus}
@@ -154,7 +130,7 @@ export const Colors: Story = {
           variant="clear"
         </h3>
         <div className="flex flex-wrap gap-4">
-          {iconButtonColors.map(color => (
+          {ICON_BUTTON_COLORS.map(color => (
             <IconButton
               key={color}
               icon={Plus}

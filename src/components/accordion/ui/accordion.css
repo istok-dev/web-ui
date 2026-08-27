@@ -1,0 +1,63 @@
+@utility istok-accordion--lg {
+  --istok-accordion-padding-block: var(--spacing-5);
+  --istok-accordion-padding-inline: 0;
+  --istok-accordion-gap: 0;
+  --istok-accordion-header-gap: var(--spacing-3);
+  --istok-accordion-content-pt: var(--spacing-4);
+  --istok-accordion-title-font-size: var(--text-headline-sm);
+  --istok-accordion-title-line-height: var(--text-headline-sm--line-height);
+  --istok-accordion-title-letter-spacing: var(--text-headline-sm--letter-spacing);
+  --istok-accordion-title-font-weight: 700;
+  --istok-accordion-description-font-size: var(--text-body-md);
+  --istok-accordion-description-line-height: var(--text-body-md--line-height);
+  --istok-accordion-content-font-size: var(--text-body-lg);
+  --istok-accordion-content-line-height: var(--text-body-lg--line-height);
+  --istok-accordion-icon-size: var(--spacing-6);
+  --istok-accordion-chevron-size: var(--spacing-6);
+}
+
+@utility istok-accordion--md {
+  --istok-accordion-padding-block: var(--spacing-4);
+  --istok-accordion-padding-inline: 0;
+  --istok-accordion-gap: 0;
+  --istok-accordion-header-gap: var(--spacing-3);
+  --istok-accordion-content-pt: var(--spacing-3);
+  --istok-accordion-title-font-size: var(--text-title-lg);
+  --istok-accordion-title-line-height: var(--text-title-lg--line-height);
+  --istok-accordion-title-letter-spacing: var(--text-title-lg--letter-spacing);
+  --istok-accordion-title-font-weight: 700;
+  --istok-accordion-description-font-size: var(--text-body-md);
+  --istok-accordion-description-line-height: var(--text-body-md--line-height);
+  --istok-accordion-content-font-size: var(--text-body-md);
+  --istok-accordion-content-line-height: var(--text-body-md--line-height);
+  --istok-accordion-icon-size: var(--spacing-6);
+  --istok-accordion-chevron-size: var(--spacing-5);
+}
+
+@utility istok-accordion--sm {
+  --istok-accordion-padding-block: var(--spacing-4);
+  --istok-accordion-padding-inline: 0;
+  --istok-accordion-gap: 0;
+  --istok-accordion-header-gap: calc(var(--spacing) * 2.5);
+  --istok-accordion-content-pt: var(--spacing-3);
+  --istok-accordion-title-font-size: var(--text-title-md);
+  --istok-accordion-title-line-height: var(--text-title-md--line-height);
+  --istok-accordion-title-letter-spacing: var(--text-title-md--letter-spacing);
+  --istok-accordion-title-font-weight: 600;
+  --istok-accordion-description-font-size: var(--text-body-sm);
+  --istok-accordion-description-line-height: var(--text-body-sm--line-height);
+  --istok-accordion-content-font-size: var(--text-body-md);
+  --istok-accordion-content-line-height: var(--text-body-md--line-height);
+  --istok-accordion-icon-size: var(--spacing-5);
+  --istok-accordion-chevron-size: var(--spacing-5);
+}
+
+@utility istok-accordion--default {
+  --istok-accordion-bg: transparent;
+  --istok-accordion-divider: var(--color-neutral-200);
+  --istok-accordion-title-fg: var(--text-strong);
+  --istok-accordion-description-fg: var(--text-secondary);
+  --istok-accordion-content-fg: var(--text-body);
+  --istok-accordion-icon-fg: var(--text-strong);
+  --istok-accordion-chevron-fg: var(--text-muted);
+}

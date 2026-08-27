@@ -3,4 +3,5 @@ export type {
   AccordionRootProps,
   AccordionItemProps,
   AccordionValue,
+  AccordionSize,
 } from './accordion.types';

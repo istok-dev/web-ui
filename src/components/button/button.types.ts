@@ -11,7 +11,16 @@ export const BUTTON_VARIANTS = [
   'clear-inverse',
   'outline',
 ] as const;
-export const BUTTON_COLORS = ['primary', 'neutral', 'negative', 'warning', 'info', 'success', 'accent'] as const;
+export const BUTTON_COLORS = [
+  'primary',
+  'neutral',
+  'base',
+  'negative',
+  'warning',
+  'info',
+  'success',
+  'accent',
+] as const;
 export const BUTTON_SIZES = ['sm', 'md', 'lg', 'xl'] as const;
 
 export type ButtonVariant = (typeof BUTTON_VARIANTS)[number];

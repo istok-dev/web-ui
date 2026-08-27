@@ -15,6 +15,7 @@ import type {
 const colorClassesMap: Record<IconButtonColor, string> = {
   primary: 'istok-icon-button--color-primary',
   neutral: 'istok-icon-button--color-neutral',
+  base: 'istok-icon-button--color-base',
   negative: 'istok-icon-button--color-negative',
   warning: 'istok-icon-button--color-warning',
   info: 'istok-icon-button--color-info',
@@ -83,7 +84,7 @@ export const IconButton: FC<IconButtonProps> = ({
           `,
         ],
         {
-          'cursor-not-allowed opacity-100 bg-neutral-300 text-neutral-400':
+          'cursor-not-allowed bg-neutral-300 text-neutral-400 opacity-100':
             isDisabled,
         },
         sizeClassesMap[size],

@@ -68,6 +68,17 @@
   --istok-button-color-800: var(--color-neutral-800);
 }
 
+@utility istok-button--color-base {
+  --istok-button-color-50: var(--text-strong);
+  --istok-button-color-100: var(--color-neutral-50);
+  --istok-button-color-200: var(--color-neutral-100);
+  --istok-button-color-300: var(--color-neutral-200);
+  --istok-button-color-400: var(--color-neutral-300);
+  --istok-button-color-600: var(--color-neutral-50);
+  --istok-button-color-700: var(--color-neutral-100);
+  --istok-button-color-800: var(--color-neutral-200);
+}
+
 @utility istok-button--color-negative {
   --istok-button-color-50: var(--color-negative-50);
   --istok-button-color-100: var(--color-negative-100);

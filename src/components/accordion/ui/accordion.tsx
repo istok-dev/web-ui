@@ -1,14 +1,33 @@
 import { Accordion as BaseAccordion } from '@base-ui/react/accordion';
-import { ChevronUp, ChevronDown } from 'lucide-react';
-import { useState, type ComponentProps } from 'react';
+import {
+  ChevronDown,
+} from 'lucide-react';
+import {
+  createContext,
+  use,
+  useState,
+  type ComponentProps,
+  type FC,
+} from 'react';
 
 import { cn } from '@/utils/cn';
 
 import type {
-  AccordionRootProps,
   AccordionItemProps,
+  AccordionRootProps,
+  AccordionSize,
   AccordionValue,
 } from '../accordion.types';
+
+const sizeClassesMap: Record<AccordionSize, string> = {
+  lg: 'istok-accordion--lg',
+  md: 'istok-accordion--md',
+  sm: 'istok-accordion--sm',
+};
+
+const AccordionContext = createContext<{ size: AccordionSize }>({
+  size: 'lg',
+});
 
 function AccordionRoot({
   children,
@@ -17,6 +36,7 @@ function AccordionRoot({
   defaultValue,
   onValueChange,
   multiple = false,
+  size = 'lg',
 }: AccordionRootProps) {
   const [internalValue, setInternalValue]
     = useState<AccordionValue>(defaultValue);
@@ -29,80 +49,147 @@ function AccordionRoot({
   };
 
   return (
-    <div className={className}>
-      <BaseAccordion.Root
-        className="flex flex-col gap-2"
-        {...(isControlled
-          ? {
-            value,
-            onValueChange: handleValueChange,
-          }
-          : {
-            defaultValue,
-            onValueChange: handleValueChange,
-          }) as Partial<ComponentProps<typeof BaseAccordion.Root>>}
-        multiple={multiple}
+    <AccordionContext value={{ size }}>
+      <div
+        className={cn(
+          'istok-accordion',
+          'istok-accordion--default',
+          sizeClassesMap[size],
+          className,
+        )}
       >
-        {children}
-      </BaseAccordion.Root>
-    </div>
+        <BaseAccordion.Root
+          className="flex flex-col gap-(--istok-accordion-gap)"
+          {...(isControlled
+            ? {
+              value,
+              onValueChange: handleValueChange,
+            }
+            : {
+              defaultValue,
+              onValueChange: handleValueChange,
+            }) as Partial<ComponentProps<typeof BaseAccordion.Root>>}
+          multiple={multiple}
+        >
+          {children}
+        </BaseAccordion.Root>
+      </div>
+    </AccordionContext>
   );
 }
 
-function AccordionItemComponent({
+const AccordionItemComponent: FC<AccordionItemProps> = ({
   value: itemValue,
   title,
+  description,
   icon: Icon,
   iconProps,
   children,
   className,
-}: AccordionItemProps) {
+}) => {
+  const { size } = use(AccordionContext);
+
   return (
     <BaseAccordion.Item
       value={itemValue}
-      className={cn('rounded-2xl border border-neutral-200 p-6', className)}
+      className={cn(
+        'istok-accordion__item',
+        sizeClassesMap[size],
+        'istok-accordion--default',
+        `
+          border-b border-(--istok-accordion-divider) bg-(--istok-accordion-bg)
+          px-(--istok-accordion-padding-inline)
+          py-(--istok-accordion-padding-block)
+          last:border-b-0
+        `,
+        className,
+      )}
     >
       <BaseAccordion.Header>
-        <BaseAccordion.Trigger className="
-          group flex w-full cursor-pointer items-center justify-between
-        "
+        <BaseAccordion.Trigger
+          className={cn(
+            'istok-accordion__trigger group',
+            'flex w-full cursor-pointer items-start',
+            'gap-(--istok-accordion-header-gap)',
+            'text-left outline-none',
+          )}
         >
-          <div className="flex items-center gap-3">
-            {Icon && (
-              <Icon
-                size={24}
-                {...iconProps}
-                className={cn('text-neutral-950', iconProps?.className)}
-              />
+          {Icon && (
+            <Icon
+              {...iconProps}
+              className={cn(
+                'istok-accordion__icon shrink-0',
+                'size-(--istok-accordion-icon-size)',
+                'text-(--istok-accordion-icon-fg)',
+                'mt-0.5',
+                iconProps?.className,
+              )}
+            />
+          )}
+
+          <div className="flex min-w-0 flex-1 flex-col gap-1">
+            <div className="flex items-center gap-2">
+              <span
+                className={cn(
+                  'istok-accordion__title',
+                  `
+                    text-(length:--istok-accordion-title-font-size)
+                    leading-(--istok-accordion-title-line-height)
+                    font-(--istok-accordion-title-font-weight)
+                    tracking-(--istok-accordion-title-letter-spacing)
+                    text-(--istok-accordion-title-fg)
+                  `,
+                )}
+              >
+                {title}
+              </span>
+            </div>
+            {description != null && description !== '' && (
+              <span
+                className={cn(
+                  'istok-accordion__description',
+                  `
+                    text-(length:--istok-accordion-description-font-size)
+                    leading-(--istok-accordion-description-line-height)
+                    text-(--istok-accordion-description-fg)
+                  `,
+                )}
+              >
+                {description}
+              </span>
             )}
-            <h4 className="text-title-lg font-medium text-primary-800">
-              {title}
-            </h4>
           </div>
+
           <ChevronDown
-            size={24}
-            className="
-              text-neutral-900
-              group-data-[state=open]:hidden
-            "
-          />
-          <ChevronUp
-            size={24}
-            className="
-              hidden text-neutral-900
-              group-data-[state=open]:block
-            "
+            className={cn(
+              'istok-accordion__chevron shrink-0',
+              'size-(--istok-accordion-chevron-size)',
+              'text-(--istok-accordion-chevron-fg)',
+              'mt-0.5 transition-transform duration-200',
+              'group-data-panel-open:rotate-180',
+            )}
           />
         </BaseAccordion.Trigger>
       </BaseAccordion.Header>
+
       <BaseAccordion.Panel>
-        <div className="mt-4 text-body-lg leading-relaxed text-neutral-800">
+        <div
+          className={cn(
+            'istok-accordion__content',
+            `
+              pt-(--istok-accordion-content-pt)
+              text-(length:--istok-accordion-content-font-size)
+              leading-(--istok-accordion-content-line-height)
+              text-(--istok-accordion-content-fg)
+            `,
+          )}
+        >
           {children}
         </div>
       </BaseAccordion.Panel>
     </BaseAccordion.Item>
   );
-}
+};
 
 export const Accordion = Object.assign(AccordionRoot, {
   Item: AccordionItemComponent,

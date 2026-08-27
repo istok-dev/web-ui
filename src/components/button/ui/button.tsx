@@ -16,6 +16,7 @@ const sizeClassesMap: Record<ButtonSize, string> = {
 const colorClassesMap: Record<ButtonColor, string> = {
   primary: 'istok-button--color-primary',
   neutral: 'istok-button--color-neutral',
+  base: 'istok-button--color-base',
   negative: 'istok-button--color-negative',
   warning: 'istok-button--color-warning',
   info: 'istok-button--color-info',

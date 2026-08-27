@@ -29,6 +29,7 @@ const variantClassesMap: Record<BadgeVariant, string> = {
 const colorClassesMap: Record<BadgeColor, string> = {
   primary: 'istok-badge--color-primary',
   neutral: 'istok-badge--color-neutral',
+  base: 'istok-badge--color-base',
   negative: 'istok-badge--color-negative',
   warning: 'istok-badge--color-warning',
   info: 'istok-badge--color-info',

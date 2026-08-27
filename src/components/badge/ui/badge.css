@@ -56,7 +56,14 @@
   --istok-badge-color-50: var(--color-neutral-50);
   --istok-badge-color-100: var(--surface-muted);
   --istok-badge-color-600: var(--color-neutral-600);
-  --istok-badge-color-700: var(--text-secondary);
+  --istok-badge-color-700: var(--color-neutral-700);
+}
+
+@utility istok-badge--color-base {
+  --istok-badge-color-50: var(--text-strong);
+  --istok-badge-color-100: var(--color-neutral-50);
+  --istok-badge-color-600: var(--color-neutral-50);
+  --istok-badge-color-700: var(--text-strong);
 }
 
 @utility istok-badge--color-negative {

@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 
 export const BADGE_SIZES = ['sm', 'md', 'lg'] as const;
 export const BADGE_VARIANTS = ['solid', 'ghost', 'inverse', 'outline'] as const;
-export const BADGE_COLORS = ['primary', 'neutral', 'negative', 'warning', 'info', 'success', 'accent'] as const;
+export const BADGE_COLORS = ['primary', 'neutral', 'base', 'negative', 'warning', 'info', 'success', 'accent'] as const;
 export const BADGE_SHAPES = ['square', 'rounded'] as const;
 
 export type BadgeSize = (typeof BADGE_SIZES)[number];

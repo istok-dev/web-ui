@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Plus } from 'lucide-react';
 
-import type { ButtonVariant, ButtonSize, ButtonColor } from './button.types';
+import { type ButtonVariant, type ButtonSize, type ButtonColor, BUTTON_COLORS } from './button.types';
 import { Button } from './ui/button';
 
 const meta: Meta<typeof Button> = {
@@ -30,6 +30,7 @@ const meta: Meta<typeof Button> = {
       options: [
         'primary',
         'neutral',
+        'base',
         'negative',
         'warning',
         'info',
@@ -88,16 +89,6 @@ export const Variants: Story = {
   ),
 };
 
-const buttonColors: ButtonColor[] = [
-  'primary',
-  'neutral',
-  'negative',
-  'warning',
-  'info',
-  'success',
-  'accent',
-];
-
 export const Colors: Story = {
   render: () => (
     <div className="flex flex-col gap-8">
@@ -106,7 +97,7 @@ export const Colors: Story = {
           variant="primary"
         </h3>
         <div className="flex flex-wrap gap-4">
-          {buttonColors.map(color => (
+          {BUTTON_COLORS.map(color => (
             <Button key={color} variant="primary" color={color}>
               {color}
             </Button>
@@ -118,7 +109,7 @@ export const Colors: Story = {
           variant="secondary"
         </h3>
         <div className="flex flex-wrap gap-4">
-          {buttonColors.map(color => (
+          {BUTTON_COLORS.map(color => (
             <Button key={color} variant="secondary" color={color}>
               {color}
             </Button>
@@ -130,7 +121,7 @@ export const Colors: Story = {
           variant="outline"
         </h3>
         <div className="flex flex-wrap gap-4">
-          {buttonColors.map(color => (
+          {BUTTON_COLORS.map(color => (
             <Button key={color} variant="outline" color={color}>
               {color}
             </Button>
@@ -142,7 +133,7 @@ export const Colors: Story = {
           variant="clear"
         </h3>
         <div className="flex flex-wrap gap-4">
-          {buttonColors.map(color => (
+          {BUTTON_COLORS.map(color => (
             <Button key={color} variant="clear" color={color}>
               {color}
             </Button>
