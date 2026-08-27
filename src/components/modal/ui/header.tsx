@@ -58,7 +58,7 @@ export const ModalHeader: ModalHeaderFC = (props: ModalHeaderProps) => {
               'hover:bg-neutral-200',
             )}
           >
-            <X className="size-[18px]" />
+            <X className="size-4.5" />
           </button>
         )}
       />

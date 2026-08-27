@@ -26,7 +26,3 @@
   --istok-progress-fill: var(--color-neutral-500);
 }
 
-.istok-progress {
-  --istok-progress-height: 7px;
-  --istok-progress-track: #edeff2;
-}

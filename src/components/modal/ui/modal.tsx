@@ -17,7 +17,7 @@ export const Modal: ModalFC = (props: ModalProps) => {
       <BaseDialog.Portal>
         <BaseDialog.Backdrop
           className={cn(
-            'fixed inset-0 z-100 bg-[rgba(16,24,32,0.6)]',
+            'fixed inset-0 z-100 bg-overlay-scrim',
             classes?.backdrop,
           )}
         />
@@ -33,7 +33,7 @@ export const Modal: ModalFC = (props: ModalProps) => {
             className={cn(
               `
                 relative flex max-h-[90vh] w-full max-w-5xl flex-col
-                overflow-hidden rounded-(--radius-5xl) bg-(--surface-card)
+                overflow-hidden rounded-5xl bg-(--surface-card)
                 shadow-(--shadow-2xl)
               `,
               classes?.content,

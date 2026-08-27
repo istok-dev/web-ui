@@ -41,8 +41,8 @@ export const Progress: FC<ProgressProps> = ({
       <div
         className={cn(
           `
-            istok-progress__track h-(--istok-progress-height) min-w-0 flex-1
-            overflow-hidden rounded-full bg-(--istok-progress-track)
+            istok-progress__track h-1.75 min-w-0 flex-1 overflow-hidden
+            rounded-full bg-neutral-200
           `,
           classes?.track,
         )}

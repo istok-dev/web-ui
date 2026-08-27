@@ -67,8 +67,7 @@ export const Badge: FC<BadgeProps> = ({
       'rounded-(--istok-badge-radius)',
       `
         text-(length:--istok-badge-font-size)
-        leading-(--istok-badge-line-height)
-        font-[number:var(--istok-badge-font-weight)]
+        leading-(--istok-badge-line-height) font-(--istok-badge-font-weight)
       `,
       'bg-(--istok-badge-bg) text-(--istok-badge-fg)',
       'border border-(--istok-badge-border-color)',

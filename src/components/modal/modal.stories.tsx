@@ -4,8 +4,8 @@ import { useState } from 'react';
 
 import { Button } from '../button';
 import { Select } from '../select';
-import type { SelectOption } from '../select/select.types';
 import { Modal } from './index';
+import type { SelectOption } from '../select/select.types';
 
 const selectOptions: SelectOption[] = [
   { label: 'MIXIT BODY', value: 'mixit-body' },

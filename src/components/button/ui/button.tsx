@@ -71,8 +71,7 @@ export const Button: FC<ButtonProps> = ({
         'gap-(--istok-button-gap)',
         `
           text-(length:--istok-button-font-size)
-          leading-(--istok-button-line-height)
-          font-[number:var(--istok-button-font-weight)]
+          leading-(--istok-button-line-height) font-(--istok-button-font-weight)
         `,
         'border',
         !isDisabled && [
@@ -94,8 +93,7 @@ export const Button: FC<ButtonProps> = ({
           'cursor-not-allowed opacity-100',
           `
             border-(--istok-button-border-color-disabled)
-            bg-(--istok-button-bg-disabled)
-            text-(--istok-button-fg-disabled)
+            bg-(--istok-button-bg-disabled) text-(--istok-button-fg-disabled)
           `,
         ],
         {

@@ -89,9 +89,7 @@ export const Textarea: FC<TextareaProps> = ({
             focus:bg-(--istok-textarea-bg-focus)
             focus:[box-shadow:var(--istok-textarea-focus-shadow)]
           `,
-          `
-            aria-invalid:[box-shadow:inset_0_0_0_2px_var(--color-negative-500)]
-          `,
+          `aria-invalid:[box-shadow:inset_0_0_0_2px_var(--color-negative-500)]`,
           'placeholder:text-(--istok-textarea-placeholder)',
           'disabled:cursor-not-allowed disabled:opacity-100',
           resizeClassesMap[resize],

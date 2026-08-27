@@ -41,7 +41,7 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
     <BaseAlertDialog.Root open={open} onOpenChange={onOpenChange}>
       <BaseAlertDialog.Portal>
         <BaseAlertDialog.Backdrop className="
-          fixed inset-0 z-40 bg-[rgba(16,24,32,0.6)]
+          fixed inset-0 z-40 bg-overlay-scrim
         "
         />
         <BaseAlertDialog.Viewport className="

@@ -1,7 +1,7 @@
 @theme {
+  /* #region COLORS: */
   --color-*: initial;
 
-  /* PRIMARY: водная шкала */
   --color-primary-50: #f2f9fe;
   --color-primary-100: #e3f2fb;
   --color-primary-200: #cbe6f8;
@@ -66,7 +66,6 @@
   --color-warning-900: #6d4002;
   --color-warning-950: #4a2c01;
 
-  /* info = primary (два синих на экране неразличимы) */
   --color-info-50: #f2f9fe;
   --color-info-100: #e3f2fb;
   --color-info-200: #cbe6f8;
@@ -79,7 +78,6 @@
   --color-info-900: #063b58;
   --color-info-950: #042838;
 
-  /* ACCENT: коралловый */
   --color-accent-50: #fff4f0;
   --color-accent-100: #ffe6de;
   --color-accent-200: #ffcdbd;
@@ -92,6 +90,22 @@
   --color-accent-900: #742611;
   --color-accent-950: #4a180b;
 
+  --color-on-accent-10: #ffffff1a;
+  --color-on-accent-20: #ffffff33;
+  --color-on-accent-30: #ffffff4d;
+  --color-on-accent-40: #ffffff66;
+  --color-on-accent-50: #ffffff80;
+  --color-on-accent-60: #ffffff99;
+  --color-on-accent-70: #ffffffb3;
+  --color-on-accent-80: #ffffffcc;
+  --color-on-accent-90: #ffffffe6;
+  --color-on-accent: #ffffffff;
+
+  --color-overlay-scrim: #10182099;
+  --color-overlay-media: #1018206B;
+  /* #endregion */
+
+  /* #region RADIUS: */
   --radius-*: initial;
   --radius-none: 0;
   --radius-xs: 2px;
@@ -104,7 +118,9 @@
   --radius-4xl: 28px;
   --radius-5xl: 32px;
   --radius-full: calc(infinity * 1px);
+  /* #endregion */
 
+  /* #region SPACING: */
   --spacing: 4px;
   --spacing-0: 0;
   --spacing-1: 4px;
@@ -123,6 +139,7 @@
   --spacing-16: 64px;
   --spacing-20: 80px;
   --spacing-24: 96px;
+  /* #endregion */
 
   --breakpoint-*: initial;
   --breakpoint-mobile: 375px;
@@ -133,34 +150,43 @@
 
   --font-sans: "Golos Text", system-ui, -apple-system, sans-serif;
 
+  /* #region TYPOGRAPHY: */
   --text-*: initial;
+
+  /* display — только герои и обложки */
   --text-display-lg: 57px;
   --text-display-lg--line-height: 64px;
   --text-display-lg--letter-spacing: -1.4px;
   --text-display-md: 45px;
   --text-display-md--line-height: 52px;
-  --text-display-md--letter-spacing: -1.4px;
-  --text-display-sm: 36px;
-  --text-display-sm--line-height: 44px;
-  --text-display-sm--letter-spacing: -1.4px;
+  --text-display-md--letter-spacing: -1.2px;
+
+  /* headline — заголовки секций */
   --text-headline-lg: 32px;
   --text-headline-lg--line-height: 40px;
-  --text-headline-lg--letter-spacing: -1.4px;
+  --text-headline-lg--letter-spacing: -1px;
   --text-headline-md: 28px;
   --text-headline-md--line-height: 36px;
-  --text-headline-md--letter-spacing: -1.4px;
+  --text-headline-md--letter-spacing: -0.9px;
   --text-headline-sm: 24px;
   --text-headline-sm--line-height: 32px;
-  --text-headline-sm--letter-spacing: -1.4px;
-  --text-title-lg: 22px;
+  --text-headline-sm--letter-spacing: -0.7px;
+
+  /* title — заголовки карточек, модалок, блоков */
+  --text-title-lg: 20px;
   --text-title-lg--line-height: 28px;
-  --text-title-lg--letter-spacing: -0.6px;
+  --text-title-lg--letter-spacing: -0.5px;
   --text-title-md: 16px;
   --text-title-md--line-height: 24px;
   --text-title-md--letter-spacing: -0.25px;
   --text-title-sm: 14px;
   --text-title-sm--line-height: 20px;
   --text-title-sm--letter-spacing: -0.25px;
+
+  /* control — всё внутри виджетов */
+  --text-control-xl: 18px;
+  --text-control-xl--line-height: 24px;
+  --text-control-xl--letter-spacing: -0.4px;
   --text-control-lg: 16px;
   --text-control-lg--line-height: 24px;
   --text-control-lg--letter-spacing: -0.25px;
@@ -173,6 +199,11 @@
   --text-control-xs: 10px;
   --text-control-xs--line-height: 12px;
   --text-control-xs--letter-spacing: -0.15px;
+
+  /* body — проза */
+  --text-body-xl: 18px;
+  --text-body-xl--line-height: 28px;
+  --text-body-xl--letter-spacing: -0.4px;
   --text-body-lg: 16px;
   --text-body-lg--line-height: 24px;
   --text-body-lg--letter-spacing: -0.25px;
@@ -185,21 +216,28 @@
   --text-body-xs: 10px;
   --text-body-xs--line-height: 12px;
   --text-body-xs--letter-spacing: -0.15px;
+  /* #endregion */
 
+  /* #region SHADOWS: */
   --shadow-*: initial;
   --shadow-sm: none;
   --shadow-md: 0 8px 24px rgba(16, 24, 32, 0.07);
   --shadow-lg: 0 10px 28px rgba(16, 24, 32, 0.08);
   --shadow-xl: 0 12px 32px rgba(16, 24, 32, 0.1);
   --shadow-2xl: 0 24px 64px rgba(16, 24, 32, 0.24);
+  /* #endregion */
 
+  /* #region SCROLLBAR: */
   --scrollbar-width: thin;
   --scrollbar-color-thumb: var(--color-neutral-300);
   --scrollbar-color-track: var(--color-neutral-100);
   --scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);
   --scrollbar-radius: var(--radius-full);
+  /* #endregion */
 
+  /* #region ICONS: */
   --icon-stroke-width: 1.9;
+  /* #endregion */
 }
 
 :root {
@@ -288,10 +326,6 @@
   --scrollbar-color-thumb: var(--color-neutral-400);
   --scrollbar-color-track: var(--color-neutral-100);
   --scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);
-}
-
-[data-theme="dark"] .istok-progress {
-  --istok-progress-track: var(--color-neutral-200);
 }
 
 @utility scrollbar {

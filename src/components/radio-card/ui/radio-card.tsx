@@ -2,7 +2,7 @@
 
 import {
   createContext,
-  useContext,
+  use,
   useId,
   useState,
   type FC,
@@ -42,9 +42,9 @@ const RadioCardRoot: FC<RadioCardProps> = ({
   children,
   className,
 }) => {
-  const group = useContext(RadioCardContext);
-  const generatedName = useId();
-  const name = nameProp ?? group?.name ?? generatedName;
+  const group = use(RadioCardContext);
+  const generatedId = useId();
+  const name = nameProp ?? group?.name ?? generatedId;
   const disabled = disabledProp || Boolean(group?.disabled);
   const inGroup = group !== null;
 
@@ -79,8 +79,7 @@ const RadioCardRoot: FC<RadioCardProps> = ({
         className={cn(
           `
             istok-radio-card__card flex cursor-pointer items-start
-            gap-(--istok-radio-card-gap) rounded-(--radius-2xl)
-            transition-colors
+            gap-(--istok-radio-card-gap) rounded-2xl transition-colors
           `,
           'p-(--istok-radio-card-padding)',
           'bg-(--istok-radio-card-bg)',
@@ -139,9 +138,7 @@ const RadioCardRoot: FC<RadioCardProps> = ({
           {description && (
             <span
               className={cn(
-                `
-                  istok-radio-card__description mt-0.5 block text-neutral-500
-                `,
+                `istok-radio-card__description mt-0.5 block text-neutral-500`,
                 `
                   text-(length:--istok-radio-card-description-font)
                   leading-(--istok-radio-card-description-line)
@@ -157,8 +154,7 @@ const RadioCardRoot: FC<RadioCardProps> = ({
         ? (
           <div
             className="
-              istok-radio-card__content mt-3
-              pl-(--istok-radio-card-dot-slot)
+              istok-radio-card__content mt-3 pl-(--istok-radio-card-dot-slot)
             "
           >
             {children}
@@ -179,8 +175,8 @@ const RadioCardGroup: FC<RadioCardGroupProps> = ({
   className,
   children,
 }) => {
-  const generatedName = useId();
-  const name = nameProp ?? generatedName;
+  const generatedId = useId();
+  const name = nameProp ?? generatedId;
   const isControlled = valueProp !== undefined;
   const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue);
   const value = isControlled ? valueProp : uncontrolledValue;
@@ -193,7 +189,7 @@ const RadioCardGroup: FC<RadioCardGroupProps> = ({
   const gapStyle = typeof gap === 'number' ? `${gap}px` : gap;
 
   return (
-    <RadioCardContext.Provider
+    <RadioCardContext
       value={{ name, value, onChange: handleChange, disabled }}
     >
       <div
@@ -203,7 +199,7 @@ const RadioCardGroup: FC<RadioCardGroupProps> = ({
       >
         {children}
       </div>
-    </RadioCardContext.Provider>
+    </RadioCardContext>
   );
 };
 

@@ -51,13 +51,13 @@ export const Tag: FC<TagProps> = ({
       'istok-tag flex items-center',
       'h-(--istok-tag-height) gap-(--istok-tag-gap)',
       `
-        py-(--istok-tag-padding-block) pl-(--istok-tag-padding-left)
-        pr-(--istok-tag-padding-right)
+        py-(--istok-tag-padding-block) pr-(--istok-tag-padding-right)
+        pl-(--istok-tag-padding-left)
       `,
       'rounded-(--istok-tag-radius)',
       `
         text-(length:--istok-tag-font-size) leading-(--istok-tag-line-height)
-        font-[number:var(--istok-tag-font-weight)]
+        font-(--istok-tag-font-weight)
       `,
       'bg-(--istok-tag-bg) text-(--istok-tag-fg)',
       'border border-(--istok-tag-border-color)',
@@ -91,9 +91,7 @@ export const Tag: FC<TagProps> = ({
                 istok-tag__close-button flex cursor-pointer items-center
                 justify-center
               `,
-              `
-                text-(--istok-tag-close-fg) transition-opacity
-              `,
+              `text-(--istok-tag-close-fg) transition-opacity`,
               variant !== 'soft' && 'hover:opacity-80',
               'size-(--istok-tag-icon-size)',
               endIconProps?.className,

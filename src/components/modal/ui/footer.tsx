@@ -21,10 +21,7 @@ export const ModalFooter: ModalFooterFC = (props: ModalFooterProps) => {
         </div>
       )}
       {endContent && (
-        <div className="
-          istok-modal__footer-end ml-auto flex items-center gap-3
-        "
-        >
+        <div className="istok-modal__footer-end ml-auto flex items-center gap-3">
           {endContent}
         </div>
       )}

@@ -109,9 +109,7 @@ export const Input: FC<InputProps> = ({
             focus:bg-(--istok-input-bg-focus)
             focus:[box-shadow:var(--istok-input-focus-shadow)]
           `,
-          `
-            aria-invalid:[box-shadow:inset_0_0_0_2px_var(--color-negative-500)]
-          `,
+          `aria-invalid:[box-shadow:inset_0_0_0_2px_var(--color-negative-500)]`,
           'placeholder:text-(--istok-input-placeholder)',
           pt?.input?.className,
         )}

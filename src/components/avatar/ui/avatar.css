@@ -29,8 +29,9 @@
 
 .istok-avatar {
   --istok-avatar-bg: var(--gradient-water);
-  --istok-avatar-fg: #ffffff;
+  --istok-avatar-fg: var(--color-on-accent);
   --istok-avatar-font-weight: 600;
+
   background: var(--istok-avatar-bg);
   color: var(--istok-avatar-fg);
   font-weight: var(--istok-avatar-font-weight);
