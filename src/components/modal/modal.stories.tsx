@@ -4,8 +4,8 @@ import { useState } from 'react';
 
 import { Button } from '../button';
 import { Select } from '../select';
-import { Modal } from './index';
 import type { SelectOption } from '../select/select.types';
+import { Modal } from './index';
 
 const selectOptions: SelectOption[] = [
   { label: 'MIXIT BODY', value: 'mixit-body' },
@@ -43,30 +43,37 @@ export const Default: Story = {
           Открыть модальное окно
         </Button>
         <Modal open={open} onOpenChange={setOpen}>
-          <Modal.Header title="Заголовок" />
+          <Modal.Header
+            title="Заголовок"
+            description="Краткое пояснение под заголовком"
+          />
           <Modal.Body>
             <div className="text-control-md text-neutral-800">
               Содержимое модального окна. Нажмите на затемнённую область или кнопку
               закрытия, чтобы закрыть окно.
             </div>
           </Modal.Body>
-          <Modal.Footer>
-            <BaseDialog.Close
-              render={closeProps => (
-                <Button
-                  {...closeProps}
-                  variant="secondary"
-                  color="neutral"
-                  size="md"
-                >
-                  Отмена
+          <Modal.Footer
+            end={(
+              <>
+                <BaseDialog.Close
+                  render={closeProps => (
+                    <Button
+                      {...closeProps}
+                      variant="secondary"
+                      color="neutral"
+                      size="md"
+                    >
+                      Отмена
+                    </Button>
+                  )}
+                />
+                <Button variant="primary" color="primary" size="md">
+                  Сохранить
                 </Button>
-              )}
-            />
-            <Button variant="primary" color="primary" size="md">
-              Сохранить
-            </Button>
-          </Modal.Footer>
+              </>
+            )}
+          />
         </Modal>
       </>
     );
@@ -107,6 +114,67 @@ export const WithCustomHeader: Story = {
               Заголовок собран из трёх уровней: капшен, тайтл и описание.
             </div>
           </Modal.Body>
+        </Modal>
+      </>
+    );
+  },
+};
+
+export const WithFooterSlots: Story = {
+  render: function WithFooterSlotsStory() {
+    const [open, setOpen] = useState(false);
+
+    return (
+      <>
+        <Button variant="primary" onClick={() => setOpen(true)}>
+          Открыть с слотами футера
+        </Button>
+        <Modal open={open} onOpenChange={setOpen}>
+          <Modal.Header
+            title="Удалить список"
+            description="Действие необратимо"
+          />
+          <Modal.Body>
+            <div className="text-control-md text-neutral-800">
+              Список и все желания внутри будут удалены без возможности
+              восстановления.
+            </div>
+          </Modal.Body>
+          <Modal.Footer
+            start={(
+              <Button
+                variant="text"
+                color="negative"
+                size="md"
+                onClick={() => setOpen(false)}
+              >
+                Удалить навсегда
+              </Button>
+            )}
+            end={(
+              <>
+                <BaseDialog.Close
+                  render={closeProps => (
+                    <Button
+                      {...closeProps}
+                      variant="secondary"
+                      color="neutral"
+                      size="md"
+                    >
+                      Отмена
+                    </Button>
+                  )}
+                />
+                <Button
+                  variant="gradient"
+                  size="md"
+                  onClick={() => setOpen(false)}
+                >
+                  Подтвердить
+                </Button>
+              </>
+            )}
+          />
         </Modal>
       </>
     );

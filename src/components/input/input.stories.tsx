@@ -26,12 +26,12 @@ const meta: Meta<typeof Input> = {
     },
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['sm', 'md', 'lg', 'xl'],
       description: 'Размер инпута',
     },
     variant: {
       control: 'select',
-      options: ['neutral', 'solid', 'outline', 'opacity'],
+      options: ['neutral', 'solid', 'outline', 'opacity', 'filled'],
       description: 'Вариант стиля инпута',
     },
     startIcon: {
@@ -187,6 +187,7 @@ export const Sizes: Story = {
     const [value1, setValue1] = useState('');
     const [value2, setValue2] = useState('');
     const [value3, setValue3] = useState('');
+    const [value4, setValue4] = useState('');
 
     return (
       <div className="flex w-80 flex-col gap-4">
@@ -208,6 +209,12 @@ export const Sizes: Story = {
           placeholder="Большой размер"
           size="lg"
         />
+        <Input
+          value={value4}
+          onChange={setValue4}
+          placeholder="XL — 52px"
+          size="xl"
+        />
       </div>
     );
   },
@@ -219,6 +226,7 @@ export const Variants: Story = {
     const [value2, setValue2] = useState('');
     const [value3, setValue3] = useState('');
     const [value4, setValue4] = useState('');
+    const [value5, setValue5] = useState('');
 
     return (
       <div className="flex w-80 flex-col gap-4">
@@ -257,6 +265,15 @@ export const Variants: Story = {
             placeholder="Opacity вариант"
             variant="opacity"
             className="bg-neutral-800"
+          />
+        </div>
+        <div>
+          <label className="mb-1 block text-body-sm text-neutral-600">Filled</label>
+          <Input
+            value={value5}
+            onChange={setValue5}
+            placeholder="Filled вариант"
+            variant="filled"
           />
         </div>
       </div>

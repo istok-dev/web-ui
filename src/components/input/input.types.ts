@@ -1,7 +1,7 @@
 import type { LucideIcon } from 'lucide-react';
 
-export const INPUT_SIZES = ['sm', 'md', 'lg'] as const;
-export const INPUT_VARIANTS = ['neutral', 'solid', 'outline', 'opacity'] as const;
+export const INPUT_SIZES = ['sm', 'md', 'lg', 'xl'] as const;
+export const INPUT_VARIANTS = ['neutral', 'solid', 'outline', 'opacity', 'filled'] as const;
 
 export type InputSize = (typeof INPUT_SIZES)[number];
 export type InputVariant = (typeof INPUT_VARIANTS)[number];

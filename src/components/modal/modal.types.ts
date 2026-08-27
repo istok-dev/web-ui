@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from 'react';
+import type { PropsWithChildren, ReactNode } from 'react';
 
 export type ModalProps = PropsWithChildren<
   React.HTMLAttributes<HTMLDivElement> & {
@@ -14,12 +14,16 @@ export type ModalProps = PropsWithChildren<
 
 export type ModalHeaderProps = PropsWithChildren<{
   title?: string;
+  description?: string;
   onClose?: () => void;
 }>;
 
 export type ModalBodyProps = PropsWithChildren<unknown>;
 
-export type ModalFooterProps = PropsWithChildren<unknown>;
+export type ModalFooterProps = PropsWithChildren<{
+  start?: ReactNode;
+  end?: ReactNode;
+}>;
 
 export type ModalHeaderFC = {
   (props: ModalHeaderProps): React.ReactNode;

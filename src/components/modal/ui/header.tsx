@@ -1,20 +1,32 @@
 import { Dialog as BaseDialog } from '@base-ui/react/dialog';
 import { X } from 'lucide-react';
 
+import { cn } from '@/utils/cn';
+
 import type { ModalHeaderFC, ModalHeaderProps } from '../modal.types';
 
 export const ModalHeader: ModalHeaderFC = (props: ModalHeaderProps) => {
-  const { title, children, onClose } = props;
+  const { title, description, children, onClose } = props;
 
   const renderTitle = () => {
     if (title) {
       return (
-        <BaseDialog.Title className="
-          text-title-lg font-bold tracking-[-0.6px] text-(--text-strong)
-        "
-        >
-          {title}
-        </BaseDialog.Title>
+        <div className="flex min-w-0 flex-col gap-1">
+          <BaseDialog.Title className="
+            text-title-lg font-bold tracking-[-0.6px] text-(--text-strong)
+          "
+          >
+            {title}
+          </BaseDialog.Title>
+          {description && (
+            <BaseDialog.Description className="
+              text-body-md text-(--text-secondary)
+            "
+            >
+              {description}
+            </BaseDialog.Description>
+          )}
+        </div>
       );
     }
     return children;
@@ -22,26 +34,31 @@ export const ModalHeader: ModalHeaderFC = (props: ModalHeaderProps) => {
 
   return (
     <div className="
-      flex items-start justify-between bg-(--surface-card) px-6 py-5
+      flex items-start justify-between gap-4 bg-(--surface-card) px-8 py-5
     "
     >
-      <div className="flex items-center gap-4">{renderTitle()}</div>
+      <div className="min-w-0 flex-1">{renderTitle()}</div>
       <BaseDialog.Close
         render={closeProps => (
           <button
             {...closeProps}
+            type="button"
+            aria-label="Закрыть"
             onClick={(e) => {
               onClose?.();
               (
                 closeProps as React.ButtonHTMLAttributes<HTMLButtonElement>
               ).onClick?.(e);
             }}
-            className="
-              cursor-pointer rounded-full p-2 text-neutral-400
-              hover:bg-neutral-800 hover:text-neutral-50
-            "
+            className={cn(
+              `
+                flex size-10 shrink-0 cursor-pointer items-center justify-center
+                rounded-full bg-neutral-100 text-neutral-600 transition-colors
+              `,
+              'hover:bg-neutral-200',
+            )}
           >
-            <X className="size-6" />
+            <X className="size-[18px]" />
           </button>
         )}
       />

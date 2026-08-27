@@ -1,6 +1,6 @@
 import type { LucideIcon, LucideProps } from 'lucide-react';
 
-export type SelectSize = 'sm' | 'md' | 'lg';
+export type SelectSize = 'sm' | 'md' | 'lg' | 'xl';
 
 export type SelectOption = {
   label: string;
@@ -15,7 +15,7 @@ export type SelectGroup = {
 
 export type SelectOptions = SelectOption[] | SelectGroup[];
 
-export type SelectVariant = 'solid' | 'outline';
+export type SelectVariant = 'solid' | 'outline' | 'filled';
 
 export type Classes = 'positioner' | 'popup' | 'trigger';
 

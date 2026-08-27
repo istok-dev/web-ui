@@ -37,7 +37,7 @@
 @utility istok-button--xl {
   --istok-button-padding-inline: var(--spacing-8);
   --istok-button-padding-block: var(--spacing-4);
-  --istok-button-height: var(--spacing-14);
+  --istok-button-height: var(--spacing-13);
   --istok-button-radius: var(--radius-full);
   --istok-button-gap: calc(var(--spacing) * 2.5);
   --istok-button-font-size: var(--text-control-lg);
@@ -270,4 +270,37 @@
   --istok-button-bg-disabled: var(--color-neutral-300);
   --istok-button-fg-disabled: var(--color-neutral-400);
   --istok-button-border-color-disabled: transparent;
+}
+
+@utility istok-button--gradient {
+  --istok-button-bg: transparent;
+  --istok-button-bg-hover: transparent;
+  --istok-button-bg-active: transparent;
+
+  --istok-button-fg: var(--color-neutral-50);
+  --istok-button-fg-hover: var(--color-neutral-50);
+  --istok-button-fg-active: var(--color-neutral-50);
+
+  --istok-button-border-color: transparent;
+  --istok-button-border-color-hover: transparent;
+  --istok-button-border-color-active: transparent;
+
+  --istok-button-bg-disabled: var(--color-neutral-300);
+  --istok-button-fg-disabled: var(--color-neutral-400);
+  --istok-button-border-color-disabled: transparent;
+
+  --istok-button-shadow: 0 8px 20px rgba(11, 127, 191, 0.28);
+}
+
+.istok-button.istok-button--gradient:not(:disabled) {
+  background-image: var(--gradient-water);
+  box-shadow: var(--istok-button-shadow);
+}
+
+.istok-button.istok-button--gradient:not(:disabled):hover {
+  filter: brightness(0.94);
+}
+
+.istok-button.istok-button--gradient:not(:disabled):active {
+  filter: brightness(0.88);
 }

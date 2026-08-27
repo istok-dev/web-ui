@@ -3,7 +3,7 @@ import type { LucideIcon, LucideProps } from 'lucide-react';
 import type { MouseEvent, ReactNode } from 'react';
 
 export const TAG_SIZES = ['sm', 'md', 'lg'] as const;
-export const TAG_VARIANTS = ['solid', 'ghost', 'outline'] as const;
+export const TAG_VARIANTS = ['solid', 'ghost', 'outline', 'soft'] as const;
 export const TAG_COLORS = ['primary', 'neutral', 'negative', 'warning', 'info', 'success', 'accent'] as const;
 
 export type Classes = 'root' | 'startIcon' | 'endIcon' | 'content';

@@ -22,8 +22,9 @@ const meta: Meta<typeof Button> = {
         'clear-inverse',
         'opacity',
         'outline',
+        'gradient',
       ] as ButtonVariant[],
-      description: 'Визуальный вариант кнопки',
+      description: 'Визуальный вариант кнопки. gradient — один на вид (главное действие).',
     },
     color: {
       control: 'select',
@@ -85,6 +86,7 @@ export const Variants: Story = {
       <Button variant="clear-inverse">Clear Inverse</Button>
       <Button variant="opacity">Opacity</Button>
       <Button variant="outline">Outline</Button>
+      <Button variant="gradient">Gradient</Button>
     </div>
   ),
 };
@@ -187,5 +189,21 @@ export const Disabled: Story = {
   args: {
     children: 'Недоступно',
     disabled: true,
+  },
+};
+
+export const Gradient: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Главное действие на экране или в модалке. На вид — не больше одной gradient-кнопки.',
+      },
+    },
+  },
+  args: {
+    children: 'Продолжить',
+    variant: 'gradient',
+    size: 'xl',
   },
 };

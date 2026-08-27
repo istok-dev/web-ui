@@ -15,8 +15,13 @@ const meta: Meta<typeof Select> = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'] as const,
+      options: ['sm', 'md', 'lg', 'xl'] as const,
       description: 'Размер селекта',
+    },
+    variant: {
+      control: 'select',
+      options: ['solid', 'outline', 'filled'] as const,
+      description: 'Вариант стиля',
     },
     multiple: {
       control: 'boolean',

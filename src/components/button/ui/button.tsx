@@ -32,6 +32,7 @@ const variantClassesMap: Record<ButtonVariant, string> = {
   'clear-inverse': 'istok-button--clear-inverse',
   'opacity': 'istok-button--opacity',
   'outline': 'istok-button--outline',
+  'gradient': 'istok-button--gradient',
 };
 
 export const Button: FC<ButtonProps> = ({

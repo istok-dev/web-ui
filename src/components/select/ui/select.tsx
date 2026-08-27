@@ -16,17 +16,20 @@ const sizeClassesMap: Record<SelectSize, string> = {
   sm: 'istok-select--sm',
   md: 'istok-select--md',
   lg: 'istok-select--lg',
+  xl: 'istok-select--xl',
 };
 
 const variantClassesMap: Record<SelectVariant, string> = {
   solid: 'istok-select--solid',
   outline: 'istok-select--outline',
+  filled: 'istok-select--filled',
 };
 
 const tagSizeClassesMap: Record<SelectSize, string> = {
   sm: 'istok-tag--sm',
   md: 'istok-tag--md',
   lg: 'istok-tag--lg',
+  xl: 'istok-tag--lg',
 };
 
 const flattenOptions = (
@@ -372,8 +375,12 @@ export const Select: FC<SelectProps> = ({
             `,
             `
               focus:border-(--istok-select-trigger-border-focus)
+              focus:bg-(--istok-select-trigger-bg-focus)
               focus:[box-shadow:var(--istok-select-trigger-focus-shadow)]
               focus:outline-none
+            `,
+            `
+              aria-invalid:[box-shadow:inset_0_0_0_2px_var(--color-negative-500)]
             `,
             'data-[popup-open=true]:[&>.istok-select__chevron]:rotate-180',
             !disabled && 'hover:bg-(--istok-select-trigger-bg-hover)',

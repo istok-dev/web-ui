@@ -33,7 +33,8 @@ export const Modal: ModalFC = (props: ModalProps) => {
             className={cn(
               `
                 relative flex max-h-[90vh] w-full max-w-5xl flex-col
-                overflow-hidden rounded-4xl bg-(--surface-card)
+                overflow-hidden rounded-(--radius-5xl) bg-(--surface-card)
+                shadow-(--shadow-2xl)
               `,
               classes?.content,
             )}

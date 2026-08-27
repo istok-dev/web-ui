@@ -1,0 +1,18 @@
+@utility istok-setting-row--filled {
+  --istok-setting-row-bg: var(--color-neutral-100);
+  --istok-setting-row-radius: var(--radius-2xl);
+  --istok-setting-row-padding: var(--spacing-4);
+  --istok-setting-row-border-top: none;
+}
+
+@utility istok-setting-row--plain {
+  --istok-setting-row-bg: transparent;
+  --istok-setting-row-radius: 0;
+  --istok-setting-row-padding-block: 18px;
+  --istok-setting-row-padding-inline: 0;
+  --istok-setting-row-border-top: 1px solid var(--border-subtle);
+}
+
+.istok-setting-row--plain:first-child {
+  --istok-setting-row-border-top: none;
+}

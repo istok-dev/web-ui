@@ -8,7 +8,9 @@
 @import "./badge/ui/badge.css";
 @import "./breadcrumbs/ui/breadcrumbs.css";
 @import "./radio/ui/radio.css";
+@import "./radio-card/ui/radio-card.css";
 @import "./select/ui/select.css";
+@import "./setting-row/ui/setting-row.css";
 @import "./tabs/ui/tabs.css";
 @import "./tag/ui/tag.css";
 @import "./checkbox/ui/checkbox.css";

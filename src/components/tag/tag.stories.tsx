@@ -88,6 +88,23 @@ export const Removeable: Story = {
   },
 };
 
+export const Soft: Story = {
+  render: () => (
+    <div className="flex flex-wrap items-center gap-3">
+      <Tag variant="soft" size="lg">
+        Soft
+      </Tag>
+      <Tag
+        variant="soft"
+        size="lg"
+        onRemove={() => {}}
+      >
+        Soft removable
+      </Tag>
+    </div>
+  ),
+};
+
 export const WithIconAndClose: Story = {
   render: () => (
     <Tag startIcon={Info} onRemove={() => {}}>

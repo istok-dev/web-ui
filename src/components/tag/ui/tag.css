@@ -1,7 +1,8 @@
 @utility istok-tag--sm {
   --istok-tag-height: calc(var(--spacing) * 6.5);
   --istok-tag-gap: var(--spacing-1);
-  --istok-tag-padding-inline: calc(var(--spacing) * 1.5);
+  --istok-tag-padding-left: calc(var(--spacing) * 1.5);
+  --istok-tag-padding-right: calc(var(--spacing) * 1.5);
   --istok-tag-padding-block: var(--spacing-1);
   --istok-tag-radius: var(--radius-full);
   --istok-tag-font-size: var(--text-control-sm);
@@ -13,7 +14,8 @@
 @utility istok-tag--md {
   --istok-tag-height: calc(var(--spacing) * 7);
   --istok-tag-gap: var(--spacing-1);
-  --istok-tag-padding-inline: calc(var(--spacing) * 2.5);
+  --istok-tag-padding-left: calc(var(--spacing) * 2.5);
+  --istok-tag-padding-right: calc(var(--spacing) * 2.5);
   --istok-tag-padding-block: calc(var(--spacing) * 1.5);
   --istok-tag-radius: var(--radius-full);
   --istok-tag-font-size: var(--text-control-md);
@@ -23,15 +25,20 @@
 }
 
 @utility istok-tag--lg {
-  --istok-tag-height: var(--spacing-10);
+  --istok-tag-height: calc(var(--spacing) * 8.5);
   --istok-tag-gap: calc(var(--spacing) * 2);
-  --istok-tag-padding-inline: var(--spacing-2);
-  --istok-tag-padding-block: var(--spacing-2);
+  --istok-tag-padding-left: 14px;
+  --istok-tag-padding-right: 14px;
+  --istok-tag-padding-block: 0;
   --istok-tag-radius: var(--radius-full);
   --istok-tag-font-size: var(--text-control-lg);
   --istok-tag-line-height: var(--text-control-lg--line-height);
   --istok-tag-font-weight: 600;
   --istok-tag-icon-size: var(--spacing-6);
+}
+
+.istok-tag--lg.istok-tag--removable {
+  --istok-tag-padding-right: var(--spacing-2);
 }
 
 @utility istok-tag--color-primary {
@@ -102,4 +109,19 @@
   --istok-tag-fg: var(--istok-tag-color-600);
   --istok-tag-close-fg: var(--istok-tag-color-600);
   --istok-tag-border-color: var(--istok-tag-color-600);
+}
+
+@utility istok-tag--soft {
+  --istok-tag-bg: var(--color-primary-100);
+  --istok-tag-fg: var(--color-primary-700);
+  --istok-tag-close-fg: currentColor;
+  --istok-tag-border-color: transparent;
+}
+
+.istok-tag--soft .istok-tag__close-button {
+  opacity: 0.65;
+}
+
+.istok-tag--soft .istok-tag__close-button:hover {
+  opacity: 1;
 }

@@ -1,0 +1,30 @@
+@utility istok-radio-card--m {
+  --istok-radio-card-padding: var(--spacing-4);
+  --istok-radio-card-gap: var(--spacing-3);
+  --istok-radio-card-label-font: var(--text-control-md);
+  --istok-radio-card-label-line: var(--text-control-md--line-height);
+  --istok-radio-card-description-font: var(--text-body-sm);
+  --istok-radio-card-description-line: var(--text-body-sm--line-height);
+}
+
+@utility istok-radio-card--l {
+  --istok-radio-card-padding: 18px;
+  --istok-radio-card-gap: var(--spacing-3);
+  --istok-radio-card-label-font: var(--text-control-lg);
+  --istok-radio-card-label-line: var(--text-control-lg--line-height);
+  --istok-radio-card-description-font: var(--text-body-md);
+  --istok-radio-card-description-line: var(--text-body-md--line-height);
+}
+
+.istok-radio-card {
+  --istok-radio-card-dot-slot: 36px;
+  --istok-radio-card-dot-size: var(--spacing-5);
+  --istok-radio-card-bg: var(--color-neutral-100);
+  --istok-radio-card-bg-hover: var(--color-neutral-200);
+  --istok-radio-card-bg-checked: var(--color-primary-50);
+  --istok-radio-card-ring-checked: inset 0 0 0 2px var(--color-primary-600);
+  --istok-radio-card-dot-bg: var(--color-neutral-50);
+  --istok-radio-card-dot-ring: inset 0 0 0 2px var(--color-neutral-300);
+  --istok-radio-card-dot-bg-checked: var(--color-primary-600);
+  --istok-radio-card-dot-ring-checked: none;
+}

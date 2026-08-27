@@ -17,6 +17,7 @@ const variantClassesMap: Record<TagVariant, string> = {
   solid: 'istok-tag--solid',
   ghost: 'istok-tag--ghost',
   outline: 'istok-tag--outline',
+  soft: 'istok-tag--soft',
 };
 
 const colorClassesMap: Record<TagColor, string> = {
@@ -49,7 +50,10 @@ export const Tag: FC<TagProps> = ({
     className: cn(
       'istok-tag flex items-center',
       'h-(--istok-tag-height) gap-(--istok-tag-gap)',
-      `px-(--istok-tag-padding-inline) py-(--istok-tag-padding-block)`,
+      `
+        py-(--istok-tag-padding-block) pl-(--istok-tag-padding-left)
+        pr-(--istok-tag-padding-right)
+      `,
       'rounded-(--istok-tag-radius)',
       `
         text-(length:--istok-tag-font-size) leading-(--istok-tag-line-height)
@@ -60,6 +64,7 @@ export const Tag: FC<TagProps> = ({
       sizeClassesMap[size],
       colorClassesMap[color],
       variantClassesMap[variant],
+      onRemove && 'istok-tag--removable',
       classes?.root,
       className,
     ),
@@ -88,8 +93,8 @@ export const Tag: FC<TagProps> = ({
               `,
               `
                 text-(--istok-tag-close-fg) transition-opacity
-                hover:opacity-80
               `,
+              variant !== 'soft' && 'hover:opacity-80',
               'size-(--istok-tag-icon-size)',
               endIconProps?.className,
               classes?.endIcon,

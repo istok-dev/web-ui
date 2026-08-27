@@ -10,6 +10,7 @@ export const BUTTON_VARIANTS = [
   'opacity',
   'clear-inverse',
   'outline',
+  'gradient',
 ] as const;
 export const BUTTON_COLORS = [
   'primary',

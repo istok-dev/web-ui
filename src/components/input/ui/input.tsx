@@ -10,16 +10,18 @@ const sizeClassesMap: Record<InputSize, string> = {
   sm: 'istok-input--sm',
   md: 'istok-input--md',
   lg: 'istok-input--lg',
+  xl: 'istok-input--xl',
 };
 
 const variantClassesMap: Record<
-  'neutral' | 'solid' | 'outline' | 'opacity',
+  'neutral' | 'solid' | 'outline' | 'opacity' | 'filled',
   string
 > = {
   neutral: 'istok-input__input--neutral',
   solid: 'istok-input__input--solid',
   outline: 'istok-input__input--outline',
   opacity: 'istok-input__input--opacity',
+  filled: 'istok-input__input--filled',
 };
 
 export const Input: FC<InputProps> = ({
@@ -101,9 +103,14 @@ export const Input: FC<InputProps> = ({
             [border-width:var(--istok-input-border-width)]
             border-(--istok-input-border-color)
           `,
+          !disabled && 'hover:bg-(--istok-input-bg-hover)',
           `
             focus:border-(--istok-input-border-focus)
+            focus:bg-(--istok-input-bg-focus)
             focus:[box-shadow:var(--istok-input-focus-shadow)]
+          `,
+          `
+            aria-invalid:[box-shadow:inset_0_0_0_2px_var(--color-negative-500)]
           `,
           'placeholder:text-(--istok-input-placeholder)',
           pt?.input?.className,
