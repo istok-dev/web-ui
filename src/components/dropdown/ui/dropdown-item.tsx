@@ -1,6 +1,9 @@
+'use client';
+
 import { cn } from '@/utils/cn';
 
 import type { DropdownItemFC, DropdownItemSize, DropdownItemVariant } from '../dropdown.type';
+import { useDropdownContext } from './dropdown-context';
 
 const sizeClassesMap: Record<DropdownItemSize, string> = {
   sm: 'istok-dropdown-item--sm',
@@ -9,7 +12,9 @@ const sizeClassesMap: Record<DropdownItemSize, string> = {
 };
 
 const variantClassesMap: Record<DropdownItemVariant, string> = {
+  base: 'istok-dropdown-item--base',
   brand: 'istok-dropdown-item--brand',
+  danger: 'istok-dropdown-item--danger',
 };
 
 export const DropdownItem: DropdownItemFC = ({
@@ -22,20 +27,31 @@ export const DropdownItem: DropdownItemFC = ({
   className,
   disabled = false,
   size = 'md',
-  variant = 'brand',
+  variant = 'base',
   classes,
+  closeOnClick = true,
   ...props
 }) => {
+  const { closeRoot } = useDropdownContext();
+
   return (
     <button
       {...props}
       type="button"
-      onClick={onClick}
+      onClick={() => {
+        if (disabled) {
+          return;
+        }
+        onClick?.();
+        if (closeOnClick) {
+          closeRoot();
+        }
+      }}
       disabled={disabled}
       className={cn(
         `
-          istok-dropdown-item flex w-full items-center text-left
-          transition-colors
+          flex w-full items-center rounded-(--istok-dropdown-item-radius)
+          text-left font-medium transition-colors istok-dropdown-item
         `,
         `
           h-(--istok-dropdown-item-height) gap-(--istok-dropdown-item-gap)
@@ -67,7 +83,7 @@ export const DropdownItem: DropdownItemFC = ({
               'istok-dropdown-item__start-icon',
               `
                 size-(--istok-dropdown-item-icon-size)
-                text-(--istok-dropdown-item-start-icon)
+                text-(--istok-dropdown-item-icon-fg)
               `,
               startIconProps?.className,
             )}
@@ -98,7 +114,7 @@ export const DropdownItem: DropdownItemFC = ({
               'istok-dropdown-item-end-icon',
               `
                 size-(--istok-dropdown-item-icon-size)
-                text-(--istok-dropdown-item-end-icon)
+                text-(--istok-dropdown-item-icon-fg)
               `,
               endIconProps?.className,
             )}

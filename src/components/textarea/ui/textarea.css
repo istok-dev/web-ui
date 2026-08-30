@@ -35,42 +35,42 @@
 }
 
 @utility istok-textarea--neutral {
-  --istok-textarea-bg: var(--surface-muted);
-  --istok-textarea-bg-hover: var(--surface-muted);
-  --istok-textarea-bg-focus: var(--surface-muted);
+  --istok-textarea-bg: var(--color-surface-muted);
+  --istok-textarea-bg-hover: var(--color-surface-muted);
+  --istok-textarea-bg-focus: var(--color-surface-muted);
   --istok-textarea-border-color: transparent;
   --istok-textarea-border-width: 0px;
   --istok-textarea-border-focus: transparent;
   --istok-textarea-ring: inset 0 0 0 2px var(--focus-ring-color);
   --istok-textarea-focus-shadow: var(--istok-textarea-ring);
-  --istok-textarea-fg: var(--text-strong);
-  --istok-textarea-placeholder: var(--text-muted);
+  --istok-textarea-fg: var(--color-text-strong);
+  --istok-textarea-placeholder: var(--color-text-muted);
 }
 
 @utility istok-textarea--solid {
-  --istok-textarea-bg: var(--surface-card);
-  --istok-textarea-bg-hover: var(--surface-card);
-  --istok-textarea-bg-focus: var(--surface-card);
+  --istok-textarea-bg: var(--color-surface-card);
+  --istok-textarea-bg-hover: var(--color-surface-card);
+  --istok-textarea-bg-focus: var(--color-surface-card);
   --istok-textarea-border-color: transparent;
   --istok-textarea-border-width: 0px;
   --istok-textarea-border-focus: transparent;
   --istok-textarea-ring: inset 0 0 0 2px var(--focus-ring-color);
   --istok-textarea-focus-shadow: var(--istok-textarea-ring);
-  --istok-textarea-fg: var(--text-strong);
-  --istok-textarea-placeholder: var(--text-muted);
+  --istok-textarea-fg: var(--color-text-strong);
+  --istok-textarea-placeholder: var(--color-text-muted);
 }
 
 @utility istok-textarea--outline {
-  --istok-textarea-bg: var(--surface-muted);
-  --istok-textarea-bg-hover: var(--surface-muted);
-  --istok-textarea-bg-focus: var(--surface-muted);
+  --istok-textarea-bg: var(--color-surface-muted);
+  --istok-textarea-bg-hover: var(--color-surface-muted);
+  --istok-textarea-bg-focus: var(--color-surface-muted);
   --istok-textarea-border-color: transparent;
   --istok-textarea-border-width: 0px;
   --istok-textarea-border-focus: transparent;
   --istok-textarea-ring: inset 0 0 0 2px var(--focus-ring-color);
   --istok-textarea-focus-shadow: var(--istok-textarea-ring);
-  --istok-textarea-fg: var(--text-strong);
-  --istok-textarea-placeholder: var(--text-muted);
+  --istok-textarea-fg: var(--color-text-strong);
+  --istok-textarea-placeholder: var(--color-text-muted);
 }
 
 @utility istok-textarea--filled {
@@ -82,6 +82,6 @@
   --istok-textarea-border-focus: transparent;
   --istok-textarea-ring: inset 0 0 0 2px var(--focus-ring-color);
   --istok-textarea-focus-shadow: var(--istok-textarea-ring);
-  --istok-textarea-fg: var(--text-strong);
-  --istok-textarea-placeholder: var(--text-muted);
+  --istok-textarea-fg: var(--color-text-strong);
+  --istok-textarea-placeholder: var(--color-text-muted);
 }

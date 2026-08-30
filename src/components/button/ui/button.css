@@ -69,7 +69,7 @@
 }
 
 @utility istok-button--color-base {
-  --istok-button-color-50: var(--text-strong);
+  --istok-button-color-50: var(--color-text-strong);
   --istok-button-color-100: var(--color-neutral-50);
   --istok-button-color-200: var(--color-neutral-100);
   --istok-button-color-300: var(--color-neutral-200);
@@ -153,13 +153,13 @@
 }
 
 @utility istok-button--secondary {
-  --istok-button-bg: var(--surface-muted);
+  --istok-button-bg: var(--color-surface-muted);
   --istok-button-bg-hover: var(--color-neutral-200);
   --istok-button-bg-active: var(--color-neutral-300);
 
-  --istok-button-fg: var(--text-strong);
-  --istok-button-fg-hover: var(--text-strong);
-  --istok-button-fg-active: var(--text-strong);
+  --istok-button-fg: var(--color-text-strong);
+  --istok-button-fg-hover: var(--color-text-strong);
+  --istok-button-fg-active: var(--color-text-strong);
 
   --istok-button-border-color: transparent;
   --istok-button-border-color-hover: transparent;

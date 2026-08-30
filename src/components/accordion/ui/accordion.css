@@ -55,9 +55,9 @@
 @utility istok-accordion--default {
   --istok-accordion-bg: transparent;
   --istok-accordion-divider: var(--color-neutral-200);
-  --istok-accordion-title-fg: var(--text-strong);
-  --istok-accordion-description-fg: var(--text-secondary);
-  --istok-accordion-content-fg: var(--text-body);
-  --istok-accordion-icon-fg: var(--text-strong);
-  --istok-accordion-chevron-fg: var(--text-muted);
+  --istok-accordion-title-fg: var(--color-text-strong);
+  --istok-accordion-description-fg: var(--color-text-secondary);
+  --istok-accordion-content-fg: var(--color-text-body);
+  --istok-accordion-icon-fg: var(--color-text-strong);
+  --istok-accordion-chevron-fg: var(--color-text-muted);
 }

@@ -13,16 +13,13 @@ export const ModalHeader: ModalHeaderFC = (props: ModalHeaderProps) => {
       return (
         <div className="flex min-w-0 flex-col gap-1">
           <BaseDialog.Title className="
-            text-title-lg font-bold tracking-[-0.6px] text-(--text-strong)
+            text-title-lg font-bold tracking-[-0.6px] text-text-strong
           "
           >
             {title}
           </BaseDialog.Title>
           {description && (
-            <BaseDialog.Description className="
-              text-body-md text-(--text-secondary)
-            "
-            >
+            <BaseDialog.Description className="text-body-md text-text-secondary">
               {description}
             </BaseDialog.Description>
           )}
@@ -34,7 +31,7 @@ export const ModalHeader: ModalHeaderFC = (props: ModalHeaderProps) => {
 
   return (
     <div className="
-      flex items-start justify-between gap-4 bg-(--surface-card) px-8 py-5
+      flex items-start justify-between gap-4 bg-surface-card px-8 py-5
     "
     >
       <div className="min-w-0 flex-1">{renderTitle()}</div>

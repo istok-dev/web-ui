@@ -47,31 +47,31 @@
 }
 
 @utility istok-select--solid {
-  --istok-select-trigger-bg: var(--surface-muted);
+  --istok-select-trigger-bg: var(--color-surface-muted);
   --istok-select-trigger-bg-hover: var(--color-neutral-200);
-  --istok-select-trigger-bg-focus: var(--surface-muted);
+  --istok-select-trigger-bg-focus: var(--color-surface-muted);
   --istok-select-trigger-border: transparent;
   --istok-select-trigger-border-focus: transparent;
   --istok-select-trigger-ring: inset 0 0 0 2px var(--focus-ring-color);
   --istok-select-trigger-focus-shadow: var(--istok-select-trigger-ring);
-  --istok-select-trigger-fg: var(--text-strong);
-  --istok-select-trigger-placeholder: var(--text-muted);
-  --istok-select-trigger-start-icon: var(--text-muted);
-  --istok-select-value-fade-bg: var(--surface-muted);
+  --istok-select-trigger-fg: var(--color-text-strong);
+  --istok-select-trigger-placeholder: var(--color-text-muted);
+  --istok-select-trigger-start-icon: var(--color-text-muted);
+  --istok-select-value-fade-bg: var(--color-surface-muted);
 }
 
 @utility istok-select--outline {
-  --istok-select-trigger-bg: var(--surface-muted);
+  --istok-select-trigger-bg: var(--color-surface-muted);
   --istok-select-trigger-bg-hover: var(--color-neutral-200);
-  --istok-select-trigger-bg-focus: var(--surface-muted);
+  --istok-select-trigger-bg-focus: var(--color-surface-muted);
   --istok-select-trigger-border: transparent;
   --istok-select-trigger-border-focus: transparent;
   --istok-select-trigger-ring: inset 0 0 0 2px var(--focus-ring-color);
   --istok-select-trigger-focus-shadow: var(--istok-select-trigger-ring);
-  --istok-select-trigger-fg: var(--text-strong);
-  --istok-select-trigger-placeholder: var(--text-muted);
-  --istok-select-trigger-start-icon: var(--text-muted);
-  --istok-select-value-fade-bg: var(--surface-muted);
+  --istok-select-trigger-fg: var(--color-text-strong);
+  --istok-select-trigger-placeholder: var(--color-text-muted);
+  --istok-select-trigger-start-icon: var(--color-text-muted);
+  --istok-select-value-fade-bg: var(--color-surface-muted);
 }
 
 @utility istok-select--filled {
@@ -82,9 +82,9 @@
   --istok-select-trigger-border-focus: transparent;
   --istok-select-trigger-ring: inset 0 0 0 2px var(--focus-ring-color);
   --istok-select-trigger-focus-shadow: var(--istok-select-trigger-ring);
-  --istok-select-trigger-fg: var(--text-strong);
-  --istok-select-trigger-placeholder: var(--text-muted);
-  --istok-select-trigger-start-icon: var(--text-muted);
+  --istok-select-trigger-fg: var(--color-text-strong);
+  --istok-select-trigger-placeholder: var(--color-text-muted);
+  --istok-select-trigger-start-icon: var(--color-text-muted);
   --istok-select-value-fade-bg: var(--color-neutral-100);
 }
 

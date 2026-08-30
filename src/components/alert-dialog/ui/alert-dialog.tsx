@@ -51,8 +51,8 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
           <BaseAlertDialog.Popup
             className={cn(
               `
-                istok-alert-dialog w-full max-w-100 rounded-4xl
-                bg-(--surface-card) p-4
+                istok-alert-dialog w-full max-w-100 rounded-4xl bg-surface-card
+                p-4
               `,
               variantClassesMap[variant],
               alignClassesMap[align],
@@ -84,7 +84,7 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
                     className={cn(
                       `
                         text-title-md font-bold tracking-[-0.6px]
-                        text-(--text-strong)
+                        text-text-strong
                       `,
                       align === 'center' && 'text-center',
                     )}

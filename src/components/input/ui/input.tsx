@@ -51,7 +51,8 @@ export const Input: FC<InputProps> = ({
     >
       {startAdornment && (
         <div className="
-          istok-input__start-adornment absolute top-1/2 z-10 -translate-y-1/2
+          istok-input__start-adornment absolute top-1/2 left-2 z-10
+          -translate-y-1/2
         "
         >
           {startAdornment}

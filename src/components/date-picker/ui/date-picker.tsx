@@ -24,6 +24,24 @@ type CommonProps = PropsWithChildren<{
   /** Колбэк при открытии/закрытии */
   onOpenChange?: (open: boolean) => void;
   triggerProps?: PopoverTriggerProps;
+  positionerProps?: {
+    align?: 'start' | 'center' | 'end';
+    side?: 'top' | 'bottom' | 'left' | 'right';
+    sideOffset?: number;
+    alignOffset?: number;
+    className?: string;
+  };
+  /** Доп. пропсы календаря */
+  calendarProps?: Omit<
+    DayPickerProps,
+    | 'mode'
+    | 'selected'
+    | 'onSelect'
+    | 'required'
+    | 'disabled'
+    | 'locale'
+    | 'numberOfMonths'
+  >;
 }>;
 
 export type DatePickerSingleProps = CommonProps & {
@@ -51,6 +69,8 @@ export function DatePicker({
   onOpenChange: controlledOnOpenChange,
   children,
   triggerProps,
+  positionerProps,
+  calendarProps,
   ...props
 }: DatePickerProps) {
   const [internalOpen, setInternalOpen] = useState(false);
@@ -71,6 +91,7 @@ export function DatePicker({
       return (
         <Calendar
           {...rest}
+          {...calendarProps}
           mode={mode}
           required
           defaultMonth={value?.from ?? defaultRange?.from ?? new Date()}
@@ -78,7 +99,7 @@ export function DatePicker({
           onSelect={onChange}
           numberOfMonths={1}
           locale={ru}
-          className="rounded-xl border-0"
+          className={cn('rounded-4xl border-0', calendarProps?.className)}
         />
       );
     }
@@ -88,6 +109,7 @@ export function DatePicker({
     return (
       <Calendar
         {...rest}
+        {...calendarProps}
         mode={mode}
         required
         defaultMonth={value}
@@ -95,7 +117,7 @@ export function DatePicker({
         onSelect={onChange}
         numberOfMonths={1}
         locale={ru}
-        className="rounded-xl border-0"
+        className={cn('rounded-4xl border-0', calendarProps?.className)}
       />
     );
   };
@@ -110,12 +132,17 @@ export function DatePicker({
         nativeButton={triggerProps?.nativeButton ?? false}
       />
       <Popover.Portal>
-        <Popover.Positioner align="start" sideOffset={4}>
+        <Popover.Positioner
+          align="start"
+          sideOffset={4}
+          {...positionerProps}
+          className={cn('z-50', positionerProps?.className)}
+        >
           <Popover.Popup
             className={cn(
               `
-                z-50 w-auto rounded-4xl border-0 bg-(--surface-card) p-0
-                text-(--text-strong) shadow-md outline-none
+                w-auto rounded-4xl border-0 bg-surface-card p-0 text-text-strong
+                shadow-md outline-none
               `,
             )}
           >

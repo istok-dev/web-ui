@@ -9,10 +9,10 @@ const Swatch: FC<{
   <div className="flex w-20 flex-col gap-2">
     {children}
     <div className="flex flex-col gap-0.5">
-      <span className="text-control-sm font-semibold text-(--text-strong)">
+      <span className="text-control-sm font-semibold text-text-strong">
         {label}
       </span>
-      <span className="truncate text-control-xs text-(--text-muted)">
+      <span className="truncate text-control-xs text-text-muted">
         {token}
       </span>
     </div>
@@ -33,7 +33,7 @@ const PaletteRow: FC<{
   children: ReactNode;
 }> = ({ title, children }) => (
   <section className="flex flex-col gap-3">
-    <h3 className="text-title-md font-bold text-(--text-strong)">
+    <h3 className="text-title-md font-bold text-text-strong">
       {title}
     </h3>
     <div className="flex flex-wrap gap-3">
@@ -45,10 +45,10 @@ const PaletteRow: FC<{
 const ColorsPage: FC = () => (
   <div className="flex w-full max-w-6xl flex-col gap-10 p-2">
     <header className="flex flex-col gap-1">
-      <h2 className="text-headline-sm font-bold text-(--text-strong)">
+      <h2 className="text-headline-sm font-bold text-text-strong">
         Colors
       </h2>
-      <p className="text-body-md text-(--text-secondary)">
+      <p className="text-body-md text-text-secondary">
         Палитра токенов из
         {' '}
         <code className="text-control-sm">theme.css</code>
@@ -56,53 +56,63 @@ const ColorsPage: FC = () => (
     </header>
 
     <PaletteRow title="Surfaces">
-      <Swatch label="Page" token="--surface-page">
-        <ColorSquare className="bg-(--surface-page)" />
+      <Swatch label="Page" token="--color-surface-page">
+        <ColorSquare className="bg-surface-page" />
       </Swatch>
-      <Swatch label="Card" token="--surface-card">
-        <ColorSquare className="bg-(--surface-card)" />
+      <Swatch label="Card" token="--color-surface-card">
+        <ColorSquare className="bg-surface-card" />
       </Swatch>
-      <Swatch label="Muted" token="--surface-muted">
-        <ColorSquare className="bg-(--surface-muted)" />
+      <Swatch label="Muted" token="--color-surface-muted">
+        <ColorSquare className="bg-surface-muted" />
       </Swatch>
     </PaletteRow>
 
     <section className="flex flex-col gap-3">
-      <h3 className="text-title-md font-bold text-(--text-strong)">
+      <h3 className="text-title-md font-bold text-text-strong">
         Text
       </h3>
       <div className="flex flex-wrap gap-3">
         <div className="
-          flex w-20 flex-col gap-2 rounded-xl bg-(--surface-card) p-3
+          flex w-20 flex-col gap-2 rounded-xl bg-(--color-surface-card) p-3
         "
         >
-          <span className="text-title-lg font-bold text-(--text-strong)">Aa</span>
-          <span className="text-control-sm font-semibold text-(--text-strong)">Strong</span>
-          <span className="truncate text-control-xs text-(--text-muted)">--text-strong</span>
+          <span className="text-title-lg font-bold text-text-strong">Aa</span>
+          <span className="text-control-sm font-semibold text-text-strong">
+            Strong
+          </span>
+          <span className="truncate text-control-xs text-text-muted">--color-text-strong</span>
         </div>
         <div className="
-          flex w-20 flex-col gap-2 rounded-xl bg-(--surface-card) p-3
+          flex w-20 flex-col gap-2 rounded-xl bg-(--color-surface-card) p-3
         "
         >
-          <span className="text-title-lg font-bold text-(--text-body)">Aa</span>
-          <span className="text-control-sm font-semibold text-(--text-strong)">Body</span>
-          <span className="truncate text-control-xs text-(--text-muted)">--text-body</span>
+          <span className="text-title-lg font-bold text-text-body">Aa</span>
+          <span className="text-control-sm font-semibold text-text-strong">
+            Body
+          </span>
+          <span className="truncate text-control-xs text-text-muted">--color-text-body</span>
         </div>
         <div className="
-          flex w-20 flex-col gap-2 rounded-xl bg-(--surface-card) p-3
+          flex w-20 flex-col gap-2 rounded-xl bg-(--color-surface-card) p-3
         "
         >
-          <span className="text-title-lg font-bold text-(--text-secondary)">Aa</span>
-          <span className="text-control-sm font-semibold text-(--text-strong)">Secondary</span>
-          <span className="truncate text-control-xs text-(--text-muted)">--text-secondary</span>
+          <span className="text-title-lg font-bold text-text-secondary">
+            Aa
+          </span>
+          <span className="text-control-sm font-semibold text-text-strong">
+            Secondary
+          </span>
+          <span className="truncate text-control-xs text-text-muted">--color-text-secondary</span>
         </div>
         <div className="
-          flex w-20 flex-col gap-2 rounded-xl bg-(--surface-card) p-3
+          flex w-20 flex-col gap-2 rounded-xl bg-(--color-surface-card) p-3
         "
         >
-          <span className="text-title-lg font-bold text-(--text-muted)">Aa</span>
-          <span className="text-control-sm font-semibold text-(--text-strong)">Muted</span>
-          <span className="truncate text-control-xs text-(--text-muted)">--text-muted</span>
+          <span className="text-title-lg font-bold text-text-muted">Aa</span>
+          <span className="text-control-sm font-semibold text-text-strong">
+            Muted
+          </span>
+          <span className="truncate text-control-xs text-text-muted">--color-text-muted</span>
         </div>
       </div>
     </section>

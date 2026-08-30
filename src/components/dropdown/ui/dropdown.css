@@ -1,0 +1,7 @@
+@utility istok-dropdown {
+  min-width: 200px;
+  border-radius: var(--radius-xl);
+  background: var(--color-surface-popup);
+  box-shadow: var(--shadow-lg);
+  padding: calc(var(--spacing) * 1.5);
+}

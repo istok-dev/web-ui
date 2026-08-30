@@ -62,7 +62,7 @@ export const Select: FC<SelectProps> = ({
   value,
   defaultValue,
   onChange,
-  multiple = true,
+  multiple = false,
   searchable = true,
   searchPlaceholder = 'Поиск',
   onSearch,

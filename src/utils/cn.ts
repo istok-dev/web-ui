@@ -181,7 +181,11 @@ const twMerge = extendTailwindMerge<
         'istok-dropdown-item--md',
         'istok-dropdown-item--lg',
       ],
-      'dropdown-item-variant': ['istok-dropdown-item--brand'],
+      'dropdown-item-variant': [
+        'istok-dropdown-item--base',
+        'istok-dropdown-item--brand',
+        'istok-dropdown-item--danger',
+      ],
     },
   },
 });

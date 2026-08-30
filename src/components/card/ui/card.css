@@ -19,11 +19,11 @@
 }
 
 @utility istok-card--default {
-  --istok-card-bg: var(--surface-card);
+  --istok-card-bg: var(--color-surface-card);
   --istok-card-border: transparent;
 }
 
 @utility istok-card--soft {
-  --istok-card-bg: var(--surface-muted);
+  --istok-card-bg: var(--color-surface-muted);
   --istok-card-border: transparent;
 }

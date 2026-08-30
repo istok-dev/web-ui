@@ -6,8 +6,8 @@
 html,
 body {
   font-family: var(--font-sans);
-  background: var(--surface-page);
-  color: var(--text-body);
+  background: var(--color-surface-page);
+  color: var(--color-text-body);
 }
 
 .font-bold,

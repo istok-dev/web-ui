@@ -38,18 +38,18 @@
 }
 
 @utility istok-tabs--line {
-  --istok-tabs-item-label-color: var(--text-secondary);
-  --istok-tabs-item-label-color-active: var(--text-strong);
+  --istok-tabs-item-label-color: var(--color-text-secondary);
+  --istok-tabs-item-label-color-active: var(--color-text-strong);
   --istok-tabs-item-label-color-disabled: var(--color-neutral-400);
   --istok-tabs-item-label-color-disabled-active: var(--color-neutral-400);
 
-  --istok-tabs-item-icon-color: var(--text-secondary);
-  --istok-tabs-item-icon-color-active: var(--text-strong);
+  --istok-tabs-item-icon-color: var(--color-text-secondary);
+  --istok-tabs-item-icon-color-active: var(--color-text-strong);
   --istok-tabs-item-icon-color-disabled: var(--color-neutral-400);
   --istok-tabs-item-icon-color-disabled-active: var(--color-neutral-400);
 
   --istok-tabs-item-bg: transparent;
-  --istok-tabs-item-bg-active: var(--surface-muted);
+  --istok-tabs-item-bg-active: var(--color-surface-muted);
   --istok-tabs-item-bg-disabled: transparent;
   --istok-tabs-item-bg-disabled-active: var(--color-neutral-200);
 
@@ -58,18 +58,18 @@
 }
 
 @utility istok-tabs--ghost {
-  --istok-tabs-item-label-color: var(--text-secondary);
-  --istok-tabs-item-label-color-active: var(--text-strong);
+  --istok-tabs-item-label-color: var(--color-text-secondary);
+  --istok-tabs-item-label-color-active: var(--color-text-strong);
   --istok-tabs-item-label-color-disabled: var(--color-neutral-400);
   --istok-tabs-item-label-color-disabled-active: var(--color-neutral-400);
 
-  --istok-tabs-item-icon-color: var(--text-secondary);
-  --istok-tabs-item-icon-color-active: var(--text-strong);
+  --istok-tabs-item-icon-color: var(--color-text-secondary);
+  --istok-tabs-item-icon-color-active: var(--color-text-strong);
   --istok-tabs-item-icon-color-disabled: var(--color-neutral-400);
   --istok-tabs-item-icon-color-disabled-active: var(--color-neutral-400);
 
   --istok-tabs-item-bg: transparent;
-  --istok-tabs-item-bg-active: var(--surface-muted);
+  --istok-tabs-item-bg-active: var(--color-surface-muted);
   --istok-tabs-item-bg-disabled: transparent;
   --istok-tabs-item-bg-disabled-active: var(--color-neutral-200);
 
@@ -78,12 +78,12 @@
 }
 
 @utility istok-tabs--solid {
-  --istok-tabs-item-label-color: var(--text-strong);
+  --istok-tabs-item-label-color: var(--color-text-strong);
   --istok-tabs-item-label-color-active: var(--color-primary-50);
   --istok-tabs-item-label-color-disabled: var(--color-neutral-400);
   --istok-tabs-item-label-color-disabled-active: var(--color-neutral-500);
 
-  --istok-tabs-item-icon-color: var(--text-strong);
+  --istok-tabs-item-icon-color: var(--color-text-strong);
   --istok-tabs-item-icon-color-active: var(--color-primary-50);
   --istok-tabs-item-icon-color-disabled: var(--color-neutral-400);
   --istok-tabs-item-icon-color-disabled-active: var(--color-neutral-500);

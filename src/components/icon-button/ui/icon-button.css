@@ -49,7 +49,7 @@
 }
 
 @utility istok-icon-button--color-base {
-  --istok-icon-button-color-50: var(--text-strong);
+  --istok-icon-button-color-50: var(--color-text-strong);
   --istok-icon-button-color-100: var(--color-neutral-50);
   --istok-icon-button-color-200: var(--color-neutral-100);
   --istok-icon-button-color-300: var(--color-neutral-200);
@@ -131,13 +131,13 @@
 }
 
 @utility istok-icon-button--secondary {
-  --istok-icon-button-bg: var(--surface-muted);
+  --istok-icon-button-bg: var(--color-surface-muted);
   --istok-icon-button-bg-hover: var(--color-neutral-200);
   --istok-icon-button-bg-active: var(--color-neutral-300);
 
-  --istok-icon-button-fg: var(--text-strong);
-  --istok-icon-button-fg-hover: var(--text-strong);
-  --istok-icon-button-fg-active: var(--text-strong);
+  --istok-icon-button-fg: var(--color-text-strong);
+  --istok-icon-button-fg-hover: var(--color-text-strong);
+  --istok-icon-button-fg-active: var(--color-text-strong);
 }
 
 @utility istok-icon-button--clear {

@@ -50,9 +50,9 @@
 
 @utility istok-tag--color-neutral {
   --istok-tag-color-50: var(--color-neutral-50);
-  --istok-tag-color-100: var(--surface-muted);
+  --istok-tag-color-100: var(--color-surface-muted);
   --istok-tag-color-600: var(--color-neutral-600);
-  --istok-tag-color-700: var(--text-secondary);
+  --istok-tag-color-700: var(--color-text-secondary);
 }
 
 @utility istok-tag--color-negative {
