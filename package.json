@@ -45,9 +45,17 @@
       "style": "./lib/styles/components/card/ui/card.css",
       "default": "./lib/styles/components/card/ui/card.css"
     },
+    "./menu.css": {
+      "style": "./lib/styles/components/menu/ui/menu.css",
+      "default": "./lib/styles/components/menu/ui/menu.css"
+    },
+    "./menu-item.css": {
+      "style": "./lib/styles/components/menu/ui/menu-item.css",
+      "default": "./lib/styles/components/menu/ui/menu-item.css"
+    },
     "./dropdown-item.css": {
-      "style": "./lib/styles/components/dropdown/ui/dropdown-item.css",
-      "default": "./lib/styles/components/dropdown/ui/dropdown-item.css"
+      "style": "./lib/styles/components/menu/ui/menu-item.css",
+      "default": "./lib/styles/components/menu/ui/menu-item.css"
     },
     "./icon-button.css": {
       "style": "./lib/styles/components/icon-button/ui/icon-button.css",

@@ -1,16 +1,17 @@
 'use client';
 
-import { useCallback, useMemo, useState } from 'react';
+import { Popover } from '@base-ui/react/popover';
+import { cloneElement, isValidElement, useCallback, useMemo, useState } from 'react';
+import type { MouseEvent, ReactElement } from 'react';
 
 import { cn } from '@/utils/cn';
 import { useMediaQuery } from '@/utils/use-media-query';
 
 import { BottomSheet } from '../../bottom-sheet';
-import {
-  DROPDOWN_MOBILE_MEDIA_QUERY,
-  type DropdownFC,
-} from '../dropdown.type';
-import { DropdownProvider, type DropdownPresentation } from './dropdown-context';
+import { Menu } from '../../menu';
+import type { DropdownFC } from '../dropdown.type';
+import { DROPDOWN_MOBILE_MEDIA_QUERY } from '../dropdown.type';
+import { DropdownProvider } from './dropdown-context';
 import { DropdownItem } from './dropdown-item';
 import { DropdownSeparator } from './dropdown-separator';
 import { DropdownSubmenu } from './dropdown-submenu';
@@ -18,6 +19,7 @@ import { DropdownSubmenu } from './dropdown-submenu';
 export const Dropdown: DropdownFC = (props) => {
   const {
     children,
+    trigger,
     className,
     style,
     open: openProp,
@@ -25,11 +27,15 @@ export const Dropdown: DropdownFC = (props) => {
     onOpenChange,
     header,
     classes,
+    positionerProps,
   } = props;
 
   const isMobile = useMediaQuery(DROPDOWN_MOBILE_MEDIA_QUERY);
   const isAdaptive
-    = openProp !== undefined || onOpenChange !== undefined || defaultOpen;
+    = openProp !== undefined
+      || onOpenChange !== undefined
+      || defaultOpen
+      || trigger !== undefined;
 
   const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
   const isControlled = openProp !== undefined;
@@ -49,53 +55,83 @@ export const Dropdown: DropdownFC = (props) => {
     setOpen(false);
   }, [setOpen]);
 
-  const presentation: DropdownPresentation
-    = isAdaptive && isMobile ? 'sheet' : 'panel';
+  const isSheet = isAdaptive && isMobile;
 
   const contextValue = useMemo(
     () => ({
-      presentation,
       closeRoot,
+      isSheet,
     }),
-    [presentation, closeRoot],
+    [closeRoot, isSheet],
   );
 
-  const headerBlock = header
-    ? (
-      <div className={cn('mb-1.5 shrink-0', classes?.header)}>
-        <div className="px-3 py-2">{header}</div>
-        <div className="mx-3 h-px bg-neutral-200" aria-hidden />
-      </div>
-    )
-    : null;
-
-  const panel = (
-    <div className={cn('relative istok-dropdown', className)} style={style}>
-      {headerBlock}
-      {children}
-    </div>
+  const menu = (
+    <DropdownProvider value={contextValue}>
+      <Menu
+        className={className}
+        style={style}
+        header={header}
+        classes={classes}
+        unstyled={isSheet}
+      >
+        {children}
+      </Menu>
+    </DropdownProvider>
   );
 
   if (!isAdaptive) {
+    return menu;
+  }
+
+  const triggerElement = isValidElement(trigger)
+    ? trigger as ReactElement<{ onClick?: (event: MouseEvent<HTMLElement>) => void }>
+    : undefined;
+
+  if (isSheet) {
+    const mobileTrigger = triggerElement
+      // eslint-disable-next-line @eslint-react/no-clone-element
+      ? cloneElement(triggerElement, {
+        onClick: (event: MouseEvent<HTMLElement>) => {
+          triggerElement.props.onClick?.(event);
+          if (!event.defaultPrevented) {
+            setOpen(true);
+          }
+        },
+      })
+      : null;
+
     return (
-      <DropdownProvider value={contextValue}>
-        {panel}
-      </DropdownProvider>
+      <>
+        {mobileTrigger}
+        <BottomSheet open={open} onOpenChange={setOpen}>
+          <BottomSheet.Body>
+            {menu}
+          </BottomSheet.Body>
+        </BottomSheet>
+      </>
     );
   }
 
-  if (presentation === 'sheet') {
+  if (triggerElement) {
     return (
-      <DropdownProvider value={contextValue}>
-        <BottomSheet open={open} onOpenChange={setOpen}>
-          <BottomSheet.Body>
-            <div className={cn('-mx-2 flex flex-col', className)} style={style}>
-              {headerBlock}
-              {children}
-            </div>
-          </BottomSheet.Body>
-        </BottomSheet>
-      </DropdownProvider>
+      <Popover.Root open={open} onOpenChange={setOpen}>
+        <Popover.Trigger render={triggerElement} nativeButton={false} />
+        <Popover.Portal>
+          <Popover.Positioner
+            align="start"
+            side="bottom"
+            sideOffset={8}
+            {...positionerProps}
+            className={cn('z-50', positionerProps?.className)}
+          >
+            <Popover.Popup
+              className="border-0 bg-transparent p-0 shadow-none outline-none"
+            >
+              {menu}
+            </Popover.Popup>
+          </Popover.Positioner>
+        </Popover.Portal>
+      </Popover.Root>
     );
   }
 
@@ -103,11 +139,7 @@ export const Dropdown: DropdownFC = (props) => {
     return null;
   }
 
-  return (
-    <DropdownProvider value={contextValue}>
-      {panel}
-    </DropdownProvider>
-  );
+  return menu;
 };
 
 Dropdown.Item = DropdownItem;

@@ -1,5 +1,11 @@
-import type { LucideIcon, LucideProps } from 'lucide-react';
-import type { CSSProperties, HTMLAttributes, PropsWithChildren, ReactNode } from 'react';
+import type { CSSProperties, PropsWithChildren, ReactNode } from 'react';
+
+import type {
+  MenuItemProps,
+  MenuItemSize,
+  MenuItemVariant,
+  MenuSeparatorProps,
+} from '../menu/menu.type';
 
 export type DropdownFC = {
   (props: DropdownProps): ReactNode;
@@ -14,40 +20,30 @@ type DropdownClasses = 'header';
 export const DROPDOWN_MOBILE_MEDIA_QUERY = '(max-width: 767px)';
 
 export type DropdownProps = PropsWithChildren<{
+  trigger?: ReactNode;
   className?: string;
   style?: CSSProperties;
-  /** Controlled open state. With `onOpenChange`, enables adaptive panel / BottomSheet. */
   open?: boolean;
   defaultOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
-  /** Optional header above items, separated by a border. */
   header?: ReactNode;
   classes?: Partial<Record<DropdownClasses, string>>;
+  positionerProps?: {
+    align?: 'start' | 'center' | 'end';
+    side?: 'top' | 'bottom' | 'left' | 'right';
+    sideOffset?: number;
+    alignOffset?: number;
+    className?: string;
+  };
 }>;
 
-export const DROPDOWN_ITEM_SIZES = ['sm', 'md', 'lg'] as const;
-export const DROPDOWN_ITEM_VARIANTS = ['base', 'brand', 'danger'] as const;
 export const DROPDOWN_SUBMENU_SIDES = ['left', 'right'] as const;
 
-export type DropdownItemSize = (typeof DROPDOWN_ITEM_SIZES)[number];
-export type DropdownItemVariant = (typeof DROPDOWN_ITEM_VARIANTS)[number];
 export type DropdownSubmenuSide = (typeof DROPDOWN_SUBMENU_SIDES)[number];
-export type DropdownItemClasses = 'label';
 
-export type DropdownItemProps = HTMLAttributes<HTMLButtonElement> & {
-  label: string;
-  startIcon?: LucideIcon;
-  startIconProps?: LucideProps;
-  endIcon?: LucideIcon;
-  endIconProps?: LucideProps;
-  variant?: DropdownItemVariant;
-  onClick?: () => void;
-  className?: string;
-  disabled?: boolean;
-  size?: DropdownItemSize;
-  classes?: Partial<Record<DropdownItemClasses, string>>;
+export type DropdownItemProps = MenuItemProps & {
   /**
-   * Close the root dropdown / sheet after click.
+   * Close dropdown after click.
    * @default true
    */
   closeOnClick?: boolean;
@@ -57,7 +53,7 @@ export type DropdownItemFC = {
   (props: DropdownItemProps): ReactNode;
 };
 
-export type DropdownSeparatorProps = HTMLAttributes<HTMLDivElement>;
+export type DropdownSeparatorProps = MenuSeparatorProps;
 
 export type DropdownSeparatorFC = {
   (props: DropdownSeparatorProps): ReactNode;
@@ -67,8 +63,8 @@ export type DropdownSubmenuProps = Omit<DropdownItemProps, 'endIcon' | 'endIconP
   children: ReactNode;
   /** @default 'right' */
   side?: DropdownSubmenuSide;
-  endIcon?: LucideIcon;
-  endIconProps?: LucideProps;
+  endIcon?: MenuItemProps['endIcon'];
+  endIconProps?: MenuItemProps['endIconProps'];
   open?: boolean;
   defaultOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
@@ -79,3 +75,11 @@ export type DropdownSubmenuProps = Omit<DropdownItemProps, 'endIcon' | 'endIconP
 export type DropdownSubmenuFC = {
   (props: DropdownSubmenuProps): ReactNode;
 };
+
+export type DropdownItemSize = MenuItemSize;
+export type DropdownItemVariant = MenuItemVariant;
+
+export {
+  MENU_ITEM_SIZES as DROPDOWN_ITEM_SIZES,
+  MENU_ITEM_VARIANTS as DROPDOWN_ITEM_VARIANTS,
+} from '../menu/menu.type';

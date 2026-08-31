@@ -1,0 +1,61 @@
+@utility istok-menu-item {
+  --istok-menu-item-bg: transparent;
+  --istok-menu-item-radius: var(--radius-lg);
+}
+
+@utility istok-menu-item--base {
+  --istok-menu-item-fg: var(--color-text-strong);
+  --istok-menu-item-fg-hover: var(--color-text-strong);
+  --istok-menu-item-fg-active: var(--color-text-strong);
+  --istok-menu-item-bg-hover: var(--color-surface-muted);
+  --istok-menu-item-bg-active: var(--color-neutral-200);
+  --istok-menu-item-icon-fg: var(--color-text-muted);
+}
+
+@utility istok-menu-item--brand {
+  --istok-menu-item-fg: var(--color-primary-600);
+  --istok-menu-item-fg-hover: var(--color-primary-600);
+  --istok-menu-item-fg-active: var(--color-primary-600);
+  --istok-menu-item-bg-hover: var(--color-primary-100);
+  --istok-menu-item-bg-active: var(--color-primary-100);
+  --istok-menu-item-icon-fg: currentColor;
+}
+
+@utility istok-menu-item--danger {
+  --istok-menu-item-fg: var(--color-negative-600);
+  --istok-menu-item-fg-hover: var(--color-negative-600);
+  --istok-menu-item-fg-active: var(--color-negative-600);
+  --istok-menu-item-bg-hover: var(--color-negative-100);
+  --istok-menu-item-bg-active: var(--color-negative-100);
+  --istok-menu-item-icon-fg: currentColor;
+}
+
+@utility istok-menu-item--sm {
+  --istok-menu-item-height: calc(var(--spacing) * 9);
+  --istok-menu-item-px: var(--spacing-2);
+  --istok-menu-item-py: var(--spacing-2);
+  --istok-menu-item-gap: calc(var(--spacing) * 1.5);
+  --istok-menu-item-label-font: var(--text-control-sm);
+  --istok-menu-item-label-line-height: var(--text-control-sm--line-height);
+  --istok-menu-item-icon-size: var(--spacing-4);
+}
+
+@utility istok-menu-item--md {
+  --istok-menu-item-height: var(--spacing-10);
+  --istok-menu-item-px: var(--spacing-3);
+  --istok-menu-item-py: calc(var(--spacing) * 2.5);
+  --istok-menu-item-gap: var(--spacing-3);
+  --istok-menu-item-label-font: var(--text-control-md);
+  --istok-menu-item-label-line-height: var(--text-control-md--line-height);
+  --istok-menu-item-icon-size: var(--spacing-4);
+}
+
+@utility istok-menu-item--lg {
+  --istok-menu-item-height: var(--spacing-12);
+  --istok-menu-item-px: var(--spacing-3);
+  --istok-menu-item-py: var(--spacing-3);
+  --istok-menu-item-gap: var(--spacing-3);
+  --istok-menu-item-label-font: var(--text-control-lg);
+  --istok-menu-item-label-line-height: var(--text-control-lg--line-height);
+  --istok-menu-item-icon-size: var(--spacing-5);
+}

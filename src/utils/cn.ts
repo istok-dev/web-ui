@@ -33,8 +33,8 @@ const twMerge = extendTailwindMerge<
   | 'radio-size'
   | 'select-size'
   | 'select-variant'
-  | 'dropdown-item-size'
-  | 'dropdown-item-variant'
+  | 'menu-item-size'
+  | 'menu-item-variant'
 >({
   extend: {
     classGroups: {
@@ -176,15 +176,15 @@ const twMerge = extendTailwindMerge<
       'radio-size': ['istok-radio--sm', 'istok-radio--md', 'istok-radio--lg'],
       'select-size': ['istok-select--sm', 'istok-select--md', 'istok-select--lg'],
       'select-variant': ['istok-select--solid', 'istok-select--outline'],
-      'dropdown-item-size': [
-        'istok-dropdown-item--sm',
-        'istok-dropdown-item--md',
-        'istok-dropdown-item--lg',
+      'menu-item-size': [
+        'istok-menu-item--sm',
+        'istok-menu-item--md',
+        'istok-menu-item--lg',
       ],
-      'dropdown-item-variant': [
-        'istok-dropdown-item--base',
-        'istok-dropdown-item--brand',
-        'istok-dropdown-item--danger',
+      'menu-item-variant': [
+        'istok-menu-item--base',
+        'istok-menu-item--brand',
+        'istok-menu-item--danger',
       ],
     },
   },

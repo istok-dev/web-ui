@@ -1,4 +1,4 @@
-@utility istok-dropdown {
+@utility istok-menu {
   min-width: 200px;
   border-radius: var(--radius-xl);
   background: var(--color-surface-popup);

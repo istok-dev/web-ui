@@ -2,16 +2,14 @@
 
 import { createContext, use } from 'react';
 
-export type DropdownPresentation = 'panel' | 'sheet';
-
 export type DropdownContextValue = {
-  presentation: DropdownPresentation;
   closeRoot: () => void;
+  isSheet: boolean;
 };
 
 const DropdownContext = createContext<DropdownContextValue>({
-  presentation: 'panel',
   closeRoot: () => {},
+  isSheet: false,
 });
 
 export const DropdownProvider = DropdownContext.Provider;

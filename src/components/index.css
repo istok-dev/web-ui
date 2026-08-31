@@ -4,8 +4,8 @@
 @import "./icon-button/ui/icon-button.css";
 @import "./input/ui/input.css";
 @import "./number-input/ui/number-input.css";
-@import "./dropdown/ui/dropdown.css";
-@import "./dropdown/ui/dropdown-item.css";
+@import "./menu/ui/menu.css";
+@import "./menu/ui/menu-item.css";
 @import "./badge/ui/badge.css";
 @import "./bottom-sheet/ui/bottom-sheet.css";
 @import "./breadcrumbs/ui/breadcrumbs.css";

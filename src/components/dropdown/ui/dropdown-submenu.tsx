@@ -5,10 +5,10 @@ import { useCallback, useEffect, useId, useRef, useState } from 'react';
 
 import { cn } from '@/utils/cn';
 
-import { BottomSheet } from '../../bottom-sheet';
-import type { DropdownSubmenuFC } from '../dropdown.type';
 import { useDropdownContext } from './dropdown-context';
-import { DropdownItem } from './dropdown-item';
+import { BottomSheet } from '../../bottom-sheet';
+import { Menu } from '../../menu';
+import type { DropdownSubmenuFC } from '../dropdown.type';
 
 export const DropdownSubmenu: DropdownSubmenuFC = ({
   children,
@@ -25,8 +25,7 @@ export const DropdownSubmenu: DropdownSubmenuFC = ({
   onClick,
   ...itemProps
 }) => {
-  const { presentation } = useDropdownContext();
-  const isSheet = presentation === 'sheet';
+  const { isSheet } = useDropdownContext();
 
   const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
   const isControlled = openProp !== undefined;
@@ -72,13 +71,12 @@ export const DropdownSubmenu: DropdownSubmenuFC = ({
   useEffect(() => () => clearCloseTimer(), []);
 
   const trigger = (
-    <DropdownItem
+    <Menu.Item
       {...itemProps}
       label={label}
       disabled={disabled}
-      closeOnClick={false}
       endIcon={endIcon ?? ChevronRight}
-      className={cn(open && !isSheet && 'bg-(--istok-dropdown-item-bg-hover)', className)}
+      className={cn(open && !isSheet && 'bg-(--istok-menu-item-bg-hover)', className)}
       aria-haspopup="menu"
       aria-expanded={open}
       aria-controls={open ? submenuId : undefined}
@@ -127,7 +125,7 @@ export const DropdownSubmenu: DropdownSubmenuFC = ({
             <div
               id={submenuId}
               role="menu"
-              className={cn('-mx-2 flex flex-col', contentClassName)}
+              className={cn('flex flex-col', contentClassName)}
               style={contentStyle}
             >
               {children}
@@ -162,12 +160,12 @@ export const DropdownSubmenu: DropdownSubmenuFC = ({
               : 'top-0 right-full pr-1.5',
           )}
         >
-          <div
-            className={cn('relative istok-dropdown', contentClassName)}
+          <Menu
+            className={cn('relative', contentClassName)}
             style={contentStyle}
           >
             {children}
-          </div>
+          </Menu>
         </div>
       )}
     </div>
