@@ -76,7 +76,7 @@ export const Input: FC<InputProps> = ({
         {...pt?.input}
         type={type}
         value={value}
-        onChange={e => onChange(e.target.value)}
+        onChange={e => onChange?.(e.target.value, e)}
         placeholder={placeholder}
         disabled={disabled || pt?.input?.disabled}
         className={cn(

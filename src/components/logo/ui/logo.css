@@ -1,0 +1,12 @@
+@utility istok-logo--sm {
+  --istok-logo-height: 32px;
+}
+
+@utility istok-logo--md {
+  --istok-logo-height: 48px;
+}
+
+@utility istok-logo--lg {
+  --istok-logo-height: 80px;
+}
+

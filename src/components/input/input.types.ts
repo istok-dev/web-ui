@@ -1,4 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
+import type { ChangeEvent } from 'react';
 
 export const INPUT_SIZES = ['sm', 'md', 'lg', 'xl'] as const;
 export const INPUT_VARIANTS = ['neutral', 'solid', 'outline', 'opacity', 'filled'] as const;
@@ -11,8 +12,8 @@ export type InputPassThrough = {
 };
 
 export type InputProps = {
-  value: string;
-  onChange: (value: string) => void;
+  value?: string;
+  onChange?: (value: string, event: ChangeEvent<HTMLInputElement>) => void;
   startAdornment?: React.ReactNode;
   endAdornment?: React.ReactNode;
   startIcon?: LucideIcon;

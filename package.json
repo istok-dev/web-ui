@@ -1,6 +1,6 @@
 {
   "name": "@istok-dev/web-ui",
-  "version": "0.0.28",
+  "version": "0.0.30",
   "description": "UI-библиотека компонентов Istok",
   "type": "module",
   "main": "lib/index.js",
@@ -64,6 +64,10 @@
     "./input.css": {
       "style": "./lib/styles/components/input/ui/input.css",
       "default": "./lib/styles/components/input/ui/input.css"
+    },
+    "./logo.css": {
+      "style": "./lib/styles/components/logo/ui/logo.css",
+      "default": "./lib/styles/components/logo/ui/logo.css"
     },
     "./number-input.css": {
       "style": "./lib/styles/components/number-input/ui/number-input.css",

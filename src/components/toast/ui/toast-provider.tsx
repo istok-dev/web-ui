@@ -1,36 +1,14 @@
 'use client';
 
-import { createContext, useState, useCallback, use } from 'react';
+import { Toast as BaseToast } from '@base-ui/react/toast';
 import type { FC, ReactNode } from 'react';
-
-import type { Toast, ToastContextType } from '../toast.types';
-
-const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
 type ToastProviderProps = {
   children: ReactNode;
 };
 
-export const ToastProvider: FC<ToastProviderProps> = ({ children }) => {
-  const [toasts, setToasts] = useState<Toast[]>([]);
-
-  const showToast = useCallback((message: string, variant: Toast['variant'] = 'info', duration = 3000) => {
-    const id = Math.random().toString(36).substring(2, 9);
-    const newToast: Toast = { id, message, variant, duration };
-    setToasts(prev => [...prev, newToast]);
-  }, []);
-
-  const removeToast = useCallback((id: string) => {
-    setToasts(prev => prev.filter(toast => toast.id !== id));
-  }, []);
-
-  return <ToastContext value={{ toasts, showToast, removeToast }}>{children}</ToastContext>;
-};
-
-export const useToastContext = () => {
-  const context = use(ToastContext);
-  if (!context) {
-    throw new Error('useToast must be used within ToastProvider');
-  }
-  return context;
-};
+export const ToastProvider: FC<ToastProviderProps> = ({ children }) => (
+  <BaseToast.Provider limit={10} timeout={3000}>
+    {children}
+  </BaseToast.Provider>
+);

@@ -1,19 +1,15 @@
 'use client';
 
-import { X, CheckCircle2, AlertCircle, Info, AlertTriangle } from 'lucide-react';
-import { useEffect } from 'react';
+import { Toast as BaseToast } from '@base-ui/react/toast';
+import type { ToastObject } from '@base-ui/react/toast';
+import { AlertCircle, AlertTriangle, CheckCircle2, Info, X } from 'lucide-react';
 import type { FC } from 'react';
 
 import { cn } from '@/utils/cn';
 
-import type { Toast as ToastType } from '../toast.types';
+import type { ToastData, ToastVariant } from '../toast.types';
 
-type ToastProps = {
-  toast: ToastType;
-  onRemove: (id: string) => void;
-};
-
-const variantStyles = {
+const variantStyles: Record<ToastVariant, string> = {
   success: 'bg-positive-500 text-neutral-50 border-positive-600',
   error: 'bg-negative-500 text-neutral-50 border-negative-600',
   info: 'bg-info-500 text-neutral-50 border-info-600',
@@ -27,19 +23,51 @@ const variantIcons = {
   warning: AlertTriangle,
 };
 
-export const Toast: FC<ToastProps> = ({ toast, onRemove }) => {
-  const variant = toast.variant ?? 'info';
+type ToastItemProps = {
+  toast: ToastObject<ToastData>;
+};
+
+export const ToastItem: FC<ToastItemProps> = ({ toast }) => {
+  const variant: ToastVariant = toast.data?.variant ?? 'info';
   const Icon = variantIcons[variant];
 
-  useEffect(() => {
-    if (toast.duration !== 0) {
-      const timer = setTimeout(() => {
-        onRemove(toast.id);
-      }, toast.duration || 3000);
+  return (
+    <BaseToast.Root
+      toast={toast}
+      className={cn(
+        `
+          max-w-125 min-w-75 rounded-2xl border shadow-lg
+          transition-[transform,opacity] duration-300 ease-out
+          data-ending-style:translate-x-full data-ending-style:opacity-0
+          data-starting-style:translate-x-full data-starting-style:opacity-0
+        `,
+        variantStyles[variant],
+      )}
+    >
+      <BaseToast.Content className="flex items-center gap-3 px-4 py-3">
+        <Icon size={20} className="shrink-0" />
+        <p className="flex-1 text-body-sm font-medium">{toast.title}</p>
+        <BaseToast.Close
+          className="
+            shrink-0 transition-opacity
+            hover:opacity-80
+          "
+          aria-label="Закрыть"
+        >
+          <X size={18} />
+        </BaseToast.Close>
+      </BaseToast.Content>
+    </BaseToast.Root>
+  );
+};
 
-      return () => clearTimeout(timer);
-    }
-  }, [toast.id, toast.duration, onRemove]);
+type ToastPreviewProps = {
+  variant: ToastVariant;
+  message: string;
+};
+
+export const ToastPreview: FC<ToastPreviewProps> = ({ variant, message }) => {
+  const Icon = variantIcons[variant];
 
   return (
     <div
@@ -50,14 +78,11 @@ export const Toast: FC<ToastProps> = ({ toast, onRemove }) => {
         `,
         variantStyles[variant],
       )}
-      style={{
-        animation: 'slideIn 0.3s ease-out',
-      }}
     >
       <Icon size={20} className="shrink-0" />
-      <p className="flex-1 text-body-sm font-medium">{toast.message}</p>
+      <p className="flex-1 text-body-sm font-medium">{message}</p>
       <button
-        onClick={() => onRemove(toast.id)}
+        type="button"
         className="
           shrink-0 transition-opacity
           hover:opacity-80

@@ -10,6 +10,7 @@ export * from './components/click-away-listener';
 export * from './components/dropdown';
 export * from './components/icon-button';
 export * from './components/input';
+export * from './components/logo';
 export * from './components/number-input';
 export * from './components/password-input';
 export * from './components/menu';

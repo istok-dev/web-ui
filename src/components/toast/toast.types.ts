@@ -1,5 +1,9 @@
 export type ToastVariant = 'success' | 'error' | 'info' | 'warning';
 
+export type ToastData = {
+  variant?: ToastVariant;
+};
+
 export type Toast = {
   id: string;
   message: string;
@@ -7,7 +11,7 @@ export type Toast = {
   duration?: number;
 };
 
-export type ToastContextType = {
+export type UseToastReturn = {
   toasts: Toast[];
   showToast: (message: string, variant?: ToastVariant, duration?: number) => void;
   removeToast: (id: string) => void;
