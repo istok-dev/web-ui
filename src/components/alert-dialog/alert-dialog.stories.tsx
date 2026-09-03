@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ClockCheck, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 
 import { Button } from '../button';
-import type { AlertDialogVariant, AlertDialogAlign } from './alert-dialog.types';
+import { ALERT_DIALOG_VARIANTS, ALERT_DIALOG_ALIGNS } from './alert-dialog.types';
 import { AlertDialog } from './ui/alert-dialog';
 
 const meta: Meta<typeof AlertDialog> = {
@@ -16,12 +15,12 @@ const meta: Meta<typeof AlertDialog> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['positive', 'negative'] as AlertDialogVariant[],
-      description: 'Визуальный вариант диалога',
+      options: ALERT_DIALOG_VARIANTS,
+      description: 'Семантический вариант диалога',
     },
     align: {
       control: 'select',
-      options: ['left', 'center'] as AlertDialogAlign[],
+      options: ALERT_DIALOG_ALIGNS,
       description: 'Выравнивание контента',
     },
     title: {
@@ -40,6 +39,10 @@ const meta: Meta<typeof AlertDialog> = {
       control: 'text',
       description: 'Текст кнопки действия',
     },
+    dismissOnBackdrop: {
+      control: 'boolean',
+      description: 'Закрывать по клику на подложку',
+    },
   },
 };
 
@@ -47,24 +50,23 @@ export default meta;
 
 type Story = StoryObj<typeof AlertDialog>;
 
-export const Positive: Story = {
-  render: function PositiveStory() {
+export const Negative: Story = {
+  render: function NegativeStory() {
     const [open, setOpen] = useState(false);
     return (
       <>
-        <Button variant="primary" onClick={() => setOpen(true)}>
-          Сохранить изменения
+        <Button color="negative" onClick={() => setOpen(true)}>
+          Удалить отчёт
         </Button>
         <AlertDialog
           open={open}
           onOpenChange={setOpen}
-          icon={ClockCheck}
-          title="Сохранить изменения?"
-          text="Новые параметры будут применены после подтверждения."
-          variant="positive"
+          title="Удалить отчёт?"
+          text="Действие нельзя отменить."
+          variant="negative"
           align="left"
           cancelLabel="Отмена"
-          actionLabel="Продолжить"
+          actionLabel="Удалить"
           onCancel={() => alert('cancel')}
           onAction={() => alert('action')}
         />
@@ -73,24 +75,48 @@ export const Positive: Story = {
   },
 };
 
-export const Negative: Story = {
-  render: function NegativeStory() {
+export const Warning: Story = {
+  render: function WarningStory() {
     const [open, setOpen] = useState(false);
     return (
       <>
-        <Button color="negative" onClick={() => setOpen(true)}>
-          Удалить файл
+        <Button color="warning" onClick={() => setOpen(true)}>
+          Сбросить фильтры
         </Button>
         <AlertDialog
           open={open}
           onOpenChange={setOpen}
-          icon={Trash2}
-          title="Удалить файл?"
-          text="Файл будет удалён без возможности восстановления."
-          variant="negative"
+          title="Сбросить фильтры?"
+          text="Выбранные группы и партнёры не сохранятся."
+          variant="warning"
           align="left"
           cancelLabel="Отмена"
-          actionLabel="Удалить"
+          actionLabel="Сбросить"
+          onCancel={() => alert('cancel')}
+          onAction={() => alert('action')}
+        />
+      </>
+    );
+  },
+};
+
+export const Info: Story = {
+  render: function InfoStory() {
+    const [open, setOpen] = useState(false);
+    return (
+      <>
+        <Button variant="primary" onClick={() => setOpen(true)}>
+          Выгрузить за август
+        </Button>
+        <AlertDialog
+          open={open}
+          onOpenChange={setOpen}
+          title="Выгрузить за август?"
+          text="Файл придёт на почту в течение 10 минут."
+          variant="info"
+          align="left"
+          cancelLabel="Отмена"
+          actionLabel="Выгрузить"
           onCancel={() => alert('cancel')}
           onAction={() => alert('action')}
         />
@@ -110,54 +136,37 @@ export const AlignCenter: Story = {
         <AlertDialog
           open={open}
           onOpenChange={setOpen}
-          icon={ClockCheck}
-          title="Сохранить изменения?"
-          text="Новые параметры будут применены после подтверждения."
-          variant="positive"
+          title="Удалить отчёт?"
+          text="Действие нельзя отменить."
+          variant="negative"
           align="center"
           cancelLabel="Отмена"
-          actionLabel="Продолжить"
+          actionLabel="Удалить"
         />
       </>
     );
   },
 };
 
-export const AllVariants: Story = {
-  render: function AllVariantsStory() {
-    const [positiveOpen, setPositiveOpen] = useState(false);
-    const [negativeOpen, setNegativeOpen] = useState(false);
+export const DismissOnBackdrop: Story = {
+  render: function DismissOnBackdropStory() {
+    const [open, setOpen] = useState(false);
     return (
-      <div className="flex flex-wrap gap-4">
-        <Button variant="primary" onClick={() => setPositiveOpen(true)}>
-          Positive
-        </Button>
-        <Button color="negative" onClick={() => setNegativeOpen(true)}>
-          Negative
+      <>
+        <Button variant="primary" onClick={() => setOpen(true)}>
+          Клик по подложке закрывает
         </Button>
         <AlertDialog
-          open={positiveOpen}
-          onOpenChange={setPositiveOpen}
-          icon={ClockCheck}
-          title="Сохранить изменения?"
-          text="Новые параметры будут применены после подтверждения."
-          variant="positive"
-          align="left"
+          open={open}
+          onOpenChange={setOpen}
+          title="Выгрузить за август?"
+          text="Файл придёт на почту в течение 10 минут."
+          variant="info"
+          dismissOnBackdrop
           cancelLabel="Отмена"
-          actionLabel="Продолжить"
+          actionLabel="Выгрузить"
         />
-        <AlertDialog
-          open={negativeOpen}
-          onOpenChange={setNegativeOpen}
-          icon={Trash2}
-          title="Удалить файл?"
-          text="Файл будет удалён без возможности восстановления."
-          variant="negative"
-          align="left"
-          cancelLabel="Отмена"
-          actionLabel="Удалить"
-        />
-      </div>
+      </>
     );
   },
 };

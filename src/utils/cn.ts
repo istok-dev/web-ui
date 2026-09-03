@@ -35,6 +35,8 @@ const twMerge = extendTailwindMerge<
   | 'select-variant'
   | 'menu-item-size'
   | 'menu-item-variant'
+  | 'alert-dialog-variant'
+  | 'alert-dialog-align'
 >({
   extend: {
     classGroups: {
@@ -185,6 +187,15 @@ const twMerge = extendTailwindMerge<
         'istok-menu-item--base',
         'istok-menu-item--brand',
         'istok-menu-item--danger',
+      ],
+      'alert-dialog-variant': [
+        'istok-alert-dialog--negative',
+        'istok-alert-dialog--warning',
+        'istok-alert-dialog--info',
+      ],
+      'alert-dialog-align': [
+        'istok-alert-dialog--left',
+        'istok-alert-dialog--center',
       ],
     },
   },

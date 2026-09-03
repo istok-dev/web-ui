@@ -1,7 +1,57 @@
-@utility istok-alert-dialog--positive {
-  --istok-alert-dialog-icon-color: var(--color-positive-600);
+@utility istok-alert-dialog {
+  --istok-alert-dialog-padding: calc(var(--spacing) * 8);
+  --istok-alert-dialog-max-width: 440px;
+  --istok-alert-dialog-gap: calc(var(--spacing) * 6);
+  --istok-alert-dialog-shadow: var(--shadow-2xl);
+  --istok-alert-dialog-backdrop: var(--color-overlay-scrim);
+  --istok-alert-dialog-radius: var(--radius-4xl);
+  --istok-alert-dialog-bg: var(--color-surface-card);
+  --istok-alert-dialog-viewport-padding: calc(var(--spacing) * 4);
+  --istok-alert-dialog-header-gap: calc(var(--spacing) * 3);
+  --istok-alert-dialog-title-gap: calc(var(--spacing) * 2);
+  --istok-alert-dialog-actions-gap: calc(var(--spacing) * 2);
+  --istok-alert-dialog-icon-size: 24px;
+  --istok-alert-dialog-icon-circle-size: var(--spacing-12);
+  --istok-alert-dialog-icon-circle-radius: var(--radius-full);
+  --istok-alert-dialog-title-font-size: var(--text-title-lg);
+  --istok-alert-dialog-title-line-height: var(--text-title-lg--line-height);
+  --istok-alert-dialog-title-font-weight: 700;
+  --istok-alert-dialog-title-letter-spacing: -0.6px;
+  --istok-alert-dialog-title-color: var(--color-text-strong);
+  --istok-alert-dialog-body-font-size: var(--text-control-md);
+  --istok-alert-dialog-body-line-height: var(--text-control-md--line-height);
+  --istok-alert-dialog-body-color: var(--color-text-secondary);
 }
 
 @utility istok-alert-dialog--negative {
+  --istok-alert-dialog-icon-bg: var(--color-negative-100);
   --istok-alert-dialog-icon-color: var(--color-negative-600);
+}
+
+@utility istok-alert-dialog--warning {
+  --istok-alert-dialog-icon-bg: var(--color-warning-100);
+  --istok-alert-dialog-icon-color: var(--color-warning-600);
+}
+
+@utility istok-alert-dialog--info {
+  --istok-alert-dialog-icon-bg: var(--color-primary-100);
+  --istok-alert-dialog-icon-color: var(--color-primary-600);
+}
+
+@utility istok-alert-dialog--left {
+  --istok-alert-dialog-header-direction: row;
+  --istok-alert-dialog-header-align: flex-start;
+  --istok-alert-dialog-text-align: start;
+  --istok-alert-dialog-text-offset: 2px;
+  --istok-alert-dialog-actions-direction: row-reverse;
+  --istok-alert-dialog-action-width: auto;
+}
+
+@utility istok-alert-dialog--center {
+  --istok-alert-dialog-header-direction: column;
+  --istok-alert-dialog-header-align: center;
+  --istok-alert-dialog-text-align: center;
+  --istok-alert-dialog-text-offset: 0;
+  --istok-alert-dialog-actions-direction: column;
+  --istok-alert-dialog-action-width: 100%;
 }

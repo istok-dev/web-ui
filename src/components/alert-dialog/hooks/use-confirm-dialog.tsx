@@ -30,13 +30,9 @@ export const useConfirmDialog = () => {
             close(false);
           }
         }}
-        icon={options.icon}
-        title={options.title}
-        text={options.text}
-        variant={options.variant}
-        actionLabel={options.actionLabel}
+        {...options}
         onAction={() => close(true)}
-        cancelLabel="Отмена"
+        cancelLabel={options.cancelLabel ?? 'Отмена'}
         onCancel={() => close(false)}
       />
     )
