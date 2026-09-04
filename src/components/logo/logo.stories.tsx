@@ -35,7 +35,7 @@ const meta: Meta<typeof Logo> = {
     variant: {
       control: 'select',
       options: LOGO_VARIANTS,
-      description: 'default — полный логотип, icon — только знак',
+      description: 'default — полный логотип, icon — только знак, dev — с пометкой dev',
     },
     inverse: {
       control: 'boolean',
@@ -59,6 +59,13 @@ export const Icon: Story = {
   args: {
     size: 'md',
     variant: 'icon',
+  },
+};
+
+export const Dev: Story = {
+  args: {
+    size: 'md',
+    variant: 'dev',
   },
 };
 
@@ -154,6 +161,7 @@ export const Variants: Story = {
         <div className="flex flex-wrap items-center gap-8">
           <Logo variant="default" />
           <Logo variant="icon" />
+          <Logo variant="dev" />
         </div>
       </div>
       <div className={cn('flex flex-col gap-3 rounded-xl bg-neutral-50 p-6')}>
@@ -161,6 +169,7 @@ export const Variants: Story = {
         <div className="flex flex-wrap items-center gap-8">
           <Logo variant="default" inverse />
           <Logo variant="icon" inverse />
+          <Logo variant="dev" inverse />
         </div>
       </div>
     </div>

@@ -1,14 +1,43 @@
-import type { FC } from 'react';
+import type { FC, SVGProps } from 'react';
 
 import { cn } from '@/utils/cn';
 
-import type { LogoProps, LogoSize } from '../logo.types';
-import { LOGO_MARK_PATH } from './logo-mark-path';
+import type { LogoProps, LogoSize, LogoVariant } from '../logo.types';
+import { IstokDefaultLg } from './istok-default-lg';
+import { IstokDefaultMd } from './istok-default-md';
+import { IstokDefaultSm } from './istok-default-sm';
+import { IstokDevLg } from './istok-dev-lg';
+import { IstokDevMd } from './istok-dev-md';
+import { IstokDevSm } from './istok-dev-sm';
+import { IstokIconLg } from './istok-icon-lg';
+import { IstokIconMd } from './istok-icon-md';
+import { IstokIconSm } from './istok-icon-sm';
 
 const sizeClassesMap: Record<LogoSize, string> = {
   sm: 'istok-logo--sm',
   md: 'istok-logo--md',
   lg: 'istok-logo--lg',
+};
+
+const logoComponentsMap: Record<
+  LogoVariant,
+  Record<LogoSize, FC<SVGProps<SVGSVGElement>>>
+> = {
+  default: {
+    sm: IstokDefaultSm,
+    md: IstokDefaultMd,
+    lg: IstokDefaultLg,
+  },
+  icon: {
+    sm: IstokIconSm,
+    md: IstokIconMd,
+    lg: IstokIconLg,
+  },
+  dev: {
+    sm: IstokDevSm,
+    md: IstokDevMd,
+    lg: IstokDevLg,
+  },
 };
 
 export const Logo: FC<LogoProps> = ({
@@ -20,31 +49,10 @@ export const Logo: FC<LogoProps> = ({
   'aria-label': ariaLabel = 'Исток',
   ...otherProps
 }) => {
-  if (variant === 'icon') {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1048 1081"
-        role={role}
-        aria-label={ariaLabel}
-        className={cn(
-          'istok-logo',
-          'block h-12 w-auto text-on-accent',
-          sizeClassesMap[size],
-          inverse && 'istok-logo--inverse text-primary-600',
-          className,
-        )}
-        {...otherProps}
-      >
-        <path fill="currentColor" fillRule="evenodd" d={LOGO_MARK_PATH} />
-      </svg>
-    );
-  }
+  const LogoSvg = logoComponentsMap[variant][size];
 
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 4270 1081"
+    <LogoSvg
       role={role}
       aria-label={ariaLabel}
       className={cn(
@@ -55,33 +63,6 @@ export const Logo: FC<LogoProps> = ({
         className,
       )}
       {...otherProps}
-    >
-      <path fill="currentColor" fillRule="evenodd" d={LOGO_MARK_PATH} />
-      <text
-        x="1351"
-        y="724"
-        fontFamily="Cormorant, Georgia, serif"
-        fontWeight="300"
-        fontSize="565"
-        textLength="2430"
-        lengthAdjust="spacing"
-        fill="currentColor"
-      >
-        ИСТОК
-      </text>
-      <text
-        x="3851"
-        y="466"
-        fontFamily="Cormorant, Georgia, serif"
-        fontStyle="italic"
-        fontWeight="300"
-        fontSize="230"
-        textLength="345"
-        lengthAdjust="spacing"
-        fill="currentColor"
-      >
-        dev
-      </text>
-    </svg>
+    />
   );
 };
