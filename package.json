@@ -1,6 +1,6 @@
 {
   "name": "@istok-dev/web-ui",
-  "version": "0.0.32",
+  "version": "0.0.33",
   "description": "UI-библиотека компонентов Istok",
   "type": "module",
   "main": "lib/index.js",
@@ -16,6 +16,21 @@
       "types": "./lib/utils/index.d.ts",
       "import": "./lib/utils/index.js",
       "default": "./lib/utils/index.js"
+    },
+    "./calendar": {
+      "types": "./lib/components/calendar/index.d.ts",
+      "import": "./lib/components/calendar/index.js",
+      "default": "./lib/components/calendar/index.js"
+    },
+    "./date-input": {
+      "types": "./lib/components/date-input/index.d.ts",
+      "import": "./lib/components/date-input/index.js",
+      "default": "./lib/components/date-input/index.js"
+    },
+    "./date-picker": {
+      "types": "./lib/components/date-picker/index.d.ts",
+      "import": "./lib/components/date-picker/index.js",
+      "default": "./lib/components/date-picker/index.js"
     },
     "./styles.css": {
       "style": "./lib/styles/components/index.css",

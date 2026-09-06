@@ -83,7 +83,7 @@ function YearGrid({
                 rounded-full text-body-md transition-colors
               `,
               isSelected
-                ? 'text-white bg-primary-600 font-medium'
+                ? 'bg-primary-600 font-medium text-neutral-50'
                 : `
                   text-text-strong
                   hover:bg-neutral-100

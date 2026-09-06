@@ -1,7 +1,13 @@
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
-  entry: ['src/index.ts', 'src/utils/index.ts'],
+  entry: [
+    'src/index.ts',
+    'src/utils/index.ts',
+    'src/components/calendar/index.ts',
+    'src/components/date-input/index.ts',
+    'src/components/date-picker/index.ts',
+  ],
   target: 'es2022',
   format: ['esm'],
   outDir: 'lib',
