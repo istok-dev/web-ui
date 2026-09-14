@@ -12,6 +12,12 @@ import { IstokDevSm } from './istok-dev-sm';
 import { IstokIconLg } from './istok-icon-lg';
 import { IstokIconMd } from './istok-icon-md';
 import { IstokIconSm } from './istok-icon-sm';
+import { IstokTextDevLg } from './istok-text-dev-lg';
+import { IstokTextDevMd } from './istok-text-dev-md';
+import { IstokTextDevSm } from './istok-text-dev-sm';
+import { IstokTextLg } from './istok-text-lg';
+import { IstokTextMd } from './istok-text-md';
+import { IstokTextSm } from './istok-text-sm';
 
 const sizeClassesMap: Record<LogoSize, string> = {
   sm: 'istok-logo--sm',
@@ -37,6 +43,16 @@ const logoComponentsMap: Record<
     sm: IstokDevSm,
     md: IstokDevMd,
     lg: IstokDevLg,
+  },
+  text: {
+    sm: IstokTextSm,
+    md: IstokTextMd,
+    lg: IstokTextLg,
+  },
+  'text-dev': {
+    sm: IstokTextDevSm,
+    md: IstokTextDevMd,
+    lg: IstokTextDevLg,
   },
 };
 

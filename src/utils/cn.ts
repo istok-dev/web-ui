@@ -81,8 +81,8 @@ const twMerge = extendTailwindMerge<
       'input-variant': [
         'istok-input__input--neutral',
         'istok-input__input--solid',
-        'istok-input__input--outline',
         'istok-input__input--opacity',
+        'istok-input__input--filled',
       ],
       'input-size': ['istok-input--sm', 'istok-input--md', 'istok-input--lg'],
       'card-padding': [
@@ -104,7 +104,7 @@ const twMerge = extendTailwindMerge<
       'textarea-variant': [
         'istok-textarea--neutral',
         'istok-textarea--solid',
-        'istok-textarea--outline',
+        'istok-textarea--filled',
       ],
       'textarea-size': [
         'istok-textarea--sm',
@@ -177,7 +177,11 @@ const twMerge = extendTailwindMerge<
       'breadcrumbs-size': ['istok-breadcrumbs--md', 'istok-breadcrumbs--lg'],
       'radio-size': ['istok-radio--sm', 'istok-radio--md', 'istok-radio--lg'],
       'select-size': ['istok-select--sm', 'istok-select--md', 'istok-select--lg'],
-      'select-variant': ['istok-select--solid', 'istok-select--outline'],
+      'select-variant': [
+        'istok-select--neutral',
+        'istok-select--solid',
+        'istok-select--filled',
+      ],
       'menu-item-size': [
         'istok-menu-item--sm',
         'istok-menu-item--md',

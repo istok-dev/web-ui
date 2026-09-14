@@ -28,7 +28,7 @@ type Story = StoryObj<typeof RadioCard>;
 
 export const Default: Story = {
   render: (args) => {
-    const [value, setValue] = useState('delivery');
+    const [value, setValue] = useState('email');
     return (
       <RadioCard.Group
         value={value}
@@ -37,15 +37,15 @@ export const Default: Story = {
       >
         <RadioCard
           {...args}
-          value="delivery"
-          label="Доставка"
-          description="Курьер привезёт заказ"
+          value="email"
+          label="Email"
+          description="Уведомления на почту"
         />
         <RadioCard
           {...args}
-          value="pickup"
-          label="Самовывоз"
-          description="Заберу из пункта выдачи"
+          value="push"
+          label="Push"
+          description="Уведомления в приложении"
         />
       </RadioCard.Group>
     );
@@ -57,8 +57,8 @@ export const Default: Story = {
 
 export const WithExpandableContent: Story = {
   render: () => {
-    const [value, setValue] = useState('online');
-    const [card, setCard] = useState('');
+    const [value, setValue] = useState('email');
+    const [address, setAddress] = useState('');
 
     return (
       <RadioCard.Group
@@ -68,23 +68,23 @@ export const WithExpandableContent: Story = {
         gap={12}
       >
         <RadioCard
-          value="online"
-          label="Онлайн-оплата"
-          description="Картой на сайте"
+          value="email"
+          label="Email"
+          description="На указанный адрес"
           size="l"
         >
           <Input
-            value={card}
-            onChange={setCard}
-            placeholder="Номер карты"
+            value={address}
+            onChange={setAddress}
+            placeholder="Адрес почты"
             variant="filled"
             size="xl"
           />
         </RadioCard>
         <RadioCard
-          value="cash"
-          label="Наличными"
-          description="При получении"
+          value="sms"
+          label="SMS"
+          description="На номер телефона"
           size="l"
         />
       </RadioCard.Group>

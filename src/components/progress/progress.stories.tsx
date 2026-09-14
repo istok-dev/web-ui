@@ -34,7 +34,7 @@ type Story = StoryObj<typeof Progress>;
 export const Default: Story = {
   args: {
     value: 58,
-    label: '7 из 12 забронировано',
+    label: '7 из 12 выполнено',
     color: 'accent',
     className: 'w-[320px]',
   },
@@ -46,7 +46,7 @@ export const Colors: Story = {
       <Progress value={58} color="accent" label="7 из 12" />
       <Progress value={73} color="success" label="11 из 15" />
       <Progress value={25} color="warning" label="2 из 8" />
-      <Progress value={41} color="primary" label="Собрано 12 400 из 30 000 ₽" />
+      <Progress value={41} color="primary" label="12 400 из 30 000" />
     </div>
   ),
 };

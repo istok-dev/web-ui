@@ -9,10 +9,6 @@
     &:has(.istok-number-input__input--solid) {
       @apply bg-neutral-50 border border-transparent text-neutral-900;
     }
-
-    &:has(.istok-number-input__input--outline) {
-      @apply border border-neutral-300 bg-neutral-50;
-    }
   }
 
   .istok-number-input__input-wrap {
@@ -29,10 +25,6 @@
 
   .istok-number-input__input--solid {
     @apply bg-neutral-50 text-neutral-900 placeholder-neutral-300;
-  }
-
-  .istok-number-input__input--outline {
-    @apply placeholder-neutral-300 text-neutral-900;
   }
 
   .istok-number-input__suffix {

@@ -60,19 +60,6 @@
   --istok-textarea-placeholder: var(--color-text-muted);
 }
 
-@utility istok-textarea--outline {
-  --istok-textarea-bg: var(--color-surface-muted);
-  --istok-textarea-bg-hover: var(--color-surface-muted);
-  --istok-textarea-bg-focus: var(--color-surface-muted);
-  --istok-textarea-border-color: transparent;
-  --istok-textarea-border-width: 0px;
-  --istok-textarea-border-focus: transparent;
-  --istok-textarea-ring: inset 0 0 0 2px var(--focus-ring-color);
-  --istok-textarea-focus-shadow: var(--istok-textarea-ring);
-  --istok-textarea-fg: var(--color-text-strong);
-  --istok-textarea-placeholder: var(--color-text-muted);
-}
-
 @utility istok-textarea--filled {
   --istok-textarea-bg: var(--color-neutral-100);
   --istok-textarea-bg-hover: var(--color-neutral-200);

@@ -20,7 +20,6 @@ const sizeClassesMap: Record<TextareaSize, string> = {
 const variantClassesMap: Record<TextareaVariant, string> = {
   neutral: 'istok-textarea--neutral',
   solid: 'istok-textarea--solid',
-  outline: 'istok-textarea--outline',
   filled: 'istok-textarea--filled',
 };
 
@@ -36,7 +35,7 @@ export const Textarea: FC<TextareaProps> = ({
   onChange,
   className,
   size = 'md',
-  variant = 'outline',
+  variant = 'neutral',
   rows = 3,
   resize = 'vertical',
   placeholder,

@@ -33,8 +33,8 @@ export const Filled: Story = {
       <div className="w-105">
         <SettingRow
           {...args}
-          label="Соредакторы могут приглашать других"
-          description="Иначе добавлять людей можете только вы"
+          label="Участники могут приглашать других"
+          description="Иначе приглашать можете только вы"
           checked={checked}
           onChange={setChecked}
         />
@@ -55,22 +55,22 @@ export const PlainList: Story = {
       <div className="w-120">
         <SettingRow
           variant="plain"
-          label="Показывать цены гостям"
-          description="Иначе гости увидят только название и ссылку"
+          label="Показывать email в профиле"
+          description="Иначе адрес останется скрытым"
           checked={prices}
           onChange={setPrices}
         />
         <SettingRow
           variant="plain"
-          label="Разрешить складчину"
-          description="Гости смогут скидываться на дорогие желания"
+          label="Разрешить комментарии"
+          description="Другие участники смогут оставлять комментарии"
           checked={pooling}
           onChange={setPooling}
         />
         <SettingRow
           variant="plain"
-          label="Скрывать брони от меня"
-          description="Вы не узнаете, что уже забронировано — сюрприз целиком"
+          label="Скрывать статус онлайн"
+          description="Другие не увидят, что вы в сети"
           checked={hide}
           onChange={setHide}
         />
@@ -83,7 +83,7 @@ export const CustomControl: Story = {
   render: () => (
     <div className="w-105">
       <SettingRow
-        label="Статус списка"
+        label="Статус проекта"
         description="Кастомный контрол — клик по строке не переключает"
         control={<Tag variant="soft" size="lg">Активен</Tag>}
       />

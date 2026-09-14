@@ -24,7 +24,11 @@ export const Modal: ModalFC = (props: ModalProps) => {
         <BaseDialog.Viewport
           {...rest}
           className={cn(
-            'fixed inset-0 z-100 flex items-center justify-center p-4',
+            `
+              fixed inset-0 z-100 flex items-stretch justify-center
+              overflow-hidden p-0
+              tablet:items-center tablet:p-4
+            `,
             className,
             classes?.root,
           )}
@@ -32,9 +36,10 @@ export const Modal: ModalFC = (props: ModalProps) => {
           <BaseDialog.Popup
             className={cn(
               `
-                relative flex max-h-[90vh] w-full max-w-5xl flex-col
-                overflow-hidden rounded-5xl bg-surface-card
-                shadow-(--shadow-2xl)
+                relative flex h-full min-h-0 w-full flex-col overflow-hidden
+                rounded-none bg-surface-card
+                tablet:h-auto tablet:max-h-[90vh] tablet:max-w-5xl
+                tablet:rounded-5xl tablet:shadow-(--shadow-2xl)
               `,
               classes?.content,
             )}

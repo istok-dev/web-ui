@@ -4,7 +4,7 @@ import type { FC } from 'react';
 
 import { cn } from '@/utils/cn';
 
-import type { InputProps, InputSize } from '../input.types';
+import type { InputProps, InputSize, InputVariant } from '../input.types';
 
 const sizeClassesMap: Record<InputSize, string> = {
   sm: 'istok-input--sm',
@@ -13,13 +13,9 @@ const sizeClassesMap: Record<InputSize, string> = {
   xl: 'istok-input--xl',
 };
 
-const variantClassesMap: Record<
-  'neutral' | 'solid' | 'outline' | 'opacity' | 'filled',
-  string
-> = {
+const variantClassesMap: Record<InputVariant, string> = {
   neutral: 'istok-input__input--neutral',
   solid: 'istok-input__input--solid',
-  outline: 'istok-input__input--outline',
   opacity: 'istok-input__input--opacity',
   filled: 'istok-input__input--filled',
 };

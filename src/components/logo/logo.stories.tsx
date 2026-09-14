@@ -35,7 +35,8 @@ const meta: Meta<typeof Logo> = {
     variant: {
       control: 'select',
       options: LOGO_VARIANTS,
-      description: 'default — полный логотип, icon — только знак, dev — с пометкой dev',
+      description:
+        'default — полный логотип, icon — только знак, dev — с пометкой dev, text — текстовый, text-dev — текстовый с пометкой dev',
     },
     inverse: {
       control: 'boolean',
@@ -69,6 +70,20 @@ export const Dev: Story = {
   },
 };
 
+export const Text: Story = {
+  args: {
+    size: 'md',
+    variant: 'text',
+  },
+};
+
+export const TextDev: Story = {
+  args: {
+    size: 'md',
+    variant: 'text-dev',
+  },
+};
+
 export const DefaultInverse: Story = {
   decorators: [lightBackgroundDecorator],
   args: {
@@ -83,6 +98,24 @@ export const IconInverse: Story = {
   args: {
     size: 'md',
     variant: 'icon',
+    inverse: true,
+  },
+};
+
+export const TextInverse: Story = {
+  decorators: [lightBackgroundDecorator],
+  args: {
+    size: 'md',
+    variant: 'text',
+    inverse: true,
+  },
+};
+
+export const TextDevInverse: Story = {
+  decorators: [lightBackgroundDecorator],
+  args: {
+    size: 'md',
+    variant: 'text-dev',
     inverse: true,
   },
 };
@@ -153,6 +186,44 @@ export const IconAllSizesInverse: Story = {
   ),
 };
 
+export const TextAllSizes: Story = {
+  render: () => (
+    <div className="flex flex-col items-start gap-8">
+      {LOGO_SIZES.map(size => (
+        <div key={size} className="flex flex-col gap-2">
+          <span className="text-body-sm text-on-accent/60">
+            {size}
+            {' '}
+            (
+            {size === 'sm' ? '32px' : size === 'md' ? '48px' : '80px'}
+            )
+          </span>
+          <Logo size={size} variant="text" />
+        </div>
+      ))}
+    </div>
+  ),
+};
+
+export const TextDevAllSizes: Story = {
+  render: () => (
+    <div className="flex flex-col items-start gap-8">
+      {LOGO_SIZES.map(size => (
+        <div key={size} className="flex flex-col gap-2">
+          <span className="text-body-sm text-on-accent/60">
+            {size}
+            {' '}
+            (
+            {size === 'sm' ? '32px' : size === 'md' ? '48px' : '80px'}
+            )
+          </span>
+          <Logo size={size} variant="text-dev" />
+        </div>
+      ))}
+    </div>
+  ),
+};
+
 export const Variants: Story = {
   render: () => (
     <div className="flex flex-col gap-10">
@@ -162,6 +233,8 @@ export const Variants: Story = {
           <Logo variant="default" />
           <Logo variant="icon" />
           <Logo variant="dev" />
+          <Logo variant="text" />
+          <Logo variant="text-dev" />
         </div>
       </div>
       <div className={cn('flex flex-col gap-3 rounded-xl bg-neutral-50 p-6')}>
@@ -170,6 +243,8 @@ export const Variants: Story = {
           <Logo variant="default" inverse />
           <Logo variant="icon" inverse />
           <Logo variant="dev" inverse />
+          <Logo variant="text" inverse />
+          <Logo variant="text-dev" inverse />
         </div>
       </div>
     </div>

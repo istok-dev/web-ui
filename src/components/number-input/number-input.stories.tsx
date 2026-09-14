@@ -30,7 +30,7 @@ const meta: Meta<typeof NumberInput> = {
     },
     variant: {
       control: 'select',
-      options: ['neutral', 'solid', 'outline'],
+      options: ['neutral', 'solid'],
       description: 'Вариант стиля',
     },
     invalid: {
@@ -77,7 +77,7 @@ export const WithSuffix: Story = {
           {...args}
           value={value}
           onValueChange={setValue}
-          suffix="P"
+          suffix="кг"
         />
       </div>
     );
@@ -85,7 +85,7 @@ export const WithSuffix: Story = {
   args: {
     size: 'md',
     variant: 'neutral',
-    suffix: 'P',
+    suffix: 'кг',
   },
 };
 
@@ -101,19 +101,19 @@ export const Sizes: Story = {
           value={v1}
           onValueChange={setV1}
           size="sm"
-          suffix="P"
+          suffix="кг"
         />
         <NumberInput
           value={v2}
           onValueChange={setV2}
           size="md"
-          suffix="P"
+          suffix="кг"
         />
         <NumberInput
           value={v3}
           onValueChange={setV3}
           size="lg"
-          suffix="P"
+          suffix="кг"
         />
       </div>
     );
@@ -124,7 +124,6 @@ export const Variants: Story = {
   render: () => {
     const [v1, setV1] = useState<number | null>(100);
     const [v2, setV2] = useState<number | null>(100);
-    const [v3, setV3] = useState<number | null>(100);
 
     return (
       <div className="flex w-64 flex-col gap-4">
@@ -134,7 +133,7 @@ export const Variants: Story = {
             value={v1}
             onValueChange={setV1}
             variant="neutral"
-            suffix="P"
+            suffix="кг"
           />
         </div>
         <div>
@@ -143,16 +142,7 @@ export const Variants: Story = {
             value={v2}
             onValueChange={setV2}
             variant="solid"
-            suffix="P"
-          />
-        </div>
-        <div>
-          <label className="mb-1 block text-body-sm text-neutral-600">Outline</label>
-          <NumberInput
-            value={v3}
-            onValueChange={setV3}
-            variant="outline"
-            suffix="P"
+            suffix="кг"
           />
         </div>
       </div>
@@ -170,7 +160,7 @@ export const Disabled: Story = {
           value={value}
           onValueChange={setValue}
           disabled
-          suffix="P"
+          suffix="кг"
         />
       </div>
     );
@@ -187,7 +177,7 @@ export const Invalid: Story = {
           value={value}
           onValueChange={setValue}
           invalid
-          suffix="P"
+          suffix="кг"
         />
       </div>
     );

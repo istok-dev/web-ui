@@ -17,7 +17,6 @@ const sizeClassesMap: Record<NumberInputSize, string> = {
 const variantClassesMap: Record<NumberInputVariant, string> = {
   neutral: 'istok-number-input__input--neutral',
   solid: 'istok-number-input__input--solid',
-  outline: 'istok-number-input__input--outline',
 };
 
 export const NumberInput: FC<NumberInputProps> = ({

@@ -20,8 +20,8 @@ const sizeClassesMap: Record<SelectSize, string> = {
 };
 
 const variantClassesMap: Record<SelectVariant, string> = {
+  neutral: 'istok-select--neutral',
   solid: 'istok-select--solid',
-  outline: 'istok-select--outline',
   filled: 'istok-select--filled',
 };
 
@@ -75,7 +75,7 @@ export const Select: FC<SelectProps> = ({
   size = 'md',
   startIcon: StartIcon,
   startIconProps,
-  variant = 'solid',
+  variant = 'neutral',
   classes,
 }) => {
   const allOptions = useMemo(() => flattenOptions(options), [options]);

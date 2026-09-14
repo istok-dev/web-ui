@@ -31,7 +31,9 @@ export const ModalHeader: ModalHeaderFC = (props: ModalHeaderProps) => {
 
   return (
     <div className="
-      flex items-start justify-between gap-4 bg-surface-card px-8 py-5
+      flex shrink-0 items-start justify-between gap-4 bg-surface-card px-8 pb-5
+      pt-[calc(1.25rem+env(safe-area-inset-top,0px))]
+      tablet:pt-5
     "
     >
       <div className="min-w-0 flex-1">{renderTitle()}</div>

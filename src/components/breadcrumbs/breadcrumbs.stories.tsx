@@ -83,9 +83,9 @@ export const SingleItem: Story = {
 
 const longPathItems = [
   { label: 'Главная', href: '/' },
-  { label: 'Каталог', href: '/catalog' },
-  { label: 'Категория', href: '/catalog/category' },
-  { label: 'Подкатегория', href: '/catalog/category/sub' },
+  { label: 'Проекты', href: '/projects' },
+  { label: 'Команда', href: '/projects/team' },
+  { label: 'Документы', href: '/projects/team/docs' },
   { label: 'Текущая страница' },
 ];
 

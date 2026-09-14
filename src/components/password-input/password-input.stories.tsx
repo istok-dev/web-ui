@@ -30,7 +30,7 @@ const meta: Meta<typeof PasswordInput> = {
     },
     variant: {
       control: 'select',
-      options: ['neutral', 'solid', 'outline', 'opacity'],
+      options: ['neutral', 'solid', 'opacity'],
       description: 'Вариант стиля',
     },
     endAdornment: {
@@ -100,7 +100,7 @@ export const Variants: Story = {
   render: () => {
     const [neutral, setNeutral] = useState('');
     const [solid, setSolid] = useState('');
-    const [outline, setOutline] = useState('');
+    const [opacity, setOpacity] = useState('');
 
     return (
       <div className="flex w-80 flex-col gap-4">
@@ -117,10 +117,10 @@ export const Variants: Story = {
           variant="solid"
         />
         <PasswordInput
-          value={outline}
-          onChange={setOutline}
-          placeholder="Outline"
-          variant="outline"
+          value={opacity}
+          onChange={setOpacity}
+          placeholder="Opacity"
+          variant="opacity"
         />
       </div>
     );

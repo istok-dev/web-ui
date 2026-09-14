@@ -1,5 +1,5 @@
 export const TEXTAREA_SIZES = ['sm', 'md', 'lg', 'xl'] as const;
-export const TEXTAREA_VARIANTS = ['neutral', 'solid', 'outline', 'filled'] as const;
+export const TEXTAREA_VARIANTS = ['neutral', 'solid', 'filled'] as const;
 
 export type TextareaSize = (typeof TEXTAREA_SIZES)[number];
 export type TextareaVariant = (typeof TEXTAREA_VARIANTS)[number];

@@ -3,7 +3,7 @@ import { Filter } from 'lucide-react';
 import { useState } from 'react';
 
 import { Select } from './index';
-import type { SelectOption, SelectGroup } from './select.types';
+import { SELECT_VARIANTS, type SelectGroup, type SelectOption } from './select.types';
 
 const meta: Meta<typeof Select> = {
   title: 'Components/Select',
@@ -20,7 +20,7 @@ const meta: Meta<typeof Select> = {
     },
     variant: {
       control: 'select',
-      options: ['solid', 'outline', 'filled'] as const,
+      options: SELECT_VARIANTS,
       description: 'Вариант стиля',
     },
     multiple: {
@@ -51,46 +51,46 @@ export default meta;
 type Story = StoryObj<typeof Select>;
 
 const simpleOptions: SelectOption[] = [
-  { label: 'MIXIT BODY', value: 'mixit-body' },
-  { label: 'MIXIT LAB', value: 'mixit-lab' },
-  { label: 'MIXIT CARE', value: 'mixit-care' },
-  { label: 'MIXIT HOME', value: 'mixit-home' },
+  { label: 'Дизайн', value: 'design' },
+  { label: 'Разработка', value: 'dev' },
+  { label: 'Маркетинг', value: 'marketing' },
+  { label: 'Поддержка', value: 'support' },
 ];
 
 const categoryOptions: SelectOption[] = [
   {
-    label: 'Скрабы для тела очень длинный текст, который не поместится в инпут',
-    value: 'scrubs-body',
+    label: 'Документы очень длинный текст, который не поместится в инпут',
+    value: 'docs-long',
   },
-  { label: 'Лосьоны', value: 'lotions' },
-  { label: 'Кремы', value: 'creams' },
-  { label: 'Маски', value: 'masks' },
-  { label: 'Сыворотки', value: 'serums' },
+  { label: 'Отчёты', value: 'reports' },
+  { label: 'Задачи', value: 'tasks' },
+  { label: 'Проекты', value: 'projects' },
+  { label: 'События', value: 'events' },
 ];
 
 const optionsWithDisabled: SelectOption[] = [
-  { label: 'MIXIT BODY', value: 'mixit-body' },
-  { label: 'MIXIT LAB', value: 'mixit-lab', disabled: true },
-  { label: 'MIXIT CARE', value: 'mixit-care' },
-  { label: 'MIXIT HOME', value: 'mixit-home', disabled: true },
+  { label: 'Дизайн', value: 'design' },
+  { label: 'Разработка', value: 'dev', disabled: true },
+  { label: 'Маркетинг', value: 'marketing' },
+  { label: 'Поддержка', value: 'support', disabled: true },
 ];
 
 const groupedOptions: SelectGroup[] = [
   {
-    label: 'Маркетплейсы',
+    label: 'Отделы',
     options: [
-      { label: 'Ozon', value: 'ozon' },
-      { label: 'Wildberries', value: 'wildberries' },
-      { label: 'Яндекс.Маркет', value: 'yandex-market' },
+      { label: 'Дизайн', value: 'design' },
+      { label: 'Разработка', value: 'dev' },
+      { label: 'Маркетинг', value: 'marketing' },
     ],
   },
   {
-    label: 'Офлайн-сети',
+    label: 'Офисы',
     options: [
-      { label: 'Подружка', value: 'podruzhka' },
-      { label: 'Рив Гош', value: 'rive-gauche' },
-      { label: 'Л\'Этуаль', value: 'letoile' },
-      { label: 'Аптеки', value: 'pharmacies' },
+      { label: 'Москва', value: 'moscow' },
+      { label: 'Санкт-Петербург', value: 'spb' },
+      { label: 'Казань', value: 'kazan' },
+      { label: 'Удалённо', value: 'remote' },
     ],
   },
 ];
@@ -110,7 +110,7 @@ export const Default: Story = {
     );
   },
   args: {
-    label: 'Группы отчетности',
+    label: 'Отделы',
     placeholder: 'Выберите...',
     options: simpleOptions,
     multiple: true,
@@ -162,8 +162,8 @@ export const WithGroups: Story = {
     );
   },
   args: {
-    label: 'Партнеры',
-    placeholder: 'Выберите партнеров',
+    label: 'Команды',
+    placeholder: 'Выберите команды',
     options: groupedOptions,
     multiple: true,
     searchable: true,
@@ -218,6 +218,49 @@ export const Sizes: Story = {
   },
 };
 
+export const Variants: Story = {
+  render: () => {
+    const [neutral, setNeutral] = useState<SelectOption[]>([]);
+    const [solid, setSolid] = useState<SelectOption[]>([]);
+    const [filled, setFilled] = useState<SelectOption[]>([]);
+
+    return (
+      <div className="flex w-100 flex-col gap-6">
+        <div>
+          <p className="mb-2 text-body-sm text-neutral-500">Neutral</p>
+          <Select
+            variant="neutral"
+            value={neutral}
+            onChange={setNeutral}
+            options={simpleOptions}
+            label="Отделы"
+          />
+        </div>
+        <div className="rounded-2xl bg-surface-muted p-4">
+          <p className="mb-2 text-body-sm text-neutral-500">Solid</p>
+          <Select
+            variant="solid"
+            value={solid}
+            onChange={setSolid}
+            options={simpleOptions}
+            label="Отделы"
+          />
+        </div>
+        <div>
+          <p className="mb-2 text-body-sm text-neutral-500">Filled</p>
+          <Select
+            variant="filled"
+            value={filled}
+            onChange={setFilled}
+            options={simpleOptions}
+            label="Отделы"
+          />
+        </div>
+      </div>
+    );
+  },
+};
+
 export const WithIcon: Story = {
   render: (args) => {
     const [value, setValue] = useState<SelectOption[]>([]);
@@ -258,7 +301,7 @@ export const WithoutSearch: Story = {
     );
   },
   args: {
-    label: 'Группы отчетности',
+    label: 'Отделы',
     placeholder: 'Выберите...',
     options: simpleOptions,
     multiple: true,
@@ -284,7 +327,7 @@ export const WithoutActions: Story = {
     );
   },
   args: {
-    label: 'Группы отчетности',
+    label: 'Отделы',
     placeholder: 'Выберите...',
     options: simpleOptions,
     multiple: true,
@@ -310,7 +353,7 @@ export const Disabled: Story = {
     );
   },
   args: {
-    label: 'Группы отчетности',
+    label: 'Отделы',
     placeholder: 'Выберите...',
     options: simpleOptions,
     multiple: true,
@@ -334,7 +377,7 @@ export const DisabledItems: Story = {
     );
   },
   args: {
-    label: 'Группы отчетности',
+    label: 'Отделы',
     placeholder: 'Выберите...',
     options: optionsWithDisabled,
     multiple: true,
@@ -362,7 +405,7 @@ export const WithSelectedValues: Story = {
     );
   },
   args: {
-    label: 'Группы отчетности',
+    label: 'Отделы',
     placeholder: 'Выберите...',
     options: simpleOptions,
     multiple: true,
@@ -375,22 +418,22 @@ export const WithSelectedValues: Story = {
 
 export const ComplexExample: Story = {
   render: () => {
-    const [reportingGroups, setReportingGroups] = useState<SelectOption[]>(() =>
+    const [departments, setDepartments] = useState<SelectOption[]>(() =>
       simpleOptions.slice(0, 1),
     );
     const [categories, setCategories] = useState<SelectOption[]>([]);
-    const [marketplaces, setMarketplaces] = useState<SelectOption[]>([]);
-    const [partners, setPartners] = useState<SelectOption[]>([]);
+    const [offices, setOffices] = useState<SelectOption[]>([]);
+    const [teams, setTeams] = useState<SelectOption[]>([]);
 
     return (
       <div className="flex w-full max-w-6xl flex-col gap-6">
         <div className="grid grid-cols-2 gap-4">
           <Select
-            label="Группы отчетности"
-            placeholder="Выберите группы"
+            label="Отделы"
+            placeholder="Выберите отделы"
             options={simpleOptions}
-            value={reportingGroups}
-            onChange={setReportingGroups}
+            value={departments}
+            onChange={setDepartments}
             multiple={true}
             searchable={true}
             showSelectAll={true}
@@ -410,11 +453,11 @@ export const ComplexExample: Story = {
             size="md"
           />
           <Select
-            label="Маркетплейсы"
-            placeholder="Выберите маркетплейсы"
-            options={groupedOptions.at(0)?.options ?? []}
-            value={marketplaces}
-            onChange={setMarketplaces}
+            label="Офисы"
+            placeholder="Выберите офисы"
+            options={groupedOptions.at(1)?.options ?? []}
+            value={offices}
+            onChange={setOffices}
             multiple={true}
             searchable={true}
             showSelectAll={true}
@@ -422,11 +465,11 @@ export const ComplexExample: Story = {
             size="md"
           />
           <Select
-            label="Партнеры"
-            placeholder="Выберите партнеров"
+            label="Команды"
+            placeholder="Выберите команды"
             options={groupedOptions}
-            value={partners}
-            onChange={setPartners}
+            value={teams}
+            onChange={setTeams}
             multiple={true}
             searchable={true}
             showSelectAll={true}
@@ -446,15 +489,15 @@ export const WithAsyncSearch: Story = {
 
     const handleSearch = (query: string) => {
       const allOptions: SelectOption[] = [
-        { label: 'MIXIT BODY', value: 'mixit-body' },
-        { label: 'MIXIT LAB', value: 'mixit-lab' },
-        { label: 'MIXIT CARE', value: 'mixit-care' },
-        { label: 'MIXIT HOME', value: 'mixit-home' },
-        { label: 'Скраб для тела', value: 'body-scrub' },
-        { label: 'Лосьон для тела', value: 'body-lotion' },
-        { label: 'Крем для лица', value: 'face-cream' },
-        { label: 'Маска для лица', value: 'face-mask' },
-        { label: 'Сыворотка для лица', value: 'face-serum' },
+        { label: 'Дизайн', value: 'design' },
+        { label: 'Разработка', value: 'dev' },
+        { label: 'Маркетинг', value: 'marketing' },
+        { label: 'Поддержка', value: 'support' },
+        { label: 'Аналитика', value: 'analytics' },
+        { label: 'Финансы', value: 'finance' },
+        { label: 'HR', value: 'hr' },
+        { label: 'Юридический', value: 'legal' },
+        { label: 'Операции', value: 'ops' },
       ];
 
       return new Promise<void>((resolve) => {

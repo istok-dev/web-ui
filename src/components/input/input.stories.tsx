@@ -31,7 +31,7 @@ const meta: Meta<typeof Input> = {
     },
     variant: {
       control: 'select',
-      options: ['neutral', 'solid', 'outline', 'opacity', 'filled'],
+      options: ['neutral', 'solid', 'opacity', 'filled'],
       description: 'Вариант стиля инпута',
     },
     startIcon: {
@@ -226,7 +226,6 @@ export const Variants: Story = {
     const [value2, setValue2] = useState('');
     const [value3, setValue3] = useState('');
     const [value4, setValue4] = useState('');
-    const [value5, setValue5] = useState('');
 
     return (
       <div className="flex w-80 flex-col gap-4">
@@ -249,19 +248,10 @@ export const Variants: Story = {
           />
         </div>
         <div>
-          <label className="mb-1 block text-body-sm text-neutral-600">Outline</label>
+          <label className="mb-1 block text-body-sm text-neutral-600">Opacity</label>
           <Input
             value={value3}
             onChange={setValue3}
-            placeholder="Outline вариант"
-            variant="outline"
-          />
-        </div>
-        <div>
-          <label className="mb-1 block text-body-sm text-neutral-600">Opacity</label>
-          <Input
-            value={value4}
-            onChange={setValue4}
             placeholder="Opacity вариант"
             variant="opacity"
             className="bg-neutral-800"
@@ -270,8 +260,8 @@ export const Variants: Story = {
         <div>
           <label className="mb-1 block text-body-sm text-neutral-600">Filled</label>
           <Input
-            value={value5}
-            onChange={setValue5}
+            value={value4}
+            onChange={setValue4}
             placeholder="Filled вариант"
             variant="filled"
           />
@@ -402,7 +392,7 @@ export const ComplexExample: Story = {
             placeholder="Поиск..."
             startIcon={Search}
             size="md"
-            variant="outline"
+            variant="neutral"
           />
         </div>
 

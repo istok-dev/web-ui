@@ -88,19 +88,6 @@
   --istok-input-placeholder: var(--color-text-muted);
 }
 
-@utility istok-input__input--outline {
-  --istok-input-bg: var(--color-surface-muted);
-  --istok-input-bg-hover: var(--color-surface-muted);
-  --istok-input-bg-focus: var(--color-surface-muted);
-  --istok-input-border-color: transparent;
-  --istok-input-border-width: 0px;
-  --istok-input-border-focus: transparent;
-  --istok-input-ring: inset 0 0 0 2px var(--focus-ring-color);
-  --istok-input-focus-shadow: var(--istok-input-ring);
-  --istok-input-fg: var(--color-text-strong);
-  --istok-input-placeholder: var(--color-text-muted);
-}
-
 @utility istok-input__input--opacity {
   --istok-input-bg: color-mix(
     in srgb,

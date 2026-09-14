@@ -55,9 +55,8 @@ export const Default: Story = {
   render: args => (
     <Accordion {...args}>
       <Accordion.Item value="item1" title="Title h3">
-        Целевая аудитория по-прежнему востребована. Диктат потребителя
-        конкурентоспособен. Российская специфика обуславливает потребительский
-        рынок.
+        Пример текста внутри аккордеона. Здесь может быть описание, подсказка
+        или любой другой контент.
       </Accordion.Item>
       <Accordion.Item
         value="item2"
@@ -71,7 +70,7 @@ export const Default: Story = {
         title="Title h3"
         description="Контент монтируется при разворачивании"
       >
-        Целевая аудитория по-прежнему востребована.
+        Пример текста внутри аккордеона.
       </Accordion.Item>
     </Accordion>
   ),
@@ -85,14 +84,13 @@ export const SizeH4: Story = {
         value="item1"
         title="forceOpened | h4"
       >
-        Целевая аудитория по-прежнему востребована. Диктат потребителя
-        конкурентоспособен.
+        Пример текста внутри аккордеона.
       </Accordion.Item>
       <Accordion.Item
         value="item2"
         title="statusIcon — warning"
       >
-        Российская специфика обуславливает потребительский рынок.
+        Пример текста внутри аккордеона.
       </Accordion.Item>
       <Accordion.Item
         value="item3"
@@ -110,7 +108,7 @@ export const SizeH5: Story = {
   render: () => (
     <Accordion size="sm" multiple defaultValue={['item1']}>
       <Accordion.Item value="item1" title="Collapsible | h5">
-        Целевая аудитория по-прежнему востребована.
+        Пример текста внутри аккордеона.
       </Accordion.Item>
       <Accordion.Item
         value="item2"
@@ -132,8 +130,7 @@ export const WithIcon: Story = {
         title="Icon | collapsible"
         icon={Calendar}
       >
-        Целевая аудитория по-прежнему востребована. Диктат потребителя
-        конкурентоспособен.
+        Пример текста внутри аккордеона.
       </Accordion.Item>
       <Accordion.Item
         value="item2"

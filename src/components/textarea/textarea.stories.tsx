@@ -49,9 +49,9 @@ export const Default: Story = {
   },
   args: {
     placeholder:
-      'Пара слов о поводе — что за встреча, нужен ли подарок вообще',
+      'Кратко опишите задачу или оставьте комментарий',
     size: 'md',
-    variant: 'outline',
+    variant: 'neutral',
     rows: 3,
   },
 };
@@ -66,12 +66,12 @@ export const WithField: Story = {
             mb-1.5 block text-control-md font-medium text-neutral-950
           "
           >
-            Описание для гостей
+            Описание
           </Field.Label>
           <Textarea
             value={value}
             onChange={setValue}
-            placeholder="Пара слов о поводе — что за встреча, нужен ли подарок вообще"
+            placeholder="Кратко опишите задачу или оставьте комментарий"
             rows={3}
           />
         </Field>
@@ -90,20 +90,20 @@ export const Variants: Story = {
         <Textarea
           value={a}
           onChange={setA}
-          variant="outline"
-          placeholder="Outline"
-        />
-        <Textarea
-          value={b}
-          onChange={setB}
           variant="neutral"
           placeholder="Neutral"
         />
         <Textarea
-          value={c}
-          onChange={setC}
+          value={b}
+          onChange={setB}
           variant="solid"
           placeholder="Solid"
+        />
+        <Textarea
+          value={c}
+          onChange={setC}
+          variant="filled"
+          placeholder="Filled"
         />
       </div>
     );

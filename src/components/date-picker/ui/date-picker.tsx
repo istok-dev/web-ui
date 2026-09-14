@@ -136,7 +136,7 @@ export function DatePicker({
           align="start"
           sideOffset={4}
           {...positionerProps}
-          className={cn('z-50', positionerProps?.className)}
+          className={cn('z-100', positionerProps?.className)}
         >
           <Popover.Popup
             className={cn(

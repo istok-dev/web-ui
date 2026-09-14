@@ -8,10 +8,10 @@ import { Modal } from './index';
 import type { SelectOption } from '../select/select.types';
 
 const selectOptions: SelectOption[] = [
-  { label: 'MIXIT BODY', value: 'mixit-body' },
-  { label: 'MIXIT LAB', value: 'mixit-lab' },
-  { label: 'MIXIT CARE', value: 'mixit-care' },
-  { label: 'MIXIT HOME', value: 'mixit-home' },
+  { label: 'Дизайн', value: 'design' },
+  { label: 'Разработка', value: 'dev' },
+  { label: 'Маркетинг', value: 'marketing' },
+  { label: 'Поддержка', value: 'support' },
 ];
 
 const meta: Meta<typeof Modal> = {
@@ -131,12 +131,12 @@ export const WithFooterSlots: Story = {
         </Button>
         <Modal open={open} onOpenChange={setOpen}>
           <Modal.Header
-            title="Удалить список"
+            title="Удалить проект"
             description="Действие необратимо"
           />
           <Modal.Body>
             <div className="text-control-md text-neutral-800">
-              Список и все желания внутри будут удалены без возможности
+              Проект и все связанные данные будут удалены без возможности
               восстановления.
             </div>
           </Modal.Body>
@@ -291,14 +291,14 @@ export const WithSelect: Story = {
           Открыть с селектом
         </Button>
         <Modal open={open} onOpenChange={setOpen}>
-          <Modal.Header title="Выбор группы" />
+          <Modal.Header title="Выбор отдела" />
           <Modal.Body>
             <div className="flex flex-col gap-4">
               <p className="text-control-md text-neutral-800">
-                Выберите группу отчётности для настройки фильтра.
+                Выберите отдел для настройки фильтра.
               </p>
               <Select
-                label="Группы отчётности"
+                label="Отделы"
                 placeholder="Выберите..."
                 options={selectOptions}
                 value={value}

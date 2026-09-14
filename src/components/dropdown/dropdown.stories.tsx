@@ -80,10 +80,10 @@ export const NestedMenu: Story = {
                 truncate text-control-md font-semibold text-text-strong
               "
               >
-                Кофемолка Timemore
+                Проект «Северный»
               </div>
               <div className="truncate text-control-sm text-text-muted">
-                6 900 ₽ · свободно
+                В работе · 3 участника
               </div>
             </div>
           </div>

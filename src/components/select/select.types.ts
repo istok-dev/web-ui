@@ -15,7 +15,9 @@ export type SelectGroup = {
 
 export type SelectOptions = SelectOption[] | SelectGroup[];
 
-export type SelectVariant = 'solid' | 'outline' | 'filled';
+export const SELECT_VARIANTS = ['neutral', 'solid', 'filled'] as const;
+
+export type SelectVariant = (typeof SELECT_VARIANTS)[number];
 
 export type Classes = 'positioner' | 'popup' | 'trigger';
 

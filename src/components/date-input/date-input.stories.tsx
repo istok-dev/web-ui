@@ -1,8 +1,11 @@
+import { Dialog as BaseDialog } from '@base-ui/react/dialog';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 
 import { DateInput } from './index';
+import { Button } from '../button';
 import { Field } from '../field';
+import { Modal } from '../modal';
 
 const meta: Meta<typeof DateInput> = {
   title: 'Components/DateInput',
@@ -31,7 +34,7 @@ const meta: Meta<typeof DateInput> = {
     },
     variant: {
       control: 'select',
-      options: ['neutral', 'solid', 'outline', 'opacity', 'filled'],
+      options: ['neutral', 'solid', 'opacity', 'filled'],
       description: 'Вариант стиля',
     },
     disabled: {
@@ -159,6 +162,60 @@ export const WithField: Story = {
           <DateInput value={value} onChange={setValue} />
         </Field>
       </div>
+    );
+  },
+};
+
+export const InModal: Story = {
+  render: function InModalStory() {
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState<Date | undefined>(undefined);
+
+    return (
+      <>
+        <Button variant="primary" onClick={() => setOpen(true)}>
+          Открыть модальное окно
+        </Button>
+        <Modal open={open} onOpenChange={setOpen}>
+          <Modal.Header
+            title="Выбор даты"
+            description="Календарь открывается поверх модального окна"
+          />
+          <Modal.Body>
+            <Field>
+              <Field.Label className="
+                mb-1.5 block text-control-md font-medium text-neutral-950
+              "
+              >
+                Дата
+              </Field.Label>
+              <DateInput value={value} onChange={setValue} />
+            </Field>
+          </Modal.Body>
+          <Modal.Footer>
+            <BaseDialog.Close
+              render={closeProps => (
+                <Button
+                  {...closeProps}
+                  variant="secondary"
+                  color="neutral"
+                  size="md"
+                >
+                  Отмена
+                </Button>
+              )}
+            />
+            <Button
+              variant="primary"
+              color="primary"
+              size="md"
+              onClick={() => setOpen(false)}
+            >
+              Применить
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
     );
   },
 };

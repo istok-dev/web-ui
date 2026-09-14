@@ -1,3 +1,4 @@
+import type { useRender } from '@base-ui/react/use-render';
 import type { PropsWithChildren, ReactNode } from 'react';
 
 export type ModalProps = PropsWithChildren<
@@ -20,10 +21,10 @@ export type ModalHeaderProps = PropsWithChildren<{
 
 export type ModalBodyProps = PropsWithChildren<unknown>;
 
-export type ModalFooterProps = PropsWithChildren<{
+export type ModalFooterProps = useRender.ComponentProps<'div'> & {
   start?: ReactNode;
   end?: ReactNode;
-}>;
+};
 
 export type ModalHeaderFC = {
   (props: ModalHeaderProps): React.ReactNode;

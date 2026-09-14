@@ -83,20 +83,20 @@ export const Field: Story = {
     return (
       <Switch.FieldList className="w-120">
         <Switch.Field
-          label="Показывать цены гостям"
-          description="Иначе гости увидят только название и ссылку"
+          label="Показывать email в профиле"
+          description="Иначе адрес останется скрытым"
           checked={prices}
           onChange={setPrices}
         />
         <Switch.Field
-          label="Разрешить складчину"
-          description="Гости смогут скидываться на дорогие желания"
+          label="Разрешить комментарии"
+          description="Другие участники смогут оставлять комментарии"
           checked={pooling}
           onChange={setPooling}
         />
         <Switch.Field
-          label="Скрывать брони от меня"
-          description="Вы не узнаете, что уже забронировано — сюрприз целиком"
+          label="Скрывать статус онлайн"
+          description="Другие не увидят, что вы в сети"
           checked={hide}
           onChange={setHide}
         />
@@ -116,8 +116,8 @@ export const FieldInSoftCard: Story = {
         className="w-105"
       >
         <Switch.Field
-          label="Соредакторы могут приглашать других"
-          description="Иначе добавлять людей можете только вы"
+          label="Участники могут приглашать других"
+          description="Иначе приглашать можете только вы"
           checked={checked}
           onChange={setChecked}
           className="py-0"
