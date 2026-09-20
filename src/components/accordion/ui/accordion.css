@@ -36,18 +36,3 @@
   --istok-accordion-content-line-height: 1.625;
   --istok-accordion-icon-fg: var(--color-text-secondary);
 }
-
-@media (width < 768px) {
-  .istok-accordion--md {
-    --istok-accordion-item-padding: var(--spacing-4);
-    --istok-accordion-item-gap: var(--spacing-3);
-    --istok-accordion-icon-size: var(--spacing-5);
-    --istok-accordion-title-font-size: var(--text-title-md);
-    --istok-accordion-title-line-height: var(--text-title-md--line-height);
-    --istok-accordion-title-letter-spacing: var(--text-title-md--letter-spacing);
-    --istok-accordion-description-font-size: var(--text-body-sm);
-    --istok-accordion-description-line-height: var(--text-body-sm--line-height);
-    --istok-accordion-content-font-size: var(--text-body-md);
-    --istok-accordion-header-gap: var(--spacing-3);
-  }
-}

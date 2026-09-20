@@ -3,8 +3,6 @@
 import { Accordion as BaseAccordion } from '@base-ui/react/accordion';
 import { ChevronDown } from 'lucide-react';
 import {
-  createContext,
-  use,
   useRef,
   useState,
   type ComponentProps,
@@ -26,10 +24,6 @@ const sizeClassesMap: Record<AccordionSize, string> = {
   md: 'istok-accordion--md',
 };
 
-const AccordionContext = createContext<{ size: AccordionSize }>({
-  size: 'md',
-});
-
 function AccordionRoot({
   children,
   className,
@@ -37,6 +31,7 @@ function AccordionRoot({
   defaultValue,
   onValueChange,
   multiple = false,
+  keepMounted = false,
   size = 'md',
 }: AccordionRootProps) {
   const [internalValue, setInternalValue]
@@ -50,32 +45,31 @@ function AccordionRoot({
   };
 
   return (
-    <AccordionContext value={{ size }}>
-      <div
-        className={cn(
-          'istok-accordion',
-          'istok-accordion--default',
-          sizeClassesMap[size],
-          className,
-        )}
+    <div
+      className={cn(
+        'istok-accordion',
+        'istok-accordion--default',
+        sizeClassesMap[size],
+        className,
+      )}
+    >
+      <BaseAccordion.Root
+        className="flex flex-col gap-2"
+        {...(isControlled
+          ? {
+            value,
+            onValueChange: handleValueChange,
+          }
+          : {
+            defaultValue,
+            onValueChange: handleValueChange,
+          }) as Partial<ComponentProps<typeof BaseAccordion.Root>>}
+        multiple={multiple}
+        keepMounted={keepMounted}
       >
-        <BaseAccordion.Root
-          className="flex flex-col gap-2"
-          {...(isControlled
-            ? {
-              value,
-              onValueChange: handleValueChange,
-            }
-            : {
-              defaultValue,
-              onValueChange: handleValueChange,
-            }) as Partial<ComponentProps<typeof BaseAccordion.Root>>}
-          multiple={multiple}
-        >
-          {children}
-        </BaseAccordion.Root>
-      </div>
-    </AccordionContext>
+        {children}
+      </BaseAccordion.Root>
+    </div>
   );
 }
 
@@ -88,7 +82,6 @@ const AccordionItemComponent: FC<AccordionItemProps> = ({
   children,
   className,
 }) => {
-  const { size } = use(AccordionContext);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
   const handleItemClick = (event: MouseEvent<HTMLDivElement>) => {
@@ -105,8 +98,6 @@ const AccordionItemComponent: FC<AccordionItemProps> = ({
       onClick={handleItemClick}
       className={cn(
         'istok-accordion__item',
-        sizeClassesMap[size],
-        'istok-accordion--default',
         'cursor-pointer',
         'bg-(--istok-accordion-item-bg)',
         'rounded-(--istok-accordion-item-radius)',

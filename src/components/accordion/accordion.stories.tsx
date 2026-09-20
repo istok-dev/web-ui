@@ -41,6 +41,10 @@ const meta: Meta<typeof Accordion> = {
       control: 'boolean',
       description: 'Несколько открытых пунктов. API не меняется.',
     },
+    keepMounted: {
+      control: 'boolean',
+      description: 'Держать контент панелей в DOM, скрывать через CSS.',
+    },
   },
 };
 
@@ -151,6 +155,23 @@ export const ExpandedByDefault: Story = {
     <Accordion defaultValue="item1">
       <Accordion.Item value="item1" title="Открыт по умолчанию">
         Этот пункт открыт по умолчанию благодаря defaultValue на корне.
+      </Accordion.Item>
+    </Accordion>
+  ),
+};
+
+export const KeepMounted: Story = {
+  args: {
+    keepMounted: true,
+  },
+  render: args => (
+    <Accordion {...args}>
+      <Accordion.Item value="item1" title="Контент всегда в DOM">
+        Закрытая панель остаётся смонтированной и скрывается через CSS.
+        Удобно, если внутри нужен сохранённый стейт или тяжёлый mount.
+      </Accordion.Item>
+      <Accordion.Item value="item2" title="Второй пункт">
+        Откройте DevTools: оба panel-узла присутствуют в дереве.
       </Accordion.Item>
     </Accordion>
   ),
