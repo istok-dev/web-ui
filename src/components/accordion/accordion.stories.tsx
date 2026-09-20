@@ -13,7 +13,7 @@ const meta: Meta<typeof Accordion> = {
   },
   decorators: [
     Story => (
-      <div className="w-lg">
+      <div className="w-[800px] rounded-3xl bg-neutral-100 p-6">
         <Story />
       </div>
     ),
@@ -23,7 +23,7 @@ const meta: Meta<typeof Accordion> = {
     size: {
       control: 'select',
       options: ACCORDION_SIZES,
-      description: 'Типографика заголовка (Nova: h3 | h4 | h5)',
+      description: 'sm — мобильный / вложенный; md — страницы (ниже 768px как sm)',
     },
     defaultValue: {
       control: 'object',
@@ -31,7 +31,7 @@ const meta: Meta<typeof Accordion> = {
     },
     value: {
       control: false,
-      description: 'Контролируемое значение',
+      description: 'Контролируемое значение. Не меняется вместе с size.',
     },
     onValueChange: {
       action: 'onValueChange',
@@ -39,7 +39,7 @@ const meta: Meta<typeof Accordion> = {
     },
     multiple: {
       control: 'boolean',
-      description: 'Несколько открытых пунктов (Nova: collapsible)',
+      description: 'Несколько открытых пунктов. API не меняется.',
     },
   },
 };
@@ -50,73 +50,68 @@ type Story = StoryObj<typeof Accordion>;
 
 export const Default: Story = {
   args: {
-    size: 'lg',
+    size: 'md',
   },
   render: args => (
-    <Accordion {...args}>
-      <Accordion.Item value="item1" title="Title h3">
-        Пример текста внутри аккордеона. Здесь может быть описание, подсказка
-        или любой другой контент.
+    <Accordion {...args} defaultValue="item1">
+      <Accordion.Item value="item1" title="Как работает вишлист?">
+        Откройте пункт, чтобы прочитать ответ. Карточка без бордера,
+        тень появляется при наведении.
       </Accordion.Item>
-      <Accordion.Item
-        value="item2"
-        title="Title h3"
-        description="Примеры наполнения контента"
-      >
-        Просто текст внутри аккордеона.
+      <Accordion.Item value="item2" title="Можно ли открыть несколько сразу?">
+        По умолчанию нет. Включите multiple на корне.
       </Accordion.Item>
-      <Accordion.Item
-        value="item3"
-        title="Title h3"
-        description="Контент монтируется при разворачивании"
-      >
-        Пример текста внутри аккордеона.
+      <Accordion.Item value="item3" title="Где шеврон?">
+        Один chevron-down, контейнер поворачивается на 180°.
       </Accordion.Item>
     </Accordion>
   ),
 };
 
-export const SizeH4: Story = {
-  name: 'Size h4',
+export const DsCard: Story = {
+  name: '@dsCard',
   render: () => (
-    <Accordion size="md" defaultValue="item1">
-      <Accordion.Item
-        value="item1"
-        title="forceOpened | h4"
-      >
-        Пример текста внутри аккордеона.
-      </Accordion.Item>
-      <Accordion.Item
-        value="item2"
-        title="statusIcon — warning"
-      >
-        Пример текста внутри аккордеона.
-      </Accordion.Item>
-      <Accordion.Item
-        value="item3"
-        title="statusIcon — info"
-      >
-        Content Text. Contrary to popular belief, Lorem Ipsum is not simply
-        random text.
-      </Accordion.Item>
-    </Accordion>
+    <div className="flex flex-col gap-8">
+      <section className="flex flex-col gap-3">
+        <span className="text-body-sm text-text-secondary">
+          size=&quot;md&quot; — открыт, закрыт, наведите для тени
+        </span>
+        <Accordion size="md" defaultValue="open">
+          <Accordion.Item value="open" title="Открытый пункт">
+            Тело --text-body-lg, цвет --text-secondary, отступ сверху 16.
+            Наведите, чтобы увидеть --shadow-md.
+          </Accordion.Item>
+          <Accordion.Item value="closed" title="Закрытый пункт">
+            Этот текст виден только после раскрытия.
+          </Accordion.Item>
+        </Accordion>
+      </section>
+      <section className="flex flex-col gap-3">
+        <span className="text-body-sm text-text-secondary">
+          size=&quot;sm&quot; — открыт, закрыт, наведите для тени
+        </span>
+        <Accordion size="sm" defaultValue="open">
+          <Accordion.Item value="open" title="Открытый пункт, размер sm">
+            Паддинг 16, заголовок --text-title-md, тело --text-body-md.
+          </Accordion.Item>
+          <Accordion.Item value="closed" title="Закрытый пункт, размер sm">
+            Этот текст виден только после раскрытия.
+          </Accordion.Item>
+        </Accordion>
+      </section>
+    </div>
   ),
 };
 
-export const SizeH5: Story = {
-  name: 'Size h5 + collapsible',
+export const SizeSm: Story = {
+  name: 'Size sm',
   render: () => (
-    <Accordion size="sm" multiple defaultValue={['item1']}>
-      <Accordion.Item value="item1" title="Collapsible | h5">
-        Пример текста внутри аккордеона.
+    <Accordion size="sm" defaultValue="item1">
+      <Accordion.Item value="item1" title="Компактный размер">
+        Для мобильного, карточек и модалок.
       </Accordion.Item>
-      <Accordion.Item
-        value="item2"
-        title="Кастомный заголовок"
-        description="Можно открыть несколько пунктов"
-      >
-        ContentText. Contrary to popular belief, Lorem Ipsum is not simply
-        random text.
+      <Accordion.Item value="item2" title="Второй пункт">
+        Расстояние между карточками всегда 8px.
       </Accordion.Item>
     </Accordion>
   ),
@@ -127,7 +122,7 @@ export const WithIcon: Story = {
     <Accordion size="md" multiple>
       <Accordion.Item
         value="item1"
-        title="Icon | collapsible"
+        title="С иконкой"
         icon={Calendar}
       >
         Пример текста внутри аккордеона.
@@ -138,8 +133,7 @@ export const WithIcon: Story = {
         description="description"
         icon={Info}
       >
-        ContentText. Contrary to popular belief, Lorem Ipsum is not simply
-        random text.
+        Дополнительный текст.
       </Accordion.Item>
       <Accordion.Item
         value="item3"

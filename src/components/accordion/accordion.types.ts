@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 
 export type AccordionValue = string | string[] | undefined;
 
-export const ACCORDION_SIZES = ['sm', 'md', 'lg'] as const;
+export const ACCORDION_SIZES = ['sm', 'md'] as const;
 
 export type AccordionSize = (typeof ACCORDION_SIZES)[number];
 
@@ -16,8 +16,12 @@ export type AccordionRootProps = {
   defaultValue?: AccordionValue;
   /** Колбэк при смене открытого пункта */
   onValueChange?: (value: AccordionValue) => void;
-  /** Разрешить несколько открытых пунктов */
+  /** Разрешить несколько открытых пунктов. Не влияет на внешний вид. */
   multiple?: boolean;
+  /**
+   * `md` — страницы (паддинг 24). `sm` — мобильный, карточки и модалки (паддинг 16).
+   * Ниже 768px `md` использует метрики `sm`.
+   */
   size?: AccordionSize;
 };
 

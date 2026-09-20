@@ -1,13 +1,15 @@
+'use client';
+
 import { Accordion as BaseAccordion } from '@base-ui/react/accordion';
-import {
-  ChevronDown,
-} from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import {
   createContext,
   use,
+  useRef,
   useState,
   type ComponentProps,
   type FC,
+  type MouseEvent,
 } from 'react';
 
 import { cn } from '@/utils/cn';
@@ -20,13 +22,12 @@ import type {
 } from '../accordion.types';
 
 const sizeClassesMap: Record<AccordionSize, string> = {
-  lg: 'istok-accordion--lg',
-  md: 'istok-accordion--md',
   sm: 'istok-accordion--sm',
+  md: 'istok-accordion--md',
 };
 
 const AccordionContext = createContext<{ size: AccordionSize }>({
-  size: 'lg',
+  size: 'md',
 });
 
 function AccordionRoot({
@@ -36,7 +37,7 @@ function AccordionRoot({
   defaultValue,
   onValueChange,
   multiple = false,
-  size = 'lg',
+  size = 'md',
 }: AccordionRootProps) {
   const [internalValue, setInternalValue]
     = useState<AccordionValue>(defaultValue);
@@ -59,7 +60,7 @@ function AccordionRoot({
         )}
       >
         <BaseAccordion.Root
-          className="flex flex-col gap-(--istok-accordion-gap)"
+          className="flex flex-col gap-2"
           {...(isControlled
             ? {
               value,
@@ -88,62 +89,73 @@ const AccordionItemComponent: FC<AccordionItemProps> = ({
   className,
 }) => {
   const { size } = use(AccordionContext);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  const handleItemClick = (event: MouseEvent<HTMLDivElement>) => {
+    const trigger = triggerRef.current;
+    if (!trigger) return;
+    if (trigger.contains(event.target as Node)) return;
+
+    trigger.click();
+  };
 
   return (
     <BaseAccordion.Item
       value={itemValue}
+      onClick={handleItemClick}
       className={cn(
         'istok-accordion__item',
         sizeClassesMap[size],
         'istok-accordion--default',
-        `
-          border-b border-(--istok-accordion-divider) bg-(--istok-accordion-bg)
-          px-(--istok-accordion-padding-inline)
-          py-(--istok-accordion-padding-block)
-          last:border-b-0
-        `,
+        'cursor-pointer',
+        'bg-(--istok-accordion-item-bg)',
+        'rounded-(--istok-accordion-item-radius)',
+        'p-(--istok-accordion-item-padding)',
+        'shadow-(--istok-accordion-item-shadow)',
+        'hover:shadow-(--istok-accordion-item-shadow-hover)',
+        '[transition:box-shadow_150ms_ease]',
         className,
       )}
     >
-      <BaseAccordion.Header>
+      <BaseAccordion.Header className="m-0">
         <BaseAccordion.Trigger
+          ref={triggerRef}
           className={cn(
             'istok-accordion__trigger group',
-            'flex w-full cursor-pointer items-start',
+            'flex w-full cursor-pointer items-center',
             'gap-(--istok-accordion-header-gap)',
             'text-left outline-none',
+            'focus-visible:[box-shadow:inset_0_0_0_2px_var(--focus-ring-color)]',
           )}
         >
           {Icon && (
             <Icon
               {...iconProps}
               className={cn(
-                'istok-accordion__icon shrink-0',
+                'istok-accordion__leading-icon shrink-0',
                 'size-(--istok-accordion-icon-size)',
                 'text-(--istok-accordion-icon-fg)',
-                'mt-0.5',
                 iconProps?.className,
               )}
             />
           )}
 
           <div className="flex min-w-0 flex-1 flex-col gap-1">
-            <div className="flex items-center gap-2">
-              <span
-                className={cn(
-                  'istok-accordion__title',
-                  `
-                    text-(length:--istok-accordion-title-font-size)
-                    leading-(--istok-accordion-title-line-height)
-                    font-(--istok-accordion-title-font-weight)
-                    tracking-(--istok-accordion-title-letter-spacing)
-                    text-(--istok-accordion-title-fg)
-                  `,
-                )}
-              >
-                {title}
-              </span>
-            </div>
+            <span
+              className={cn(
+                'istok-accordion__title',
+                'flex min-w-0 items-center gap-3',
+                `
+                  text-(length:--istok-accordion-title-font-size)
+                  leading-(--istok-accordion-title-line-height)
+                  font-(--istok-accordion-title-font-weight)
+                  tracking-(--istok-accordion-title-letter-spacing)
+                  text-(--istok-accordion-title-fg)
+                `,
+              )}
+            >
+              {title}
+            </span>
             {description != null && description !== '' && (
               <span
                 className={cn(
@@ -160,15 +172,18 @@ const AccordionItemComponent: FC<AccordionItemProps> = ({
             )}
           </div>
 
-          <ChevronDown
+          <span
+            aria-hidden
             className={cn(
-              'istok-accordion__chevron shrink-0',
-              'size-(--istok-accordion-chevron-size)',
-              'text-(--istok-accordion-chevron-fg)',
-              'mt-0.5 transition-transform duration-200',
+              'istok-accordion__icon inline-flex shrink-0',
+              'size-(--istok-accordion-icon-size)',
+              'text-(--istok-accordion-icon-fg)',
+              'rotate-0 [transition:transform_150ms_ease]',
               'group-data-panel-open:rotate-180',
             )}
-          />
+          >
+            <ChevronDown className="size-full" strokeWidth={1.9} />
+          </span>
         </BaseAccordion.Trigger>
       </BaseAccordion.Header>
 
@@ -177,7 +192,7 @@ const AccordionItemComponent: FC<AccordionItemProps> = ({
           className={cn(
             'istok-accordion__content',
             `
-              pt-(--istok-accordion-content-pt)
+              pt-(--istok-accordion-item-gap)
               text-(length:--istok-accordion-content-font-size)
               leading-(--istok-accordion-content-line-height)
               text-(--istok-accordion-content-fg)

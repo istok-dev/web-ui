@@ -37,6 +37,7 @@ const twMerge = extendTailwindMerge<
   | 'menu-item-variant'
   | 'alert-dialog-variant'
   | 'alert-dialog-align'
+  | 'accordion-size'
 >({
   extend: {
     classGroups: {
@@ -201,6 +202,7 @@ const twMerge = extendTailwindMerge<
         'istok-alert-dialog--left',
         'istok-alert-dialog--center',
       ],
+      'accordion-size': ['istok-accordion--sm', 'istok-accordion--md'],
     },
   },
 });
