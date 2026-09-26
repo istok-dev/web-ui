@@ -6,7 +6,12 @@ import type { FC } from 'react';
 import type { ToastData } from '../toast.types';
 import { ToastItem } from './toast';
 
-export const ToastContainer: FC = () => {
+type ToastContainerProps = {
+  /** aria-label кнопки закрытия тоста */
+  closeLabel?: string;
+};
+
+export const ToastContainer: FC<ToastContainerProps> = ({ closeLabel }) => {
   const { toasts } = BaseToast.useToastManager<ToastData>();
 
   return (
@@ -17,7 +22,7 @@ export const ToastContainer: FC = () => {
       >
         {toasts.map(toast => (
           <div key={toast.id} className="pointer-events-auto">
-            <ToastItem toast={toast} />
+            <ToastItem toast={toast} closeLabel={closeLabel} />
           </div>
         ))}
       </BaseToast.Viewport>

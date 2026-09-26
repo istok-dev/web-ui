@@ -28,4 +28,6 @@ export type TagProps = Omit<useRender.ComponentProps<'div', TagState>, 'children
   color?: TagColor;
   classes?: Partial<Record<Classes, string>>;
   onRemove?: (e: MouseEvent<HTMLButtonElement>) => void;
+  /** aria-label кнопки удаления */
+  removeLabel?: string;
 };

@@ -12,7 +12,7 @@ import { ru } from 'react-day-picker/locale';
 
 import { cn } from '@/utils/cn';
 
-import { Calendar } from '../../calendar';
+import { Calendar, type CalendarProps } from '../../calendar';
 
 export type DatePickerValue = PickerDateRange | undefined;
 
@@ -33,7 +33,7 @@ type CommonProps = PropsWithChildren<{
   };
   /** Доп. пропсы календаря */
   calendarProps?: Omit<
-    DayPickerProps,
+    CalendarProps,
     | 'mode'
     | 'selected'
     | 'onSelect'

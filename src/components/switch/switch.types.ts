@@ -1,6 +1,8 @@
-import type { PropsWithChildren } from 'react';
+import type { PropsWithChildren, Ref } from 'react';
 
-export type SwitchSize = 'sm' | 'md' | 'lg';
+export const SWITCH_SIZES = ['sm', 'md', 'lg'] as const;
+
+export type SwitchSize = (typeof SWITCH_SIZES)[number];
 
 export type SwitchPassThrough = {
   input?: Omit<
@@ -16,6 +18,8 @@ export type SwitchProps = {
   size?: SwitchSize;
   className?: string;
   disabled?: boolean;
+  /** Ref на нативный `<input>` (например, для react-hook-form `register`) */
+  ref?: Ref<HTMLInputElement>;
   pt?: SwitchPassThrough;
 } & Omit<React.LabelHTMLAttributes<HTMLLabelElement>, 'onChange'>;
 
@@ -36,6 +40,8 @@ export type SwitchFieldProps = {
   disabled?: boolean;
   className?: string;
   classes?: Partial<Record<SwitchFieldClasses, string>>;
+  /** Ref на нативный `<input>` (например, для react-hook-form `register`) */
+  ref?: Ref<HTMLInputElement>;
   pt?: SwitchPassThrough;
 } & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultChecked'>;
 

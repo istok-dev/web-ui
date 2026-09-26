@@ -1,7 +1,7 @@
 'use client';
 
 import { Info } from 'lucide-react';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 import { cn } from '@/utils/cn';
 
@@ -21,11 +21,12 @@ export const RadioItem: RadioItemFC = ({
   name,
   value,
   readOnly,
+  required,
   id,
+  ref,
   pt,
   ...rootProps
 }) => {
-  const inputRef = useRef<HTMLInputElement>(null);
   const [isChecked, setIsChecked] = useState(defaultChecked ?? false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,12 +48,13 @@ export const RadioItem: RadioItemFC = ({
         `,
         disabled && 'cursor-not-allowed opacity-50',
         className,
+        classes?.root,
       )}
     >
       <div className="relative mt-0.5 flex shrink-0 items-center justify-center">
         <input
           {...pt?.input}
-          ref={inputRef}
+          ref={ref}
           id={id}
           type="radio"
           name={name}
@@ -61,7 +63,8 @@ export const RadioItem: RadioItemFC = ({
           defaultChecked={defaultChecked}
           disabled={disabled}
           readOnly={readOnly}
-          className={cn('sr-only', pt?.input?.className)}
+          required={required}
+          className={cn('peer sr-only', pt?.input?.className)}
           onChange={handleChange}
         />
         <div
@@ -71,6 +74,7 @@ export const RadioItem: RadioItemFC = ({
               bg-transparent transition-all
             `,
             'size-(--istok-radio-input-size)',
+            'peer-focus-visible:[box-shadow:0_0_0_2px_var(--focus-ring-color)]',
             disabled && 'cursor-not-allowed',
             !disabled && 'cursor-pointer',
             radioChecked
@@ -137,9 +141,9 @@ export const RadioItem: RadioItemFC = ({
           )}
         </div>
         {description && (
-          <p
+          <span
             className={cn(
-              'istok-radio__item-description mt-0.5 text-neutral-500',
+              'istok-radio__item-description mt-0.5 block text-neutral-500',
               `
                 text-(length:--istok-radio-description-font-size)
                 leading-(--istok-radio-description-line-height)
@@ -148,7 +152,7 @@ export const RadioItem: RadioItemFC = ({
             )}
           >
             {description}
-          </p>
+          </span>
         )}
       </div>
     </label>

@@ -25,9 +25,11 @@ const variantIcons = {
 
 type ToastItemProps = {
   toast: ToastObject<ToastData>;
+  /** aria-label кнопки закрытия */
+  closeLabel?: string;
 };
 
-export const ToastItem: FC<ToastItemProps> = ({ toast }) => {
+export const ToastItem: FC<ToastItemProps> = ({ toast, closeLabel = 'Закрыть' }) => {
   const variant: ToastVariant = toast.data?.variant ?? 'info';
   const Icon = variantIcons[variant];
 
@@ -52,7 +54,7 @@ export const ToastItem: FC<ToastItemProps> = ({ toast }) => {
             shrink-0 transition-opacity
             hover:opacity-80
           "
-          aria-label="Закрыть"
+          aria-label={closeLabel}
         >
           <X size={18} />
         </BaseToast.Close>
@@ -64,9 +66,14 @@ export const ToastItem: FC<ToastItemProps> = ({ toast }) => {
 type ToastPreviewProps = {
   variant: ToastVariant;
   message: string;
+  closeLabel?: string;
 };
 
-export const ToastPreview: FC<ToastPreviewProps> = ({ variant, message }) => {
+export const ToastPreview: FC<ToastPreviewProps> = ({
+  variant,
+  message,
+  closeLabel = 'Закрыть',
+}) => {
   const Icon = variantIcons[variant];
 
   return (
@@ -87,7 +94,7 @@ export const ToastPreview: FC<ToastPreviewProps> = ({ variant, message }) => {
           shrink-0 transition-opacity
           hover:opacity-80
         "
-        aria-label="Закрыть"
+        aria-label={closeLabel}
       >
         <X size={18} />
       </button>

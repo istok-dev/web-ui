@@ -29,22 +29,22 @@ const logoComponentsMap: Record<
   LogoVariant,
   Record<LogoSize, FC<SVGProps<SVGSVGElement>>>
 > = {
-  default: {
+  'default': {
     sm: IstokDefaultSm,
     md: IstokDefaultMd,
     lg: IstokDefaultLg,
   },
-  icon: {
+  'icon': {
     sm: IstokIconSm,
     md: IstokIconMd,
     lg: IstokIconLg,
   },
-  dev: {
+  'dev': {
     sm: IstokDevSm,
     md: IstokDevMd,
     lg: IstokDevLg,
   },
-  text: {
+  'text': {
     sm: IstokTextSm,
     md: IstokTextMd,
     lg: IstokTextLg,

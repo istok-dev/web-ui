@@ -11,7 +11,14 @@ import type {
 export const BottomSheetHeader: BottomSheetHeaderFC = (
   props: BottomSheetHeaderProps,
 ) => {
-  const { title, description, children, onClose, showClose = true } = props;
+  const {
+    title,
+    description,
+    children,
+    onClose,
+    showClose = true,
+    closeLabel = 'Закрыть',
+  } = props;
 
   const renderTitle = () => {
     if (title) {
@@ -46,7 +53,7 @@ export const BottomSheetHeader: BottomSheetHeaderFC = (
             <button
               {...closeProps}
               type="button"
-              aria-label="Закрыть"
+              aria-label={closeLabel}
               onClick={(e) => {
                 onClose?.();
                 (

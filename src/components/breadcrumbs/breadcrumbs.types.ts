@@ -10,7 +10,9 @@ export type BreadcrumbsMobileLink = {
   ariaLabel?: string;
 };
 
-export type BreadcrumbsSize = 'lg' | 'md';
+export const BREADCRUMBS_SIZES = ['md', 'lg'] as const;
+
+export type BreadcrumbsSize = (typeof BREADCRUMBS_SIZES)[number];
 
 export type BreadcrumbsProps = {
   items: BreadcrumbItem[];

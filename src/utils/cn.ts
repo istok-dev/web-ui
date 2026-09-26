@@ -1,209 +1,114 @@
 import { clsx, type ClassValue } from 'clsx';
 import { extendTailwindMerge } from 'tailwind-merge';
 
-const twMerge = extendTailwindMerge<
-  | 'typography-size'
-  | 'icon-button-variant'
-  | 'icon-button-size'
-  | 'icon-button-shape'
-  | 'input-variant'
-  | 'input-size'
-  | 'card-padding'
-  | 'card-radius'
-  | 'card-variant'
-  | 'progress-color'
-  | 'textarea-variant'
-  | 'textarea-size'
-  | 'button-size'
-  | 'button-variant'
-  | 'button-color'
-  | 'checkbox-size'
-  | 'badge-size'
-  | 'badge-variant'
-  | 'badge-color'
-  | 'badge-shape'
-  | 'tag-size'
-  | 'tag-variant'
-  | 'tag-color'
-  | 'tabs-size'
-  | 'tabs-variant'
-  | 'avatar-size'
-  | 'avatar-shape'
-  | 'breadcrumbs-size'
-  | 'radio-size'
-  | 'select-size'
-  | 'select-variant'
-  | 'menu-item-size'
-  | 'menu-item-variant'
-  | 'alert-dialog-variant'
-  | 'alert-dialog-align'
-  | 'accordion-size'
->({
+import { ACCORDION_SIZES } from '../components/accordion/accordion.types';
+import { ALERT_DIALOG_ALIGNS, ALERT_DIALOG_VARIANTS } from '../components/alert-dialog/alert-dialog.types';
+import { AVATAR_SHAPES, AVATAR_SIZES } from '../components/avatar/avatar.types';
+import { BADGE_COLORS, BADGE_SHAPES, BADGE_SIZES, BADGE_VARIANTS } from '../components/badge/badge.types';
+import { BREADCRUMBS_SIZES } from '../components/breadcrumbs/breadcrumbs.types';
+import { BUTTON_COLORS, BUTTON_SIZES, BUTTON_VARIANTS } from '../components/button/button.types';
+import { CARD_PADDINGS, CARD_RADIUS, CARD_VARIANTS } from '../components/card/card.types';
+import { CHECKBOX_SIZES } from '../components/checkbox/checkbox.types';
+import {
+  ICON_BUTTON_COLORS,
+  ICON_BUTTON_SHAPES,
+  ICON_BUTTON_SIZES,
+  ICON_BUTTON_VARIANTS,
+} from '../components/icon-button/icon-button.types';
+import { INPUT_SIZES, INPUT_VARIANTS } from '../components/input/input.types';
+import { LOGO_SIZES } from '../components/logo/logo.types';
+import { MENU_ITEM_SIZES, MENU_ITEM_VARIANTS } from '../components/menu/menu.type';
+import { NUMBER_INPUT_SIZES, NUMBER_INPUT_VARIANTS } from '../components/number-input/number-input.types';
+import { PROGRESS_COLORS } from '../components/progress/progress.types';
+import { RADIO_SIZES } from '../components/radio/radio.types';
+import { RADIO_CARD_SIZES } from '../components/radio-card/radio-card.types';
+import { SELECT_SIZES, SELECT_VARIANTS } from '../components/select/select.types';
+import { SETTING_ROW_VARIANTS } from '../components/setting-row/setting-row.types';
+import { SWITCH_SIZES } from '../components/switch/switch.types';
+import { TABS_SIZES, TABS_VARIANTS } from '../components/tabs/tabs.type';
+import { TAG_COLORS, TAG_SIZES, TAG_VARIANTS } from '../components/tag/tag.types';
+import { TEXTAREA_SIZES, TEXTAREA_VARIANTS } from '../components/textarea/textarea.types';
+
+/** `modifiers('istok-button--', ['sm', 'md'])` → `['istok-button--sm', 'istok-button--md']` */
+const modifiers = (prefix: string, values: readonly string[]) =>
+  values.map(value => `${prefix}${value}`);
+
+/**
+ * Группы взаимоисключающих модификаторов: из двух классов одной группы
+ * `twMerge` оставляет последний, поэтому `className` может переопределить
+ * размер/вариант компонента. Группы строятся из тех же массивов констант,
+ * что и типы пропов, — новый размер или вариант попадает сюда автоматически.
+ */
+export const classGroups = {
+  'typography-size': [
+    'text-display-lg',
+    'text-display-md',
+    'text-headline-lg',
+    'text-headline-md',
+    'text-headline-sm',
+    'text-title-lg',
+    'text-title-md',
+    'text-title-sm',
+    'text-body-xl',
+    'text-body-lg',
+    'text-body-md',
+    'text-body-sm',
+    'text-body-xs',
+    'text-control-xl',
+    'text-control-lg',
+    'text-control-md',
+    'text-control-sm',
+    'text-control-xs',
+  ],
+  'accordion-size': modifiers('istok-accordion--', ACCORDION_SIZES),
+  'alert-dialog-variant': modifiers('istok-alert-dialog--', ALERT_DIALOG_VARIANTS),
+  'alert-dialog-align': modifiers('istok-alert-dialog--', ALERT_DIALOG_ALIGNS),
+  'avatar-size': modifiers('istok-avatar--', AVATAR_SIZES),
+  'avatar-shape': modifiers('istok-avatar--', AVATAR_SHAPES),
+  'badge-size': modifiers('istok-badge--', BADGE_SIZES),
+  'badge-variant': modifiers('istok-badge--', BADGE_VARIANTS),
+  'badge-color': modifiers('istok-badge--color-', BADGE_COLORS),
+  'badge-shape': modifiers('istok-badge--', BADGE_SHAPES),
+  'breadcrumbs-size': modifiers('istok-breadcrumbs--', BREADCRUMBS_SIZES),
+  'button-size': modifiers('istok-button--', BUTTON_SIZES),
+  'button-variant': modifiers('istok-button--', BUTTON_VARIANTS),
+  'button-color': modifiers('istok-button--color-', BUTTON_COLORS),
+  'card-padding': modifiers('istok-card--padding-', CARD_PADDINGS),
+  'card-radius': modifiers('istok-card--radius-', CARD_RADIUS),
+  'card-variant': modifiers('istok-card--', CARD_VARIANTS),
+  'checkbox-size': modifiers('istok-checkbox--', CHECKBOX_SIZES),
+  'icon-button-size': modifiers('istok-icon-button--', ICON_BUTTON_SIZES),
+  'icon-button-variant': modifiers('istok-icon-button--', ICON_BUTTON_VARIANTS),
+  'icon-button-color': modifiers('istok-icon-button--color-', ICON_BUTTON_COLORS),
+  'icon-button-shape': modifiers('istok-icon-button--', ICON_BUTTON_SHAPES),
+  'input-size': modifiers('istok-input--', INPUT_SIZES),
+  'input-variant': modifiers('istok-input__input--', INPUT_VARIANTS),
+  'logo-size': modifiers('istok-logo--', LOGO_SIZES),
+  'menu-item-size': modifiers('istok-menu-item--', MENU_ITEM_SIZES),
+  'menu-item-variant': modifiers('istok-menu-item--', MENU_ITEM_VARIANTS),
+  'number-input-size': modifiers('istok-number-input--', NUMBER_INPUT_SIZES),
+  'number-input-variant': modifiers('istok-number-input__input--', NUMBER_INPUT_VARIANTS),
+  'progress-color': modifiers('istok-progress--color-', PROGRESS_COLORS),
+  'radio-size': modifiers('istok-radio--', RADIO_SIZES),
+  'radio-card-size': modifiers('istok-radio-card--', RADIO_CARD_SIZES),
+  'select-size': modifiers('istok-select--', SELECT_SIZES),
+  'select-variant': modifiers('istok-select--', SELECT_VARIANTS),
+  'setting-row-variant': modifiers('istok-setting-row--', SETTING_ROW_VARIANTS),
+  'switch-size': modifiers('istok-switch--', SWITCH_SIZES),
+  'tabs-size': modifiers('istok-tabs--', TABS_SIZES),
+  'tabs-variant': modifiers('istok-tabs--', TABS_VARIANTS),
+  'tag-size': modifiers('istok-tag--', TAG_SIZES),
+  'tag-variant': modifiers('istok-tag--', TAG_VARIANTS),
+  'tag-color': modifiers('istok-tag--color-', TAG_COLORS),
+  'textarea-size': modifiers('istok-textarea--', TEXTAREA_SIZES),
+  'textarea-variant': modifiers('istok-textarea--', TEXTAREA_VARIANTS),
+};
+
+type ClassGroupId = keyof typeof classGroups;
+
+const twMerge = extendTailwindMerge<ClassGroupId>({
   extend: {
-    classGroups: {
-      'typography-size': [
-        'text-display-lg',
-        'text-display-md',
-        'text-headline-lg',
-        'text-headline-md',
-        'text-headline-sm',
-        'text-title-lg',
-        'text-title-md',
-        'text-title-sm',
-        'text-body-xl',
-        'text-body-lg',
-        'text-body-md',
-        'text-body-sm',
-        'text-body-xs',
-        'text-control-xl',
-        'text-control-lg',
-        'text-control-md',
-        'text-control-sm',
-        'text-control-xs',
-      ],
-      'avatar-size': ['istok-avatar--sm', 'istok-avatar--md', 'istok-avatar--lg'],
-      'avatar-shape': ['istok-avatar--circle', 'istok-avatar--square'],
-      'icon-button-variant': [
-        'istok-icon-button--primary',
-        'istok-icon-button--secondary',
-        'istok-icon-button--clear',
-        'istok-icon-button--clear-inverse',
-        'istok-icon-button--opacity',
-      ],
-      'icon-button-size': [
-        'istok-icon-button--sm',
-        'istok-icon-button--md',
-        'istok-icon-button--lg',
-      ],
-      'icon-button-shape': [
-        'istok-icon-button--circle',
-        'istok-icon-button--square',
-      ],
-      'input-variant': [
-        'istok-input__input--neutral',
-        'istok-input__input--solid',
-        'istok-input__input--opacity',
-        'istok-input__input--filled',
-      ],
-      'input-size': ['istok-input--sm', 'istok-input--md', 'istok-input--lg'],
-      'card-padding': [
-        'istok-card--padding-sm',
-        'istok-card--padding-md',
-        'istok-card--padding-lg',
-      ],
-      'card-radius': ['istok-card--radius-xl', 'istok-card--radius-2xl'],
-      'card-variant': ['istok-card--default', 'istok-card--soft'],
-      'progress-color': [
-        'istok-progress--color-primary',
-        'istok-progress--color-accent',
-        'istok-progress--color-success',
-        'istok-progress--color-warning',
-        'istok-progress--color-info',
-        'istok-progress--color-negative',
-        'istok-progress--color-neutral',
-      ],
-      'textarea-variant': [
-        'istok-textarea--neutral',
-        'istok-textarea--solid',
-        'istok-textarea--filled',
-      ],
-      'textarea-size': [
-        'istok-textarea--sm',
-        'istok-textarea--md',
-        'istok-textarea--lg',
-      ],
-      'button-size': [
-        'istok-button--sm',
-        'istok-button--md',
-        'istok-button--lg',
-        'istok-button--xl',
-      ],
-      'button-color': [
-        'istok-button--color-primary',
-        'istok-button--color-neutral',
-        'istok-button--color-negative',
-        'istok-button--color-warning',
-        'istok-button--color-info',
-        'istok-button--color-success',
-        'istok-button--color-accent',
-      ],
-      'button-variant': [
-        'istok-button--primary',
-        'istok-button--secondary',
-        'istok-button--clear',
-        'istok-button--clear-inverse',
-        'istok-button--opacity',
-        'istok-button--outline',
-        'istok-button--text',
-      ],
-      'checkbox-size': [
-        'istok-checkbox--sm',
-        'istok-checkbox--md',
-        'istok-checkbox--lg',
-      ],
-      'badge-size': ['istok-badge--sm', 'istok-badge--md', 'istok-badge--lg'],
-      'badge-color': [
-        'istok-badge--color-primary',
-        'istok-badge--color-neutral',
-        'istok-badge--color-negative',
-        'istok-badge--color-warning',
-        'istok-badge--color-info',
-        'istok-badge--color-success',
-        'istok-badge--color-accent',
-      ],
-      'badge-variant': [
-        'istok-badge--solid',
-        'istok-badge--ghost',
-        'istok-badge--inverse',
-        'istok-badge--outline',
-      ],
-      'badge-shape': ['istok-badge--square', 'istok-badge--rounded'],
-      'tag-size': ['istok-tag--sm', 'istok-tag--md', 'istok-tag--lg'],
-      'tag-color': [
-        'istok-tag--color-primary',
-        'istok-tag--color-neutral',
-        'istok-tag--color-negative',
-        'istok-tag--color-warning',
-        'istok-tag--color-info',
-        'istok-tag--color-success',
-        'istok-tag--color-accent',
-      ],
-      'tag-variant': ['istok-tag--solid', 'istok-tag--ghost', 'istok-tag--outline'],
-      'tabs-size': ['istok-tabs--sm', 'istok-tabs--md', 'istok-tabs--lg'],
-      'tabs-variant': [
-        'istok-tabs--line',
-        'istok-tabs--ghost',
-        'istok-tabs--solid',
-      ],
-      'breadcrumbs-size': ['istok-breadcrumbs--md', 'istok-breadcrumbs--lg'],
-      'radio-size': ['istok-radio--sm', 'istok-radio--md', 'istok-radio--lg'],
-      'select-size': ['istok-select--sm', 'istok-select--md', 'istok-select--lg'],
-      'select-variant': [
-        'istok-select--neutral',
-        'istok-select--solid',
-        'istok-select--filled',
-      ],
-      'menu-item-size': [
-        'istok-menu-item--sm',
-        'istok-menu-item--md',
-        'istok-menu-item--lg',
-      ],
-      'menu-item-variant': [
-        'istok-menu-item--base',
-        'istok-menu-item--brand',
-        'istok-menu-item--danger',
-      ],
-      'alert-dialog-variant': [
-        'istok-alert-dialog--negative',
-        'istok-alert-dialog--warning',
-        'istok-alert-dialog--info',
-      ],
-      'alert-dialog-align': [
-        'istok-alert-dialog--left',
-        'istok-alert-dialog--center',
-      ],
-      'accordion-size': ['istok-accordion--sm', 'istok-accordion--md'],
-    },
+    classGroups,
   },
 });
 

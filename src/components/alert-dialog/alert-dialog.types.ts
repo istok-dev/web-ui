@@ -35,8 +35,14 @@ export type AlertDialogProps = PropsWithChildren<{
   onCancel?: () => void;
   /** Текст кнопки действия */
   actionLabel: string;
-  /** Колбэк при нажатии действия */
-  onAction?: () => void;
+  /**
+   * Колбэк при нажатии действия. Если вернуть промис, до его завершения
+   * на кнопке показывается загрузка, а диалог нельзя закрыть. При ошибке
+   * диалог остаётся открытым.
+   */
+  // void | Promise: колбэк может ничего не возвращать или вернуть промис.
+  // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+  onAction?: () => void | Promise<unknown>;
   /** Закрывать ли диалог по клику на подложку */
   dismissOnBackdrop?: boolean;
   /** Дополнительный класс для popup */

@@ -25,7 +25,7 @@ export const Menu: MenuFC = (props) => {
 
   return (
     <div
-      className={cn(!unstyled && 'istok-menu relative', className)}
+      className={cn(!unstyled && 'relative istok-menu', className)}
       style={style}
     >
       {headerBlock}

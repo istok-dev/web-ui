@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeProps } from '@base-ui/react/merge-props';
 import { useRender } from '@base-ui/react/use-render';
 import { X } from 'lucide-react';
@@ -35,6 +37,7 @@ export const Tag: FC<TagProps> = ({
   startIcon: StartIcon,
   startIconProps,
   onRemove,
+  removeLabel = 'Удалить',
   endIconProps,
   classes,
   className,
@@ -97,7 +100,7 @@ export const Tag: FC<TagProps> = ({
               endIconProps?.className,
               classes?.endIcon,
             )}
-            aria-label="Remove tag"
+            aria-label={removeLabel}
           >
             <X
               {...endIconProps}

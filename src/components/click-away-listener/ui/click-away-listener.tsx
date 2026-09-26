@@ -1,34 +1,48 @@
 'use client';
 
+import { useRender } from '@base-ui/react/use-render';
 import { useEffect, useRef } from 'react';
 import type { FC } from 'react';
 
 import type { ClickAwayListenerProps } from '../click-away-listener.types';
 
-export const ClickAwayListener: FC<ClickAwayListenerProps> = (props) => {
-  const { children, onAwayClick, disabled = false } = props;
-
+export const ClickAwayListener: FC<ClickAwayListenerProps> = ({
+  onAwayClick,
+  disabled = false,
+  render,
+  ref,
+  ...props
+}) => {
   const elementRef = useRef<HTMLDivElement>(null);
+  // Последний колбэк храним в ref, чтобы inline-функция не переподписывала
+  // слушатель документа на каждом рендере.
+  const onAwayClickRef = useRef(onAwayClick);
+
+  useEffect(() => {
+    onAwayClickRef.current = onAwayClick;
+  });
 
   useEffect(() => {
     if (disabled) return;
 
-    const handleClickAway = (event: MouseEvent | TouchEvent) => {
-      const target = event.target as Node;
-
-      if (elementRef.current && !elementRef.current.contains(target)) {
-        onAwayClick(event);
+    const handlePointerDown = (event: PointerEvent) => {
+      const element = elementRef.current;
+      if (element && !element.contains(event.target as Node)) {
+        onAwayClickRef.current(event);
       }
     };
 
-    document.addEventListener('mousedown', handleClickAway, true);
-    document.addEventListener('touchstart', handleClickAway, true);
+    document.addEventListener('pointerdown', handlePointerDown, true);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickAway, true);
-      document.removeEventListener('touchstart', handleClickAway, true);
+      document.removeEventListener('pointerdown', handlePointerDown, true);
     };
-  }, [onAwayClick, disabled]);
+  }, [disabled]);
 
-  return <div ref={elementRef}>{children}</div>;
+  return useRender({
+    defaultTagName: 'div',
+    render,
+    ref: ref ? [elementRef, ref] : elementRef,
+    props,
+  });
 };

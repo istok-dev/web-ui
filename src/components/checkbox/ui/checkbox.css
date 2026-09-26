@@ -38,7 +38,7 @@
   --istok-checkbox-description-line-height: var(--text-body-sm--line-height);
 
   --istok-checkbox-input-size: var(--spacing-6);
-  --istok-checkbox-input-radius: var(--radius-lg);
+  --istok-checkbox-input-radius: var(--radius-md);
 
   --istok-checkbox-icon-size: var(--spacing-6);
 }

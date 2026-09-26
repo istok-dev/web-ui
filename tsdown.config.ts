@@ -16,6 +16,8 @@ export default defineConfig({
   minify: true,
   clean: true,
   treeshake: true,
+  // Сохраняем структуру модулей, чтобы директивы 'use client' не терялись при склейке чанков.
+  unbundle: true,
   tsconfig: 'tsconfig.build.json',
   platform: 'browser',
   fixedExtension: false,

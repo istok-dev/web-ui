@@ -36,7 +36,7 @@ export const Modal: ModalFC = (props: ModalProps) => {
           <BaseDialog.Popup
             className={cn(
               `
-                relative flex h-full min-h-0 w-full flex-col overflow-hidden
+                relative flex size-full min-h-0 flex-col overflow-hidden
                 rounded-none bg-surface-card
                 tablet:h-auto tablet:max-h-[90vh] tablet:max-w-5xl
                 tablet:rounded-5xl tablet:shadow-(--shadow-2xl)

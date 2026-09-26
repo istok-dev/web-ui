@@ -17,6 +17,8 @@ export type ModalHeaderProps = PropsWithChildren<{
   title?: string;
   description?: string;
   onClose?: () => void;
+  /** aria-label кнопки закрытия */
+  closeLabel?: string;
 }>;
 
 export type ModalBodyProps = PropsWithChildren<unknown>;

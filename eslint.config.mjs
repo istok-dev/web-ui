@@ -30,10 +30,13 @@ export default defineConfig([
     },
   },
   {
-    files: ['scripts/**/*.cjs'],
+    files: ['**/*.test.{ts,tsx}'],
     rules: {
-      '@typescript-eslint/no-require-imports': 'off',
-      'no-console': 'off',
+      // В тестах фикстуры заведомо существуют, а ref создаются вне компонентов.
+      '@typescript-eslint/no-non-null-assertion': 'off',
+      '@eslint-react/no-create-ref': 'off',
+      // Произвольные классы — тестовые данные, а не разметка.
+      'better-tailwindcss/no-unknown-classes': 'off',
     },
   },
 ]);

@@ -1,5 +1,6 @@
-import type { ButtonProps as BaseButtonProps } from '@base-ui/react/button';
+import type { Button as BaseButton } from '@base-ui/react/button';
 import type { LucideIcon, LucideProps } from 'lucide-react';
+import type { ComponentPropsWithRef } from 'react';
 
 export const ICON_BUTTON_COLORS = [
   'primary',
@@ -36,6 +37,6 @@ export type IconButtonProps = {
   color?: IconButtonColor;
   loading?: boolean;
   size?: IconButtonSize;
-  classes?: Record<Classes, string>;
-  render?: BaseButtonProps['render'];
-} & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'>;
+  classes?: Partial<Record<Classes, string>>;
+} & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children' | 'ref'>
+& Pick<ComponentPropsWithRef<typeof BaseButton>, 'ref' | 'nativeButton' | 'render'>;

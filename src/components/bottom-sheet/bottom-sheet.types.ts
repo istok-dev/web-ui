@@ -30,6 +30,8 @@ export type BottomSheetHeaderProps = PropsWithChildren<{
   onClose?: () => void;
   /** Show close button. @default true */
   showClose?: boolean;
+  /** aria-label кнопки закрытия */
+  closeLabel?: string;
 }>;
 
 export type BottomSheetBodyProps = PropsWithChildren<unknown>;

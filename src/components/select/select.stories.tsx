@@ -37,7 +37,7 @@ const meta: Meta<typeof Select> = {
     },
     showClear: {
       control: 'boolean',
-      description: 'Показать кнопку \'Сбросить\'',
+      description: 'Показать кнопку очистки на триггере',
     },
     disabled: {
       control: 'boolean',
@@ -142,7 +142,7 @@ export const SingleSelect: Story = {
     multiple: false,
     searchable: true,
     showSelectAll: false,
-    showClear: false,
+    showClear: true,
     size: 'md',
   },
 };

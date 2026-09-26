@@ -36,9 +36,8 @@ export const MenuItem: MenuItemFC = ({
       disabled={disabled}
       className={cn(
         `
-          istok-menu-item flex w-full items-center
-          rounded-(--istok-menu-item-radius) text-left font-medium
-          transition-colors
+          flex w-full items-center rounded-(--istok-menu-item-radius) text-left
+          font-medium transition-colors istok-menu-item
         `,
         `
           h-(--istok-menu-item-height) gap-(--istok-menu-item-gap)

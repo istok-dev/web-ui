@@ -1,8 +1,11 @@
+'use client';
+
+import { Tabs as BaseTabs } from '@base-ui/react/tabs';
+
 import { cn } from '@/utils/cn';
 
 import type { TabItemSize, TabItemVariant, TabsFC, TabsProps } from '../tabs.type';
 import { TabItem } from './tab-item';
-import { TabsContext, type TabsContextValue } from './tabs-context';
 
 const sizeClassesMap: Record<TabItemSize, string> = {
   sm: 'istok-tabs--sm',
@@ -12,7 +15,7 @@ const sizeClassesMap: Record<TabItemSize, string> = {
 
 const variantClassesMap: Record<TabItemVariant, string> = {
   line: 'istok-tabs--line',
-  ghost: 'istok-tabs--ghost',
+  inverse: 'istok-tabs--inverse',
   solid: 'istok-tabs--solid',
 };
 
@@ -23,25 +26,41 @@ function TabsComponent<T extends string>(props: TabsProps<T>) {
     size = 'md',
     variant = 'line',
     value,
+    defaultValue,
     onValueChange,
+    'aria-label': ariaLabel,
   } = props;
 
   return (
-    <TabsContext
-      value={{ value, onValueChange } as TabsContextValue<string>}
+    <BaseTabs.Root
+      value={value}
+      defaultValue={defaultValue}
+      onValueChange={next => onValueChange?.(next as T)}
+      className={cn(
+        'istok-tabs',
+        sizeClassesMap[size],
+        variantClassesMap[variant],
+      )}
     >
-      <div
+      <BaseTabs.List
+        aria-label={ariaLabel}
         className={cn(
-          'istok-tabs',
-          'flex items-center rounded-(--istok-tabs-radius)',
-          sizeClassesMap[size],
-          variantClassesMap[variant],
+          'istok-tabs__list items-center',
+          '[display:var(--istok-tabs-list-display)]',
+          `
+            rounded-(--istok-tabs-list-radius) bg-(--istok-tabs-list-bg)
+            p-(--istok-tabs-list-padding)
+          `,
+          `
+            border-b-(length:--istok-tabs-list-border-width)
+            border-(--istok-tabs-list-border)
+          `,
           className,
         )}
       >
         {children}
-      </div>
-    </TabsContext>
+      </BaseTabs.List>
+    </BaseTabs.Root>
   );
 }
 

@@ -102,13 +102,17 @@ const RadioCardRoot: FC<RadioCardProps> = ({
             checked={checked}
             disabled={disabled}
             onChange={handleChange}
-            className="sr-only"
+            className="peer sr-only"
           />
           <span
             className={cn(
               `
                 istok-radio-card__dot size-(--istok-radio-card-dot-size)
                 rounded-full transition-colors
+              `,
+              `
+                peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2
+                peer-focus-visible:outline-(--focus-ring-color)
               `,
               checked
                 ? `
@@ -165,7 +169,7 @@ const RadioCardRoot: FC<RadioCardProps> = ({
   );
 };
 
-const RadioCardGroup: FC<RadioCardGroupProps> = ({
+export const RadioCardGroup: FC<RadioCardGroupProps> = ({
   value: valueProp,
   defaultValue,
   onChange,

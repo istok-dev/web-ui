@@ -1,6 +1,8 @@
 import type { LucideIcon, LucideProps } from 'lucide-react';
 
-export type SelectSize = 'sm' | 'md' | 'lg' | 'xl';
+export const SELECT_SIZES = ['sm', 'md', 'lg', 'xl'] as const;
+
+export type SelectSize = (typeof SELECT_SIZES)[number];
 
 export type SelectOption = {
   label: string;
@@ -34,7 +36,16 @@ export type SelectProps = {
   onSearch?: (query: string) => void | Promise<void>;
   selectAllLabel?: string;
   clearLabel?: string;
+  /** aria-label кнопки очистки поиска */
+  clearSearchLabel?: string;
+  /** Текст кнопки раскрытия списка выбранных тегов */
+  showAllTagsLabel?: string;
+  /** Текст кнопки сворачивания списка выбранных тегов */
+  hideTagsLabel?: string;
+  /** Подпись перед счётчиком выбранных значений */
+  selectedCountLabel?: string;
   showSelectAll?: boolean;
+  /** Show clear (X) button on the trigger when a value is selected */
   showClear?: boolean;
   disabled?: boolean;
   className?: string;

@@ -55,6 +55,8 @@ export const IconButton: FC<IconButtonProps> = ({
   classes,
   type = 'button',
   render,
+  nativeButton,
+  ref,
   ...rest
 }) => {
   const { className: iconClassName, ...iconPropsRest } = iconProps || {};
@@ -63,8 +65,9 @@ export const IconButton: FC<IconButtonProps> = ({
   return (
     <BaseButton
       {...rest}
+      ref={ref}
       render={render}
-      nativeButton={render === undefined}
+      nativeButton={nativeButton ?? render === undefined}
       type={type}
       disabled={isDisabled}
       className={cn(

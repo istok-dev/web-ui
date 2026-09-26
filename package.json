@@ -1,6 +1,6 @@
 {
   "name": "@istok-dev/web-ui",
-  "version": "0.0.40",
+  "version": "0.0.43",
   "description": "UI-библиотека компонентов Istok",
   "type": "module",
   "main": "lib/index.js",
@@ -40,6 +40,14 @@
       "style": "./lib/styles/theme.css",
       "default": "./lib/styles/theme.css"
     },
+    "./accordion.css": {
+      "style": "./lib/styles/components/accordion/ui/accordion.css",
+      "default": "./lib/styles/components/accordion/ui/accordion.css"
+    },
+    "./alert-dialog.css": {
+      "style": "./lib/styles/components/alert-dialog/ui/alert-dialog.css",
+      "default": "./lib/styles/components/alert-dialog/ui/alert-dialog.css"
+    },
     "./avatar.css": {
       "style": "./lib/styles/components/avatar/ui/avatar.css",
       "default": "./lib/styles/components/avatar/ui/avatar.css"
@@ -47,6 +55,10 @@
     "./badge.css": {
       "style": "./lib/styles/components/badge/ui/badge.css",
       "default": "./lib/styles/components/badge/ui/badge.css"
+    },
+    "./bottom-sheet.css": {
+      "style": "./lib/styles/components/bottom-sheet/ui/bottom-sheet.css",
+      "default": "./lib/styles/components/bottom-sheet/ui/bottom-sheet.css"
     },
     "./breadcrumbs.css": {
       "style": "./lib/styles/components/breadcrumbs/ui/breadcrumbs.css",
@@ -96,13 +108,21 @@
       "style": "./lib/styles/components/radio/ui/radio.css",
       "default": "./lib/styles/components/radio/ui/radio.css"
     },
+    "./radio-card.css": {
+      "style": "./lib/styles/components/radio-card/ui/radio-card.css",
+      "default": "./lib/styles/components/radio-card/ui/radio-card.css"
+    },
     "./select.css": {
       "style": "./lib/styles/components/select/ui/select.css",
       "default": "./lib/styles/components/select/ui/select.css"
     },
+    "./setting-row.css": {
+      "style": "./lib/styles/components/setting-row/ui/setting-row.css",
+      "default": "./lib/styles/components/setting-row/ui/setting-row.css"
+    },
     "./tab-item.css": {
-      "style": "./lib/styles/components/tabs/ui/tab-item.css",
-      "default": "./lib/styles/components/tabs/ui/tab-item.css"
+      "style": "./lib/styles/components/tabs/ui/tabs.css",
+      "default": "./lib/styles/components/tabs/ui/tabs.css"
     },
     "./tabs.css": {
       "style": "./lib/styles/components/tabs/ui/tabs.css",
@@ -132,17 +152,23 @@
   "files": [
     "lib"
   ],
+  "sideEffects": [
+    "**/*.css"
+  ],
   "scripts": {
     "build": "tsdown",
     "prepublishOnly": "pnpm run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "eslint .",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "peerDependencies": {
     "react": ">=19.0.0",
-    "react-day-picker": "*",
+    "react-day-picker": "^9.13.0",
     "react-dom": ">=19.0.0"
   },
   "peerDependenciesMeta": {
@@ -160,16 +186,24 @@
   "devDependencies": {
     "@istok-dev/eslint-react": "1.1.0",
     "@istok-dev/tsconfig": "2.0.0",
+    "@storybook/addon-a11y": "10.6.0",
     "@storybook/react-vite": "10.6.0",
     "@tailwindcss/vite": "4.3.3",
+    "@testing-library/jest-dom": "7.0.1",
+    "@testing-library/react": "16.3.3",
+    "@testing-library/user-event": "14.6.7",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
+    "@vitest/coverage-v8": "5.0.2",
     "eslint": "10.10.0",
+    "jsdom": "30.1.1",
+    "react-day-picker": "9.13.2",
     "storybook": "10.6.0",
     "tailwindcss": "4.3.3",
     "tsdown": "0.23.0",
-    "typescript": "7.0.2",
-    "vite": "^8.3.0"
+    "typescript": "6.0.3",
+    "vite": "^8.3.0",
+    "vitest": "5.0.2"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"

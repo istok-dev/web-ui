@@ -1,6 +1,7 @@
 import type { PopoverTriggerProps } from '@base-ui/react/popover';
 import type { DayPickerProps } from 'react-day-picker';
 
+import type { CalendarProps } from '../calendar';
 import type { IconButtonProps } from '../icon-button';
 import type { InputPassThrough, InputProps } from '../input/input.types';
 
@@ -21,7 +22,7 @@ export type DateInputPassThrough = {
   };
   /** Календарь (DayPicker) */
   calendar?: Omit<
-    DayPickerProps,
+    CalendarProps,
     | 'mode'
     | 'selected'
     | 'onSelect'
@@ -34,7 +35,7 @@ export type DateInputPassThrough = {
 
 export type DateInputProps = Omit<
   InputProps,
-  'value' | 'onChange' | 'type' | 'pt'
+  'value' | 'defaultValue' | 'onChange' | 'type' | 'pt'
 > & {
   value: Date | undefined;
   onChange: (date: Date | undefined) => void;
@@ -43,5 +44,7 @@ export type DateInputProps = Omit<
   /** Управление открытием календаря */
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
+  /** aria-label кнопки открытия календаря */
+  openCalendarLabel?: string;
   pt?: DateInputPassThrough;
 };

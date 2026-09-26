@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef, useState } from 'react';
 
 import type { AlertDialogProps } from '../alert-dialog.types';
@@ -15,25 +17,36 @@ export const useConfirmDialog = () => {
     });
   };
 
-  const close = (result: boolean) => {
+  const settle = (result: boolean) => {
     resolverRef.current?.(result);
     resolverRef.current = null;
+  };
+
+  const close = (result: boolean) => {
+    settle(result);
     setOptions(null);
   };
 
   const dialog = options
     ? (
       <AlertDialog
+        {...options}
         open
         onOpenChange={(open) => {
+          options.onOpenChange?.(open);
           if (!open) {
             close(false);
           }
         }}
-        {...options}
-        onAction={() => close(true)}
-        cancelLabel={options.cancelLabel ?? 'Отмена'}
-        onCancel={() => close(false)}
+        onAction={async () => {
+          // Диалог сам закроется после действия и вызовет onOpenChange(false).
+          await options.onAction?.();
+          settle(true);
+        }}
+        onCancel={() => {
+          options.onCancel?.();
+          close(false);
+        }}
       />
     )
     : null;

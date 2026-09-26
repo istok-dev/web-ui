@@ -1,9 +1,9 @@
 'use client';
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { createContext, use, useEffect, useMemo, useRef, useState } from 'react';
 import { DayPicker, formatCaption } from 'react-day-picker';
-import type { DayPickerProps } from 'react-day-picker';
+import type { CustomComponents, DayPickerProps } from 'react-day-picker';
 
 import { cn } from '@/utils/cn';
 
@@ -27,7 +27,72 @@ function formatCalendarCaption(
   return formatCaption(month, options, dateLib);
 }
 
+export type CalendarLabels = {
+  /** aria-label кнопки перехода к выбору года */
+  selectYear?: string;
+  /** aria-label кнопки возврата к дням */
+  closeYearSelect?: string;
+  /** aria-label сетки годов */
+  years?: string;
+};
+
+export type CalendarProps = DayPickerProps & {
+  /** Подписи для экранных дикторов */
+  labels?: CalendarLabels;
+};
+
+const DEFAULT_LABELS: Required<CalendarLabels> = {
+  selectYear: 'Выбрать год',
+  closeYearSelect: 'Закрыть выбор года',
+  years: 'Выбор года',
+};
+
+/** Переключение «дни ↔ годы» для `CaptionLabel`, который DayPicker рендерит сам. */
+const CaptionContext = createContext<{ toggleView: () => void; label: string }>({
+  toggleView: () => {},
+  label: DEFAULT_LABELS.selectYear,
+});
+
+function CalendarChevron({
+  orientation,
+  className,
+  disabled,
+}: Parameters<CustomComponents['Chevron']>[0]) {
+  const Icon = orientation === 'left' ? ChevronLeft : ChevronRight;
+  return (
+    <Icon
+      className={cn('size-5', disabled && 'opacity-40', className)}
+      aria-hidden
+    />
+  );
+}
+
+function CalendarCaptionLabel({
+  className,
+  children,
+}: Parameters<CustomComponents['CaptionLabel']>[0]) {
+  const { toggleView, label } = use(CaptionContext);
+
+  return (
+    <button
+      type="button"
+      aria-live="polite"
+      aria-expanded={false}
+      aria-label={label}
+      onClick={toggleView}
+      className={cn(className)}
+    >
+      {children}
+      <ChevronRight
+        className="size-4 shrink-0 text-primary-600"
+        aria-hidden
+      />
+    </button>
+  );
+}
+
 type YearGridProps = {
+  label: string;
   selectedYear: number;
   startYear: number;
   endYear: number;
@@ -35,6 +100,7 @@ type YearGridProps = {
 };
 
 function YearGrid({
+  label,
   selectedYear,
   startYear,
   endYear,
@@ -65,7 +131,7 @@ function YearGrid({
       ref={containerRef}
       className="grid max-h-70 grid-cols-3 gap-1 overflow-y-auto py-1"
       role="listbox"
-      aria-label="Выбор года"
+      aria-label={label}
     >
       {years.map((year) => {
         const isSelected = year === selectedYear;
@@ -109,8 +175,10 @@ function Calendar({
   endMonth = DEFAULT_END_MONTH,
   formatters,
   components,
+  labels: labelsProp,
   ...props
-}: DayPickerProps) {
+}: CalendarProps) {
+  const labels = { ...DEFAULT_LABELS, ...labelsProp };
   const [view, setView] = useState<CalendarView>('days');
   const [internalMonth, setInternalMonth] = useState(
     () => controlledMonth ?? defaultMonth ?? new Date(),
@@ -149,7 +217,7 @@ function Calendar({
             type="button"
             onClick={toggleView}
             aria-expanded
-            aria-label="Закрыть выбор года"
+            aria-label={labels.closeYearSelect}
             className="
               flex cursor-pointer items-center gap-1 rounded-lg border-0
               bg-transparent p-0 text-body-md font-medium text-text-strong
@@ -164,6 +232,7 @@ function Calendar({
           </button>
         </div>
         <YearGrid
+          label={labels.years}
           selectedYear={displayMonth.getFullYear()}
           startYear={startYear}
           endYear={endYear}
@@ -174,111 +243,86 @@ function Calendar({
   }
 
   return (
-    <DayPicker
-      {...props}
-      showOutsideDays={showOutsideDays}
-      navLayout="after"
-      month={displayMonth}
-      onMonthChange={handleMonthChange}
-      startMonth={startMonth}
-      endMonth={endMonth}
-      className={cn('w-70 p-3', className)}
-      formatters={{
-        formatCaption: formatCalendarCaption,
-        ...formatters,
-      }}
-      classNames={{
-        months: 'flex flex-col',
-        month: 'flex w-full flex-wrap items-center',
-        month_caption: 'flex flex-1 items-center justify-start py-1',
-        caption_label: `
+    <CaptionContext value={{ toggleView, label: labels.selectYear }}>
+      <DayPicker
+        {...props}
+        showOutsideDays={showOutsideDays}
+        navLayout="after"
+        month={displayMonth}
+        onMonthChange={handleMonthChange}
+        startMonth={startMonth}
+        endMonth={endMonth}
+        className={cn('w-70 p-3', className)}
+        formatters={{
+          formatCaption: formatCalendarCaption,
+          ...formatters,
+        }}
+        classNames={{
+          months: 'flex flex-col',
+          month: 'flex w-full flex-wrap items-center',
+          month_caption: 'flex flex-1 items-center justify-start py-1',
+          caption_label: `
           text-text-strong flex cursor-pointer items-center gap-1
           text-body-md font-medium capitalize
         `,
-        nav: 'flex items-center gap-0.5',
-        button_previous: `
+          nav: 'flex items-center gap-0.5',
+          button_previous: `
           flex size-8 cursor-pointer items-center justify-center
           rounded-full border-0 bg-transparent p-0 text-primary-600
           hover:bg-primary-50
           disabled:pointer-events-none disabled:opacity-40
         `,
-        button_next: `
+          button_next: `
           flex size-8 cursor-pointer items-center justify-center
           rounded-full border-0 bg-transparent p-0 text-primary-600
           hover:bg-primary-50
           disabled:pointer-events-none disabled:opacity-40
         `,
-        chevron: 'size-5',
-        month_grid: 'mt-3 w-full border-collapse',
-        weekdays: 'flex w-full',
-        weekday: `
+          chevron: 'size-5',
+          month_grid: 'mt-3 w-full border-collapse',
+          weekdays: 'flex w-full',
+          weekday: `
           text-text-secondary flex h-9 w-9 items-center justify-center
           text-body-sm font-normal lowercase
         `,
-        week: 'mt-1 flex w-full',
-        day: `
+          week: 'mt-1 flex w-full',
+          day: `
           relative p-0 text-center text-body-md
           focus-within:relative focus-within:z-20
           [&:has([aria-selected])]:bg-neutral-100
           [&:has([aria-selected].day-outside)]:bg-transparent
           [&:has([aria-selected].day-range-end)]:rounded-r-md
         `,
-        day_button: cn(
-          `
-            size-9 rounded-full p-0 font-normal transition-colors
-            aria-selected:opacity-100
-          `,
-          'hover:bg-neutral-100 hover:text-text-strong',
-          'cursor-pointer text-text-strong',
-        ),
-        range_start:
+          day_button: cn(
+            `
+              size-9 rounded-full p-0 font-normal transition-colors
+              aria-selected:opacity-100
+            `,
+            'hover:bg-neutral-100 hover:text-text-strong',
+            'cursor-pointer text-text-strong',
+          ),
+          range_start:
           'day-range-start rounded-full bg-accent-600 text-white hover:bg-accent-600 hover:text-white',
-        range_end:
+          range_end:
           'day-range-end rounded-full bg-accent-600 text-white hover:bg-accent-600 hover:text-white',
-        selected:
+          selected:
           'bg-accent-600 text-white hover:bg-accent-600 hover:text-white',
-        today: 'bg-primary-100',
-        outside:
+          today: 'bg-primary-100',
+          outside:
           'day-outside text-text-muted aria-selected:bg-transparent aria-selected:text-text-muted',
-        disabled: 'text-text-muted opacity-50',
-        range_middle:
+          disabled: 'text-text-muted opacity-50',
+          range_middle:
           'aria-selected:bg-accent-100 aria-selected:text-text-strong',
-        hidden: 'invisible',
-        ...classNames,
-      }}
-      components={{
-        ...components,
-        Chevron: ({ orientation, className: chevronClassName, disabled }) => {
-          const Icon = orientation === 'left' ? ChevronLeft : ChevronRight;
-          return (
-            <Icon
-              className={cn(
-                'size-5',
-                disabled && 'opacity-40',
-                chevronClassName,
-              )}
-              aria-hidden
-            />
-          );
-        },
-        CaptionLabel: ({ className: labelClassName, children }) => (
-          <button
-            type="button"
-            aria-live="polite"
-            aria-expanded={false}
-            aria-label="Выбрать год"
-            onClick={toggleView}
-            className={cn(labelClassName)}
-          >
-            {children}
-            <ChevronRight
-              className="size-4 shrink-0 text-primary-600"
-              aria-hidden
-            />
-          </button>
-        ),
-      }}
-    />
+          hidden: 'invisible',
+          ...classNames,
+        }}
+        components={{
+          ...components,
+          Chevron: CalendarChevron,
+          CaptionLabel: CalendarCaptionLabel,
+        }}
+      />
+    </CaptionContext>
   );
 }
 Calendar.displayName = 'Calendar';

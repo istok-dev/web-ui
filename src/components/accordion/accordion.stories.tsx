@@ -13,7 +13,7 @@ const meta: Meta<typeof Accordion> = {
   },
   decorators: [
     Story => (
-      <div className="w-[800px] rounded-3xl bg-neutral-100 p-6">
+      <div className="w-200 rounded-3xl bg-neutral-100 p-6">
         <Story />
       </div>
     ),
@@ -160,6 +160,25 @@ export const ExpandedByDefault: Story = {
   ),
 };
 
+export const Multiple: Story = {
+  args: {
+    multiple: true,
+  },
+  render: args => (
+    <Accordion {...args} defaultValue={['item1', 'item2']}>
+      <Accordion.Item value="item1" title="Первый пункт">
+        Можно открыть несколько пунктов одновременно.
+      </Accordion.Item>
+      <Accordion.Item value="item2" title="Второй пункт">
+        Этот и предыдущий открыты по умолчанию.
+      </Accordion.Item>
+      <Accordion.Item value="item3" title="Третий пункт">
+        Откройте ещё один — остальные останутся открытыми.
+      </Accordion.Item>
+    </Accordion>
+  ),
+};
+
 export const KeepMounted: Story = {
   args: {
     keepMounted: true,
@@ -177,15 +196,96 @@ export const KeepMounted: Story = {
   ),
 };
 
+export const CustomRender: Story = {
+  render: () => (
+    <Accordion defaultValue="item1">
+      <Accordion.Item
+        value="item1"
+        title="Кастомные слоты через pt"
+        pt={{
+          header: {
+            render: props => (
+              <div
+                {...props}
+                data-custom-header
+              />
+            ),
+          },
+          trigger: {
+            render: props => (
+              <div
+                {...props}
+                data-custom-trigger
+              />
+            ),
+          },
+          title: {
+            render: props => (
+              <span
+                {...props}
+                data-custom-title
+              />
+            ),
+          },
+          panel: {
+            render: (props, state) => (
+              <section
+                {...props}
+                data-custom-panel
+                data-open={state.open ? '' : undefined}
+                className={[props.className, 'border-t border-neutral-200'].filter(Boolean).join(' ')}
+              />
+            ),
+          },
+        }}
+      >
+        Header и trigger —
+        {' '}
+        <code>&lt;div&gt;</code>
+        , title —
+        {' '}
+        <code>&lt;span data-custom-title&gt;</code>
+        , panel —
+        {' '}
+        <code>&lt;section data-custom-panel&gt;</code>
+        .
+      </Accordion.Item>
+      <Accordion.Item
+        value="item2"
+        title="Обычные слоты"
+      >
+        Без
+        {' '}
+        <code>pt</code>
+        {' '}
+        — дефолтные
+        {' '}
+        <code>&lt;h3&gt;</code>
+        ,
+        {' '}
+        <code>&lt;button&gt;</code>
+        ,
+        {' '}
+        <code>&lt;span&gt;</code>
+        {' '}
+        и
+        {' '}
+        <code>&lt;div&gt;</code>
+        .
+      </Accordion.Item>
+    </Accordion>
+  ),
+};
+
 export const Controlled: Story = {
   render: () => {
-    const [value, setValue] = useState<string | undefined>('item1');
+    const [value, setValue] = useState<string[]>(['item1']);
 
     return (
       <Accordion
         size="md"
         value={value}
-        onValueChange={v => setValue(v as string | undefined)}
+        onValueChange={setValue}
       >
         <Accordion.Item value="item1" title="Контролируемый пункт 1">
           Открытие/закрытие управляется внешним стейтом.

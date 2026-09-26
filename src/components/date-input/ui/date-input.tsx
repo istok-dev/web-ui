@@ -2,7 +2,7 @@
 
 import { Calendar } from 'lucide-react';
 import type { FC } from 'react';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { DatePicker } from '@/components/date-picker';
 import { IconButton } from '@/components/icon-button';
@@ -20,12 +20,14 @@ export const DateInput: FC<DateInputProps> = ({
   placeholder = 'ДД.ММ.ГГГГ',
   disabled = false,
   startAdornment,
+  openCalendarLabel = 'Открыть календарь',
+  onBlur,
   pt,
   ...inputProps
 }) => {
   const [internalOpen, setInternalOpen] = useState(false);
   const [text, setText] = useState(() => formatDate(value));
-  const lastEmitted = useRef(value);
+  const lastEmittedRef = useRef(value);
 
   const isOpenControlled
     = controlledOpen !== undefined && onOpenChange !== undefined;
@@ -33,14 +35,14 @@ export const DateInput: FC<DateInputProps> = ({
   const setOpen = isOpenControlled ? onOpenChange : setInternalOpen;
 
   useEffect(() => {
-    if (!datesEqual(value, lastEmitted.current)) {
+    if (!datesEqual(value, lastEmittedRef.current)) {
       setText(formatDate(value));
-      lastEmitted.current = value;
+      lastEmittedRef.current = value;
     }
   }, [value]);
 
   const emit = (date: Date | undefined) => {
-    lastEmitted.current = date;
+    lastEmittedRef.current = date;
     onChange(date);
   };
 
@@ -82,24 +84,20 @@ export const DateInput: FC<DateInputProps> = ({
     setOpen(nextOpen);
   };
 
-  const trigger = useMemo(() => {
-    if (typeof startAdornment !== 'undefined') {
-      return startAdornment;
-    }
-
-    return (
+  const trigger = startAdornment !== undefined
+    ? startAdornment
+    : (
       <IconButton
         type="button"
         icon={Calendar}
         variant="clear"
         color="neutral"
         size="sm"
-        aria-label="Открыть календарь"
+        aria-label={openCalendarLabel}
         {...pt?.iconButton}
         disabled={disabled || pt?.iconButton?.disabled}
       />
     );
-  }, [startAdornment, disabled, pt?.iconButton]);
 
   return (
     <Input
@@ -112,11 +110,12 @@ export const DateInput: FC<DateInputProps> = ({
         input: {
           autoComplete: 'off',
           ...pt?.input,
-          onBlur: (event) => {
-            handleBlur();
-            pt?.input?.onBlur?.(event);
-          },
         },
+      }}
+      onBlur={(event) => {
+        handleBlur();
+        pt?.input?.onBlur?.(event);
+        onBlur?.(event);
       }}
       startAdornment={(
         <DatePicker

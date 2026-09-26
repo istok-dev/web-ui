@@ -6,8 +6,8 @@ import {
   useCallback,
   useMemo,
   type ChangeEvent,
+  type ComponentPropsWithRef,
   type FC,
-  type InputHTMLAttributes,
 } from 'react';
 
 import { Input } from '@/components/input';
@@ -19,9 +19,9 @@ import type {
   AutocompleteProps,
 } from '../autocomplete.types';
 
-type AutocompleteItems =
-  | AutocompleteOption[]
-  | { value: string; items: AutocompleteOption[] }[];
+type AutocompleteItems
+  = | AutocompleteOption[]
+    | { value: string; items: AutocompleteOption[] }[];
 
 const isGrouped = (
   options: AutocompleteProps['options'],
@@ -35,7 +35,7 @@ const itemClassName = cn(
     istok-autocomplete-item flex cursor-pointer items-center gap-1.5 p-2.5
     transition-colors
     hover:bg-primary-300
-    data-[highlighted]:bg-primary-300
+    data-highlighted:bg-primary-300
   `,
 );
 
@@ -61,6 +61,7 @@ export const Autocomplete: FC<AutocompleteProps> = ({
   loading = false,
   loadingText = 'Поиск…',
   showClear = true,
+  clearLabel = 'Очистить',
   autoHighlight = true,
   openOnInputClick = true,
   mode = 'list',
@@ -91,7 +92,7 @@ export const Autocomplete: FC<AutocompleteProps> = ({
         const result = onSearch(next);
 
         if (result instanceof Promise) {
-          void result.catch(() => {});
+          void result.catch(reportError);
         }
       }
     },
@@ -105,7 +106,7 @@ export const Autocomplete: FC<AutocompleteProps> = ({
 
   const clearButton = (
     <BaseAutocomplete.Clear
-      aria-label="Очистить"
+      aria-label={clearLabel}
       className="
         cursor-pointer rounded-sm p-0.5 text-neutral-500 transition-colors
         hover:bg-neutral-200 hover:text-neutral-700
@@ -173,10 +174,11 @@ export const Autocomplete: FC<AutocompleteProps> = ({
               disabled: inputDisabled,
               placeholder: inputPlaceholder,
               ...rest
-            } = props as InputHTMLAttributes<HTMLInputElement>;
+            } = props as ComponentPropsWithRef<'input'>;
 
             return (
               <Input
+                {...rest}
                 value={typeof inputValue === 'string' ? inputValue : ''}
                 onChange={(
                   _next: string,
@@ -195,7 +197,6 @@ export const Autocomplete: FC<AutocompleteProps> = ({
                 pt={{
                   input: {
                     autoComplete: 'off',
-                    ...rest,
                     ...pt?.input,
                   },
                 }}
@@ -244,14 +245,12 @@ export const Autocomplete: FC<AutocompleteProps> = ({
               )}
               <BaseAutocomplete.List
                 className={cn(
-                  `
-                    istok-autocomplete-list flex-1 scrollbar overflow-y-auto
-                  `,
+                  `istok-autocomplete-list flex-1 scrollbar overflow-y-auto`,
                   classes?.list,
                 )}
               >
                 {grouped
-                  ? ((group: { value: string; items: AutocompleteOption[] }) => (
+                  ? (group: { value: string; items: AutocompleteOption[] }) => (
                     <BaseAutocomplete.Group
                       key={group.value}
                       items={group.items}
@@ -266,8 +265,8 @@ export const Autocomplete: FC<AutocompleteProps> = ({
                         {(option: AutocompleteOption) => renderOption(option)}
                       </BaseAutocomplete.Collection>
                     </BaseAutocomplete.Group>
-                  ))
-                  : ((option: AutocompleteOption) => renderOption(option))}
+                  )
+                  : (option: AutocompleteOption) => renderOption(option)}
               </BaseAutocomplete.List>
             </BaseAutocomplete.Popup>
           </BaseAutocomplete.Positioner>

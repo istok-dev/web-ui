@@ -1,6 +1,8 @@
-import type { ChangeEventHandler, PropsWithChildren, ReactNode } from 'react';
+import type { ChangeEventHandler, PropsWithChildren, ReactNode, Ref } from 'react';
 
-export type RadioSize = 'sm' | 'md' | 'lg';
+export const RADIO_SIZES = ['sm', 'md', 'lg'] as const;
+
+export type RadioSize = (typeof RADIO_SIZES)[number];
 
 export type RadioItemClasses = 'root' | 'label' | 'description';
 
@@ -34,7 +36,10 @@ export type RadioItemProps = {
   name?: string;
   value?: string | number | readonly string[];
   readOnly?: boolean;
+  required?: boolean;
   id?: string;
+  /** Ref на нативный `<input>` (например, для react-hook-form `register`) */
+  ref?: Ref<HTMLInputElement>;
   pt?: RadioItemPassThrough;
 } & Omit<React.LabelHTMLAttributes<HTMLLabelElement>, 'onChange'>;
 

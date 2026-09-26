@@ -1,0 +1,107 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  # Публикацию на master не прерываем на полпути.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+  # Пакеты @istok-dev (eslint-react, tsconfig) ставятся из GitHub Packages.
+  packages: read
+
+jobs:
+  check:
+    name: Lint, types, tests, build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      # Подставляется в .npmrc: //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v6
+
+      # Версия pnpm берётся из поля packageManager в package.json.
+      - uses: pnpm/action-setup@v5
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Type-check
+        run: pnpm type-check
+
+      - name: Test
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
+
+  publish:
+    name: Publish
+    needs: check
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write # тег v<версия>
+      packages: write # публикация в GitHub Packages
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v5
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      # Публикуем, только если версии из package.json ещё нет в реестре:
+      # чтобы выпустить релиз, достаточно поднять "version" и влить в master.
+      - name: Check version
+        id: version
+        run: |
+          name=$(node -p "require('./package.json').name")
+          version=$(node -p "require('./package.json').version")
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+          if output=$(pnpm view "$name@$version" version 2>&1); then
+            echo "$name@$version уже опубликован, пропускаем"
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+          # PACKAGE_NOT_FOUND — такой версии нет, FETCH_404 — пакет ещё не публиковался
+          elif echo "$output" | grep -qE "ERR_PNPM_PACKAGE_NOT_FOUND|ERR_PNPM_FETCH_404"; then
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          else
+            # 401/403 и прочее: не маскируем под «не опубликовано»
+            echo "$output"
+            exit 1
+          fi
+
+      # prepublishOnly сам собирает lib/.
+      - name: Publish
+        if: steps.version.outputs.publish == 'true'
+        run: pnpm publish --no-git-checks
+
+      - name: Tag release
+        if: steps.version.outputs.publish == 'true'
+        run: |
+          tag="v${{ steps.version.outputs.version }}"
+          git tag "$tag"
+          git push origin "$tag"

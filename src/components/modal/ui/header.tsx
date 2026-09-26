@@ -6,7 +6,7 @@ import { cn } from '@/utils/cn';
 import type { ModalHeaderFC, ModalHeaderProps } from '../modal.types';
 
 export const ModalHeader: ModalHeaderFC = (props: ModalHeaderProps) => {
-  const { title, description, children, onClose } = props;
+  const { title, description, children, onClose, closeLabel = 'Закрыть' } = props;
 
   const renderTitle = () => {
     if (title) {
@@ -31,8 +31,8 @@ export const ModalHeader: ModalHeaderFC = (props: ModalHeaderProps) => {
 
   return (
     <div className="
-      flex shrink-0 items-start justify-between gap-4 bg-surface-card px-8 pb-5
-      pt-[calc(1.25rem+env(safe-area-inset-top,0px))]
+      flex shrink-0 items-start justify-between gap-4 bg-surface-card px-8
+      pt-[calc(1.25rem+env(safe-area-inset-top,0px))] pb-5
       tablet:pt-5
     "
     >
@@ -42,7 +42,7 @@ export const ModalHeader: ModalHeaderFC = (props: ModalHeaderProps) => {
           <button
             {...closeProps}
             type="button"
-            aria-label="Закрыть"
+            aria-label={closeLabel}
             onClick={(e) => {
               onClose?.();
               (

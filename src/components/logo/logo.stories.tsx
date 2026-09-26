@@ -36,7 +36,8 @@ const meta: Meta<typeof Logo> = {
       control: 'select',
       options: LOGO_VARIANTS,
       description:
-        'default — полный логотип, icon — только знак, dev — с пометкой dev, text — текстовый, text-dev — текстовый с пометкой dev',
+        'default — полный логотип, icon — только знак, dev — с пометкой dev, '
+        + 'text — текстовый, text-dev — текстовый с пометкой dev',
     },
     inverse: {
       control: 'boolean',

@@ -1,6 +1,10 @@
-export type NumberInputSize = 'sm' | 'md' | 'lg';
+export const NUMBER_INPUT_SIZES = ['sm', 'md', 'lg'] as const;
 
-export type NumberInputVariant = 'neutral' | 'solid';
+export type NumberInputSize = (typeof NUMBER_INPUT_SIZES)[number];
+
+export const NUMBER_INPUT_VARIANTS = ['neutral', 'solid'] as const;
+
+export type NumberInputVariant = (typeof NUMBER_INPUT_VARIANTS)[number];
 
 export type Classes = 'root' | 'group' | 'input';
 

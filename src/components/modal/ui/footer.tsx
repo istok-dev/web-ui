@@ -1,3 +1,5 @@
+'use client';
+
 import { mergeProps } from '@base-ui/react/merge-props';
 import { useRender } from '@base-ui/react/use-render';
 
@@ -13,8 +15,7 @@ export const ModalFooter: ModalFooterFC = (props: ModalFooterProps) => {
     className: cn(
       `
         flex shrink-0 items-center gap-3 border-t border-neutral-200
-        bg-neutral-50 px-8 pt-4
-        pb-[calc(1rem+env(safe-area-inset-bottom,0px))]
+        bg-neutral-50 px-8 pt-4 pb-[calc(1rem+env(safe-area-inset-bottom,0px))]
         tablet:pb-4
       `,
       className,
@@ -27,7 +28,10 @@ export const ModalFooter: ModalFooterFC = (props: ModalFooterProps) => {
           </div>
         )}
         {endContent && (
-          <div className="istok-modal__footer-end ml-auto flex items-center gap-3">
+          <div className="
+            istok-modal__footer-end ml-auto flex items-center gap-3
+          "
+          >
             {endContent}
           </div>
         )}

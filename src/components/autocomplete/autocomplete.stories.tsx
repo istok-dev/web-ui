@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Search } from 'lucide-react';
 import { useRef, useState } from 'react';
 
-import { Autocomplete } from './index';
 import { AUTOCOMPLETE_MODES, type AutocompleteGroup, type AutocompleteOption } from './autocomplete.types';
+import { Autocomplete } from './index';
 
 const meta: Meta<typeof Autocomplete> = {
   title: 'Components/Autocomplete',

@@ -1,14 +1,10 @@
 'use client';
 
 import { Accordion as BaseAccordion } from '@base-ui/react/accordion';
+import { mergeProps } from '@base-ui/react/merge-props';
+import { useRender } from '@base-ui/react/use-render';
 import { ChevronDown } from 'lucide-react';
-import {
-  useRef,
-  useState,
-  type ComponentProps,
-  type FC,
-  type MouseEvent,
-} from 'react';
+import { useRef, type FC, type MouseEvent } from 'react';
 
 import { cn } from '@/utils/cn';
 
@@ -24,6 +20,12 @@ const sizeClassesMap: Record<AccordionSize, string> = {
   md: 'istok-accordion--md',
 };
 
+/** Base UI ожидает массив; строка — сокращённая запись для одного пункта. */
+const toArray = (value: AccordionValue): string[] | undefined => {
+  if (value === undefined) return undefined;
+  return Array.isArray(value) ? value : [value];
+};
+
 function AccordionRoot({
   children,
   className,
@@ -34,16 +36,6 @@ function AccordionRoot({
   keepMounted = false,
   size = 'md',
 }: AccordionRootProps) {
-  const [internalValue, setInternalValue]
-    = useState<AccordionValue>(defaultValue);
-  const isControlled = controlledValue !== undefined;
-  const value = isControlled ? controlledValue : internalValue;
-
-  const handleValueChange = (newValue: AccordionValue) => {
-    if (!isControlled) setInternalValue(newValue);
-    onValueChange?.(newValue);
-  };
-
   return (
     <div
       className={cn(
@@ -55,15 +47,9 @@ function AccordionRoot({
     >
       <BaseAccordion.Root
         className="flex flex-col gap-2"
-        {...(isControlled
-          ? {
-            value,
-            onValueChange: handleValueChange,
-          }
-          : {
-            defaultValue,
-            onValueChange: handleValueChange,
-          }) as Partial<ComponentProps<typeof BaseAccordion.Root>>}
+        value={toArray(controlledValue)}
+        defaultValue={toArray(defaultValue)}
+        onValueChange={(next: string[]) => onValueChange?.(next)}
         multiple={multiple}
         keepMounted={keepMounted}
       >
@@ -73,7 +59,7 @@ function AccordionRoot({
   );
 }
 
-const AccordionItemComponent: FC<AccordionItemProps> = ({
+export const AccordionItem: FC<AccordionItemProps> = ({
   value: itemValue,
   title,
   description,
@@ -81,16 +67,52 @@ const AccordionItemComponent: FC<AccordionItemProps> = ({
   iconProps,
   children,
   className,
+  pt,
 }) => {
-  const triggerRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const { render: titleRender, ...titlePt } = pt?.title ?? {};
+  const { className: headerClassName, ...headerPt } = pt?.header ?? {};
+  const {
+    className: triggerClassName,
+    render: triggerRender,
+    nativeButton: triggerNativeButton,
+    ...triggerPt
+  } = pt?.trigger ?? {};
+  const { className: panelClassName, ...panelPt } = pt?.panel ?? {};
 
   const handleItemClick = (event: MouseEvent<HTMLDivElement>) => {
     const trigger = triggerRef.current;
     if (!trigger) return;
-    if (trigger.contains(event.target as Node)) return;
+    const target = event.target as Node;
+    // Клик по отступам карточки вокруг заголовка открывает/закрывает пункт,
+    // а клики внутри контента (поля, ссылки, выделение текста) — нет.
+    if (trigger.contains(target) || panelRef.current?.contains(target)) return;
 
     trigger.click();
   };
+
+  const titleElement = useRender({
+    defaultTagName: 'span',
+    render: titleRender,
+    props: mergeProps<'span'>(
+      {
+        className: cn(
+          'istok-accordion__title',
+          'flex min-w-0 items-center gap-3',
+          `
+            text-(length:--istok-accordion-title-font-size)
+            leading-(--istok-accordion-title-line-height)
+            font-(--istok-accordion-title-font-weight)
+            tracking-(--istok-accordion-title-letter-spacing)
+            text-(--istok-accordion-title-fg)
+          `,
+        ),
+        children: title,
+      },
+      titlePt,
+    ),
+  });
 
   return (
     <BaseAccordion.Item
@@ -108,15 +130,22 @@ const AccordionItemComponent: FC<AccordionItemProps> = ({
         className,
       )}
     >
-      <BaseAccordion.Header className="m-0">
+      <BaseAccordion.Header
+        {...headerPt}
+        className={cn('m-0', headerClassName)}
+      >
         <BaseAccordion.Trigger
+          {...triggerPt}
           ref={triggerRef}
+          render={triggerRender}
+          nativeButton={triggerNativeButton ?? triggerRender === undefined}
           className={cn(
             'istok-accordion__trigger group',
             'flex w-full cursor-pointer items-center',
             'gap-(--istok-accordion-header-gap)',
             'text-left outline-none',
             'focus-visible:[box-shadow:inset_0_0_0_2px_var(--focus-ring-color)]',
+            triggerClassName,
           )}
         >
           {Icon && (
@@ -132,21 +161,7 @@ const AccordionItemComponent: FC<AccordionItemProps> = ({
           )}
 
           <div className="flex min-w-0 flex-1 flex-col gap-1">
-            <span
-              className={cn(
-                'istok-accordion__title',
-                'flex min-w-0 items-center gap-3',
-                `
-                  text-(length:--istok-accordion-title-font-size)
-                  leading-(--istok-accordion-title-line-height)
-                  font-(--istok-accordion-title-font-weight)
-                  tracking-(--istok-accordion-title-letter-spacing)
-                  text-(--istok-accordion-title-fg)
-                `,
-              )}
-            >
-              {title}
-            </span>
+            {titleElement}
             {description != null && description !== '' && (
               <span
                 className={cn(
@@ -178,25 +193,26 @@ const AccordionItemComponent: FC<AccordionItemProps> = ({
         </BaseAccordion.Trigger>
       </BaseAccordion.Header>
 
-      <BaseAccordion.Panel>
-        <div
-          className={cn(
-            'istok-accordion__content',
-            `
-              pt-(--istok-accordion-item-gap)
-              text-(length:--istok-accordion-content-font-size)
-              leading-(--istok-accordion-content-line-height)
-              text-(--istok-accordion-content-fg)
-            `,
-          )}
-        >
-          {children}
-        </div>
+      <BaseAccordion.Panel
+        {...panelPt}
+        ref={panelRef}
+        className={cn(
+          'istok-accordion__content cursor-auto',
+          `
+            pt-(--istok-accordion-item-gap)
+            text-(length:--istok-accordion-content-font-size)
+            leading-(--istok-accordion-content-line-height)
+            text-(--istok-accordion-content-fg)
+          `,
+          panelClassName,
+        )}
+      >
+        {children}
       </BaseAccordion.Panel>
     </BaseAccordion.Item>
   );
 };
 
 export const Accordion = Object.assign(AccordionRoot, {
-  Item: AccordionItemComponent,
+  Item: AccordionItem,
 });

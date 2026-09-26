@@ -46,6 +46,8 @@ export type AutocompleteProps = {
   loading?: boolean;
   loadingText?: string;
   showClear?: boolean;
+  /** aria-label кнопки очистки */
+  clearLabel?: string;
   autoHighlight?: boolean | 'always';
   openOnInputClick?: boolean;
   mode?: AutocompleteMode;

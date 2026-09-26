@@ -7,4 +7,8 @@ export type PasswordInputProps = Omit<InputProps, 'type'> & {
   onVisibleChange?: (visible: boolean) => void;
   /** Начальная видимость (uncontrolled) */
   defaultVisible?: boolean;
+  /** aria-label кнопки, когда пароль скрыт */
+  showPasswordLabel?: string;
+  /** aria-label кнопки, когда пароль показан */
+  hidePasswordLabel?: string;
 };

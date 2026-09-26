@@ -3,15 +3,9 @@
 import { AlertDialog as BaseAlertDialog } from '@base-ui/react/alert-dialog';
 import type { AlertDialogRoot } from '@base-ui/react/alert-dialog';
 import { AlertTriangle, Info, Trash2 } from 'lucide-react';
-import {
-  useId,
-  useRef,
-  type ButtonHTMLAttributes,
-  type FC,
-  type MouseEvent,
-} from 'react';
+import { useRef, useState, type FC, type MouseEvent } from 'react';
 
-import { Button, type ButtonColor, type ButtonProps } from '@/components/button';
+import { Button, type ButtonColor } from '@/components/button';
 import { cn } from '@/utils/cn';
 
 import type {
@@ -43,14 +37,6 @@ const ACTION_COLOR: Record<AlertDialogVariant, ButtonColor> = {
   info: 'primary',
 };
 
-/** Base UI Close прокидывает HTML `color?: string`, который конфликтует с ButtonColor. */
-const closePropsForButton = (closeProps: object): ButtonProps => {
-  const { color: _color, ...rest } = closeProps as {
-    color?: unknown;
-  } & ButtonProps;
-  return rest;
-};
-
 export const AlertDialog: FC<AlertDialogProps> = ({
   open,
   onOpenChange,
@@ -68,28 +54,75 @@ export const AlertDialog: FC<AlertDialogProps> = ({
   children,
   pt,
 }) => {
-  const titleId = useId();
-  const descriptionId = useId();
   const cancelRef = useRef<HTMLButtonElement>(null);
   const actionsRef = useRef<AlertDialogRoot.Actions | null>(null);
+  // Ref, а не только state: проверка нужна синхронно внутри обработчиков,
+  // которые вызываются до следующего рендера.
+  const pendingRef = useRef(false);
+  const [pending, setPending] = useState(false);
   const Icon = icon ?? DEFAULT_ICONS[variant];
+
+  const setPendingState = (next: boolean) => {
+    pendingRef.current = next;
+    setPending(next);
+  };
+
+  const close = () => actionsRef.current?.close();
 
   const handleOpenChange = (
     nextOpen: boolean,
     eventDetails: AlertDialogRoot.ChangeEventDetails,
   ) => {
-    if (!nextOpen && (eventDetails.reason === 'escape-key' || eventDetails.reason === 'outside-press')) {
+    // Пока выполняется асинхронное действие, закрыть диалог нельзя.
+    if (!nextOpen && pendingRef.current) {
+      eventDetails.cancel();
+      return;
+    }
+    if (!nextOpen && eventDetails.reason === 'escape-key') {
       onCancel?.();
     }
     onOpenChange?.(nextOpen);
   };
 
   const handleBackdropPointer = (event: MouseEvent<HTMLDivElement>) => {
-    if (!dismissOnBackdrop || event.target !== event.currentTarget) {
+    if (
+      !dismissOnBackdrop
+      || pendingRef.current
+      || event.target !== event.currentTarget
+    ) {
       return;
     }
     onCancel?.();
-    actionsRef.current?.close();
+    close();
+  };
+
+  const handleAction = async (event: MouseEvent<HTMLButtonElement>) => {
+    pt?.actionButton?.onClick?.(event);
+    if (event.defaultPrevented) return;
+
+    const result = onAction?.();
+    if (result instanceof Promise) {
+      setPendingState(true);
+      try {
+        await result;
+      }
+      catch (error) {
+        // Диалог остаётся открытым, чтобы действие можно было повторить.
+        setPendingState(false);
+        reportError(error);
+        return;
+      }
+      setPendingState(false);
+    }
+    close();
+  };
+
+  const handleCancel = (event: MouseEvent<HTMLButtonElement>) => {
+    pt?.cancelButton?.onClick?.(event);
+    if (event.defaultPrevented) return;
+
+    onCancel?.();
+    close();
   };
 
   return (
@@ -100,29 +133,26 @@ export const AlertDialog: FC<AlertDialogProps> = ({
     >
       <BaseAlertDialog.Portal>
         <BaseAlertDialog.Backdrop className="
-          istok-alert-dialog fixed inset-0 z-40
-          bg-(--istok-alert-dialog-backdrop)
+          fixed inset-0 z-100 bg-(--istok-alert-dialog-backdrop)
+          istok-alert-dialog
         "
         />
         <BaseAlertDialog.Viewport
           className="
-            istok-alert-dialog fixed inset-0 z-50 flex items-center
-            justify-center p-(--istok-alert-dialog-viewport-padding)
+            fixed inset-0 z-100 flex items-center justify-center
+            p-(--istok-alert-dialog-viewport-padding) istok-alert-dialog
           "
           onClick={handleBackdropPointer}
         >
           <BaseAlertDialog.Popup
-            role="alertdialog"
-            aria-modal="true"
-            aria-labelledby={titleId}
-            aria-describedby={descriptionId}
             initialFocus={cancelRef}
+            aria-busy={pending || undefined}
             className={cn(
               `
-                istok-alert-dialog w-full max-w-(--istok-alert-dialog-max-width)
+                w-full max-w-(--istok-alert-dialog-max-width)
                 rounded-(--istok-alert-dialog-radius)
                 bg-(--istok-alert-dialog-bg) p-(--istok-alert-dialog-padding)
-                shadow-(--istok-alert-dialog-shadow)
+                shadow-(--istok-alert-dialog-shadow) istok-alert-dialog
               `,
               variantClassesMap[variant],
               alignClassesMap[align],
@@ -158,7 +188,6 @@ export const AlertDialog: FC<AlertDialogProps> = ({
                   "
                 >
                   <BaseAlertDialog.Title
-                    id={titleId}
                     className="
                       text-(length:--istok-alert-dialog-title-font-size)
                       leading-(--istok-alert-dialog-title-line-height)
@@ -170,7 +199,6 @@ export const AlertDialog: FC<AlertDialogProps> = ({
                     {title}
                   </BaseAlertDialog.Title>
                   <BaseAlertDialog.Description
-                    id={descriptionId}
                     className="
                       text-(length:--istok-alert-dialog-body-font-size)
                       leading-(--istok-alert-dialog-body-line-height)
@@ -189,54 +217,36 @@ export const AlertDialog: FC<AlertDialogProps> = ({
                   gap-(--istok-alert-dialog-actions-gap)
                 "
               >
-                <BaseAlertDialog.Close
-                  render={closeProps => (
-                    <Button
-                      {...closePropsForButton(closeProps)}
-                      variant="primary"
-                      color={ACTION_COLOR[variant]}
-                      size="md"
-                      {...pt?.actionButton}
-                      onClick={(e) => {
-                        onAction?.();
-                        pt?.actionButton?.onClick?.(e);
-                        (
-                          closeProps as ButtonHTMLAttributes<HTMLButtonElement>
-                        ).onClick?.(e);
-                      }}
-                      className={cn(
-                        'w-(--istok-alert-dialog-action-width)',
-                        pt?.actionButton?.className,
-                      )}
-                    >
-                      {actionLabel}
-                    </Button>
+                <Button
+                  variant="primary"
+                  color={ACTION_COLOR[variant]}
+                  size="md"
+                  {...pt?.actionButton}
+                  loading={pending || pt?.actionButton?.loading}
+                  onClick={(event) => {
+                    void handleAction(event);
+                  }}
+                  className={cn(
+                    'w-(--istok-alert-dialog-action-width)',
+                    pt?.actionButton?.className,
                   )}
-                />
-                <BaseAlertDialog.Close
-                  render={closeProps => (
-                    <Button
-                      {...closePropsForButton(closeProps)}
-                      variant="secondary"
-                      size="md"
-                      {...pt?.cancelButton}
-                      ref={cancelRef}
-                      onClick={(e) => {
-                        onCancel?.();
-                        pt?.cancelButton?.onClick?.(e);
-                        (
-                          closeProps as ButtonHTMLAttributes<HTMLButtonElement>
-                        ).onClick?.(e);
-                      }}
-                      className={cn(
-                        'w-(--istok-alert-dialog-action-width)',
-                        pt?.cancelButton?.className,
-                      )}
-                    >
-                      {cancelLabel}
-                    </Button>
+                >
+                  {actionLabel}
+                </Button>
+                <Button
+                  variant="secondary"
+                  size="md"
+                  {...pt?.cancelButton}
+                  ref={cancelRef}
+                  disabled={pending || pt?.cancelButton?.disabled}
+                  onClick={handleCancel}
+                  className={cn(
+                    'w-(--istok-alert-dialog-action-width)',
+                    pt?.cancelButton?.className,
                   )}
-                />
+                >
+                  {cancelLabel}
+                </Button>
               </div>
             </div>
           </BaseAlertDialog.Popup>

@@ -1,4 +1,4 @@
-export { RadioCard } from './ui/radio-card';
+export { RadioCard, RadioCardGroup } from './ui/radio-card';
 export type {
   RadioCardGroupProps,
   RadioCardProps,

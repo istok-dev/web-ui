@@ -1,98 +1,157 @@
+/* #region SIZES: */
 @utility istok-tabs--sm {
-  --istok-tabs-radius: var(--radius-full);
+  --istok-tabs-pill-radius: var(--radius-full);
 
   --istok-tabs-item-height: var(--spacing-10);
   --istok-tabs-item-padding-inline: var(--spacing-4);
   --istok-tabs-item-padding-block: var(--spacing-2);
   --istok-tabs-item-gap: calc(var(--spacing) * 1.5);
-  --istok-tabs-item-radius: var(--radius-full);
   --istok-tabs-item-label-font-size: var(--text-control-sm);
   --istok-tabs-item-label-line-height: var(--text-control-sm--line-height);
+  --istok-tabs-item-label-letter-spacing: var(--text-control-sm--letter-spacing);
+  --istok-tabs-item-label-font-weight: 600;
   --istok-tabs-item-icon-size: var(--spacing-4);
 }
 
 @utility istok-tabs--md {
-  --istok-tabs-radius: var(--radius-full);
+  --istok-tabs-pill-radius: var(--radius-full);
 
   --istok-tabs-item-height: var(--spacing-12);
   --istok-tabs-item-padding-inline: var(--spacing-5);
   --istok-tabs-item-padding-block: calc(var(--spacing) * 2.5);
   --istok-tabs-item-gap: calc(var(--spacing) * 1.5);
-  --istok-tabs-item-radius: var(--radius-full);
   --istok-tabs-item-label-font-size: var(--text-control-md);
   --istok-tabs-item-label-line-height: var(--text-control-md--line-height);
+  --istok-tabs-item-label-letter-spacing: var(--text-control-md--letter-spacing);
+  --istok-tabs-item-label-font-weight: 600;
   --istok-tabs-item-icon-size: var(--spacing-4);
 }
 
 @utility istok-tabs--lg {
-  --istok-tabs-radius: var(--radius-full);
+  --istok-tabs-pill-radius: var(--radius-full);
 
   --istok-tabs-item-height: var(--spacing-13);
   --istok-tabs-item-padding-inline: var(--spacing-6);
   --istok-tabs-item-padding-block: var(--spacing-3);
   --istok-tabs-item-gap: calc(var(--spacing) * 1.5);
-  --istok-tabs-item-radius: var(--radius-full);
   --istok-tabs-item-label-font-size: var(--text-control-lg);
   --istok-tabs-item-label-line-height: var(--text-control-lg--line-height);
+  --istok-tabs-item-label-letter-spacing: var(--text-control-lg--letter-spacing);
+  --istok-tabs-item-label-font-weight: 600;
   --istok-tabs-item-icon-size: var(--spacing-5);
 }
+/* #endregion */
 
+/*
+ * Наведение и разделители — полупрозрачный цвет текста: так они видны
+ * на любой подложке и одинаково работают в светлой и тёмной теме.
+ */
+
+/* #region VARIANTS: */
+
+/* line — подчёркивание активной вкладки, без подложки у группы */
 @utility istok-tabs--line {
+  --istok-tabs-list-display: flex;
+  --istok-tabs-list-bg: transparent;
+  --istok-tabs-list-padding: 0px;
+  --istok-tabs-list-radius: 0px;
+  --istok-tabs-list-border: color-mix(in srgb, var(--color-text-strong) 12%, transparent);
+  --istok-tabs-list-border-width: 1px;
+
+  --istok-tabs-item-radius: var(--radius-md) var(--radius-md) 0 0;
+
   --istok-tabs-item-label-color: var(--color-text-secondary);
+  --istok-tabs-item-label-color-hover: var(--color-text-strong);
   --istok-tabs-item-label-color-active: var(--color-text-strong);
   --istok-tabs-item-label-color-disabled: var(--color-neutral-400);
-  --istok-tabs-item-label-color-disabled-active: var(--color-neutral-400);
+  --istok-tabs-item-label-color-disabled-active: var(--color-neutral-500);
 
   --istok-tabs-item-icon-color: var(--color-text-secondary);
+  --istok-tabs-item-icon-color-hover: var(--color-text-strong);
   --istok-tabs-item-icon-color-active: var(--color-text-strong);
   --istok-tabs-item-icon-color-disabled: var(--color-neutral-400);
-  --istok-tabs-item-icon-color-disabled-active: var(--color-neutral-400);
+  --istok-tabs-item-icon-color-disabled-active: var(--color-neutral-500);
 
   --istok-tabs-item-bg: transparent;
-  --istok-tabs-item-bg-active: var(--color-surface-muted);
+  --istok-tabs-item-bg-hover: color-mix(in srgb, var(--color-text-strong) 6%, transparent);
+  --istok-tabs-item-bg-active: transparent;
   --istok-tabs-item-bg-disabled: transparent;
-  --istok-tabs-item-bg-disabled-active: var(--color-neutral-200);
+  --istok-tabs-item-bg-disabled-active: transparent;
+
+  --istok-tabs-item-line-underline-color: var(--color-primary-600);
+  --istok-tabs-item-line-underline-color-disabled: var(--color-neutral-400);
+  --istok-tabs-item-line-underline-height: 2px;
+}
+
+/*
+ * inverse — для тёмного или цветного фона (как Badge inverse, Button clear-inverse):
+ * светлые полупрозрачные подложка и подписи, активная вкладка — белая.
+ * Цвета не зависят от темы: вариант всегда стоит на тёмной или цветной подложке.
+ */
+@utility istok-tabs--inverse {
+  --istok-tabs-list-display: inline-flex;
+  --istok-tabs-list-bg: color-mix(in srgb, var(--color-neutral-50) 16%, transparent);
+  --istok-tabs-list-padding: var(--spacing-1);
+  --istok-tabs-list-radius: var(--istok-tabs-pill-radius);
+  --istok-tabs-list-border: transparent;
+  --istok-tabs-list-border-width: 0px;
+
+  --istok-tabs-item-radius: var(--istok-tabs-pill-radius);
+
+  --istok-tabs-item-label-color: color-mix(in srgb, var(--color-neutral-50) 72%, transparent);
+  --istok-tabs-item-label-color-hover: var(--color-neutral-50);
+  --istok-tabs-item-label-color-active: var(--color-neutral-900);
+  --istok-tabs-item-label-color-disabled: color-mix(in srgb, var(--color-neutral-50) 40%, transparent);
+  --istok-tabs-item-label-color-disabled-active: color-mix(in srgb, var(--color-neutral-900) 48%, transparent);
+
+  --istok-tabs-item-icon-color: color-mix(in srgb, var(--color-neutral-50) 72%, transparent);
+  --istok-tabs-item-icon-color-hover: var(--color-neutral-50);
+  --istok-tabs-item-icon-color-active: var(--color-neutral-900);
+  --istok-tabs-item-icon-color-disabled: color-mix(in srgb, var(--color-neutral-50) 40%, transparent);
+  --istok-tabs-item-icon-color-disabled-active: color-mix(in srgb, var(--color-neutral-900) 48%, transparent);
+
+  --istok-tabs-item-bg: transparent;
+  --istok-tabs-item-bg-hover: color-mix(in srgb, var(--color-neutral-50) 12%, transparent);
+  --istok-tabs-item-bg-active: var(--color-neutral-50);
+  --istok-tabs-item-bg-disabled: transparent;
+  --istok-tabs-item-bg-disabled-active: color-mix(in srgb, var(--color-neutral-50) 56%, transparent);
 
   --istok-tabs-item-line-underline-color: transparent;
+  --istok-tabs-item-line-underline-color-disabled: transparent;
   --istok-tabs-item-line-underline-height: 0px;
 }
 
-@utility istok-tabs--ghost {
-  --istok-tabs-item-label-color: var(--color-text-secondary);
-  --istok-tabs-item-label-color-active: var(--color-text-strong);
-  --istok-tabs-item-label-color-disabled: var(--color-neutral-400);
-  --istok-tabs-item-label-color-disabled-active: var(--color-neutral-400);
-
-  --istok-tabs-item-icon-color: var(--color-text-secondary);
-  --istok-tabs-item-icon-color-active: var(--color-text-strong);
-  --istok-tabs-item-icon-color-disabled: var(--color-neutral-400);
-  --istok-tabs-item-icon-color-disabled-active: var(--color-neutral-400);
-
-  --istok-tabs-item-bg: transparent;
-  --istok-tabs-item-bg-active: var(--color-surface-muted);
-  --istok-tabs-item-bg-disabled: transparent;
-  --istok-tabs-item-bg-disabled-active: var(--color-neutral-200);
-
-  --istok-tabs-item-line-underline-color: transparent;
-  --istok-tabs-item-line-underline-height: 0px;
-}
-
+/* solid — сегментированный переключатель с заливкой активной вкладки брендом */
 @utility istok-tabs--solid {
+  --istok-tabs-list-display: inline-flex;
+  --istok-tabs-list-bg: var(--color-surface-muted);
+  --istok-tabs-list-padding: var(--spacing-1);
+  --istok-tabs-list-radius: var(--istok-tabs-pill-radius);
+  --istok-tabs-list-border: transparent;
+  --istok-tabs-list-border-width: 0px;
+
+  --istok-tabs-item-radius: var(--istok-tabs-pill-radius);
+
   --istok-tabs-item-label-color: var(--color-text-strong);
+  --istok-tabs-item-label-color-hover: var(--color-text-strong);
   --istok-tabs-item-label-color-active: var(--color-primary-50);
   --istok-tabs-item-label-color-disabled: var(--color-neutral-400);
   --istok-tabs-item-label-color-disabled-active: var(--color-neutral-500);
 
   --istok-tabs-item-icon-color: var(--color-text-strong);
+  --istok-tabs-item-icon-color-hover: var(--color-text-strong);
   --istok-tabs-item-icon-color-active: var(--color-primary-50);
   --istok-tabs-item-icon-color-disabled: var(--color-neutral-400);
   --istok-tabs-item-icon-color-disabled-active: var(--color-neutral-500);
 
   --istok-tabs-item-bg: transparent;
+  --istok-tabs-item-bg-hover: color-mix(in srgb, var(--color-text-strong) 6%, transparent);
   --istok-tabs-item-bg-active: var(--color-primary-600);
   --istok-tabs-item-bg-disabled: transparent;
   --istok-tabs-item-bg-disabled-active: var(--color-neutral-300);
 
   --istok-tabs-item-line-underline-color: transparent;
+  --istok-tabs-item-line-underline-color-disabled: transparent;
   --istok-tabs-item-line-underline-height: 0px;
 }
+/* #endregion */

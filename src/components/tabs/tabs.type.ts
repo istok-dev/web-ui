@@ -7,24 +7,40 @@ export type TabsFC = {
 };
 
 export type TabsProps<T extends string> = PropsWithChildren<{
-  className?: string;
-  size?: TabItemSize;
-  variant?: TabItemVariant;
-  value?: T;
-  onValueChange?: (value: T) => void;
+  'className'?: string;
+  'size'?: TabItemSize;
+  'variant'?: TabItemVariant;
+  /** Активная вкладка (контролируемый режим) */
+  'value'?: T;
+  /** Начальная вкладка (неконтролируемый режим) */
+  'defaultValue'?: T;
+  'onValueChange'?: (value: T) => void;
+  /** Подпись для `role="tablist"`, если рядом нет видимого заголовка */
+  'aria-label'?: string;
 }>;
 
-export type TabItemSize = 'sm' | 'md' | 'lg';
-export type TabItemVariant = 'line' | 'ghost' | 'solid';
+export const TABS_SIZES = ['sm', 'md', 'lg'] as const;
+export const TABS_VARIANTS = ['line', 'inverse', 'solid'] as const;
 
-export type TabItemProps<T extends string> = React.HTMLAttributes<HTMLButtonElement> & {
+export type TabItemSize = (typeof TABS_SIZES)[number];
+export type TabItemVariant = (typeof TABS_VARIANTS)[number];
+
+export type TabItemPassThrough = {
+  startIcon?: LucideProps;
+};
+
+export type TabItemProps<T extends string> = Omit<
+  React.HTMLAttributes<HTMLButtonElement>,
+  'onClick' | 'className'
+> & {
   value: T;
   label?: string;
   startIcon?: LucideIcon;
-  startIconProps?: LucideProps;
   onClick?: () => void;
   className?: string;
   disabled?: boolean;
+  /** Pass-through для внутренних слотов */
+  pt?: TabItemPassThrough;
 };
 
 export type TabItemFC = {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import type { ChangeEvent, FC } from 'react';
 
 import { cn } from '@/utils/cn';
@@ -25,6 +25,7 @@ const SwitchRoot: FC<SwitchProps> = ({
   disabled = false,
   size = 'md',
   className,
+  ref,
   pt,
   ...rootProps
 }) => {
@@ -54,9 +55,9 @@ const SwitchRoot: FC<SwitchProps> = ({
     >
       <input
         {...pt?.input}
+        ref={ref}
         type="checkbox"
         role="switch"
-        aria-checked={isChecked}
         checked={checked}
         defaultChecked={defaultChecked}
         disabled={disabled}
@@ -70,7 +71,7 @@ const SwitchRoot: FC<SwitchProps> = ({
   );
 };
 
-const SwitchField: FC<SwitchFieldProps> = ({
+export const SwitchField: FC<SwitchFieldProps> = ({
   label,
   description,
   checked,
@@ -80,9 +81,12 @@ const SwitchField: FC<SwitchFieldProps> = ({
   disabled = false,
   className,
   classes,
+  ref,
   pt,
   ...rootProps
 }) => {
+  const labelId = useId();
+
   return (
     <div
       {...rootProps}
@@ -100,6 +104,7 @@ const SwitchField: FC<SwitchFieldProps> = ({
         )}
       >
         <span
+          id={labelId}
           className={cn(
             `
               istok-switch-field__label text-control-md font-medium
@@ -136,14 +141,18 @@ const SwitchField: FC<SwitchFieldProps> = ({
           onChange={onChange}
           size={size}
           disabled={disabled}
-          pt={pt}
+          ref={ref}
+          pt={{
+            ...pt,
+            input: { 'aria-labelledby': labelId, ...pt?.input },
+          }}
         />
       </div>
     </div>
   );
 };
 
-const SwitchFieldList: FC<SwitchFieldListProps> = ({
+export const SwitchFieldList: FC<SwitchFieldListProps> = ({
   children,
   className,
   ...rootProps

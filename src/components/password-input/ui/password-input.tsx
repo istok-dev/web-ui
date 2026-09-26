@@ -2,7 +2,7 @@
 
 import { Eye, EyeOff } from 'lucide-react';
 import type { FC } from 'react';
-import { useCallback, useMemo, useState } from 'react';
+import { useState } from 'react';
 
 import { IconButton } from '@/components/icon-button';
 import { Input } from '@/components/input';
@@ -15,6 +15,8 @@ export const PasswordInput: FC<PasswordInputProps> = ({
   visible: visibleProp,
   onVisibleChange,
   defaultVisible = false,
+  showPasswordLabel = 'Показать пароль',
+  hidePasswordLabel = 'Скрыть пароль',
   endAdornment,
   ...rest
 }) => {
@@ -22,19 +24,16 @@ export const PasswordInput: FC<PasswordInputProps> = ({
   const isControlled = visibleProp !== undefined;
   const visible = isControlled ? visibleProp : visibleUncontrolled;
 
-  const handleVisibleChange = useCallback((next: boolean) => {
+  const handleVisibleChange = (next: boolean) => {
     if (!isControlled) {
       setVisibleUncontrolled(next);
     }
     onVisibleChange?.(next);
-  }, [isControlled, onVisibleChange, setVisibleUncontrolled]);
+  };
 
-  const resolvedEndAdornment = useMemo(() => {
-    if (typeof endAdornment !== 'undefined') {
-      return endAdornment;
-    }
-
-    return (
+  const resolvedEndAdornment = endAdornment !== undefined
+    ? endAdornment
+    : (
       <IconButton
         type="button"
         icon={visible ? EyeOff : Eye}
@@ -42,10 +41,9 @@ export const PasswordInput: FC<PasswordInputProps> = ({
         color="neutral"
         size="sm"
         onClick={() => handleVisibleChange(!visible)}
-        aria-label={visible ? 'Скрыть пароль' : 'Показать пароль'}
+        aria-label={visible ? hidePasswordLabel : showPasswordLabel}
       />
     );
-  }, [endAdornment, visible, handleVisibleChange]);
 
   return (
     <Input

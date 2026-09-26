@@ -26,22 +26,25 @@ export const Input: FC<InputProps> = ({
   startAdornment,
   endAdornment,
   className,
+  style,
   pt,
-  placeholder,
   size = 'md',
   variant = 'neutral',
   startIcon: StartIcon,
   type = 'text',
   disabled = false,
-  ...rootProps
+  ref,
+  ...inputProps
 }) => {
   return (
     <div
-      {...rootProps}
+      {...pt?.root}
+      style={style ?? pt?.root?.style}
       className={cn(
         'istok-input relative',
         sizeClassesMap[size],
         variantClassesMap[variant],
+        pt?.root?.className,
         className,
       )}
     >
@@ -70,10 +73,11 @@ export const Input: FC<InputProps> = ({
       )}
       <input
         {...pt?.input}
+        {...inputProps}
+        ref={ref}
         type={type}
         value={value}
         onChange={e => onChange?.(e.target.value, e)}
-        placeholder={placeholder}
         disabled={disabled || pt?.input?.disabled}
         className={cn(
           'istok-input__input w-full transition-all outline-none',

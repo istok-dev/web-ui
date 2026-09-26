@@ -72,6 +72,7 @@ export const Button: FC<ButtonProps> = ({
         `
           text-(length:--istok-button-font-size)
           leading-(--istok-button-line-height) font-(--istok-button-font-weight)
+          tracking-(--istok-button-letter-spacing)
         `,
         'border',
         !isDisabled && [

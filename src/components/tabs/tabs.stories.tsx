@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FileText, Settings, User } from 'lucide-react';
 import { useState } from 'react';
 
-import type { TabItemSize, TabItemVariant } from './tabs.type';
+import { TABS_VARIANTS, type TabItemSize } from './tabs.type';
 import { Tabs } from './ui/tabs';
 
 const meta: Meta<typeof Tabs> = {
@@ -20,7 +20,7 @@ const meta: Meta<typeof Tabs> = {
     },
     variant: {
       control: 'select',
-      options: ['line', 'ghost', 'solid'] as TabItemVariant[],
+      options: TABS_VARIANTS,
       description: 'Визуальный вариант табов',
     },
   },
@@ -50,7 +50,7 @@ export const Default: Story = {
 export const Variants: Story = {
   render: () => {
     const [line, setLine] = useState('one');
-    const [ghost, setGhost] = useState('one');
+    const [inverse, setInverse] = useState('one');
     const [solid, setSolid] = useState('one');
     return (
       <div className="flex flex-col gap-8">
@@ -62,12 +62,14 @@ export const Variants: Story = {
             <Tabs.Item value="three" label="Три" />
           </Tabs>
         </div>
-        <div>
-          <p className="mb-2 text-body-sm text-neutral-500">Ghost</p>
-          <Tabs value={ghost} onValueChange={setGhost} variant="ghost">
+        <div className="rounded-2xl bg-primary-700 p-4">
+          <p className="mb-2 text-body-sm text-neutral-50">
+            Inverse — на тёмном или цветном фоне
+          </p>
+          <Tabs value={inverse} onValueChange={setInverse} variant="inverse">
             <Tabs.Item value="one" label="Один" />
             <Tabs.Item value="two" label="Два" />
-            <Tabs.Item value="three" label="Три" />
+            <Tabs.Item value="three" label="Три" disabled />
           </Tabs>
         </div>
         <div>
