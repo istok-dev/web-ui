@@ -3,7 +3,7 @@
 import { Popover } from '@base-ui/react/popover';
 import type { PopoverTriggerProps } from '@base-ui/react/popover';
 import { isValidElement, useState } from 'react';
-import type { PropsWithChildren } from 'react';
+import type { ComponentProps, PropsWithChildren } from 'react';
 import type {
   DateRange as PickerDateRange,
   DayPickerProps,
@@ -31,6 +31,8 @@ type CommonProps = PropsWithChildren<{
     alignOffset?: number;
     className?: string;
   };
+  /** Пропсы попапа (фокус, data-атрибуты) */
+  popupProps?: ComponentProps<typeof Popover.Popup>;
   /** Доп. пропсы календаря */
   calendarProps?: Omit<
     CalendarProps,
@@ -71,6 +73,7 @@ export function DatePicker({
   triggerProps,
   positionerProps,
   calendarProps,
+  popupProps,
   ...props
 }: DatePickerProps) {
   const [internalOpen, setInternalOpen] = useState(false);
@@ -139,11 +142,13 @@ export function DatePicker({
           className={cn('z-100', positionerProps?.className)}
         >
           <Popover.Popup
+            {...popupProps}
             className={cn(
               `
                 w-auto rounded-4xl border-0 bg-surface-card p-0 text-text-strong
                 shadow-md outline-none
               `,
+              popupProps?.className,
             )}
           >
             {renderCalendar()}

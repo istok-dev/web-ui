@@ -1,5 +1,6 @@
 'use client';
 
+import type { PopoverPopupProps, PopoverTriggerProps } from '@base-ui/react/popover';
 import { Calendar } from 'lucide-react';
 import type { FC } from 'react';
 import { useEffect, useRef, useState } from 'react';
@@ -10,6 +11,12 @@ import { Input } from '@/components/input';
 
 import type { DateInputProps } from '../date-input.types';
 import { datesEqual, formatDate, parseDate } from '../parse-date';
+
+const CALENDAR_LAYER_SELECTOR = '[data-date-input-popup], [data-date-input-trigger]';
+
+function isCalendarLayer(target: EventTarget | null) {
+  return target instanceof Element && target.closest(CALENDAR_LAYER_SELECTOR) != null;
+}
 
 export const DateInput: FC<DateInputProps> = ({
   value,
@@ -22,12 +29,16 @@ export const DateInput: FC<DateInputProps> = ({
   startAdornment,
   openCalendarLabel = 'Открыть календарь',
   onBlur,
+  onFocus,
+  onClick,
   pt,
   ...inputProps
 }) => {
   const [internalOpen, setInternalOpen] = useState(false);
   const [text, setText] = useState(() => formatDate(value));
   const lastEmittedRef = useRef(value);
+  const openFromInputRef = useRef(false);
+  const suppressOpenOnFocusRef = useRef(false);
 
   const isOpenControlled
     = controlledOpen !== undefined && onOpenChange !== undefined;
@@ -73,15 +84,58 @@ export const DateInput: FC<DateInputProps> = ({
     setText(formatDate(value));
   };
 
+  const suppressNextFocusOpen = () => {
+    suppressOpenOnFocusRef.current = true;
+    requestAnimationFrame(() => {
+      suppressOpenOnFocusRef.current = false;
+    });
+  };
+
+  const closeCalendar = () => {
+    suppressNextFocusOpen();
+    setOpen(false);
+  };
+
+  const openFromInput = () => {
+    if (disabled) return;
+    openFromInputRef.current = true;
+    setOpen(true);
+  };
+
   const handleSelect = (date: Date | undefined) => {
     setText(formatDate(date));
     emit(date);
-    setOpen(false);
+    closeCalendar();
   };
 
   const handleOpenChange = (nextOpen: boolean) => {
     if (disabled) return;
-    setOpen(nextOpen);
+    if (nextOpen) {
+      openFromInputRef.current = false;
+      setOpen(true);
+      return;
+    }
+    suppressNextFocusOpen();
+    setOpen(false);
+  };
+
+  const handleInputBlur = (event: Parameters<NonNullable<DateInputProps['onBlur']>>[0]) => {
+    handleBlur();
+    pt?.input?.onBlur?.(event);
+    onBlur?.(event);
+
+    const next = event.relatedTarget;
+    if (isCalendarLayer(next)) return;
+
+    if (next == null) {
+      requestAnimationFrame(() => {
+        if (isCalendarLayer(document.activeElement)) return;
+        closeCalendar();
+      });
+      return;
+    }
+
+    closeCalendar();
   };
 
   const trigger = startAdornment !== undefined
@@ -112,11 +166,19 @@ export const DateInput: FC<DateInputProps> = ({
           ...pt?.input,
         },
       }}
-      onBlur={(event) => {
-        handleBlur();
-        pt?.input?.onBlur?.(event);
-        onBlur?.(event);
+      onFocus={(event) => {
+        if (!suppressOpenOnFocusRef.current) {
+          openFromInput();
+        }
+        pt?.input?.onFocus?.(event);
+        onFocus?.(event);
       }}
+      onClick={(event) => {
+        openFromInput();
+        pt?.input?.onClick?.(event);
+        onClick?.(event);
+      }}
+      onBlur={handleInputBlur}
       startAdornment={(
         <DatePicker
           mode="single"
@@ -125,12 +187,22 @@ export const DateInput: FC<DateInputProps> = ({
           open={open}
           onOpenChange={handleOpenChange}
           disabled={disabledDates}
-          triggerProps={pt?.trigger}
+          triggerProps={{
+            ...pt?.trigger,
+            ...{ 'data-date-input-trigger': '' },
+          } as PopoverTriggerProps}
           positionerProps={{
             align: 'start',
             ...pt?.positioner,
           }}
           calendarProps={pt?.calendar}
+          popupProps={{
+            initialFocus: () => (openFromInputRef.current ? false : true),
+            onMouseDown: (event) => {
+              event.preventDefault();
+            },
+            ...{ 'data-date-input-popup': '' },
+          } as PopoverPopupProps}
         >
           {trigger}
         </DatePicker>
